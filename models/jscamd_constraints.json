@@ -1,0 +1,22 @@
+{
+  "version": "3.0.0",
+  "description": "JScamd (USENIX Security 2026) 风格的 16 条密码 API 安全约束（适配 HarmonyOS cryptoFramework / HUKS，用于基线 B2 与扩展检测）",
+  "constraints": [
+    { "id": "C01", "category": "WeakSymmetricCipher", "pattern": "\\b(DES|3DES|RC2|RC4|ARC4|BLOWFISH)\\b", "cwe": "CWE-327", "description": "禁止使用弱对称加密算法 (DES/3DES/RC4)" },
+    { "id": "C02", "category": "InsecureBlockMode", "pattern": "\\b(AES|SM4|3DES)[0-9_]*\\|ECB\\b", "cwe": "CWE-327", "description": "禁止在分组密码中使用不安全的 ECB 模式" },
+    { "id": "C03", "category": "WeakHashFunction", "pattern": "\\b(MD5|SHA1|SHA-1|MD4)\\b", "cwe": "CWE-328", "description": "禁止在安全上下文中使用已被碰撞攻破的杂凑算法 (MD5/SHA1)" },
+    { "id": "C04", "category": "InsufficientAsymmetricKeySize", "pattern": "\\b(RSA512|RSA768|RSA1024|DH512|DH1024)\\b", "cwe": "CWE-326", "description": "非对称算法密钥长度不足 (RSA/DH < 2048 bits)" },
+    { "id": "C05", "category": "HardcodedSymmetricKey", "cwe": "CWE-321", "description": "禁止使用硬编码字节数组或常量字符串直接构造对称密钥 (convertKey)" },
+    { "id": "C06", "category": "StaticOrReusedIV", "cwe": "CWE-329", "description": "CBC/CTR/GCM 模式下禁止使用硬编码或跨次复用的静态 IV/Nonce" },
+    { "id": "C07", "category": "AEADNonceReuse", "cwe": "CWE-323", "description": "AES-GCM / SM4-GCM / CCM 模式下禁止在同一密钥下复用 Nonce" },
+    { "id": "C08", "category": "ConstantPBKDF2Salt", "cwe": "CWE-760", "description": "PBKDF2 / HKDF 密钥派生禁止使用常量盐值 (Salt)" },
+    { "id": "C09", "category": "LowPBKDF2Iterations", "minIterations": 10000, "cwe": "CWE-916", "description": "PBKDF2 迭代次数不得低于 10000 次" },
+    { "id": "C10", "category": "InsecureRandomForCrypto", "pattern": "Math\\.random\\s*\\(", "cwe": "CWE-338", "description": "密码学操作中禁止使用非密码学安全的伪随机数 Math.random()" },
+    { "id": "C11", "category": "RSAWithoutOAEP", "pattern": "RSA[0-9_]*\\|PKCS1\\b", "cwe": "CWE-780", "description": "RSA 加密建议使用 OAEP 填充而非传统 PKCS#1 v1.5" },
+    { "id": "C12", "category": "PlaintextKeyStorage", "cwe": "CWE-312", "description": "禁止将未加密包装的密钥材料直接写入持久化存储" },
+    { "id": "C13", "category": "PlaintextKeyIPC", "cwe": "CWE-927", "description": "禁止通过未受保护的 IPC (Want/RPC) 传输明文密钥材料" },
+    { "id": "C14", "category": "SecretInLogs", "cwe": "CWE-532", "description": "禁止将密钥材料输出至 hilog 或 console 日志" },
+    { "id": "C15", "category": "UnverifiedHuksImport", "cwe": "CWE-312", "description": "HUKS 明文导入前应避免长链路明文拷贝与暴露" },
+    { "id": "C16", "category": "MissingMemoryZeroization", "cwe": "CWE-226", "description": "敏感密钥缓冲区在使用完毕后应执行不可被编译器消除的清零操作" }
+  ]
+}

@@ -1,0 +1,3834 @@
+[
+  {
+    "source_id": "S001",
+    "name": "archives.html",
+    "file": "downloads/competition/archives.html",
+    "url": "https://huaqin.xidian.edu.cn/archives/",
+    "accessed_at": "2026-10-29T01:35:51.046344+08:00",
+    "http_status": 200,
+    "bytes": 14487,
+    "sha256": "525a789ff0077ef794190f063d6173db1369bbd3a9de4abc796632f8e8811ad4",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S002",
+    "name": "guide.html",
+    "file": "downloads/competition/guide.html",
+    "url": "https://huaqin.xidian.edu.cn/2026/04/01/第五届“华秦杯”网络安全创新大赛创意作品赛参赛指南/",
+    "accessed_at": "2026-10-29T01:24:59.210176+08:00",
+    "http_status": 200,
+    "bytes": 24370,
+    "sha256": "a2d4e18565dc5992b322f11a888cbecaffd1988126fba09709b6561cec63d606",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S003",
+    "name": "harmony-utils-README.md",
+    "file": "downloads/corpus/harmony-utils-README.md",
+    "url": "https://gitee.com/tongyuyan/harmony-utils/raw/master/README.md",
+    "accessed_at": "2026-10-29T01:30:57.182249+08:00",
+    "http_status": 200,
+    "bytes": 2426,
+    "sha256": "e24afcf9fd19db26a86ff0839a356db71ecce72635c6d3625b9a40c688654887",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan5-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S004",
+    "name": "ohos-crypto-js-README.md",
+    "file": "downloads/corpus/ohos-crypto-js-README.md",
+    "url": "https://gitee.com/openharmony-sig/ohos_crypto_js/raw/master/README.md",
+    "accessed_at": "2026-10-29T01:30:57.182249+08:00",
+    "http_status": 200,
+    "bytes": 5459,
+    "sha256": "f47b27c58313a2ab0fa8169c1402d68bb4f00bc2aad57f8c698ca4ace2820b59",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan5-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S005",
+    "name": "OpenHarmony-v6.1-release.md",
+    "file": "downloads/docs/OpenHarmony-v6.1-release.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/release-notes/OpenHarmony-v6.1-release.md",
+    "accessed_at": "2026-10-29T01:28:30.315811+08:00",
+    "http_status": 200,
+    "bytes": 26267,
+    "sha256": "dc3b80410ab7338f6b356720cd96496dd7d790cc58945f8ba8a929c482158380",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S006",
+    "name": "appstorage.md",
+    "file": "downloads/docs/appstorage.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/ui/state-management/arkts-appstorage.md",
+    "accessed_at": "2026-10-29T01:28:29.873313+08:00",
+    "http_status": 200,
+    "bytes": 38073,
+    "sha256": "f0b43f24ae8bd0c77707611c68d5643eb5e838d205be34287c51b97cca733908",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S007",
+    "name": "arkanalyzer-readme.md",
+    "file": "downloads/docs/arkanalyzer-readme.md",
+    "url": "https://gitee.com/openharmony-sig/arkanalyzer/raw/master/README.md",
+    "accessed_at": "2026-10-29T01:26:20.310792+08:00",
+    "http_status": 200,
+    "bytes": 3714,
+    "sha256": "1ae67f3afea9f1e4206df98a49aa207c7ff5b06dfe80b0ff279ee67ad1e0d55e",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S008",
+    "name": "clang-compile-commands.html",
+    "file": "downloads/docs/clang-compile-commands.html",
+    "url": "https://clang.llvm.org/docs/JSONCompilationDatabase.html",
+    "accessed_at": "2026-10-29T01:28:28.567622+08:00",
+    "http_status": 200,
+    "bytes": 42964,
+    "sha256": "8d6df2831e17a51760ec1c836635cb1aea3d8f91d693bdf88393ccdfda173d40",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S009",
+    "name": "clang-libtooling.html",
+    "file": "downloads/docs/clang-libtooling.html",
+    "url": "https://clang.llvm.org/docs/LibTooling.html",
+    "accessed_at": "2026-10-29T01:28:28.514803+08:00",
+    "http_status": 200,
+    "bytes": 55982,
+    "sha256": "22af4da2ce080c359fcaaa426ff88d3118cfca627148c395f39beae044c63ccc",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S010",
+    "name": "cwe14.html",
+    "file": "downloads/docs/cwe14.html",
+    "url": "https://cwe.mitre.org/data/definitions/14.html",
+    "accessed_at": "2026-10-29T01:26:21.462235+08:00",
+    "http_status": 200,
+    "bytes": 114733,
+    "sha256": "a35a9fc272b9982f9c9e927a9d8c40118e4b5153e4c24a8217c62e6523cce7fc",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S011",
+    "name": "deveco-snapshot.html",
+    "file": "downloads/docs/deveco-snapshot.html",
+    "url": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations",
+    "accessed_at": "2026-10-29T01:28:28.455731+08:00",
+    "http_status": 200,
+    "bytes": 1772,
+    "sha256": "d77761d325a3f8dc169daeca6896502e244ddf84a29ccf7e647ab80f039013c3",
+    "content_status": "spa_shell_no_document_body",
+    "note": "HTTP200但正文不符合目标；替代来源已保存",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S012",
+    "name": "hidebug.md",
+    "file": "downloads/docs/hidebug.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md",
+    "accessed_at": "2026-10-29T01:28:29.944843+08:00",
+    "http_status": 200,
+    "bytes": 77462,
+    "sha256": "fcfaaa15771b60502c8c07ac6f359e956fb9b43e241f70bfb4b3741f9d629871",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S013",
+    "name": "huks-encryption-decryption-arkts.md",
+    "file": "downloads/docs/huks-encryption-decryption-arkts.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/security/UniversalKeystoreKit/huks-encryption-decryption-arkts.md",
+    "accessed_at": "2026-10-29T01:30:57.183254+08:00",
+    "http_status": 200,
+    "bytes": 45243,
+    "sha256": "25a5be37d7d35d6925f68c7f9a38854e2d9c1bdfe335795948bd0b3ee6b5e87a",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan5-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S014",
+    "name": "huks-export.md",
+    "file": "downloads/docs/huks-export.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/security/UniversalKeystoreKit/huks-key-export-overview.md",
+    "accessed_at": "2026-10-29T01:28:30.025368+08:00",
+    "http_status": null,
+    "bytes": null,
+    "sha256": null,
+    "content_status": "download_failed",
+    "note": "HTTP Error 404: Not Found",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S015",
+    "name": "huks-key-import-overview.md",
+    "file": "downloads/docs/huks-key-import-overview.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/security/UniversalKeystoreKit/huks-key-import-overview.md",
+    "accessed_at": "2026-10-29T01:26:24.110791+08:00",
+    "http_status": 200,
+    "bytes": 8614,
+    "sha256": "f488fa6505e68f5c5c9288ca86a1802fea4dbab31e1eaba43d3a98b4f5f324ee",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json",
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S016",
+    "name": "huks-readme.md",
+    "file": "downloads/docs/huks-readme.md",
+    "url": "https://raw.githubusercontent.com/openharmony/security_huks/master/README_zh.md",
+    "accessed_at": "2026-10-29T01:25:00.075623+08:00",
+    "http_status": 200,
+    "bytes": 3527,
+    "sha256": "921dfe66169423ea8da98effbbd1819cb9d9019d6843267e2576bdc926c65f3c",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S017",
+    "name": "js-apis-cryptoFramework.md",
+    "file": "downloads/docs/js-apis-cryptoFramework.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md",
+    "accessed_at": "2026-10-29T01:26:23.707113+08:00",
+    "http_status": 200,
+    "bytes": 421527,
+    "sha256": "859a3d1f0ee415513e167869730d0de128e99c1ea1cb7bdd47489c7bb568f70c",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json",
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S018",
+    "name": "js-apis-huks.md",
+    "file": "downloads/docs/js-apis-huks.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/apis-universal-keystore-kit/js-apis-huks.md",
+    "accessed_at": "2026-10-29T01:26:23.917833+08:00",
+    "http_status": 200,
+    "bytes": 247064,
+    "sha256": "3adb3c34c74d48e54aff01aaf99840abaee0bc5eec59e5f28ec15a71da16f4cc",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json",
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S019",
+    "name": "napi-arraybuffer.md",
+    "file": "downloads/docs/napi-arraybuffer.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/napi/use-napi-about-arraybuffer.md",
+    "accessed_at": "2026-10-29T01:28:30.516268+08:00",
+    "http_status": 200,
+    "bytes": 14037,
+    "sha256": "54aebfffacf0805fafb79249d12858f376c1ed4dc1fced43d000899f8f47cc23",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S020",
+    "name": "napi-data-types-interfaces.md",
+    "file": "downloads/docs/napi-data-types-interfaces.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/napi/napi-data-types-interfaces.md",
+    "accessed_at": "2026-10-29T01:26:23.465763+08:00",
+    "http_status": 200,
+    "bytes": 42076,
+    "sha256": "42057e58abfb5e907adc3d45a60ed468548753580162cbb484e7dc15cdef2463",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json",
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S021",
+    "name": "napi-guidelines.md",
+    "file": "downloads/docs/napi-guidelines.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/napi/napi-guidelines.md",
+    "accessed_at": "2026-10-29T01:26:23.480298+08:00",
+    "http_status": 200,
+    "bytes": 19993,
+    "sha256": "3bc6cc9644fa6b1095160c49be2fd3941bd1c8df79ffb5af11ef91c111f8ffed",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json",
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S022",
+    "name": "node-api.html",
+    "file": "downloads/docs/node-api.html",
+    "url": "https://nodejs.org/api/n-api.html",
+    "accessed_at": "2026-10-29T01:26:20.310792+08:00",
+    "http_status": 200,
+    "bytes": 818527,
+    "sha256": "177498cd6b5785d64ed84ae9ca8ff17083d643ed052cfc9a9d4a5bf7cf987f10",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S023",
+    "name": "node-v8.html",
+    "file": "downloads/docs/node-v8.html",
+    "url": "https://nodejs.org/api/v8.html",
+    "accessed_at": "2026-10-29T01:26:21.498525+08:00",
+    "http_status": 200,
+    "bytes": 346862,
+    "sha256": "2c94376f70963076f373df6ebdfd84364423081e891518b974b08a85ce38ec8d",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S024",
+    "name": "openharmony-native-napi.md",
+    "file": "downloads/docs/openharmony-native-napi.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/native-lib/napi.md",
+    "accessed_at": "2026-10-29T01:28:30.567042+08:00",
+    "http_status": 200,
+    "bytes": 69327,
+    "sha256": "762ef0d310403466811f38f2087d13ae32c44ec57e548d2eab7ad6f2b82dc6f6",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S025",
+    "name": "openssl-derive.html",
+    "file": "downloads/docs/openssl-derive.html",
+    "url": "https://docs.openssl.org/3.0/man3/EVP_PKEY_derive/",
+    "accessed_at": "2026-10-29T01:26:21.082817+08:00",
+    "http_status": 200,
+    "bytes": 936392,
+    "sha256": "6b854a897223a2904f975fe4a3f2ad43ae0a561444ffbeee3aad0eb3d12c5e89",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S026",
+    "name": "openssl-pbkdf2.html",
+    "file": "downloads/docs/openssl-pbkdf2.html",
+    "url": "https://docs.openssl.org/3.0/man3/PKCS5_PBKDF2_HMAC/",
+    "accessed_at": "2026-10-29T01:35:51.046878+08:00",
+    "http_status": 200,
+    "bytes": 932018,
+    "sha256": "be3fa63717a3067665bcf3a1bb2e56f0ead4871130f4f6f2bc643c80ef0ae146",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S027",
+    "name": "persistentstorage.md",
+    "file": "downloads/docs/persistentstorage.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/ui/state-management/arkts-persiststorage.md",
+    "accessed_at": "2026-10-29T01:28:29.879102+08:00",
+    "http_status": 200,
+    "bytes": 16837,
+    "sha256": "c90c1a8191456310c941b8fee28d0f703bd8df1a7eed62e426bfc2a1b2776b09",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S028",
+    "name": "preferences.md",
+    "file": "downloads/docs/preferences.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/apis-arkdata/js-apis-data-preferences.md",
+    "accessed_at": "2026-10-29T01:28:29.353119+08:00",
+    "http_status": 200,
+    "bytes": 107691,
+    "sha256": "40cc42d652a2e84fed1b388196916f166244b6753cb645944c050ee9401b4908",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S029",
+    "name": "release-index.md",
+    "file": "downloads/docs/release-index.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/release-notes/Readme.md",
+    "accessed_at": "2026-10-29T01:26:24.257449+08:00",
+    "http_status": 200,
+    "bytes": 3873,
+    "sha256": "2484f8cd7355c464f89df35b614d0d6fd614cbe515c227637fb6fa58d738f44c",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json",
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S030",
+    "name": "rfc3394.txt",
+    "file": "downloads/docs/rfc3394.txt",
+    "url": "https://www.rfc-editor.org/rfc/rfc3394.txt",
+    "accessed_at": "2026-10-29T01:26:21.407307+08:00",
+    "http_status": 200,
+    "bytes": 73072,
+    "sha256": "faa400c69c22e5f4a911222dc19c17091931a4b8c0658adc7011163e63b253ff",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S031",
+    "name": "rfc4648-base64.txt",
+    "file": "downloads/docs/rfc4648-base64.txt",
+    "url": "https://www.rfc-editor.org/rfc/rfc4648.txt",
+    "accessed_at": "2026-10-29T01:28:28.923638+08:00",
+    "http_status": 200,
+    "bytes": 35491,
+    "sha256": "84e14418f795d503be5f34bf23ce4ebaa119e9ec7c9f667d8caeb111385b178f",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S032",
+    "name": "rfc5116-aead.txt",
+    "file": "downloads/docs/rfc5116-aead.txt",
+    "url": "https://www.rfc-editor.org/rfc/rfc5116.txt",
+    "accessed_at": "2026-10-29T01:30:57.183254+08:00",
+    "http_status": 200,
+    "bytes": 50539,
+    "sha256": "8762fee7c85e682fce609c75e0f5040ee7efa8fca96969ffd85df37585e0eda1",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan5-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S033",
+    "name": "rfc5869.txt",
+    "file": "downloads/docs/rfc5869.txt",
+    "url": "https://www.rfc-editor.org/rfc/rfc5869.txt",
+    "accessed_at": "2026-10-29T01:26:21.336672+08:00",
+    "http_status": 200,
+    "bytes": 25854,
+    "sha256": "7a40eb3835b35fc947eb12a2ed614db079d43b26e50dbc537c31fba16397089c",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S034",
+    "name": "util-base64.md",
+    "file": "downloads/docs/util-base64.md",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/apis-arkts/js-apis-util.md",
+    "accessed_at": "2026-10-29T01:28:29.923957+08:00",
+    "http_status": 200,
+    "bytes": 197379,
+    "sha256": "4c78ffd3ea227f7b424b31ebb6c9d52bdfd4087835191a7cdd944f177fe36459",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "f41b9345badd47c7ab0c263344cd7f4b5a549afb",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S035",
+    "name": "CVE-2024-21826.html",
+    "file": "downloads/news/CVE-2024-21826.html",
+    "url": "https://nvd.nist.gov/vuln/detail/CVE-2024-21826",
+    "accessed_at": "2026-10-29T01:35:51.045832+08:00",
+    "http_status": 200,
+    "bytes": 2092,
+    "sha256": "96fa0056bfcd0174e7d31013a605d065bcd1a0897fe7d31398987796a90e9173",
+    "content_status": "wrong_page_nvd_home",
+    "note": "HTTP200但正文不符合目标；替代来源已保存",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S036",
+    "name": "NIST-key-management-rev6-draft.html",
+    "file": "downloads/news/NIST-key-management-rev6-draft.html",
+    "url": "https://csrc.nist.gov/pubs/sp/800/57/pt1/r6/ipd",
+    "accessed_at": "2026-10-29T01:35:51.045314+08:00",
+    "http_status": 200,
+    "bytes": 47868,
+    "sha256": "d696befc6ca8195656016d474a30a8c9062c45d2a5bab63f5799be4728361d22",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S037",
+    "name": "OpenHarmony-security-2024-03.md",
+    "file": "downloads/news/OpenHarmony-security-2024-03.md",
+    "url": "https://raw.githubusercontent.com/openharmony/security/master/zh/security-disclosure/2024/2024-03.md",
+    "accessed_at": "2026-10-29T01:35:51.065209+08:00",
+    "http_status": 200,
+    "bytes": 8679,
+    "sha256": "0e1e4e9a54ae56e8c733f41acc91109cb6b5fc724ba9c4a943f395d79fae8cfa",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S038",
+    "name": "OpenHarmony-security-2026-09.html",
+    "file": "downloads/news/OpenHarmony-security-2026-09.html",
+    "url": "https://lists.openatom.io/hyperkitty/list/security%40openharmony.io/thread/OG43E3V7OFHS5GTYBXI5V7EKVGK2B75O/",
+    "accessed_at": "2026-10-29T01:28:28.367187+08:00",
+    "http_status": 200,
+    "bytes": 20558,
+    "sha256": "4d11a6ac9ee944a1867643953f6e008f1f3b59fe92c53d80df856838af780525",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S039",
+    "name": "OpenHarmony-security-2026-10.html",
+    "file": "downloads/news/OpenHarmony-security-2026-10.html",
+    "url": "https://lists.openatom.io/hyperkitty/list/security%40openharmony.io/thread/SQFOVEUMA3FP26J3G27EKUD2VLDY5YYM/",
+    "accessed_at": "2026-10-29T01:29:37.789635+08:00",
+    "http_status": 200,
+    "bytes": 18991,
+    "sha256": "00d1f85a8a9ac72cd62443ea2551fb9baaa3171c6c424167443591e32f466aef",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S040",
+    "name": "OpenHarmony-security-2026-10.md",
+    "file": "downloads/news/OpenHarmony-security-2026-10.md",
+    "url": "https://gitcode.com/openharmony/security/raw/master/zh/security-disclosure/2026/2026-10.md",
+    "accessed_at": "2026-10-29T01:28:26.975662+08:00",
+    "http_status": 200,
+    "bytes": 5792,
+    "sha256": "dfbd9e9c8fc7cd52ad1c0bdbf2edfcc99fe5d306ad92202f9acb08371f535d7f",
+    "content_status": "html_shell_not_markdown",
+    "note": "HTTP200但正文不符合目标；替代来源已保存",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S041",
+    "name": "OpenHarmony-security-github-2026-10.md",
+    "file": "downloads/news/OpenHarmony-security-github-2026-10.md",
+    "url": "https://raw.githubusercontent.com/openharmony/security/master/zh/security-disclosure/2026/2026-10.md",
+    "accessed_at": "2026-10-29T01:28:27.435815+08:00",
+    "http_status": null,
+    "bytes": null,
+    "sha256": null,
+    "content_status": "download_failed",
+    "note": "HTTP Error 404: Not Found",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S042",
+    "name": "LICENSE",
+    "file": "downloads/official-samples/LICENSE",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/LICENSE",
+    "accessed_at": "2026-10-29T01:29:37.858351+08:00",
+    "http_status": 200,
+    "bytes": 13954,
+    "sha256": "dfaa1c5e0761c202d57112b644bab40cd68988fb303668ad37621fa5073466ba",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S043",
+    "name": ".gitignore",
+    "file": "downloads/official-samples/crypto/.gitignore",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/.gitignore",
+    "accessed_at": "2026-10-29T01:29:25.766319+08:00",
+    "http_status": 200,
+    "bytes": 98,
+    "sha256": "e35506a2ebe92617c6a5f36a8a72e232aa0a6b05597046b0e56ddb463ac09b92",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S044",
+    "name": "app.json5",
+    "file": "downloads/official-samples/crypto/AppScope/app.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/AppScope/app.json5",
+    "accessed_at": "2026-10-29T01:29:25.766319+08:00",
+    "http_status": 200,
+    "bytes": 891,
+    "sha256": "23a19569d11050cd8627e52406522b65cb6a102b64731575b2f94bdfe265ed6e",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S045",
+    "name": "string.json",
+    "file": "downloads/official-samples/crypto/AppScope/resources/base/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/AppScope/resources/base/element/string.json",
+    "accessed_at": "2026-10-29T01:29:25.767312+08:00",
+    "http_status": 200,
+    "bytes": 101,
+    "sha256": "45a3b81e0359bbf3fb18c15769a56ffe4ca625c1d822b560012d7c5bde347c35",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S046",
+    "name": "app_icon.png",
+    "file": "downloads/official-samples/crypto/AppScope/resources/base/media/app_icon.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/AppScope/resources/base/media/app_icon.png",
+    "accessed_at": "2026-10-29T01:29:25.767312+08:00",
+    "http_status": 200,
+    "bytes": 6790,
+    "sha256": "53ce1f45f81705a84f05aa0d6956a64180d1fd6984a79b7a784f3931a311bd6f",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S047",
+    "name": "README.md",
+    "file": "downloads/official-samples/crypto/README.md",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/README.md",
+    "accessed_at": "2026-10-29T01:29:25.767312+08:00",
+    "http_status": 200,
+    "bytes": 5157,
+    "sha256": "bb99c9f581e8cf0ded37152df0e38c5ab976bc1e9a5e07957af6ff16cd4c9935",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S048",
+    "name": "README_zh.md",
+    "file": "downloads/official-samples/crypto/README_zh.md",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/README_zh.md",
+    "accessed_at": "2026-10-29T01:29:25.768312+08:00",
+    "http_status": 200,
+    "bytes": 9118,
+    "sha256": "ac02a2baefd0549fec125d8e1f9ddd18a89345f0ed7aefb1abfeac54e606cdfb",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S049",
+    "name": "build-profile.json5",
+    "file": "downloads/official-samples/crypto/build-profile.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/build-profile.json5",
+    "accessed_at": "2026-10-29T01:29:25.768312+08:00",
+    "http_status": 200,
+    "bytes": 1079,
+    "sha256": "aedbddf08ab4de0fa500f3de51839602bbdc446b4eb54d50eb8cd7e0418d3f10",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S050",
+    "name": ".gitignore",
+    "file": "downloads/official-samples/crypto/entry/.gitignore",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/.gitignore",
+    "accessed_at": "2026-10-29T01:29:25.769312+08:00",
+    "http_status": 200,
+    "bytes": 36,
+    "sha256": "bec1ca62a14e890db4dc0a7641696a6674edb78c0fe44889567c4258e3f54656",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S051",
+    "name": "build-profile.json5",
+    "file": "downloads/official-samples/crypto/entry/build-profile.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/build-profile.json5",
+    "accessed_at": "2026-10-29T01:29:26.557049+08:00",
+    "http_status": 200,
+    "bytes": 783,
+    "sha256": "55211901b4978bcbc4d441c02483a67793ba711e47bf66ca911d63666453660c",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S052",
+    "name": "hvigorfile.ts",
+    "file": "downloads/official-samples/crypto/entry/hvigorfile.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/hvigorfile.ts",
+    "accessed_at": "2026-10-29T01:29:26.927685+08:00",
+    "http_status": 200,
+    "bytes": 160,
+    "sha256": "26740709d4d8e042a5d4239d81a5f884b96f410cf29ab1b94d8fc826948e8594",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S053",
+    "name": "oh-package.json5",
+    "file": "downloads/official-samples/crypto/entry/oh-package.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/oh-package.json5",
+    "accessed_at": "2026-10-29T01:29:26.928711+08:00",
+    "http_status": 200,
+    "bytes": 804,
+    "sha256": "586e3526616255b00009b79667c4cb763257a6c9c782dff4a6fff563f04b80c4",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S054",
+    "name": "CryptoOperation.ts",
+    "file": "downloads/official-samples/crypto/entry/src/main/ets/cryptoframework/CryptoOperation.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/ets/cryptoframework/CryptoOperation.ts",
+    "accessed_at": "2026-10-29T01:29:26.938423+08:00",
+    "http_status": 200,
+    "bytes": 14899,
+    "sha256": "b6cd9625da09d87d3f8adf274a0c75d749f894e06f97f4e97c72e7fecf6af773",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S055",
+    "name": "EntryAbility.ts",
+    "file": "downloads/official-samples/crypto/entry/src/main/ets/entryability/EntryAbility.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/ets/entryability/EntryAbility.ts",
+    "accessed_at": "2026-10-29T01:29:26.942586+08:00",
+    "http_status": 200,
+    "bytes": 2041,
+    "sha256": "b1c1fc9c116464fdeff7e7d5c86c86ad4ff34384aa14b98022bad9f8c27a7efa",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S056",
+    "name": "Index.ets",
+    "file": "downloads/official-samples/crypto/entry/src/main/ets/pages/Index.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/ets/pages/Index.ets",
+    "accessed_at": "2026-10-29T01:29:26.942586+08:00",
+    "http_status": 200,
+    "bytes": 2659,
+    "sha256": "6646f9a932e6841800b288a031b6157a7da70a258cb4fbf271cce21e4b2cf1cd",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S057",
+    "name": "Decrypt.ets",
+    "file": "downloads/official-samples/crypto/entry/src/main/ets/tab/Decrypt.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/ets/tab/Decrypt.ets",
+    "accessed_at": "2026-10-29T01:29:26.975953+08:00",
+    "http_status": 200,
+    "bytes": 12187,
+    "sha256": "6ae764ee8da41c6871999ad418e6343a6a82bb73e84f0cc2789d1aeaaa09946f",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S058",
+    "name": "Encrypt.ets",
+    "file": "downloads/official-samples/crypto/entry/src/main/ets/tab/Encrypt.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/ets/tab/Encrypt.ets",
+    "accessed_at": "2026-10-29T01:29:27.143048+08:00",
+    "http_status": 200,
+    "bytes": 13984,
+    "sha256": "bc3087e1e37932a25a86f250381e099df5741b0e56535377906481f642568a8e",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S059",
+    "name": "Sign.ets",
+    "file": "downloads/official-samples/crypto/entry/src/main/ets/tab/Sign.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/ets/tab/Sign.ets",
+    "accessed_at": "2026-10-29T01:29:27.198877+08:00",
+    "http_status": 200,
+    "bytes": 12840,
+    "sha256": "4a622a6b785ca9297b932183099b0824e8e2e63f28f732d6edd5c109eb65e708",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S060",
+    "name": "Verify.ets",
+    "file": "downloads/official-samples/crypto/entry/src/main/ets/tab/Verify.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/ets/tab/Verify.ets",
+    "accessed_at": "2026-10-29T01:29:27.531511+08:00",
+    "http_status": 200,
+    "bytes": 13431,
+    "sha256": "2339691c3ac7a1dfb521addf988d1e676553e7fd868410120f30fa2b62f199f3",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S061",
+    "name": "TextFileManager.ts",
+    "file": "downloads/official-samples/crypto/entry/src/main/ets/textfilemanager/TextFileManager.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/ets/textfilemanager/TextFileManager.ts",
+    "accessed_at": "2026-10-29T01:29:27.561302+08:00",
+    "http_status": 200,
+    "bytes": 3013,
+    "sha256": "82a2beb1db800f70df08a1bac71359687de90b073348ccbbee753a5adc9a43df",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S062",
+    "name": "Logger.ts",
+    "file": "downloads/official-samples/crypto/entry/src/main/ets/util/Logger.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/ets/util/Logger.ts",
+    "accessed_at": "2026-10-29T01:29:27.568481+08:00",
+    "http_status": 200,
+    "bytes": 1642,
+    "sha256": "2755c3332410ba52a4fb45da95a7188ec6666e6b5010f02824857524a538d250",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S063",
+    "name": "module.json5",
+    "file": "downloads/official-samples/crypto/entry/src/main/module.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/module.json5",
+    "accessed_at": "2026-10-29T01:29:27.572133+08:00",
+    "http_status": 200,
+    "bytes": 1562,
+    "sha256": "f7b83749862b057fe33d61ae4dd48d688ac422e5e026320157de93087bac0b95",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S064",
+    "name": "color.json",
+    "file": "downloads/official-samples/crypto/entry/src/main/resources/base/element/color.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/resources/base/element/color.json",
+    "accessed_at": "2026-10-29T01:29:27.622287+08:00",
+    "http_status": 200,
+    "bytes": 105,
+    "sha256": "40dce2e2f49200e562eaad66d43f3212f4371cafd2c83c558c2cb6401434ef52",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S065",
+    "name": "string.json",
+    "file": "downloads/official-samples/crypto/entry/src/main/resources/base/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/resources/base/element/string.json",
+    "accessed_at": "2026-10-29T01:29:27.633626+08:00",
+    "http_status": 200,
+    "bytes": 2330,
+    "sha256": "9bebaa3e8e081fcd0482ee774be56be17c73672eaa76faae652b76d45cf858ed",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S066",
+    "name": "icon.png",
+    "file": "downloads/official-samples/crypto/entry/src/main/resources/base/media/icon.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/resources/base/media/icon.png",
+    "accessed_at": "2026-10-29T01:29:27.891086+08:00",
+    "http_status": 200,
+    "bytes": 6790,
+    "sha256": "53ce1f45f81705a84f05aa0d6956a64180d1fd6984a79b7a784f3931a311bd6f",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S067",
+    "name": "right_arrow.png",
+    "file": "downloads/official-samples/crypto/entry/src/main/resources/base/media/right_arrow.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/resources/base/media/right_arrow.png",
+    "accessed_at": "2026-10-29T01:29:28.000122+08:00",
+    "http_status": 200,
+    "bytes": 709,
+    "sha256": "55057e58a53d44101b936e6ae741ce00942f993e7c6d5ba46a706ef4297939d2",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S068",
+    "name": "main_pages.json",
+    "file": "downloads/official-samples/crypto/entry/src/main/resources/base/profile/main_pages.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/resources/base/profile/main_pages.json",
+    "accessed_at": "2026-10-29T01:29:28.186927+08:00",
+    "http_status": 200,
+    "bytes": 37,
+    "sha256": "f21984fb1d5096f0db41314da0bb94c573e7ad018e5afae3044f8d5ff71b0bfc",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S069",
+    "name": "string.json",
+    "file": "downloads/official-samples/crypto/entry/src/main/resources/en_US/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/resources/en_US/element/string.json",
+    "accessed_at": "2026-10-29T01:29:28.190079+08:00",
+    "http_status": 200,
+    "bytes": 2330,
+    "sha256": "9bebaa3e8e081fcd0482ee774be56be17c73672eaa76faae652b76d45cf858ed",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S070",
+    "name": "string.json",
+    "file": "downloads/official-samples/crypto/entry/src/main/resources/zh_CN/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/main/resources/zh_CN/element/string.json",
+    "accessed_at": "2026-10-29T01:29:28.211542+08:00",
+    "http_status": 200,
+    "bytes": 2258,
+    "sha256": "19273e2a44d152ba28a3f286754da21200dc1aa06378ef20dffdcbb55f61b61c",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S071",
+    "name": "OpenHarmonyTestRunner.ts",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/ets/TestRunner/OpenHarmonyTestRunner.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/ets/TestRunner/OpenHarmonyTestRunner.ts",
+    "accessed_at": "2026-10-29T01:29:28.213726+08:00",
+    "http_status": 200,
+    "bytes": 2445,
+    "sha256": "9644a01e785bf48686653948641211f7b43109ada17d95b78d49b94d8d0f6efc",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S072",
+    "name": "Ability.test.ets",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/ets/test/Ability.test.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/ets/test/Ability.test.ets",
+    "accessed_at": "2026-10-29T01:29:28.238024+08:00",
+    "http_status": 200,
+    "bytes": 4905,
+    "sha256": "080245ce005f7ead713dc4b1cd328967071c5dacae3a40d7278de1c63893549d",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S073",
+    "name": "List.test.ets",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/ets/test/List.test.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/ets/test/List.test.ets",
+    "accessed_at": "2026-10-29T01:29:28.253917+08:00",
+    "http_status": 200,
+    "bytes": 706,
+    "sha256": "61be91f1d38dff9c4ed706059f99aaa1c1a4b6c43a88c06958fd7d81e54514d9",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S074",
+    "name": "TestAbility.ets",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/ets/testability/TestAbility.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/ets/testability/TestAbility.ets",
+    "accessed_at": "2026-10-29T01:29:28.514547+08:00",
+    "http_status": 200,
+    "bytes": 2361,
+    "sha256": "185df4d06d1599ca5450b94628d50b73753f66f2e3625fb6dfd3dce005821f68",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S075",
+    "name": "Index.ets",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/ets/testability/pages/Index.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/ets/testability/pages/Index.ets",
+    "accessed_at": "2026-10-29T01:29:28.607494+08:00",
+    "http_status": 200,
+    "bytes": 1196,
+    "sha256": "82321f28a8e9a84a54ca9d27cc82a729ecbf811bea987dee0ac92a463dac6133",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S076",
+    "name": "module.json5",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/module.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/module.json5",
+    "accessed_at": "2026-10-29T01:29:28.818706+08:00",
+    "http_status": 200,
+    "bytes": 1571,
+    "sha256": "e88179f5537a43e95e4b472aaef35cff18bd9fcd6d2fe1a6b2fd1e49fd63a5c5",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S077",
+    "name": "color.json",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/resources/base/element/color.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/resources/base/element/color.json",
+    "accessed_at": "2026-10-29T01:29:28.835805+08:00",
+    "http_status": 200,
+    "bytes": 98,
+    "sha256": "4e028f6e8a847f8a98cfee6d37309def0e7e2e7290041d89e22ba3ac38a802b8",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S078",
+    "name": "string.json",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/resources/base/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/resources/base/element/string.json",
+    "accessed_at": "2026-10-29T01:29:28.862110+08:00",
+    "http_status": 200,
+    "bytes": 266,
+    "sha256": "c07887e906a8d59a1993864838cde736aa24ea43ed83733a48a2afb94c840a58",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S079",
+    "name": "icon.png",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/resources/base/media/icon.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/resources/base/media/icon.png",
+    "accessed_at": "2026-10-29T01:29:28.870507+08:00",
+    "http_status": 200,
+    "bytes": 6790,
+    "sha256": "53ce1f45f81705a84f05aa0d6956a64180d1fd6984a79b7a784f3931a311bd6f",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S080",
+    "name": "test_pages.json",
+    "file": "downloads/official-samples/crypto/entry/src/ohosTest/resources/base/profile/test_pages.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/entry/src/ohosTest/resources/base/profile/test_pages.json",
+    "accessed_at": "2026-10-29T01:29:28.873084+08:00",
+    "http_status": 200,
+    "bytes": 49,
+    "sha256": "6970ad4ff561e90f9a1ca9a86176284c6037add2641b7a09782176080c949500",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S081",
+    "name": "hvigor-config.json5",
+    "file": "downloads/official-samples/crypto/hvigor/hvigor-config.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/hvigor/hvigor-config.json5",
+    "accessed_at": "2026-10-29T01:29:28.905645+08:00",
+    "http_status": 200,
+    "bytes": 726,
+    "sha256": "e1976593785b67d55a0ded767244afd874f8b7ecf7443404745803086f09c4e7",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S082",
+    "name": "hvigor-wrapper.js",
+    "file": "downloads/official-samples/crypto/hvigor/hvigor-wrapper.js",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/hvigor/hvigor-wrapper.js",
+    "accessed_at": "2026-10-29T01:29:29.147445+08:00",
+    "http_status": 200,
+    "bytes": 149352,
+    "sha256": "4ae132c6a53d6b53aecea2ffcb9f7703081e7900312a11c5d79fa0c9b103f091",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S083",
+    "name": "hvigorfile.ts",
+    "file": "downloads/official-samples/crypto/hvigorfile.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/hvigorfile.ts",
+    "accessed_at": "2026-10-29T01:29:29.217883+08:00",
+    "http_status": 200,
+    "bytes": 159,
+    "sha256": "8f6249eacb16555aa8466f45103e7e8a62ed1a01ad203055c4ce6221f9af9c56",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S084",
+    "name": "hvigorw",
+    "file": "downloads/official-samples/crypto/hvigorw",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/hvigorw",
+    "accessed_at": "2026-10-29T01:29:29.411363+08:00",
+    "http_status": 200,
+    "bytes": 2007,
+    "sha256": "277f9432c4eba2fedf5413aac21b3e6bff37aacd347d9d48d124e4f45161e494",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S085",
+    "name": "hvigorw.bat",
+    "file": "downloads/official-samples/crypto/hvigorw.bat",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/hvigorw.bat",
+    "accessed_at": "2026-10-29T01:29:29.463687+08:00",
+    "http_status": 200,
+    "bytes": 2158,
+    "sha256": "a00a1099a2d375252e4592d15a315bc347f958015c99c25e8c622d97d4da7b73",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S086",
+    "name": "oh-package.json5",
+    "file": "downloads/official-samples/crypto/oh-package.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/oh-package.json5",
+    "accessed_at": "2026-10-29T01:29:29.466424+08:00",
+    "http_status": 200,
+    "bytes": 859,
+    "sha256": "5fa21531cf6ddd4b2ecf70e11dde0427032299f9f660342c0c71620df0a3f8ed",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S087",
+    "name": "ohosTest.md",
+    "file": "downloads/official-samples/crypto/ohosTest.md",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/ohosTest.md",
+    "accessed_at": "2026-10-29T01:29:29.467990+08:00",
+    "http_status": 200,
+    "bytes": 4921,
+    "sha256": "a56de183888c269da59c27e43872768aeb9917d0b0ab430ac93d38da68ddbffa",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S088",
+    "name": "decrypt.jpeg",
+    "file": "downloads/official-samples/crypto/screenshots/device/decrypt.jpeg",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/screenshots/device/decrypt.jpeg",
+    "accessed_at": "2026-10-29T01:29:29.524421+08:00",
+    "http_status": 200,
+    "bytes": 41706,
+    "sha256": "2e491902df1b572c816774bd285329c558c7e1ca032c3dd83b1c6ffc0a4f42b9",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S089",
+    "name": "encrypt.jpeg",
+    "file": "downloads/official-samples/crypto/screenshots/device/encrypt.jpeg",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/screenshots/device/encrypt.jpeg",
+    "accessed_at": "2026-10-29T01:29:29.584996+08:00",
+    "http_status": 200,
+    "bytes": 48926,
+    "sha256": "3db52b5d2a04e28046ff2637d57ecc857a77688270d5254f1bbb8700a111d3b3",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S090",
+    "name": "sign.jpeg",
+    "file": "downloads/official-samples/crypto/screenshots/device/sign.jpeg",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/screenshots/device/sign.jpeg",
+    "accessed_at": "2026-10-29T01:29:29.798731+08:00",
+    "http_status": 200,
+    "bytes": 46116,
+    "sha256": "a9fdfb09e11b77a52b28f6848d15d24a4288fb324c3de472492b9652a49efc53",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S091",
+    "name": "verify.jpeg",
+    "file": "downloads/official-samples/crypto/screenshots/device/verify.jpeg",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/CryptoFramework/screenshots/device/verify.jpeg",
+    "accessed_at": "2026-10-29T01:29:30.034263+08:00",
+    "http_status": 200,
+    "bytes": 43451,
+    "sha256": "dededb141bc004276e2f769b49faf58e5ec2f97d056d1361c6925adb38312b54",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S092",
+    "name": ".gitignore",
+    "file": "downloads/official-samples/huks/.gitignore",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/.gitignore",
+    "accessed_at": "2026-10-29T01:29:30.074144+08:00",
+    "http_status": 200,
+    "bytes": 159,
+    "sha256": "3265af9bd832efff2646bca871d742ef260cf1e17f65d152c1d38f4c37621ac5",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S093",
+    "name": "app.json5",
+    "file": "downloads/official-samples/huks/AppScope/app.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/AppScope/app.json5",
+    "accessed_at": "2026-10-29T01:29:30.101021+08:00",
+    "http_status": 200,
+    "bytes": 853,
+    "sha256": "02faa64834fc1cdab0db6ef11141508b3e61a5e74839ddb15955f321ff761bd9",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S094",
+    "name": "string.json",
+    "file": "downloads/official-samples/huks/AppScope/resources/base/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/AppScope/resources/base/element/string.json",
+    "accessed_at": "2026-10-29T01:29:30.114927+08:00",
+    "http_status": 200,
+    "bytes": 82,
+    "sha256": "0c679f46136c635710852c2676e690d9e186dfe970c0bd4eddc33caf8878fd98",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S095",
+    "name": "app_icon.png",
+    "file": "downloads/official-samples/huks/AppScope/resources/base/media/app_icon.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/AppScope/resources/base/media/app_icon.png",
+    "accessed_at": "2026-10-29T01:29:30.367634+08:00",
+    "http_status": 200,
+    "bytes": 6790,
+    "sha256": "53ce1f45f81705a84f05aa0d6956a64180d1fd6984a79b7a784f3931a311bd6f",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S096",
+    "name": "README.md",
+    "file": "downloads/official-samples/huks/README.md",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/README.md",
+    "accessed_at": "2026-10-29T01:29:30.424829+08:00",
+    "http_status": 200,
+    "bytes": 2937,
+    "sha256": "a18d165ed72e401dd6db701640dce826111217c299c81f5e18d9d17e880a9e47",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S097",
+    "name": "README_zh.md",
+    "file": "downloads/official-samples/huks/README_zh.md",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/README_zh.md",
+    "accessed_at": "2026-10-29T01:29:30.471558+08:00",
+    "http_status": 200,
+    "bytes": 6506,
+    "sha256": "b9ffb96d9dbd6e4992834be11c5452d792ad31b5407a6b348253c52135d7ae2b",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S098",
+    "name": "build-profile.json5",
+    "file": "downloads/official-samples/huks/build-profile.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/build-profile.json5",
+    "accessed_at": "2026-10-29T01:29:30.709155+08:00",
+    "http_status": 200,
+    "bytes": 1084,
+    "sha256": "98ce7c4dc5d0d966d26c7e0c0f2f8aa59e6c09b44c4cc7ead97f52fe74fdeeed",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S099",
+    "name": ".gitignore",
+    "file": "downloads/official-samples/huks/entry/.gitignore",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/.gitignore",
+    "accessed_at": "2026-10-29T01:29:30.715999+08:00",
+    "http_status": 200,
+    "bytes": 36,
+    "sha256": "bec1ca62a14e890db4dc0a7641696a6674edb78c0fe44889567c4258e3f54656",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S100",
+    "name": "build-profile.json5",
+    "file": "downloads/official-samples/huks/entry/build-profile.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/build-profile.json5",
+    "accessed_at": "2026-10-29T01:29:30.745572+08:00",
+    "http_status": 200,
+    "bytes": 790,
+    "sha256": "b551a53b9fe3a024f2190d92722977038c04484f330df995c724831b776fbe23",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S101",
+    "name": "hvigorfile.ts",
+    "file": "downloads/official-samples/huks/entry/hvigorfile.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/hvigorfile.ts",
+    "accessed_at": "2026-10-29T01:29:30.850568+08:00",
+    "http_status": 200,
+    "bytes": 769,
+    "sha256": "f0ae69d02d7b4bec79c3324aaf9fa857f2c155939185db3aec9d3fbcce833a5c",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S102",
+    "name": "oh-package.json5",
+    "file": "downloads/official-samples/huks/entry/oh-package.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/oh-package.json5",
+    "accessed_at": "2026-10-29T01:29:30.973901+08:00",
+    "http_status": 200,
+    "bytes": 171,
+    "sha256": "60a283efac13a0c33fa518fff45e30d58fa5c355cc68a982b07c9aefa443d09d",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S103",
+    "name": "MinAccessControl.ets",
+    "file": "downloads/official-samples/huks/entry/src/main/ets/common/MinAccessControl.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/ets/common/MinAccessControl.ets",
+    "accessed_at": "2026-10-29T01:29:31.046492+08:00",
+    "http_status": 200,
+    "bytes": 7792,
+    "sha256": "72835e8a4bddd0fb3a2515eb3d17c300f22577fcf67b2eb5f34c2c2e30af83a6",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S104",
+    "name": "NewKey.ets",
+    "file": "downloads/official-samples/huks/entry/src/main/ets/common/NewKey.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/ets/common/NewKey.ets",
+    "accessed_at": "2026-10-29T01:29:31.086616+08:00",
+    "http_status": 200,
+    "bytes": 3104,
+    "sha256": "91fa6e0b7a54791a072b74d96b3a5e854cd56d15637cc4908285cc444e12c441",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S105",
+    "name": "OldKey.ets",
+    "file": "downloads/official-samples/huks/entry/src/main/ets/common/OldKey.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/ets/common/OldKey.ets",
+    "accessed_at": "2026-10-29T01:29:31.312343+08:00",
+    "http_status": 200,
+    "bytes": 3391,
+    "sha256": "eae2a6fde04b407bd7b190cbda9ff50f316ff5fb559ceab8d39aecb8168a19cc",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S106",
+    "name": "EntryAbility.ts",
+    "file": "downloads/official-samples/huks/entry/src/main/ets/entryability/EntryAbility.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/ets/entryability/EntryAbility.ts",
+    "accessed_at": "2026-10-29T01:29:31.343362+08:00",
+    "http_status": 200,
+    "bytes": 1838,
+    "sha256": "7f4ef12570430aae0a9f350fcdcb2c72eaeeb890c97fd497a39487980f45ad14",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S107",
+    "name": "HuksModel.ts",
+    "file": "downloads/official-samples/huks/entry/src/main/ets/model/HuksModel.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/ets/model/HuksModel.ts",
+    "accessed_at": "2026-10-29T01:29:31.353689+08:00",
+    "http_status": 200,
+    "bytes": 22754,
+    "sha256": "ad0c1e177ee2c95f964b7e97a53935f52b215e91c2d50f48ca37e8e6fabcf41d",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S108",
+    "name": "Logger.ts",
+    "file": "downloads/official-samples/huks/entry/src/main/ets/model/Logger.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/ets/model/Logger.ts",
+    "accessed_at": "2026-10-29T01:29:31.376091+08:00",
+    "http_status": 200,
+    "bytes": 1572,
+    "sha256": "a87df311185cb02af8710e47fb821fec403cfa8c7d4685bb98db96a94d5ff6ca",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S109",
+    "name": "Index.ets",
+    "file": "downloads/official-samples/huks/entry/src/main/ets/pages/Index.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/ets/pages/Index.ets",
+    "accessed_at": "2026-10-29T01:29:31.500841+08:00",
+    "http_status": 200,
+    "bytes": 3890,
+    "sha256": "1bb5093a2928d6ba6a5a465a9f78a97cd5e65f205c16f045187aaf2cf3df0019",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S110",
+    "name": "SelectPage.ets",
+    "file": "downloads/official-samples/huks/entry/src/main/ets/pages/SelectPage.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/ets/pages/SelectPage.ets",
+    "accessed_at": "2026-10-29T01:29:31.619425+08:00",
+    "http_status": 200,
+    "bytes": 1461,
+    "sha256": "4b6b58bc1d695b941832c40ac109c8bd3a5220a0d391f4530e608d3505cdfeeb",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S111",
+    "name": "module.json5",
+    "file": "downloads/official-samples/huks/entry/src/main/module.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/module.json5",
+    "accessed_at": "2026-10-29T01:29:31.649045+08:00",
+    "http_status": 200,
+    "bytes": 1800,
+    "sha256": "192673b13ca4148fb2bc3478fc6991745a3db75f3a3ac95896f0df6187d2910b",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S112",
+    "name": "color.json",
+    "file": "downloads/official-samples/huks/entry/src/main/resources/base/element/color.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/resources/base/element/color.json",
+    "accessed_at": "2026-10-29T01:29:31.700238+08:00",
+    "http_status": 200,
+    "bytes": 98,
+    "sha256": "4e028f6e8a847f8a98cfee6d37309def0e7e2e7290041d89e22ba3ac38a802b8",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S113",
+    "name": "string.json",
+    "file": "downloads/official-samples/huks/entry/src/main/resources/base/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/resources/base/element/string.json",
+    "accessed_at": "2026-10-29T01:29:31.948433+08:00",
+    "http_status": 200,
+    "bytes": 1310,
+    "sha256": "cc6a14fd149c07251cb2ebd804bd1f39dd45f322bacf71f3aaa78926afd0e320",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S114",
+    "name": "icon.png",
+    "file": "downloads/official-samples/huks/entry/src/main/resources/base/media/icon.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/resources/base/media/icon.png",
+    "accessed_at": "2026-10-29T01:29:31.958679+08:00",
+    "http_status": 200,
+    "bytes": 6790,
+    "sha256": "53ce1f45f81705a84f05aa0d6956a64180d1fd6984a79b7a784f3931a311bd6f",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S115",
+    "name": "main_pages.json",
+    "file": "downloads/official-samples/huks/entry/src/main/resources/base/profile/main_pages.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/resources/base/profile/main_pages.json",
+    "accessed_at": "2026-10-29T01:29:32.041489+08:00",
+    "http_status": 200,
+    "bytes": 61,
+    "sha256": "0532db764dab56ed5a9a2055188f36b01582e9b9fe1fa3f24daf821d56b27130",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S116",
+    "name": "string.json",
+    "file": "downloads/official-samples/huks/entry/src/main/resources/en_US/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/resources/en_US/element/string.json",
+    "accessed_at": "2026-10-29T01:29:32.079324+08:00",
+    "http_status": 200,
+    "bytes": 1310,
+    "sha256": "b7571b42fed749f3abe183abcbd92e46c4e0555d90fde485196de56dd574afd6",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S117",
+    "name": "string.json",
+    "file": "downloads/official-samples/huks/entry/src/main/resources/zh_CN/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/main/resources/zh_CN/element/string.json",
+    "accessed_at": "2026-10-29T01:29:32.219301+08:00",
+    "http_status": 200,
+    "bytes": 1309,
+    "sha256": "008974a22fab299ac028d9fe7e825b93084667a11b40009d6c899b60509dbde3",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S118",
+    "name": "OpenHarmonyTestRunner.ts",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/ets/TestRunner/OpenHarmonyTestRunner.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/ets/TestRunner/OpenHarmonyTestRunner.ts",
+    "accessed_at": "2026-10-29T01:29:32.224521+08:00",
+    "http_status": 200,
+    "bytes": 2441,
+    "sha256": "d50bafbc76f3457e56b010200cc2deb0537480b444445e62ed7735e029d087b8",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S119",
+    "name": "Ability.test.ets",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/ets/test/Ability.test.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/ets/test/Ability.test.ets",
+    "accessed_at": "2026-10-29T01:29:32.231605+08:00",
+    "http_status": 200,
+    "bytes": 11567,
+    "sha256": "a106ea493b9991fccc6a6f8f8390bd64c7e16c22a765a045e2017c76a458a32e",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S120",
+    "name": "List.test.ets",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/ets/test/List.test.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/ets/test/List.test.ets",
+    "accessed_at": "2026-10-29T01:29:32.310893+08:00",
+    "http_status": 200,
+    "bytes": 706,
+    "sha256": "61be91f1d38dff9c4ed706059f99aaa1c1a4b6c43a88c06958fd7d81e54514d9",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S121",
+    "name": "TestAbility.ets",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/ets/testability/TestAbility.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/ets/testability/TestAbility.ets",
+    "accessed_at": "2026-10-29T01:29:32.612230+08:00",
+    "http_status": 200,
+    "bytes": 2582,
+    "sha256": "1b0150c5b8ba97a4a6c693f61c2b7fc12f605dd6ed0bda72fd3123899029a19e",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S122",
+    "name": "Index.ets",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/ets/testability/pages/Index.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/ets/testability/pages/Index.ets",
+    "accessed_at": "2026-10-29T01:29:32.634616+08:00",
+    "http_status": 200,
+    "bytes": 1210,
+    "sha256": "94811f673212f59ed65bfc6ebd8331bbe41e761898ec3a2b85bacdfd3f0cdee1",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S123",
+    "name": "module.json5",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/module.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/module.json5",
+    "accessed_at": "2026-10-29T01:29:32.701161+08:00",
+    "http_status": 200,
+    "bytes": 1519,
+    "sha256": "defa698fc0f5e7fbd962db7743b68d644fe5e51c70eae0f4de354c8c4b2f924e",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S124",
+    "name": "color.json",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/resources/base/element/color.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/resources/base/element/color.json",
+    "accessed_at": "2026-10-29T01:29:32.756620+08:00",
+    "http_status": 200,
+    "bytes": 98,
+    "sha256": "4e028f6e8a847f8a98cfee6d37309def0e7e2e7290041d89e22ba3ac38a802b8",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S125",
+    "name": "string.json",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/resources/base/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/resources/base/element/string.json",
+    "accessed_at": "2026-10-29T01:29:32.824638+08:00",
+    "http_status": 200,
+    "bytes": 266,
+    "sha256": "c07887e906a8d59a1993864838cde736aa24ea43ed83733a48a2afb94c840a58",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S126",
+    "name": "icon.png",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/resources/base/media/icon.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/resources/base/media/icon.png",
+    "accessed_at": "2026-10-29T01:29:32.838314+08:00",
+    "http_status": 200,
+    "bytes": 6790,
+    "sha256": "53ce1f45f81705a84f05aa0d6956a64180d1fd6984a79b7a784f3931a311bd6f",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S127",
+    "name": "test_pages.json",
+    "file": "downloads/official-samples/huks/entry/src/ohosTest/resources/base/profile/test_pages.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/entry/src/ohosTest/resources/base/profile/test_pages.json",
+    "accessed_at": "2026-10-29T01:29:32.870716+08:00",
+    "http_status": 200,
+    "bytes": 49,
+    "sha256": "6970ad4ff561e90f9a1ca9a86176284c6037add2641b7a09782176080c949500",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S128",
+    "name": "hvigor-config.json5",
+    "file": "downloads/official-samples/huks/hvigor/hvigor-config.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/hvigor/hvigor-config.json5",
+    "accessed_at": "2026-10-29T01:29:33.018740+08:00",
+    "http_status": 200,
+    "bytes": 95,
+    "sha256": "c49f1b6dc2e7ed467a27a504c826828e5e886a262d2035a35f1576ea346c7d89",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S129",
+    "name": "hvigor-wrapper.js",
+    "file": "downloads/official-samples/huks/hvigor/hvigor-wrapper.js",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/hvigor/hvigor-wrapper.js",
+    "accessed_at": "2026-10-29T01:29:33.261361+08:00",
+    "http_status": 200,
+    "bytes": 149352,
+    "sha256": "4ae132c6a53d6b53aecea2ffcb9f7703081e7900312a11c5d79fa0c9b103f091",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S130",
+    "name": "hvigorfile.ts",
+    "file": "downloads/official-samples/huks/hvigorfile.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/hvigorfile.ts",
+    "accessed_at": "2026-10-29T01:29:33.317114+08:00",
+    "http_status": 200,
+    "bytes": 768,
+    "sha256": "a2aa4d90c5882316a41b2d9531284cc9755266fe64663a3f85de43e32dd91325",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S131",
+    "name": "hvigorw",
+    "file": "downloads/official-samples/huks/hvigorw",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/hvigorw",
+    "accessed_at": "2026-10-29T01:29:33.346299+08:00",
+    "http_status": 200,
+    "bytes": 2009,
+    "sha256": "11d5ea627285bc3d66a344f9f53cd1631d6a6d63e76dc1b771c1b8b997b67acc",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S132",
+    "name": "hvigorw.bat",
+    "file": "downloads/official-samples/huks/hvigorw.bat",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/hvigorw.bat",
+    "accessed_at": "2026-10-29T01:29:33.380940+08:00",
+    "http_status": 200,
+    "bytes": 2062,
+    "sha256": "85fe05481fcb4cfb88feee2333b9179a9d78fb5d64ad5c2084b26ece6cc448bf",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S133",
+    "name": "oh-package.json5",
+    "file": "downloads/official-samples/huks/oh-package.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/oh-package.json5",
+    "accessed_at": "2026-10-29T01:29:33.451007+08:00",
+    "http_status": 200,
+    "bytes": 201,
+    "sha256": "4d2b7163629cb57a1a1174f7a64cf2c43316f84a4fe24441025568be5b37c3ef",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S134",
+    "name": "ohosTest.md",
+    "file": "downloads/official-samples/huks/ohosTest.md",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/ohosTest.md",
+    "accessed_at": "2026-10-29T01:29:33.458640+08:00",
+    "http_status": 200,
+    "bytes": 1246,
+    "sha256": "e30e3468de2dfd3ba93c67d41b364faefe627cf281870c6e9b99a35457b97ca0",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S135",
+    "name": "index.png",
+    "file": "downloads/official-samples/huks/screenshots/device/index.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/screenshots/device/index.png",
+    "accessed_at": "2026-10-29T01:29:33.489966+08:00",
+    "http_status": 200,
+    "bytes": 223336,
+    "sha256": "dc0c5c703f0de2ff9a26a188dec76648b375d2a969045306c5e6f64a990ffe9d",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S136",
+    "name": "minAccessControl.png",
+    "file": "downloads/official-samples/huks/screenshots/device/minAccessControl.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/screenshots/device/minAccessControl.png",
+    "accessed_at": "2026-10-29T01:29:33.667453+08:00",
+    "http_status": 200,
+    "bytes": 210614,
+    "sha256": "75f39a2162d8ead021616cc086c16eef8367c35d6729ba49e72352204234e73a",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S137",
+    "name": "newKey.png",
+    "file": "downloads/official-samples/huks/screenshots/device/newKey.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/screenshots/device/newKey.png",
+    "accessed_at": "2026-10-29T01:29:33.890939+08:00",
+    "http_status": 200,
+    "bytes": 227032,
+    "sha256": "52416b6900b31c14937cd36a500bd75e67da2bbb0a3036873413e05e8fb6567c",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S138",
+    "name": "oldKey.png",
+    "file": "downloads/official-samples/huks/screenshots/device/oldKey.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/BasicFeature/Security/Huks/screenshots/device/oldKey.png",
+    "accessed_at": "2026-10-29T01:29:33.960307+08:00",
+    "http_status": 200,
+    "bytes": 258078,
+    "sha256": "1502d96039ed6672e20fdde2ae73537bb83bf2c23e276680909fb111c020ec28",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S139",
+    "name": ".gitignore",
+    "file": "downloads/official-samples/napi-arraybuffer/.gitignore",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/.gitignore",
+    "accessed_at": "2026-10-29T01:29:33.973222+08:00",
+    "http_status": 200,
+    "bytes": 133,
+    "sha256": "06525ad3d70bbef50da766f10905548f147490e8b51f8e1da00019191cb2f70c",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S140",
+    "name": "app.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/AppScope/app.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/AppScope/app.json5",
+    "accessed_at": "2026-10-29T01:29:34.046696+08:00",
+    "http_status": 200,
+    "bytes": 849,
+    "sha256": "c36fe3aed4f294d26adf04b5e6b85183b64939bbf1616c0b18a1a4642f472bca",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S141",
+    "name": "string.json",
+    "file": "downloads/official-samples/napi-arraybuffer/AppScope/resources/base/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/AppScope/resources/base/element/string.json",
+    "accessed_at": "2026-10-29T01:29:34.055024+08:00",
+    "http_status": 200,
+    "bytes": 104,
+    "sha256": "93f68d98950053671715fda72eefc197a2a517b6b81ec668533d934cb0737d95",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S142",
+    "name": "app_icon.png",
+    "file": "downloads/official-samples/napi-arraybuffer/AppScope/resources/base/media/app_icon.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/AppScope/resources/base/media/app_icon.png",
+    "accessed_at": "2026-10-29T01:29:34.416992+08:00",
+    "http_status": 200,
+    "bytes": 2777,
+    "sha256": "79c27214e49332c1e5bcbbe9badeac547c13ee38f597658de313b907fdf2a4e6",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S143",
+    "name": "README.md",
+    "file": "downloads/official-samples/napi-arraybuffer/README.md",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/README.md",
+    "accessed_at": "2026-10-29T01:29:34.548337+08:00",
+    "http_status": 200,
+    "bytes": 3125,
+    "sha256": "fd1a11b9d479b98d1f2045362f20cf27a1d465095c05a34f4567e4ef3e23e4e8",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S144",
+    "name": "build-profile.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/build-profile.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/build-profile.json5",
+    "accessed_at": "2026-10-29T01:29:34.582691+08:00",
+    "http_status": 200,
+    "bytes": 1440,
+    "sha256": "8e843f95cd4913010749929d07e9f2fbd2188b9945be6512605b26eb2edecb43",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S145",
+    "name": "code-linter.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/code-linter.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/code-linter.json5",
+    "accessed_at": "2026-10-29T01:29:34.666350+08:00",
+    "http_status": 200,
+    "bytes": 958,
+    "sha256": "cf68c8211d1ef17982538cec5cac61639a5c4a8c911c0e4cc285868ec2ea4c18",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S146",
+    "name": ".gitignore",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/.gitignore",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/.gitignore",
+    "accessed_at": "2026-10-29T01:29:34.666859+08:00",
+    "http_status": 200,
+    "bytes": 55,
+    "sha256": "c4868dbab8112ec2283b23448ad795702a967bb55229333ab317cbeb8c3ad690",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S147",
+    "name": "build-profile.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/build-profile.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/build-profile.json5",
+    "accessed_at": "2026-10-29T01:29:34.675561+08:00",
+    "http_status": 200,
+    "bytes": 1423,
+    "sha256": "c8e261cfc36c419a22c270c306fd09005d04a804dca374187c3a4f501fb7313b",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S148",
+    "name": "hvigorfile.ts",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/hvigorfile.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/hvigorfile.ts",
+    "accessed_at": "2026-10-29T01:29:35.226325+08:00",
+    "http_status": 200,
+    "bytes": 843,
+    "sha256": "701a9a61519dcfb13d6e5fcbda9b6260323249c3f8d99313684323d33ee1abfb",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S149",
+    "name": "oh-package.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/oh-package.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/oh-package.json5",
+    "accessed_at": "2026-10-29T01:29:35.248977+08:00",
+    "http_status": 200,
+    "bytes": 864,
+    "sha256": "b619f386ad911feccbfa023aa9078c85e7c8b7f8468c44a009648a1d9be5e2bb",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S150",
+    "name": "CMakeLists.txt",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/cpp/CMakeLists.txt",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/CMakeLists.txt",
+    "accessed_at": "2026-10-29T01:29:35.261863+08:00",
+    "http_status": 200,
+    "bytes": 542,
+    "sha256": "887c872fd0ec4a751095618d58c04c0eb952f5428ac907e53f718a56e3afb7d5",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S151",
+    "name": "napi_init.cpp",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/cpp/napi_init.cpp",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/napi_init.cpp",
+    "accessed_at": "2026-10-29T01:29:35.314184+08:00",
+    "http_status": 200,
+    "bytes": 6039,
+    "sha256": "0c0386189f90a7860c6bea5b2049d8ddea044a5d72de5063f8b7671b4fb6e10a",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S152",
+    "name": "Index.d.ts",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/Index.d.ts",
+    "accessed_at": "2026-10-29T01:29:35.327531+08:00",
+    "http_status": 200,
+    "bytes": 1516,
+    "sha256": "58fd9323a5a6f5d669459959b0c33e47beac35a02d08782e7188040116816d25",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S153",
+    "name": "oh-package.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/cpp/types/libentry/oh-package.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/cpp/types/libentry/oh-package.json5",
+    "accessed_at": "2026-10-29T01:29:35.327531+08:00",
+    "http_status": 200,
+    "bytes": 764,
+    "sha256": "5fa94e117943b76da240d71e144c67434efec9b6f58abf61758611933d3adf01",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S154",
+    "name": "EntryAbility.ets",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/ets/entryability/EntryAbility.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/entryability/EntryAbility.ets",
+    "accessed_at": "2026-10-29T01:29:35.361287+08:00",
+    "http_status": 200,
+    "bytes": 2228,
+    "sha256": "b2aedd2590fd0b96ecc780f68745ce240526bbe4e60cce4a963131bc5fd7953b",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S155",
+    "name": "EntryBackupAbility.ets",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets",
+    "accessed_at": "2026-10-29T01:29:35.414377+08:00",
+    "http_status": 200,
+    "bytes": 1060,
+    "sha256": "f1c04255aa5357cc011fee85431aa79ed83e678cd8ab40209f1ed2311ab2ee51",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S156",
+    "name": "Index.ets",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/ets/pages/Index.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/ets/pages/Index.ets",
+    "accessed_at": "2026-10-29T01:29:35.813068+08:00",
+    "http_status": 200,
+    "bytes": 5380,
+    "sha256": "a6d0f8b861a7eafc3eafbf3012a149fbfe48390960625bbfd8181d1b2e44cecf",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S157",
+    "name": "module.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/module.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/module.json5",
+    "accessed_at": "2026-10-29T01:29:35.840554+08:00",
+    "http_status": 200,
+    "bytes": 1952,
+    "sha256": "615b8aab31363f2fecae6ed0fb43f97d060c58cc4e2831b03af9dfc7c77c0099",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S158",
+    "name": "color.json",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/base/element/color.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/base/element/color.json",
+    "accessed_at": "2026-10-29T01:29:35.876600+08:00",
+    "http_status": 200,
+    "bytes": 105,
+    "sha256": "40dce2e2f49200e562eaad66d43f3212f4371cafd2c83c558c2cb6401434ef52",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S159",
+    "name": "string.json",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/base/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/base/element/string.json",
+    "accessed_at": "2026-10-29T01:29:35.881404+08:00",
+    "http_status": 200,
+    "bytes": 260,
+    "sha256": "eeffd244a79104faeedb262822096fb3d156d334c544198889c14f5b2a847929",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S160",
+    "name": "background.png",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/base/media/background.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/base/media/background.png",
+    "accessed_at": "2026-10-29T01:29:35.896268+08:00",
+    "http_status": 200,
+    "bytes": 57364,
+    "sha256": "3cf4698f029a4a8aaa5fc6a523399df68149ec07a392167ccd089fe3f11e3c67",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S161",
+    "name": "foreground.png",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/base/media/foreground.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/base/media/foreground.png",
+    "accessed_at": "2026-10-29T01:29:35.906551+08:00",
+    "http_status": 200,
+    "bytes": 12430,
+    "sha256": "8f9794085cab5bf23644e339ec2b48eb5091d18b6a7742f7fcd87e5ae37794c5",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S162",
+    "name": "layered_image.json",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/base/media/layered_image.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/base/media/layered_image.json",
+    "accessed_at": "2026-10-29T01:29:35.970666+08:00",
+    "http_status": 200,
+    "bytes": 109,
+    "sha256": "3d18dcd7ed9e7d3d2c54c20cb80a44eb4877c661131c68a46e20b6e19d0bb476",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S163",
+    "name": "startIcon.png",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/base/media/startIcon.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/base/media/startIcon.png",
+    "accessed_at": "2026-10-29T01:29:36.007752+08:00",
+    "http_status": 200,
+    "bytes": 20093,
+    "sha256": "567c7c0c7a321ca180e010ad880f0f7519f6d351ac2b9665e2ee710e7cfe7778",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S164",
+    "name": "backup_config.json",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/base/profile/backup_config.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/base/profile/backup_config.json",
+    "accessed_at": "2026-10-29T01:29:36.437197+08:00",
+    "http_status": 200,
+    "bytes": 36,
+    "sha256": "9447811de67729d65b6c0d76720ce53dad97f70a4b0bbe1946a8dc1c7de717f5",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S165",
+    "name": "main_pages.json",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/base/profile/main_pages.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/base/profile/main_pages.json",
+    "accessed_at": "2026-10-29T01:29:36.453027+08:00",
+    "http_status": 200,
+    "bytes": 37,
+    "sha256": "f21984fb1d5096f0db41314da0bb94c573e7ad018e5afae3044f8d5ff71b0bfc",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S166",
+    "name": "color.json",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/dark/element/color.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/dark/element/color.json",
+    "accessed_at": "2026-10-29T01:29:36.498265+08:00",
+    "http_status": 200,
+    "bytes": 105,
+    "sha256": "d6be6bfa9cfce320f6bb9b92dd09614db27e16bc2c9c90edf057bd682dc3ecbf",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S167",
+    "name": "string.json",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/en_US/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/en_US/element/string.json",
+    "accessed_at": "2026-10-29T01:29:36.524887+08:00",
+    "http_status": 200,
+    "bytes": 260,
+    "sha256": "eeffd244a79104faeedb262822096fb3d156d334c544198889c14f5b2a847929",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S168",
+    "name": "string.json",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/main/resources/zh_CN/element/string.json",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/main/resources/zh_CN/element/string.json",
+    "accessed_at": "2026-10-29T01:29:36.546238+08:00",
+    "http_status": 200,
+    "bytes": 254,
+    "sha256": "2ae2a67519f4cf68ce8338d8c34a3edff5561b61f835646288358f861a1f32a9",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S169",
+    "name": "Ability.test.ets",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/ohosTest/ets/test/Ability.test.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/ohosTest/ets/test/Ability.test.ets",
+    "accessed_at": "2026-10-29T01:29:36.569806+08:00",
+    "http_status": 200,
+    "bytes": 2343,
+    "sha256": "21c0470b39c7c91e3b5100ffeaadd274483818b0d7cbb589d1c4de649d6f6164",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S170",
+    "name": "List.test.ets",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/ohosTest/ets/test/List.test.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/ohosTest/ets/test/List.test.ets",
+    "accessed_at": "2026-10-29T01:29:36.596714+08:00",
+    "http_status": 200,
+    "bytes": 800,
+    "sha256": "01b895ec57b003e4232c9aa987640a1145de39009ca08195fb664d6f0f22acb8",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S171",
+    "name": "NodeAPIArraybuffer.test.ets",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/ohosTest/ets/test/NodeAPIArraybuffer.test.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/ohosTest/ets/test/NodeAPIArraybuffer.test.ets",
+    "accessed_at": "2026-10-29T01:29:36.638722+08:00",
+    "http_status": 200,
+    "bytes": 4060,
+    "sha256": "46fb3e2ff4898ff2be795da31f6dc8714ea41b3232cae47ad0dd17231a8aa016",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S172",
+    "name": "module.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/ohosTest/module.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/ohosTest/module.json5",
+    "accessed_at": "2026-10-29T01:29:37.062243+08:00",
+    "http_status": 200,
+    "bytes": 830,
+    "sha256": "be584c1dcbc94dd85dbd861534e09d66612555726f0b6064b809215a67dd8651",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S173",
+    "name": "List.test.ets",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/test/List.test.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/test/List.test.ets",
+    "accessed_at": "2026-10-29T01:29:37.137642+08:00",
+    "http_status": 200,
+    "bytes": 714,
+    "sha256": "1434f35f01458925bd7ade71717329eca049b2716bf08fc66669064c3a2ae162",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S174",
+    "name": "LocalUnit.test.ets",
+    "file": "downloads/official-samples/napi-arraybuffer/entry/src/test/LocalUnit.test.ets",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/entry/src/test/LocalUnit.test.ets",
+    "accessed_at": "2026-10-29T01:29:37.167289+08:00",
+    "http_status": 200,
+    "bytes": 2233,
+    "sha256": "40b046a5a79ca04cd317c70fec83beb112cc32988fb5b3c396c6aa7f46f904b0",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S175",
+    "name": "hvigor-config.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/hvigor/hvigor-config.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/hvigor/hvigor-config.json5",
+    "accessed_at": "2026-10-29T01:29:37.199572+08:00",
+    "http_status": 200,
+    "bytes": 1947,
+    "sha256": "3cb8a67ab51c87b8099cad6a28488b8022b074d4d63c480b6002157e8193fda1",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S176",
+    "name": "hvigorfile.ts",
+    "file": "downloads/official-samples/napi-arraybuffer/hvigorfile.ts",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/hvigorfile.ts",
+    "accessed_at": "2026-10-29T01:29:37.212099+08:00",
+    "http_status": 200,
+    "bytes": 843,
+    "sha256": "52ff290e02695e995a44be714df9584ac5abb3222bdbf68796c09955c66fef83",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S177",
+    "name": "oh-package.json5",
+    "file": "downloads/official-samples/napi-arraybuffer/oh-package.json5",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/oh-package.json5",
+    "accessed_at": "2026-10-29T01:29:37.233096+08:00",
+    "http_status": 200,
+    "bytes": 834,
+    "sha256": "a565d8ba9399b9bcf81df1db4b11ac00dc3809591685c2831466b35cceaaca35",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S178",
+    "name": "ohosTest.md",
+    "file": "downloads/official-samples/napi-arraybuffer/ohosTest.md",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/ohosTest.md",
+    "accessed_at": "2026-10-29T01:29:37.249168+08:00",
+    "http_status": 200,
+    "bytes": 1663,
+    "sha256": "cf628e7d93677946274dfbfa9a271b4df0be17acd5ffc3b6fc87070453b71d26",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S179",
+    "name": "NodeAPIArraybuffer1.png",
+    "file": "downloads/official-samples/napi-arraybuffer/screenshots/NodeAPIArraybuffer1.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/screenshots/NodeAPIArraybuffer1.png",
+    "accessed_at": "2026-10-29T01:29:37.269319+08:00",
+    "http_status": 200,
+    "bytes": 34376,
+    "sha256": "1c787503b022982f780d2231a6b424466b59c92a40838b04bb72e37b66b7f487",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S180",
+    "name": "NodeAPIArraybuffer2.png",
+    "file": "downloads/official-samples/napi-arraybuffer/screenshots/NodeAPIArraybuffer2.png",
+    "url": "https://raw.githubusercontent.com/openharmony/applications_app_samples/a826ab0e75fe51d028c1c5af58188e908736b53b/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArraybuffer/screenshots/NodeAPIArraybuffer2.png",
+    "accessed_at": "2026-10-29T01:29:37.624900+08:00",
+    "http_status": 200,
+    "bytes": 42616,
+    "sha256": "d50bed82365135b8db31e63951d6250773a2b166c0dc44737e4cd5057def1182",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "a826ab0e75fe51d028c1c5af58188e908736b53b",
+    "license_note": "see downloads/official-samples/LICENSE"
+  },
+  {
+    "source_id": "S181",
+    "name": "APAK-2602.00457.pdf",
+    "file": "downloads/papers/APAK-2602.00457.pdf",
+    "url": "https://arxiv.org/pdf/2602.00457",
+    "accessed_at": "2026-10-29T01:24:57.787035+08:00",
+    "http_status": 200,
+    "bytes": 841836,
+    "sha256": "b489d68ea497a37a2d486d3ce37d5eaa1c04e279ee742e2459aeb84edfe4c86d",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S182",
+    "name": "ArkAnalyzer-2501.05798.pdf",
+    "file": "downloads/papers/ArkAnalyzer-2501.05798.pdf",
+    "url": "https://arxiv.org/pdf/2501.05798",
+    "accessed_at": "2026-10-29T01:24:57.786516+08:00",
+    "http_status": 200,
+    "bytes": 698924,
+    "sha256": "118a552254fc29728384e57b9a37cb66f5f42c8faedb5afd6ae80f61e83efc3e",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S183",
+    "name": "CamBench-2204.06447.pdf",
+    "file": "downloads/papers/CamBench-2204.06447.pdf",
+    "url": "https://arxiv.org/pdf/2204.06447",
+    "accessed_at": "2026-10-29T01:26:22.106089+08:00",
+    "http_status": 200,
+    "bytes": 211141,
+    "sha256": "1a153e634ece58fdcbadce01ebaa1ad1a6ac71fc89d3bf407e3b574cc8878f8c",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S184",
+    "name": "CryptoAPI-Bench-SecDev2019.pdf",
+    "file": "downloads/papers/CryptoAPI-Bench-SecDev2019.pdf",
+    "url": "https://sazzadur.com/pdfs/SecDev19_CryptoAPI-Bench.pdf",
+    "accessed_at": "2026-10-29T01:29:37.955293+08:00",
+    "http_status": 200,
+    "bytes": 207759,
+    "sha256": "5cd234ce720c8f38bfeb9697b96b543531cd115ad7d00b2cba0186a7981f6f40",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "repository archive includes MIT LICENSE; paper retains publisher terms"
+  },
+  {
+    "source_id": "S185",
+    "name": "CryptoDetectors-MASC-2107.07065.pdf",
+    "file": "downloads/papers/CryptoDetectors-MASC-2107.07065.pdf",
+    "url": "https://arxiv.org/pdf/2107.07065",
+    "accessed_at": "2026-10-29T01:26:22.263921+08:00",
+    "http_status": 200,
+    "bytes": 1459434,
+    "sha256": "486f4a829ef345988568e249d20fdb32284dedbe7c08981579b848967b9a2ef3",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S186",
+    "name": "HapCheck-ICSE2026.pdf",
+    "file": "downloads/papers/HapCheck-ICSE2026.pdf",
+    "url": "https://dl.acm.org/doi/pdf/10.1145/3786583.3786895",
+    "accessed_at": "2026-10-29T01:26:23.364211+08:00",
+    "http_status": null,
+    "bytes": null,
+    "sha256": null,
+    "content_status": "download_failed",
+    "note": "HTTP Error 403: Forbidden",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S187",
+    "name": "HapCheck-conference.html",
+    "file": "downloads/papers/HapCheck-conference.html",
+    "url": "https://conf.researchr.org/details/icse-2026/icse-2026-software-engineering-in-practice/40/HapCheck-DSL-Based-Static-Bug-Detection-Framework-for-OpenHarmony",
+    "accessed_at": "2026-10-29T01:29:38.069455+08:00",
+    "http_status": 200,
+    "bytes": 162255,
+    "sha256": "51df33b9a4d1196e063cd3aeef5364b5e6dfb6a2213ccdf42edddb592e4b1580",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S188",
+    "name": "HapCiD-2609.20099.pdf",
+    "file": "downloads/papers/HapCiD-2609.20099.pdf",
+    "url": "https://arxiv.org/pdf/2609.20099",
+    "accessed_at": "2026-10-29T01:26:22.791417+08:00",
+    "http_status": 200,
+    "bytes": 753988,
+    "sha256": "f9d13133562ead107c79bfbcb9ca01a0dffe1f9645b92f7c6033fcc223845907",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S189",
+    "name": "HapRay-2606.23512.pdf",
+    "file": "downloads/papers/HapRay-2606.23512.pdf",
+    "url": "https://arxiv.org/pdf/2606.23512",
+    "accessed_at": "2026-10-29T01:26:23.013129+08:00",
+    "http_status": 200,
+    "bytes": 2306178,
+    "sha256": "cc1e27ebe3132a7e7a90e1ea8c996b538b308e212620647792c51e8862965886",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S190",
+    "name": "HapTest-FSE2025.pdf",
+    "file": "downloads/papers/HapTest-FSE2025.pdf",
+    "url": "https://yakzhang.github.io/2025-fse-HapTest.pdf",
+    "accessed_at": "2026-10-29T01:26:22.398763+08:00",
+    "http_status": 200,
+    "bytes": 1470043,
+    "sha256": "8d845f89ad4dccbbf1b4a1b1113b7b36c2179cdfd7ced8ea5aa6a3febb659d82",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S191",
+    "name": "HarmoBridge-ASE2025.pdf",
+    "file": "downloads/papers/HarmoBridge-ASE2025.pdf",
+    "url": "https://jialewu17.github.io/files/HarmoBridge_ASE25.pdf",
+    "accessed_at": "2026-10-29T01:28:26.973662+08:00",
+    "http_status": 200,
+    "bytes": 1960342,
+    "sha256": "14dce111852e5fbf533d9375246b5f08ea011882ff5044e5ec4bfdbee0c1acb8",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S192",
+    "name": "HarmonyOS6-security-whitepaper.pdf",
+    "file": "downloads/papers/HarmonyOS6-security-whitepaper.pdf",
+    "url": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/privacy/privary-new/260713/HarmonyOS%206.0%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf",
+    "accessed_at": "2026-10-29T01:28:26.973662+08:00",
+    "http_status": 200,
+    "bytes": 3824753,
+    "sha256": "1b8925892768b50b24734ca186d9d9f63b83ec73e2d80d9c79c221a397eab5d4",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json；自动文字抽取含乱码，具体页需视觉核对",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S193",
+    "name": "JScamd-USENIX2026.pdf",
+    "file": "downloads/papers/JScamd-USENIX2026.pdf",
+    "url": "https://www.usenix.org/system/files/usenixsecurity26-jia-shijie.pdf",
+    "accessed_at": "2026-10-29T01:24:57.787546+08:00",
+    "http_status": 200,
+    "bytes": 963149,
+    "sha256": "72177aa2dbf0b012fbb32c4d28802b030629be4d4783192cb8483b03dbcb754f",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "Zenodo record CC-BY-4.0; third-party components retain own terms"
+  },
+  {
+    "source_id": "S194",
+    "name": "NIST-SP800-38D.pdf",
+    "file": "downloads/papers/NIST-SP800-38D.pdf",
+    "url": "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf",
+    "accessed_at": "2026-10-29T01:35:51.044283+08:00",
+    "http_status": 200,
+    "bytes": 271960,
+    "sha256": "d99f3921ccebca049e7522426553aba071dae14ec3d5b6041e8c111a6cb57bba",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan5-results.json",
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S195",
+    "name": "NIST-SP800-57pt1r5.pdf",
+    "file": "downloads/papers/NIST-SP800-57pt1r5.pdf",
+    "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf",
+    "accessed_at": "2026-10-29T01:30:57.888108+08:00",
+    "http_status": 200,
+    "bytes": 1688080,
+    "sha256": "cc32391022c1382ac7c91490f6bcc8838e0f889925270da23ef4e800e2ecb7ad",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan5-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S196",
+    "name": "NIST-SP800-57pt1r6-DRAFT.pdf",
+    "file": "downloads/papers/NIST-SP800-57pt1r6-DRAFT.pdf",
+    "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r6.ipd.pdf",
+    "accessed_at": "2026-10-29T01:35:51.044799+08:00",
+    "http_status": 200,
+    "bytes": 2637856,
+    "sha256": "e0160e649c1f6ee817e88fa1b95df168a12060e4eff7dd7cba8e16df9d1183bc",
+    "content_status": "valid_pdf",
+    "note": "已用pypdf解析页数，详见collection-validation.json",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "Revision6 initial public draft, not final",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S197",
+    "name": "ArkAnalyzer-Lab-b87443c1.zip",
+    "file": "downloads/repos/ArkAnalyzer-Lab-b87443c1.zip",
+    "url": "https://codeload.github.com/SMAT-Lab/ArkAnalyzer-Lab/zip/b87443c19ef11396a31e4aa57cd6c666dd3a44b3",
+    "accessed_at": "2026-10-29T01:29:37.746531+08:00",
+    "http_status": 200,
+    "bytes": 1094580,
+    "sha256": "29651d89b1eda35bab9bd327d388a0e50f9d99d45e038dec663fa56e03489a74",
+    "content_status": "zip_crc_verified",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "b87443c19ef11396a31e4aa57cd6c666dd3a44b3",
+    "license_note": "no top-level project license verified in downloaded archive"
+  },
+  {
+    "source_id": "S198",
+    "name": "ArkTaint-ab724f3c.zip",
+    "file": "downloads/repos/ArkTaint-ab724f3c.zip",
+    "url": "https://codeload.github.com/kakahuote1/ArkTaint/zip/ab724f3ce00fd2fa53fa782d5f11f3513baf59ba",
+    "accessed_at": "2026-10-29T01:29:37.777030+08:00",
+    "http_status": 200,
+    "bytes": 56134525,
+    "sha256": "b447c4787eec1d4cc12ad8fe900674fa6f5c4a96c00f0344c224bbd5835fdcdc",
+    "content_status": "zip_crc_verified",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "ab724f3ce00fd2fa53fa782d5f11f3513baf59ba",
+    "license_note": "no top-level project license verified in downloaded archive"
+  },
+  {
+    "source_id": "S199",
+    "name": "CrossFlowBench-94bcbe79.zip",
+    "file": "downloads/repos/CrossFlowBench-94bcbe79.zip",
+    "url": "https://codeload.github.com/security-pride/CrossFlowBench/zip/94bcbe79b449ca3a00586d8cb33045d349b500c9",
+    "accessed_at": "2026-10-29T01:26:20.307792+08:00",
+    "http_status": 200,
+    "bytes": 12651680,
+    "sha256": "d04a4ab2d7df0a82a7dea21374fc4e43174259aa0620486db892bf23a5f14d90",
+    "content_status": "zip_crc_verified",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "94bcbe79b449ca3a00586d8cb33045d349b500c9",
+    "license_note": "no top-level project license verified in downloaded archive"
+  },
+  {
+    "source_id": "S200",
+    "name": "CryptoAPI-Bench-e6b6b50f.zip",
+    "file": "downloads/repos/CryptoAPI-Bench-e6b6b50f.zip",
+    "url": "https://codeload.github.com/CryptoAPI-Bench/CryptoAPI-Bench/zip/e6b6b50fef6970151300c1ac2de62e188ba6de19",
+    "accessed_at": "2026-10-29T01:30:57.180741+08:00",
+    "http_status": 200,
+    "bytes": 191224,
+    "sha256": "8cce7dd324e39e8ed7a86317e6926b08cc0ab0614f17691984aa87e3462d3345",
+    "content_status": "zip_crc_verified",
+    "note": "",
+    "attempt_logs": [
+      "download-plan5-results.json"
+    ],
+    "version_or_pin": "e6b6b50fef6970151300c1ac2de62e188ba6de19",
+    "license_note": "repository archive includes MIT LICENSE; paper retains publisher terms"
+  },
+  {
+    "source_id": "S201",
+    "name": "JScamd-v3.zip",
+    "file": "downloads/repos/JScamd-v3.zip",
+    "url": "https://zenodo.org/api/records/20567432/files/JScamd.zip/content",
+    "accessed_at": "2026-10-29T01:26:20.307792+08:00",
+    "http_status": 200,
+    "bytes": 744800,
+    "sha256": "edc30e146b6d01fe71af85eb77def5fd47e5c98849c2fec904b43f5313a4dc69",
+    "content_status": "zip_crc_verified",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "Zenodo 20567432 / v3",
+    "license_note": "Zenodo record CC-BY-4.0; third-party components retain own terms"
+  },
+  {
+    "source_id": "S202",
+    "name": "arkanalyzer-1.0.95.tgz",
+    "file": "downloads/repos/arkanalyzer-1.0.95.tgz",
+    "url": "https://registry.npmjs.org/arkanalyzer/-/arkanalyzer-1.0.95.tgz",
+    "accessed_at": "2026-10-29T01:30:57.181746+08:00",
+    "http_status": 200,
+    "bytes": 2323847,
+    "sha256": "b8007b09ad01d88a3867dc8fb4d06acc3e07bd96455775833e9e62e67531e9e1",
+    "content_status": "tgz_readable",
+    "note": "",
+    "attempt_logs": [
+      "download-plan5-results.json"
+    ],
+    "version_or_pin": "1.0.95",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S203",
+    "name": "ArkAnalyzer-Lab-commit.json",
+    "file": "sources/ArkAnalyzer-Lab-commit.json",
+    "url": "https://api.github.com/repos/SMAT-Lab/ArkAnalyzer-Lab/commits/main",
+    "accessed_at": "2026-10-29T01:28:26.974663+08:00",
+    "http_status": 200,
+    "bytes": 7783,
+    "sha256": "6b3d70d88eef10a33c49f10227b14479080b1502dce49f48588302448866dc60",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "no top-level project license verified in downloaded archive"
+  },
+  {
+    "source_id": "S204",
+    "name": "ArkAnalyzer-Lab-repo.json",
+    "file": "sources/ArkAnalyzer-Lab-repo.json",
+    "url": "https://api.github.com/repos/SMAT-Lab/ArkAnalyzer-Lab",
+    "accessed_at": "2026-10-29T01:24:57.789086+08:00",
+    "http_status": 200,
+    "bytes": 6300,
+    "sha256": "e02b5459da7b8076b781659a51d2a53cbb09dd16c8996582b535122e0c20f9c9",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "no top-level project license verified in downloaded archive"
+  },
+  {
+    "source_id": "S205",
+    "name": "ArkTaint-commit.json",
+    "file": "sources/ArkTaint-commit.json",
+    "url": "https://api.github.com/repos/kakahuote1/ArkTaint/commits/main",
+    "accessed_at": "2026-10-29T01:28:26.974663+08:00",
+    "http_status": 200,
+    "bytes": 1261695,
+    "sha256": "b17f42787e2b5c7cc642a5464a581d7cbd876684256fb430cd55665f4b1500cb",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "no top-level project license verified in downloaded archive"
+  },
+  {
+    "source_id": "S206",
+    "name": "ArkTaint-repo.json",
+    "file": "sources/ArkTaint-repo.json",
+    "url": "https://api.github.com/repos/kakahuote1/ArkTaint",
+    "accessed_at": "2026-10-29T01:26:20.308792+08:00",
+    "http_status": 200,
+    "bytes": 5364,
+    "sha256": "c1f473a28b4dfe8e41374910b60874855a2a5229049a048a0653d225631e25ea",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "no top-level project license verified in downloaded archive"
+  },
+  {
+    "source_id": "S207",
+    "name": "CVE-2024-21826.json",
+    "file": "sources/CVE-2024-21826.json",
+    "url": "https://cveawg.mitre.org/api/cve/CVE-2024-21826",
+    "accessed_at": "2026-10-29T01:35:51.045314+08:00",
+    "http_status": 200,
+    "bytes": 2577,
+    "sha256": "065fe3da55f66df5d3401f7f1b59c390bd7fa68022946143fc15218261f51069",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S208",
+    "name": "CrossFlowBench-commit.json",
+    "file": "sources/CrossFlowBench-commit.json",
+    "url": "https://api.github.com/repos/security-pride/CrossFlowBench/commits/main",
+    "accessed_at": "2026-10-29T01:24:57.788058+08:00",
+    "http_status": 200,
+    "bytes": 372414,
+    "sha256": "baf311c9b2f6863b129f4be8b460d0e9259f841667c5e3cb2e0c093b67a71d83",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "no top-level project license verified in downloaded archive"
+  },
+  {
+    "source_id": "S209",
+    "name": "CryptoAPI-Bench-commit.json",
+    "file": "sources/CryptoAPI-Bench-commit.json",
+    "url": "https://api.github.com/repos/CryptoAPI-Bench/CryptoAPI-Bench/commits/master",
+    "accessed_at": "2026-10-29T01:29:37.807886+08:00",
+    "http_status": 200,
+    "bytes": 5548,
+    "sha256": "29391fc6455188448e5dda5bb8648ba058d6650158e8c3d49192a95c18cf5259",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "repository archive includes MIT LICENSE; paper retains publisher terms"
+  },
+  {
+    "source_id": "S210",
+    "name": "HapRay-commit.json",
+    "file": "sources/HapRay-commit.json",
+    "url": "https://api.github.com/repos/SMAT-Lab/ArkAnalyzer-HapRay/commits/main",
+    "accessed_at": "2026-10-29T01:28:26.974663+08:00",
+    "http_status": 200,
+    "bytes": 159329,
+    "sha256": "2f39594b4c05e3ba4ba8606c66f989997953b99152227e6d93336c7609b18192",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S211",
+    "name": "HapRay-repo.json",
+    "file": "sources/HapRay-repo.json",
+    "url": "https://api.github.com/repos/SMAT-Lab/ArkAnalyzer-HapRay",
+    "accessed_at": "2026-10-29T01:26:20.308792+08:00",
+    "http_status": 200,
+    "bytes": 6573,
+    "sha256": "747f4b0ec7198fefa9574f5928dfa1abc1a996490adf19b33eab49975c752f19",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S212",
+    "name": "JScamd-paper-record.json",
+    "file": "sources/JScamd-paper-record.json",
+    "url": "https://zenodo.org/api/records/20395867",
+    "accessed_at": "2026-10-29T01:28:26.974663+08:00",
+    "http_status": 200,
+    "bytes": 8783,
+    "sha256": "ca7a61297f6e7f21ff119389e1d3bdd9949726b0556da26a2335b86d4b213151",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "Zenodo record CC-BY-4.0; third-party components retain own terms"
+  },
+  {
+    "source_id": "S213",
+    "name": "JScamd-zenodo-record.json",
+    "file": "sources/JScamd-zenodo-record.json",
+    "url": "https://zenodo.org/api/records/20567432",
+    "accessed_at": "2026-10-29T01:24:57.787546+08:00",
+    "http_status": 200,
+    "bytes": 8783,
+    "sha256": "ca7a61297f6e7f21ff119389e1d3bdd9949726b0556da26a2335b86d4b213151",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "Zenodo record CC-BY-4.0; third-party components retain own terms"
+  },
+  {
+    "source_id": "S214",
+    "name": "OpenHarmony-docs-commit.json",
+    "file": "sources/OpenHarmony-docs-commit.json",
+    "url": "https://api.github.com/repos/openharmony/docs/commits/master",
+    "accessed_at": "2026-10-29T01:24:57.788571+08:00",
+    "http_status": 200,
+    "bytes": 13794,
+    "sha256": "54d9af8b40f039259b273958b846a6e7a1fa554dbd0b7d2c95c4d97345ca63e7",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S215",
+    "name": "ReArk-latest-release.json",
+    "file": "sources/ReArk-latest-release.json",
+    "url": "https://api.github.com/repos/lkimuk/ReArk/releases/latest",
+    "accessed_at": "2026-10-29T01:26:20.308792+08:00",
+    "http_status": 200,
+    "bytes": 12510,
+    "sha256": "dbaea50b71d2fa37786887a8ba3cabcdaa3196137e9e28dd45f903b060cb1dda",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S216",
+    "name": "arkanalyzer-npm.json",
+    "file": "sources/arkanalyzer-npm.json",
+    "url": "https://registry.npmjs.org/arkanalyzer",
+    "accessed_at": "2026-10-29T01:24:58.632379+08:00",
+    "http_status": 200,
+    "bytes": 183105,
+    "sha256": "63097bc83660033f24f91ba8a5ea0d7260d0d91019500d23cc0ae9802f53b049",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S217",
+    "name": "harmobridge-author-tree.json",
+    "file": "sources/harmobridge-author-tree.json",
+    "url": "https://api.github.com/repos/jialewu17/jialewu17.github.io/git/trees/master?recursive=1",
+    "accessed_at": "2026-10-29T01:26:20.309793+08:00",
+    "http_status": null,
+    "bytes": null,
+    "sha256": null,
+    "content_status": "download_failed",
+    "note": "HTTP Error 404: Not Found",
+    "attempt_logs": [
+      "download-plan2-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S218",
+    "name": "lili-author-home.html",
+    "file": "sources/lili-author-home.html",
+    "url": "https://lilicoding.github.io/",
+    "accessed_at": "2026-10-29T01:29:38.305050+08:00",
+    "http_status": 200,
+    "bytes": 29274,
+    "sha256": "8a0449c2df444360b8cdb57ba6b20d070a80ac7b47b2c163518e69a531a44718",
+    "content_status": "downloaded_format_checked",
+    "note": "",
+    "attempt_logs": [
+      "download-plan4-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S219",
+    "name": "official-samples-commit.json",
+    "file": "sources/official-samples-commit.json",
+    "url": "https://api.github.com/repos/openharmony/applications_app_samples/commits/master",
+    "accessed_at": "2026-10-29T01:28:26.975662+08:00",
+    "http_status": 200,
+    "bytes": 5239,
+    "sha256": "56f3e3564d7c6dfb85e748261b4da3970da768e5f9944b991d563dcd28102209",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan3-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S220",
+    "name": "official-samples-tree.json",
+    "file": "sources/official-samples-tree.json",
+    "url": "https://api.github.com/repos/openharmony/applications_app_samples/git/trees/master?recursive=1",
+    "accessed_at": "2026-10-29T01:24:57.788571+08:00",
+    "http_status": 200,
+    "bytes": 15184731,
+    "sha256": "749735e82cba613848daa74122b374105a71248c1362f96690df482fe8ef6e91",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan1-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S221",
+    "name": "ohos-openssl-commit.json",
+    "file": "sources/ohos-openssl-commit.json",
+    "url": "https://api.github.com/repos/ohos-rs/ohos-openssl/commits/main",
+    "accessed_at": "2026-10-29T01:30:57.182249+08:00",
+    "http_status": 200,
+    "bytes": 4759,
+    "sha256": "88e867067aaee81fbc49629e965722231391cbb1ffd94b1d1d592c1bf25313c0",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan5-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S222",
+    "name": "sample-tree-crypto.json",
+    "file": "sources/sample-tree-crypto.json",
+    "url": "https://api.github.com/repos/openharmony/applications_app_samples/git/trees/ac2d35d009aa2074acb087fef4761fbfde8ee0b1?recursive=1",
+    "accessed_at": "2026-10-29T01:35:51.335989+08:00",
+    "http_status": 200,
+    "bytes": 22254,
+    "sha256": "a1e07bdefae578e2c8c68c29978b29fc905cc33edc92790580f1ee9fa6b65c65",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "ac2d35d009aa2074acb087fef4761fbfde8ee0b1",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S223",
+    "name": "sample-tree-huks.json",
+    "file": "sources/sample-tree-huks.json",
+    "url": "https://api.github.com/repos/openharmony/applications_app_samples/git/trees/c0950995741f75bb99c86f8dfce0fb280f8e4f1b?recursive=1",
+    "accessed_at": "2026-10-29T01:35:52.375998+08:00",
+    "http_status": 200,
+    "bytes": 21213,
+    "sha256": "18a5f134ba4bb419a5de5ec379cab32ac24741a949b506efa4a8fde8bf3bc624",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "c0950995741f75bb99c86f8dfce0fb280f8e4f1b",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S224",
+    "name": "sample-tree-napi-arraybuffer.json",
+    "file": "sources/sample-tree-napi-arraybuffer.json",
+    "url": "https://api.github.com/repos/openharmony/applications_app_samples/git/trees/27016af7ee868df1a5cda495879d5b307f9bcf9f?recursive=1",
+    "accessed_at": "2026-10-29T01:35:52.497283+08:00",
+    "http_status": 200,
+    "bytes": 18947,
+    "sha256": "c59f3ad36036980df4f3f227297912911f4e2beccbcd5535fa608778215418d8",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan6-results.json"
+    ],
+    "version_or_pin": "27016af7ee868df1a5cda495879d5b307f9bcf9f",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  },
+  {
+    "source_id": "S225",
+    "name": "wearable-demo-commit.json",
+    "file": "sources/wearable-demo-commit.json",
+    "url": "https://api.github.com/repos/Explore-In-HMOS/sportwatch-encrypted-decrypt-filestore/commits/main",
+    "accessed_at": "2026-10-29T01:30:57.182249+08:00",
+    "http_status": 200,
+    "bytes": 4838,
+    "sha256": "931415ad074eb394a14e4d38ab6945fa882989d522e35bd040ea16d01efc65f2",
+    "content_status": "valid_json",
+    "note": "",
+    "attempt_logs": [
+      "download-plan5-results.json"
+    ],
+    "version_or_pin": "",
+    "license_note": "publisher_or_repository_terms; not blanket redistribution permission"
+  }
+]

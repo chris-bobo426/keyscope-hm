@@ -1,0 +1,7 @@
+{
+  "name": "f7_v2_helper_a_safe",
+  "version": "1.0.0",
+  "description": "HarmonyKeyRepBench sample F7_v2_helper_A_Safe",
+  "main": "entry/src/main/ets/CryptoService.ets",
+  "dependencies": {}
+}

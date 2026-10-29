@@ -1,0 +1,2 @@
+﻿case_id,source_ref,source_commit,source_sha256,sdk,api_level,device,system_build,threat_model,secret_identity,entrypoint,path_condition,expected_recoverability,expected_policy_risk,expected_flow,expected_zeroized_regions,oracle,label_author,review_status,build_status,run_status,notes
+TO_FILL,,,,,,,,,,,,,,,,,,pending,not_run,not_run,

@@ -1,0 +1,9 @@
+{
+  "name": "f2_v1_direct_b_risky",
+  "version": "1.0.0",
+  "description": "HarmonyKeyRepBench sample F2_v1_direct_B_Risky",
+  "main": "entry/src/main/ets/CryptoService.ets",
+  "dependencies": {
+    "libhmcrypto.so": "file:./entry/src/main/cpp/types/libhmcrypto"
+  }
+}

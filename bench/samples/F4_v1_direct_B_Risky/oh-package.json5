@@ -1,0 +1,7 @@
+{
+  "name": "f4_v1_direct_b_risky",
+  "version": "1.0.0",
+  "description": "HarmonyKeyRepBench sample F4_v1_direct_B_Risky",
+  "main": "entry/src/main/ets/CryptoService.ets",
+  "dependencies": {}
+}

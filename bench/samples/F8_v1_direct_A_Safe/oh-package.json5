@@ -1,0 +1,9 @@
+{
+  "name": "f8_v1_direct_a_safe",
+  "version": "1.0.0",
+  "description": "HarmonyKeyRepBench sample F8_v1_direct_A_Safe",
+  "main": "entry/src/main/ets/CryptoService.ets",
+  "dependencies": {
+    "libhmcrypto.so": "file:./entry/src/main/cpp/types/libhmcrypto"
+  }
+}

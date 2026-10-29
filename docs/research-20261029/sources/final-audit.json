@@ -1,0 +1,69 @@
+{
+  "checked_at": "2026-10-29T02:25:46.117281+08:00",
+  "source_hash_errors": [],
+  "local_links_checked": 1806,
+  "broken_local_links": [],
+  "case_count": 40,
+  "all_cases_not_executed": true,
+  "official_sample_files": 138,
+  "official_sample_hashes_pass": true,
+  "pdf_count": 14,
+  "all_pdf_parse_pass": true,
+  "zip_crc_pass": true,
+  "npm_upstream_integrity_match": true,
+  "zenodo_upstream_integrity_match": true,
+  "known_unusable_http_success": [
+    "downloads/docs/deveco-snapshot.html",
+    "downloads/news/CVE-2024-21826.html",
+    "downloads/news/OpenHarmony-security-2026-10.md"
+  ],
+  "known_missing_downloads": [
+    "downloads/docs/huks-export.md",
+    "downloads/news/OpenHarmony-security-github-2026-10.md",
+    "downloads/papers/HapCheck-ICSE2026.pdf",
+    "sources/harmobridge-author-tree.json"
+  ],
+  "news_source_count": 88,
+  "news_hash_errors": [],
+  "news_pdf_validation": [
+    {
+      "id": "N048",
+      "pages": 10
+    },
+    {
+      "id": "N049",
+      "pages": 52
+    },
+    {
+      "id": "N050",
+      "pages": 92
+    },
+    {
+      "id": "N051",
+      "pages": 27
+    },
+    {
+      "id": "N052",
+      "pages": 51
+    },
+    {
+      "id": "N053",
+      "pages": 1
+    }
+  ],
+  "news_thin_pages": [
+    "N008",
+    "N009",
+    "N010",
+    "N011",
+    "N012",
+    "N013",
+    "N016",
+    "N078"
+  ],
+  "news_attachments_require_login": [
+    "N007"
+  ],
+  "all_pdf_count": 20,
+  "passed": true
+}

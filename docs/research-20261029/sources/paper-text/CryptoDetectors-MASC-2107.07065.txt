@@ -1,0 +1,2004 @@
+
+--- PAGE 1 ---
+Mutation-based Evaluation of Cryptographic API Misuse
+Detectors
+AMIT SEAL AMI,Bellini College of AI, Cybersecurity, and Computing, University of South Florida, USA
+SCOTT MARSDEN,Computer Science Department, William & Mary, USA
+KEVIN MORAN,Department of Computer Science, University of Central Florida, USA
+DENYS POSHYVANYK,Computer Science Department, William & Mary, USA
+ADWAIT NADKARNI,Computer Science Department, William & Mary, USA
+Thecorrectuse of cryptography is central to ensuring data security in modern software systems. Hence, several
+academic and commercial static analysis tools have been developed for detecting and mitigating crypto-API
+misuse. While developers are optimistically adopting these crypto-API misuse detectors (or crypto-detectors)
+in their software development cycles, this momentum must be accompanied by arigorous understanding
+of their effectiveness at finding crypto-API misuse in practice. This paper describes the MASC framework,
+which enables a systematic and data-driven evaluation of crypto-detectors using mutation testing. We ground
+MASC in a comprehensive view of the problem space by developing a data-driven taxonomy of existing
+crypto-API misuse, containing 107 misuse cases organized among nine semantic clusters. We develop 19
+generalizableusage-based mutation operatorsand threemutation scopesthat can expressively instantiate
+thousands of compilable variants of the misuse cases for thoroughly evaluating crypto-detectors. Using MASC,
+in a previous study, we evaluatedninemajor crypto-detectors and discovered19unique, undocumented flaws
+that severely impact the ability of crypto-detectors to discover misuses in practice. This paper substantially
+extends our MASC framework and offers updated evaluation of the crypto-detectors in our 2022 study, in
+addition to 5 more, major crypto-detectors. Through this work, we find 6 new, undocumented flaws, and
+demonstrate that these flaws affect the crypto-detectors regardless of their origin; open-source community,
+industry, and/or research. We conclude with a discussion on the diverse perspectives that influence the design
+of crypto-detectors and future directions towards building security-focused crypto-detectors by design.
+CCS Concepts:•Security and privacy→Software security engineering.
+Additional Key Words and Phrases: Security, Software, Mutation Testing, Static Analysis, Static Analysis based
+Security Testing, SAST, Mutation
+ACM Reference Format:
+Amit Seal Ami, Scott Marsden, Kevin Moran, Denys Poshyvanyk, and Adwait Nadkarni. XXXX. Mutation-
+based Evaluation of Cryptographic API Misuse Detectors. 1, 1 (February XXXX), 35 pages. https://doi.org/
+XXXXXXX.XXXXXXX
+Authors’ Contact Information: Amit Seal Ami, amitsealami@usf.edu, Bellini College of AI, Cybersecurity, and Computing,
+University of South Florida, Tampa, Florida, USA; Scott Marsden, smarsden@wm.edu, Computer Science Department,
+William & Mary, Williamsburg, Virginia, USA; Kevin Moran, kpmoran@ucf.edu, Department of Computer Science, University
+of Central Florida, Orlando, Florida, USA; Denys Poshyvanyk, denys@cs.wm.edu, Computer Science Department, William
+& Mary, Williamsburg, Virginia, USA; Adwait Nadkarni, apnadkarni@wm.edu, Computer Science Department, William &
+Mary, Williamsburg, Virginia, USA.
+Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee
+provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the
+full citation on the first page. Copyrights for components of this work owned by others than the author(s) must be honored.
+Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires
+prior specific permission and/or a fee. Request permissions from permissions@acm.org.
+©XXXX Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ACM XXXX-XXXX/XXXX/2-ART
+https://doi.org/XXXXXXX.XXXXXXX
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+arXiv:2107.07065v6  [cs.CR]  3 Feb 2026
+
+--- PAGE 2 ---
+2 Amit et al.
+1 Introduction
+Effective cryptography is critical in ensuring the security of confidential data in modern software.
+However, ensuring thecorrect useof cryptographic primitives has historically been a hard problem,
+whether we consider the vulnerable banking systems from Anderson’s seminal work [7], or the
+widespread misuse of cryptographic APIs (i.e., crypto-APIs) in mobile and Web apps that can
+lead to the compromise of confidential financial or medical data and even the integrity of IoT
+devices [30, 55, 76, 80, 93, 98, 100]. In response, security researchers have developed a wide array of
+techniques and tools for detecting crypto-API misuse [29, 30, 43, 59, 60, 76–78, 80, 81, 94, 97] that
+can be integrated into the software development cycle, thereby preventing vulnerabilities at the
+source. These crypto-API misuse detectors, orcrypto-detectors, play a crucial role in the security of
+end-user software.
+Crypto-detectors have been independently used by developers for decades [14]. They are inte-
+grated into IDEs (e.g.,the CogniCrypt plugin for Eclipse [ 22]), incorporated in the internal testing
+suites of organizations (e.g.,CryptoGuard [ 76], integrated into Oracle’s testing suite [25]), or are
+currently targeted for commercialization and widespread deployment [ 24, 76]. In fact, several
+crypto-detectors are also being formally provisioned by code hosting services as a way of allowing
+developers to ensure compliance with data security standards and security best-practices (e.g.,
+Github’s CodeScan initiative [35]). Thus, the importance of crypto-detectors in ensuring data secu-
+rity in modern Web and mobile software cannot be overstated, as key stakeholders (i.e.,researchers,
+code-hosting services, app markets, and developers) are increasingly reliant on them. However,
+what is concerning is that while stakeholders are optimistically adopting crypto-detectors,we
+know very little regarding their actual effectiveness at finding crypto-API misuse. That is, beyond
+manually-curated benchmarks, there is no approach forsystematicallyevaluating crypto-detectors.
+This example in Listing 1 illustrates the gravity of this problem:
+1String a = " DES " ; Cipher c = Cipher . getInstance ( a ) ; c . init ( Cipher . ENCRYPT_MODE , k , iv ) ;
+2byte enc = c . DoFinal ( text ) ;
+Listing 1. Instantiating “DES” as a cipher instance.
+In this example, we define DES as our algorithm of choice, and instantiate it using the getInstance
+API from Cipher. Given that DES is not secure, one would expect any crypto-detector to detect this
+relatively straightforward misuse. However, two very popular crypto-detectors,i.e.,Tool𝑋 1 (used by
+over 3k+ open source Java projects), and QARK [62] (promoted by LinkedIn and recommended in
+security testing books [48, 49, 57]), are unable to detect this trivial misuse case as we discuss later in
+the paper. Further, one might consider manually-curated benchmarks (e.g.,CryptoAPIBench [ 1], or
+the OWASP Benchmark [70]) as practical and sufficient for evaluating crypto-detectors to uncover
+such issues. However, given the scale and diversity of crypto protocols, APIs, and their potential
+misuse, benchmarks may be incomplete, incorrect, and impractical to maintain;e.g.,the OWASP
+benchmark considered using ECB mode with DES as secure until it was reported in March 2020 [71].
+Thus, it is imperative to address this problem through a reliable and evolving evaluation technique
+that scales to the volume and diversity of crypto-API misuse.
+In this paper, we describe the first systematic, data-driven framework that leverages the well-
+founded approach of Mutation Analysis for evaluating Static Crypto-API misuse detectors – the
+MASCframework, pronounced asmask. Stakeholders can useMASCin a manner similar to the
+typical use of mutation analysis in software testing:MASCmutatesAndroid/Java apps by seeding
+them withmutants,i.e.,code snippets exhibiting crypto-API misuse. These mutated apps are then
+analyzed with the crypto-detector that is the target of the evaluation, resulting in mutants that
+1We have anonymized this tool in the paper as requested by its developers.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 3 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 3
+areundetected, which when analyzed further reveal design or implementation-level flaws in the
+crypto-detector. To enable this workflow for practical and effective evaluation of crypto-detectors,
+MASCaddresses three keyresearch challenges(RCs) arising from the unique scale and complexity
+of the problem domain of crypto-API misuse:
+RC1:Taming the Complexity of Crypto-API Misuse -An approach that effectively evaluates crypto-
+detectors must comprehensively express (i.e.,test with) relevant misuse casesacross all existing
+crypto-APIs, which is challenging as crypto-APIs are as vast as the primitives they enable. For
+instance, APIs express the initialization of secure random numbers, creation of ciphers for encryp-
+tion/decryption, computing message authentication codes (MACs), and higher-level abstractions
+such as certificate and hostname verification for SSL/TLS.
+RC2:Instantiating Realistic Misuse Case Variations -To evaluate crypto-detectors, codeinstances
+of crypto-API misuse must be seeded into apps for analysis. However, simply injecting misuse
+identified in the wildverbatimmay not lead to a robust analysis, as it does not express the variations
+with which developers may use such APIs. Strategic and expressiveinstantiationof misuse cases is
+critical for an effective evaluation, as even subtle variations may evade detection, and hence lead to
+the discovery of flaws (e.g.,passingDESas a variable instead of a constant in Listing 1).
+RC3:Scaling the Analysis -Efficiently creating and seeding large numbers ofcompilablemutants
+without significant manual interventionis critical for identifying as many flaws in crypto-detectors
+as possible. Thus, the resultant framework must efficiently scale to thousands of tests (i.e.,mutants).
+To address these research challenges, this paper makes the following major contributions in its
+conference version of the paper S&P’22 [5]:
+• Crypto-API Misuse Taxonomy:We construct the first comprehensive taxonomy of crypto-
+API misuse cases (105cases, grouped into nine clusters), using a data-driven process that
+systematically identifies, studies, and extracts misuse cases from academic and industrial
+sources published over the last20years. The taxonomy provides a broad view of the problem
+space, and forms the core building block forMASC’sapproach, enabling it to be grounded in
+real misuse cases observed in the wild (RC1).
+• Crypto-Mutation Operators and Scopes:We contextualize mutation testing for evaluating
+crypto-detectors by designing abstractions that allow us to instantiate the misuse cases
+from the taxonomy to create a diverse array of feasible (i.e., compilable) mutants. We begin
+by formulating a threat model consisting of 3 adversary-types that represent the threat
+conditions that crypto-detectors may face in practice. We then designusage-based mutation
+operators,i.e.,general operators that leverage the common usage characteristics of diverse
+crypto-APIs, to expressively instantiate misuse cases from the taxonomy (addressesRC 2).
+Similarly, we also design the novel abstraction ofmutation scopesfor seeding mutants of
+variable fidelity to realistic API-use and threats.
+• TheMASCFramework:We implement theMASCframework for evaluating Java-based
+crypto-detectors, including19mutation operators that can express a majority of the cases
+in our taxonomy, and 3 mutation scopes. We implement the underlying static analysis to
+automatically instantiate thousands ofcompilablemutants, with manual effort limited to
+configuring the mutation operators with values signifying the misuse (RC3).
+• Empirical Evaluation of Crypto-Detectors:We evaluate9major crypto-detectors using
+20, 303mutants generated byMASC, and reveal19previously unknown flaws (several of
+which are design-level). A majority of these discoveries of flaws in individual detectors (i.e.,
+45/76 or 59.2%) are due to mutation (vs. being unable to detect the base/verbatim instantiations
+of the misuse case). Through the study of open source apps, wedemonstrate that the flaws
+uncovered byMASCare serious and would impact real systems. Finally, we disclose our findings
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 4 ---
+4 Amit et al.
+to the designers/maintainers of the affected crypto-detectors, and further leverage these
+communication channels to obtaintheir perspectiveson the flaws. These perspectives allow
+us to present a balanced discussion on the factors influencing the current design and testing
+of crypto-detectors, as well as a path forward towards more robust tool.
+This study substantially extends upon the previous work, described as follows:
+• Updating the Taxonomy: By applying the data-driven approach from the S&P’22 [5] paper
+for recent crypto-API misuse reported in industry and academic sources from the year2019
+to2022, we have extended the crypto-API misuse taxonomy. We found 4 new misuse cases
+from literature and removed two redundant/ambiguous misuse case from the taxonomy, thus
+increasing the number of misuse from105to 107 (RC 1).
+• Additional Mutation Operators: Bolstered by our experience of evaluating the crypto-
+detectors from the previous study, we have extended several mutation-operators to facilitate
+better evaluation of crypto-detectors with the goal of finding flaws. Furthermore, we have
+created additional mutation operators, which we used in the extended evaluation of crypto-
+detectors (RC2).
+• Extended Evaluation of Additional crypto-detectors: In this extension, we evaluated five
+crypto-detectors from industry, namely, SonarQube, Snyk, Codiga, DeepSource, and Amazon
+CodeGuru Security). Furthermore, we evaluated the updated versions of all the previously
+evaluated crypto-detectors with the original and additional mutations, except Xanitizer
+and Tool𝑋 . Moreover, we expanded the base applications for mutation by adding15open
+source, visible (at least 200 stars in GitHub) applications from the wild. With the combination
+of new base applications and new mutation operators, we created30 , 236new mutants,
+totaling50 , 539mutants, which we used to evaluate both the new version of previously used
+crypto-detectors, and newly acquired crypto-detectors in this study.
+Additionally, we have made several maintainability and extensibility improvements inMASCframe-
+work over the original implementation of the S&P’22 [ 5] paper, which we detail in Section 8.
+Artifact Release: To foster further research in the evaluation and development of effective cryp-
+tographic misuse detection techniques, and in turn, more secure software, we have released all
+code and data associated with this paper [3].
+2 Motivation and Background
+Insecure use of cryptographic APIs is the second most common cause of software vulnerabilities
+after data leaks [ 95]. To preempt vulnerabilities before software release, non-experts such as
+software developers or quality assurance teams are likely to use crypto-API misuse detectors (or
+crypto-detectors) as a part of the Continuous Integration/Continuous Delivery (CI/CD) pipeline
+(e.g.,Xanitizer [ 97] and ShiftLeft [77] used in GitHub Code Scan [ 35]), quality assurance suites
+(e.g.,SWAMP [92]) or IDEs (e.g.,CogniCrypt [ 59]). Thus, theinability of a crypto-detector to flag
+an instance of a misuse that it claims to detect directly impacts the security of end-user software. We
+illustrate this problem with a motivating example, followed by a threat model that describes the
+adversarial conditions a crypto-detector may face in the wild.
+2.1 Motivating Example
+Consider Alice, a Java developer who uses CryptoGuard [76], a state-of-the-art crypto-detector, for
+identifying cryptographic vulnerabilities in her software before release. In one of her apps, Alice
+decides to use theDEScipher, as follows:
+1String a = " des " ; Cipher c = Cipher . getInstance ( a ) ; c . init ( Cipher . ENCRYPT_MODE ,k , iv ) ;
+2byte enc = c . DoFinal ( text ) ;
+Listing 2. InstantiatingDESas a cipher instance in lower case.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 5 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 5
+This is another instance of the misuse previously shown in Listing 1,i.e.,using the vulnerable DES
+cipher.CryptoGuardis unable to detect this vulnerability as Alice uses " des" instead of "DES" as the
+parameter (see Section 10). However, this is a problem, because the lowercase parameter makes no
+functional difference as Java officially supports both parameter choices. As CryptoGuard does not
+detect this vulnerability, Alice will assume that her app is secure and release it to end-users. Thus, we
+need to systematically identify such flaws, which would allow the maintainers of crypto-detectors
+such as CryptoGuard to promptly fix them, enabling holistic security improvements.
+2.2 Threat Model
+To evaluate crypto-detectors, we first define thescopeof our evaluation, for which we leverage
+the documentation of popular crypto-detectors to understand how they position their tools,i.e.,
+what use cases they target (see [2] for all quotes). For example, Tool𝑋 ’s documentation states that
+it may be used to“ensure compliance with security and coding standards”. Similarly, SpotBugs’s
+Find Security Bugsplugin is expected to be used for“ security audits”[ 82]. Further, CogniCrypt
+states that its analyses“ ensure that all usages of cryptographic APIs remain secure”[ 58], which may
+suggest the ability to detect vulnerabilities in code not produced by the developer, but originating
+in a third-party source (e.g.,external library, or a contractor), whose developer may not be entirely
+“virtuous”. In fact, 8/9 crypto-detectors evaluated in the S&P’22 [5] paper, in addition to all the
+crypto-detectors evaluated in this extended study claim similar cases that demand strong guarantees,
+i.e.,for tasks such as compliance auditing or security assurance that are generally expected to be
+performed by anindependentthird party that assumes the worst, including bad coding practices or
+malpractice [8]. As aptly stated by Anderson [8],“When you really want a protection property to
+hold, it’s vital that the design and implementation be subjected to hostile review”.
+Thus, given that crypto-detectors claim to be useful forhostile-environmentrelated tasks, such
+as compliance audits, it is likely for them to be deployed in adversarial circumstances,i.e.,where
+there is tension between the party that uses a crypto-detector for evaluating software for secure
+crypto-API use (e.g.,markets such as Google Play, compliance certifiers such as Underwriters
+Laboratories (UL) [53]), and the party implementing the software (e.g.,a third-party developer).
+With this context, we define a threat model consisting of three types of adversaries (T1–T3),
+which guides/scopes our evaluation according to the conditions crypto-detectors are likely to face
+in the wild based on their use-case related claims:
+T1 Benign developer, accidental misuse –This scenario assumes a benign developer, such
+as Alice, who accidentally misuses crypto-API, but attempts to detect and address such
+vulnerabilities using a crypto-detector before releasing the software.
+T2 Benign developer, harmful fix –This scenario also assumes a benign developer such as
+Alice who is trying to address a vulnerability identified by a crypto-detector in good faith,
+but ends up introducing a new vulnerability instead. For instance, a developer may not fully
+understand the problem identified by a crypto-detector, such as missing certificate verification
+(e.g.,an empty checkServerTrusted method in a custom TrustManager), and address it with
+an inadequate Stack Overflow fix [86].
+T3 Evasive developer, harmful fix –This scenario assumes a developer whose goal is to finish
+a task as quickly or with low effort (e.g.,a third-party contractor), and is hence attempting
+topurposefullyevade a crypto-detector. Upon receiving a vulnerability alert from a crypto-
+detector, such a developer may try quick-fixes that do not address the problem, and simply
+hide it (e.g.,hiding the vulnerable code in a class that the crypto-detector does not analyze).
+For example, Google Play evaluates apps by third-party developers to ensure compliance
+with its crypto-use policies, but there is ample evidence of developers seeking to actively
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 6 ---
+6 Amit et al.
+violate these policies [ 90, 91]. This adversarial scenario is motivated by crypto-detectors
+that makehostile-review related (marketing)strongclaims, such as compliance and security
+audits.
+In fact, as Oltrogge et al. [67] recently discovered that developers have been using Android’s
+Network Security Configurations (NSCs) tocircumvent safe defaults(e.g.,to permit cleartext
+traffic that is disabled by default). Note that we do not consider a developer to abuse known
+limitations, such as documented inclusion of APIs. We elaborate this further in Section 9.
+This threat model, which guidesMASC’sdesign (Section 4), represents that adversarial conditions
+under which crypto-detectors may have to operate in practice, and hence, motivates an evaluation
+based on what crypto-detectorsshould bedetecting. Furthermore, our threat model only considers
+misuse, including evasive (T3), that are within the scope of static analysis,i.e.,misuse that can be
+detected using techniques such as pattern matching, sensitivities (e.g.,taint, flow, context, object,
+field), and/or inter-procedural analysis that can be resolved statically. Techniques outside the
+scope of static analysis,e.g.,reflection, foreign function interface, and values that can only be
+determined at runtime, are considered out of scope in our threat model. Additionally, vulnerable,
+custom implementations of cryptographic algorithms, such as DES-ECB for Java, are considered
+outside the scope of our threat model. However, we note that there may be a gap betweenwhat
+should beandwhat is,i.e.,while crypto-detectors may want to be relevant in strong deployment
+scenarios such as compliance checking, their actual design may not account for adversarial use
+cases (i.e.,T3). Therefore, we balance our evaluation that uses this threat model with a discussion
+that acknowledges all views related to this argument, and especially the tool designer’s perspective
+(Sec. 12).
+3 Related Work
+Security researchers have recently shown significant interest in the external validation of static
+analysis tools [ 11, 15, 28, 50, 72, 74, 99]. Particularly, there is a growing realization that static
+analysis security tools are sound in theory, butsoundy in practice,i.e.,consisting of a core set of
+sound decisions, as well as certain strategic unsound choices made for practical reasons such as
+performance or precision [63]. Soundytools are desirable for security analysis as their sound core
+ensures sufficient detection of targeted behavior, while also beingpractical,i.e.,without incurring
+too many false alarms. However, given the lack of oversight and evaluation they have faced so far,
+crypto-detectorsmay violate this basic assumption behind soundiness and may in fact beunsound,
+i.e.,have fundamental flaws that prevent them from detecting even straightforward instances
+of crypto-API misuse observed in apps. This intuition drives our approach for systematically
+evaluating crypto-detectors, leading to novel contributions that deviate from related work.
+To the best of our knowledge,MASCis the first framework to use mutation testing, combined
+with a large-scale data-driven taxonomy of crypto-API misuse, for comprehensively evaluating
+the detection ability of crypto-detectors to find design/implementation flaws. However, in a more
+general sense, Bonett et al. [15] were the first to leverage the intuition behind mutation testing for
+evaluating Java/Android security tools, and developed the 𝜇SE framework for evaluating data leaks
+detectors (e.g.,FlowDroid [ 10] and Argus [32]).MASCsignificantly deviates from 𝜇SE in terms
+of its design focus, in order to address the unique challenges imposed by the problem domain of
+crypto-misuse detection (i.e.,RC 1 –RC 3 in Sec. 1). Particularly, 𝜇SE assumes that for finding flaws,
+it is sufficient tomanuallydefine "a" security operator and strategically place it at hard-to-reach
+locations in source code. This assumption does not hold when evaluating crypto-detectors as it is
+improbable to cast cryptographic misuse as a single mutation, given that cryptographic misuse cases
+are diverse (RC1), and developers may express the same type of misuse in different ways (RC2). For
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 7 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 7
+example, consider three well-known types of misuse that would require unique mutation operators:
+(1)using DES for encryption (operator inserts prohibited parameter names,e.g., DES),(2)trusting
+all SSL/TLS certificates (operator creates a malformed TrustManager), and(3)using a predictable
+initialization vector (IV) (operator derives predictable values for the IV). In fact, developers may
+even express the same misuse in different ways, necessitating unique operators to express such
+distinctinstances,e.g.,the DES misuse expressed differently in Listing 1 and Listing 2. Thus, instead
+of adopting 𝜇SE’s single-operator approach,MASCdesigns general usage-based mutation operators
+that can expressively instantiate misuses from our taxonomy of 107 misuses. In a similar manner,
+MASC’scontextualized mutation abstractions (i.e.,for evaluating crypto-detectors) distinguish it
+from other systems that perform vulnerability injection for C programs [27], discover API misuse
+using mutation [34, 96], or evaluate static analysis tools for precision using handcrafted benchmarks
+or user-defined policies [72, 74].
+Finally, the goal behindMASCis to assist the designers of crypto-detectors [ 22, 29, 30, 58, 59] in
+identifying design and implementation gaps in their tools, and hence,MASCis complementary to the
+large body of work in this area. Particularly, prior work provides rule-sets or benchmarks [17, 18]
+consisting of a limited set of cryptographic “bad practices” [16], or taxonomies of smaller subsets (e.g.,
+SSL/TLS misuse taxonomy by Vasan et al. [66]), or examines the precision of crypto-detectors [19].
+However, we believe that ours is the first systematically-driven and comprehensive taxonomy of
+crypto-APImisuse, which captures 107 cases that are further expanded upon into numerous unique
+misuse instances throughMASC’soperators. Thus, relative to prior handcrafted benchmarks,MASC
+can thoroughly test detectors with a far more comprehensive set of crypto-misuse instances.
+4 theMASCFramework
+We propose a framework for Mutation-based Analysis of Static Crypto-misuse detection techniques
+(orMASC). Fig. 1 provides an overview of theMASCframework. As described previously (RC 1),
+cryptographic libraries contain a sizable, diverse set of APIs, each with different potential misuse
+cases, leading to an exponentially large design space. Therefore, we initializeMASCby developing
+adata-driven taxonomy of crypto-API misuse, which grounds our evaluation in a unified collection
+of misuse cases observed in practice (Sec. 5).
+The misuse cases in the taxonomy must beinstantiatedin anexpressive mannerto account for
+the diverse ways for expressing a misuse,i.e., misuse instances, that crypto-detectors may face in
+practice. For example, we previously described two ways of encrypting with DES: (1) providing DES
+as a variable in Cipher.getInstance(<parameter>) (Listing 1), or (2) using it in lowercase (Listing 2),
+which both represent something a benign developer might do (i.e.,threatT1). To represent all such
+instances without having to hard-code instantiations for every misuse case, we identifyusage-
+characteristicsof cryptographic APIs (particularly, in JCA), and leverage them to definegeneral,
+usage-based mutation operators,i.e.,functions that can create misuse instances (i.e., mutants) by
+instantiating one or more misuse cases from the taxonomy (Sec. 6).
+Upon instantiating mutants by applying our mutation operators to the misuse cases from the
+taxonomy,MASCseeds,i.e.,injects, the mutants into real Java/Android applications. The challenge
+here is to seed the mutants at specific locations that reflect the threat scenarios described in Sec. 2.2,
+because crypto-detectors may not only face various instances of misuse cases, but also variations in
+wherethe misuse instances appear,e.g.,evasive (T3) developers may attempt to actively hide code
+to evade analysis. Thus, we define the abstraction ofmutation scopesthat place the instantiated
+mutants at strategic locations within code, emulating practical threat scenarios (Sec. 7). Finally, we
+analyze thesemutated appsusing the target crypto-detector for evaluation (Sec. 9), which results in
+undetected mutantsthat can be then inspected to uncover design or implementation flaws (Sec. 10).
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 8 ---
+8 Amit et al.
+Crypto-API Misuse TaxonomyData-Driven
+Taxonomy Generation
+Misuse Sources
+Research
+Papers
+Industry
+Tools
+Advisories …
+Open Source 
+Apps
+source 
+code
+ Mutation 
+Operators 
+Mutation 
+Scopes
+misuse cases
+Target
+Crypto-detector
+Mutated 
+App(s) 
+analyze
+apps
+uncaught
+ mutants
+Design/
+Implementation
+ﬂaws
+Creating mutants
+Evaluating tools
+Fig. 1. A conceptual overview of the MASC framework.
+5 Taxonomy of Cryptographic Misuse
+To groundMASCin real cases of crypto API misuses, we systematically developed a taxonomy that
+provides a unified perspective of previously-known crypto-API misuse. Particularly, we focus on
+identifying instances of crypto-API misuse in the popular and ubiquitous Java ecosystem, as most
+crypto-detectors that we seek to evaluate were designed to analyze Java/Android apps.
+As crypto-API misuse has been widely studied, it is likely that a majority of the misuse cases
+that we are interested in codifying are already present in existing literature. Therefore, our method-
+ology identifies crypto-API misuses in existing artifacts sourced from both industry and academia,
+following Kitchenham et al. ’s [56] guidelines for identifying relevant artifacts, as well as Petersen
+et al. ’s [73] recommendations for constructing a systematic mapping, in three main steps:(1)identi-
+fying information sources,(2)defining the search, inclusion, and exclusion criteria for identifying
+artifacts, and(3)extracting misuse cases from artifacts and clustering them for ease of representa-
+tion and extensibility. Two authors executed this methodology and created the taxonomy illustrated
+in Fig. 2. Data from each step is provided in the original artifact [2].
+5.1 Identifying Information Sources
+We considered information sources from both academia and industry. More specifically, we con-
+sidered the proceedings of top-tier venues in security and software engineering (i.e.,USENIX
+Security, ACM CCS, IEEE S&P, NDSS, ICSE, ASE, FSE),published after 1999, i.e., in the last 20
+years. Moreover, we also performed a thorough search for relevant keywords (Sec. 5.2) in digital
+libraries,i.e.,the ACM Digital Library, IEEE Explore, and Google Scholar, which aided in identifying
+artifacts that may have fallen outside the top conferences. Finally, to incorporate sources outside
+academia, we studied guidelines from the Open Web Application Security Project (OWASP) [69],
+and documentation of several industry tools.
+5.2 Search, Inclusion, and Exclusion Criteria
+We select artifacts from the identified sources using a keyword-based search with precise inclu-
+sion/exclusion criteria. We defined 3 classes of keyword phrases and enumerated several keyword
+combinations for each class, drawing from domain expertise and a random sample of artifacts.
+To decide whether to consider an artifact for further analysis, we defined a simpleinclusion
+criterion, that the artifact should discuss crypto API misuse or its detection. We also defined
+anexclusion criterion,i.e.,that the crypto-API misuse described by the artifact relates to a
+programming environment outside the Java ecosystem, was published prior to 1999, or does not
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 9 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 9
+* CBC is not secure in TLS/client-server context; + applicable in speciﬁc situations; some misuse are newer compared to other in same cluster, # PKCS5 suggestion based
+Compromising Public-key Crypto  (15)
+Compromising Secret Keys (9)
+API/Program Speciﬁc Misuses (20)
+Small Key Size
+1. Using RSA with < 1024 bit key (7)
+2.Using RSA with < 2048 bit key  (7) +
+3.ECC < 224 bit (3)
+Weak Algorithm
+4.Using RSA with CBC (1)
+5.Using RSA with no padding (6)
+6.Using RSA with PKCS1 padding for encryption (5)
+Weak SSL Protocol
+7. Using weak SSL context 
+{SSLContext.getInstance(“SSL”)} (1)
+8.Using SSL and not using TLS as context (2)
+9.Using SSLV3 (2)
+10. Using SSLV2 (2)
+11. HMAC for TLS with SHA1 (2)
+12.HMAC for TLS with MD5 (1)
+13. Using CBC for SSL/TLS with AES for encryption (1) *
+14. Using TLS < v 1.1 (4)
+15. Using TLS < v 1.2 (2)
+Compromising Symmetric Cipher (27)
+Insufﬁcient Key Size
+71. Using AES with < 128 bit key (3)
+72. Using RC2 with < 64 bits (1)
+73. Using Blowﬁsh with less than 128 bit key (2)
+Insufﬁcient Number of Iterations/Cycles
+74. Using < 500 iterations for PBE (2) 
+75. Using < 1000 iterations for PBE (15)
+Using Unsafe Mode
+76. Using ECB for symm. encryp. with AES (6) ✔
+77. Using AES with CBC for encryption with 
+PKCS5Padding (2)
+78. Using Electronic Code Book Mode (ECB) for 
+encryption (19) ✔
+79. Using AES with CBC for Encryption * (4)
+80. Using DESede with ECB (1)
+81. Using DES with CBC3 SHA (1)
+82. Using CBC without HMAC (1)
+83. Using 3DES with EDE CBC SHA (1)
+84. Using non-random IV in Cipher Block Chaining 
+(CBC) for encryption (10)
+Using Non-Random Salt
+85. Using constant salts for PBE (18)
+86. Static/Reusing IV (9) ✔
+87. Zeroed IV (2)
+Unsafe Algorithm Usage
+88. Using RC2 for symmetric encryption (9)
+89. Using NullCipher to encrypt plain text (1)
+90. Using Blowﬁsh Algorithm for Encryption (8)
+91. Using 3DES/DESEDE for encryption (5)
+92. Using RC4 (6)
+93. Using IDEA Algorithm for Encryption  (5)
+94. Using DES for encryption (14) ✔
+95. Using EXP1024 for ciphers (1)
+96. Using Seed Cipher (1)
+97.Reusing Key with Stream Cipher (1)
+Compromising Communication Secrecy 
+with Intended Receiver  (6)
+Communication Secrecy Compromised
+29. Use of a key past its expiration date (1)
+30. HTTP and HTTPs mixing (8)
+31. Key Exchange without Entity Authentication (2)
+32. Improper Check for Certiﬁcate Revocation (1) ✔
+33. Improper Validation of Certiﬁcate with Host 
+Mismatch (2) ✔
+34. Untrusted CA Signed Certiﬁcate (1) ✔
+API/Program Speciﬁc
+35.Apache HTTPClient no host veriﬁcation (1)
+36.Gnutls_certificate_verify_peers2 returns 0 when 
+self signed certiﬁcate (1)
+37. Constant password for android keystore (2)
+38. JSSE checkTrusted method does not check identify if the 
+algorithm ﬁeld is null or empty string (1) ✔
+39. Android Webview incorrect certiﬁcate veriﬁcation (2)
+40.Java defaults to ECB for encryption with “AES" ✔
+41. Weberknecht does not have host veriﬁcation (1)
+42. Using DefaultHttpClient (due to no TLSv1.2) (1)
+43. ignoring onReceivedSSLError (3)
+44.SSLSocketFactory without verifying Hostname (3)
+45. Reusing counter value in encryption (2)
+46. Apache HttpHost data allows mixed schemes (1)
+47. Using obsolete algorithm (11) ✔
+48. Storing sensitive data in Java String (5)
+49. Using Socket class directly for connection (1)
+50.Using unencrypted ServerSocket class (1)
+51. No clearPassword call after using PBEKeySpec (2)
+52.PBEKeySpec initialized without salt (2)
+53. Using PBEWithMD5andDES with SecretKeyFactory (1)
+54.Using ESAPI Encryptor (1)
+Secret Key Misuses
+55. Using low entropy seeds in key generation (2)
+56. Password-Based Key Derivation Function (PBKDF) 
+Using < SHA224 (1)
+57. Not using Salts while hashing passwords (1)
+58. PBKDF Using MD5  (3)
+59. PBKDF Using MD2 (2)
+60. Using Secret Key with IV generated w/o secure 
+random number generator (1)
+61. Using hardcoded key/password (9)
+62. Using Constant Encryption Key (16)
+63. Using < 64bit salt for password (4)
+Compromising Randomness (5)
+Misuse of Randomness
+98. Bad derivation of IV (ﬁle/text) for encryption (6) ✔
+99. Low entropy in key generation/ RNG (3) 
+100. Using static seeds for Secure RNG (14) ✔
+101. Not using Secure (Pseudo) RNG (10) ✔
+102. Using Setseed (3) ✔
+Compromising Integrity through 
+Improper Checksum Use  (7)
+Compromised Checksums
+64. Hashing credentials - MD5 (11) ✔
+65. Hashing Credentials - MD4 (7)
+66. Hashing Credentials - MD2 (9)
+67. Obsolete Hash Algorithm (7) ✔
+68. Hashing Credentials - SHA1 (12)
+69. Hashing Credentials - SHA224 (1)
+70. Using a custom MessageDigest instead of relying 
+on the SHA-224 (1)
+Unclustered (5)
+103. Inscure pinning  with ambiguous values  (3)
+104. Trusting Self-signed Certiﬁcates (2) +
+105. Using unencrypted socket (1)
+106. Using export quality ciphers (1)
+107. Using stateless encryption without unique IV (1)
+Compromising Authentication (13)
+Compromised Checksums
+25. Digital Signature Hashes - MD4
+26. Digital Signature Hashes - MD5 (5)
+27. Digital Signature Hashes - MD2 (4)
+28. Digital Signature Hashes - SHA1 (5)
+Weak Certiﬁcate Management
+16. Improper certiﬁcate validation expiry check (2) ✔
+17. Trusting all certiﬁcates (8) ✔
+18. Missing certiﬁcate validation (4) ✔
+19. Improper following of a cert’s chain of trust (1) ✔
+Weak Hostname Management
+20. Allowing all hostnames (11) ✔
+21. Using Default hostname veriﬁer (1) +
+Key Signing Misuses
+22. Low entropy with DSA (1)
+23. Low entropy with ECDSA (1)
+24. Using < 1024 bit DSA (2)
+Fig. 2. The derived taxonomy of cryptographic misuses. ( 𝑛) indicates misuse was present across 𝑛 artifacts. A
+✓indicates that the specific misuse case was instantiated with MASC’s mutation operators for our evaluation
+(Sec. 9). New misuse cases found as part of this extension are highlighted in Blue. Specific misuse IDse.g.,M 𝑛
+in text refers to𝑛th entry, i.e.,M 1 refers to 1st entry, Using RSA with <1024 bit key.
+contain relevant information. Following this methodology, we short-listed 40 artifacts for misuse
+extraction,i.e.,35from academia and5from industry. Note that we count multiple documents for
+a single industry tool as one artifact.
+5.3 Misuse Extraction and Clustering
+Two authors independently extracted, described, and grouped individual misuse cases from the 40
+artifacts. More specifically, each identified misuse case was labeled using a specifically designed
+data extraction form (see online appendix [ 3] for Figure). Note that since our search included
+crypto-API misuse from over 20 years, specific API-misuse were introduced over time as part of
+cryptographic-hardening,e.g., using RSA with < 1024 bit key (M 1)was disallowed earlier (2013),
+whereasusing RSA with < 2048 bit key (M 2)became disallowed in 2019. We include all such instances
+separately in the taxonomy as they are found in the sources. We consider adding all such misuse as
+found necessary to reflect the state of divergence. For example, some sources explicitly mention
+using AES with ECB as a misuse (M76). In contrast, some sources mention only using ECB as an
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 10 ---
+10 Amit et al.
+unsafe mode of operation (M78), even though historically, ECB is used as a placeholder with the
+RSA in public-key cryptography for Java. Similarly, several misuse cases came up relatively fewer
+number of times, such asM 3 was found only thrice in the information sources. Hence, we include
+the number of times we found a particular misuse in parenthesis beside each entry in the taxonomy,
+which readers may consider when going through the taxonomy. Following this process, the two
+authors met and resolved disagreements, to eventually identify107 unique misuse cases.
+Such a large set of misuse cases could prove intractable for direct analysis or extension. Hence,
+we constructed acategorizedtaxonomy by grouping the discovered misuse cases intosemantically
+meaningful clusters. Each author constructed the clusters as per two differentiating criteria:(1)the
+security goal/propertyrepresented by the misuse cases (e.g.,secrecy, integrity, non-repudiation),
+and(2)itslevel of abstraction(i.e.,specific context) within the communication/computing stack
+(e.g.,confidentiality in general, or confidentiality with respect to SSL/TLS). The two authors met
+and reached agreement on a taxonomy consisting of105 misuse casesgrouped intonine semantic
+clusters, as shown in Fig. 2 in the S&P’22 [5] paper. The process of taxonomy generation took over
+two person-monthseffort.
+5.4 Extending the Taxonomy
+To expand the taxonomy of crypto-API misuse cases for the current iteration of our work, we
+applied the existing methodology, covering information sources from both academia and industry,
+specifically focusing within the year range 2019 - 2022. Additionally, we manually went through
+the Common Weakness Enumeration (CWE) database to identify crypto-API misuse cases. As a
+result, we were able to identify 4 crypto-API misuse cases from 19 additional information sources,
+as highlighted in blue color in the Taxonomy (Figure 2).
+6 Usage-based Mutation Operators
+In designing our mutation operators, we must balance the dichotomous tradeoff between represent-
+ing as many misuse cases (and their corresponding variations) as possible, while creating a tractable
+number of operators that can be reasonably maintained in the future. Thus, building a large set of
+hard-coded operators that are tightly coupled with specific misuse cases would be infeasible from
+an engineering/maintenance perspective. Further, to discover new issues in crypto-detectors, these
+operators should not exploit general soundiness-related [63, 79]) limitations, such as dynamic code
+execution and implicit calls. Therefore, we seek to build operators that are general enough to be
+maintainable, provide expressive instantiation of several misuse cases guided by the threat model
+in Section 2.2, and without focusing on specific static analysis technique or soundiness issues.
+We define the abstraction ofusage-based mutation operators, inspired by a key observation:
+misuse cases that are unrelated in terms of the security problem may still be related in terms ofhow
+the crypto APIs corresponding to the misuse cases are expected to be used. Thus, characterizing the
+common usage of crypto APIs would allow us to mutate that characterization and define operators
+that apply to multiple misuse cases, while remaining independent of the specifics of each misuse.
+Common Crypto-API Usage Characteristics: We identified two common patterns in crypto-
+API usage by examining crypto-API documentation from JCA, and our taxonomy, which we term
+as(1)restrictiveand(2)flexibleinvocation. To elaborate, a developer can only instantiate certain
+objects by providing values from a predefined set, hence the namerestrictiveinvocation;e.g.,for
+symmetric encryption with the Cipher.getInstance(<parameter>) method, JCAonlyaccepts prede-
+fined configuration values for the algorithm name, mode, and padding, in String form. Conversely,
+JCA allows significant extensibility for certain crypto APIs, which we term asflexibleinvocation;
+e.g.,developers can customize the hostname verification component of the SSL/TLS handshake
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 11 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 11
+by creating a class extending the HostnameVerifier, and overriding its verify method, withany
+content. We leverage these notions ofrestrictive&flexibleusage to define our operator types as
+follows, with examples in the Appendix A, referred as Listings. We encourage the readers to check
+Table 1 and Table 2 to see concrete use cases of these operators in Section 10.
+6.1 Operators based on Restrictive Crypto API Invocation
+Our derived taxonomy indicates that several parameter values used in restrictive API invocations
+may not be secure (e.g., DES, or MD5). Therefore, we designed mutation operators (OPs) that
+apply a diverse array of transformations to such values and generate API invocations that are
+acceptable/compilable as per JCA syntax and conventions, but not secure.
+OP1:Atypical case–This operator changes the case of algorithm specification misuse to an
+atypical form (e.g.,lowercase), and represents accidental misuse/typos by developers,e.g.,Listing 2.
+OP2:Weak Algorithm in Variable–This operator represents the relatively common usage
+ofexpressing API arguments in variablesbefore passing them to an API, and can be applied to
+instantiate all misuse cases that are represented by restrictive API invocations,e.g.,Listing 1.
+OP3:Explicit case fix–This operator instantiates misuse using the atypical case for an argument
+(e.g.,algorithm name) in a restrictive API, as seen inOP 1, while explicitlyfixingthe case.
+OP4:Removing noise–This operator extendsOP 3 by defining more complex transformations
+than simple case changes, such as removing extra characters or "noise" present in the arguments.
+OP5:Method chains–This operator performs arbitrary transformations (e.g.,among those
+inOP 1 –OP 4) on the restricted argument string, but splits the transformation into a chain of
+procedure calls, thereby hiding the eventual value (Listing 3).
+1Class T { String algo = " AES / CBC / PKCS5Padding " ;
+2T mthd1 () { algo = " AES " ; return this ;} T mthd2 () { algo = " DES " ; return this ;} }
+3Cipher . getInstance ( new T () . mthd1 () . mthd2 () ) ;
+Listing 3. Method Chaining (OP 5).
+OP6:Predictable/Non-Random Derivation–This operator emulates deriving a random
+value (i.e.,instead of using a cryptographically-secure random number generator), by performing
+seemingly complex operations resulting in a predictable value and then using the derived value to
+obtain other cryptographic parameters, such as IVs (Listing 5).
+We relied on theT3threat model while creating additional mutation operators in this extension
+for two reasons. First, our S&P’22 [5] paper demonstrated that the crypto-API misuse casesMASC
+creates is similar to misuse cases found in the wild. However, the real-life misuse cases can be based
+on more complex abstractions while still being statically analyzable [ 64]. Second, practitioners
+expect SASTs, including crypto-detectors, to report any vulnerabilities that fall within the scope of
+program analysis techniques [6]. Considering these, we extended several of the existing mutation
+operators ofMASCand created additional mutation operators to further improve the evaluation
+capabilities ofMASC. Next, we discuss the mutation-operators built for this extension.
+OP13:Iterative Method Chaining–ExtendingOP 5, this operator takes a user-specified,
+arbitrary number (𝑛) and creates 𝑛 methods to be used in chains. to analyze the internal limits of
+crypto-detectors when following a method chain (Listing 20).
+OP14:Iterative Nested Conditionals–ExtendingOP 13, this operator creates nested conditionals
+based on user-specified, arbitrary number. The resulting misuse consists of two nested branches.
+The "true" branch always returns an insecure parameter after traversing, whereas the other returns
+a secure parameter (Listing 21).
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 12 ---
+12 Amit et al.
+OP15:Method Builder–This operator breaks down a crypto-API String parameter into a chain
+of method calls. It then creates a concatenation method that invokes the character containing
+methods to chain together the string parameter (Listing 22).
+OP16:Object Sensitivity–To evaluate object sensitivity of a crypto-detector, this operator
+creates two objects, varA and varB, with secure and not-secure values in variables respectively, after
+which the latter is assigned to the former (Listing 23).
+OP17:Build Variable–This operator breaks a pre-specified value to a character array and
+passes it to a target crypto API while using thetoString()method (Listing 24).
+OP18:Substring–This operator creates a random string containing vulnerable value,e.g.,
+''HelloWorldDES''. Next, it uses the substring method to extract the insecure parameter from the
+original string and passes it to the target crypto-API (Listing 25).
+OP19:Constant Value Derivation–Similar toOP 6, it derives a constant/predictable value,
+without using any complex operations (Listing 26).
+6.2 Operators based on Flexible Crypto API Invocations
+In contrast with restrictive APIs, Java allows several types of flexible extensions to crypto APIs
+represented by interfaces or abstract classes,only enforcing typical syntactic rules, with little control
+over what semantics developers express. Thus, we consider three particular types of flexible
+extensions developers may make and ourOPsmay emulate, in the context of API misuse cases that
+involve flexible invocations:(1)method overriding,(2)class extension, and(3)object instantiation.
+6.2.1 Method Overriding.Crypto APIs are often declared as interfaces or abstract classes contain-
+ing abstract methods, to facilitate customization. These abstract classes provide a fertile ground
+for defining mutation operators with a propensity for circumventing detectors (i.e.,considering
+threatsT3).
+OP7:Ineffective Exceptions–If the correct behavior of a method is to throw an exception,
+such as invalid certificate, this operator creates misuse instances of two types:(1)not throwing any
+exception, and(2)throwing an exception within a conditional block that is only executed when a
+highly unlikely condition is true,e.g.,Listing 6.
+OP8:Ineffective Return Values–If the correct behavior of a method is to return a specific value
+to denote security failure, this operator modifies the return value to create two misuse instances:(1)
+if the return type is boolean, return a predefined value that weakens the crypto, or returnnull, and
+(2)introduce a condition block that will always, prematurely return a misuse-inducing value before
+the secure return statement is reached. Contrary toOP 7, this operator ensures that the condition
+will always return the value resulting in misuse (Listing 7).
+OP9:Irrelevant Loop–This operator adds loops thatseem to performsecurity checks before
+returning a value, but in realitydo nothing to change the outcome(Listing 13).
+6.2.2 Class Extension.Creating abstractions on top of previously-defined crypto classes is fairly
+common;e.g.,the abstract class X509ExtendedTrustManager implements the interface X509Trust-
+Manager in the JCA, and developers are expected to extend/implement both these to customize
+certificate verification. Similarly, developers may create abstract subtypes of an interface or abstract
+class;e.g.,Listing 8 (Appendix A), Our next set of operators is motivated by this observation:
+OP10:Abstract ExtensionwithOverride–This operator creates an abstract sub-type of the
+parent class (e.g.,Listing 8), but this time, overrides the methodsincorrectly,i.e.,adapting the
+techniques inOP 7 –OP 9 for creating various instances of misuse.
+OP11:Concrete ExtensionwithOverride–This operator creates a concrete class based on a
+crypto API,incorrectlyoverriding methods similar toOP 10.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 13 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 13
+6.2.3 Object Instantiation Operators.In Java, objects can be created by calling either the default or
+a parametrized constructor, while possibly overriding the properties of the object through Inner
+class object declarations. We leverage these properties to createOP 12 as follows:
+OP12:Anonymous Inner Object–Creating an instance of a flexible crypto API through
+constructor or anonymous inner class object is fairly common, as seen for HostnameVerifier in
+Oracle Reference Guide [68] and Android developer documentation [9], respectively. Similarly, this
+operator creates anonymous inner class objects from abstract crypto APIs, and instantiates misuse
+cases by overriding the abstract methods usingOP 7 –OP 9 (Listing 9).
+MASC’s19operators are capable of instantiating68/107( ≈ 64%), misuse cases distributed across
+all9semantic clusters. This indicates thatMASC’soperators can express adiverse majorityof misuse
+cases, signaling a reasonable trade-off between the number of operators and their expressivity. Of
+the remaining 39 cases that our operators do not instantiate, 16 are trivial to implemente.g.,using
+AES with < 128 bit key in Listing 16. Finally, 22 cases (≈ 21%) would require a non-trivial amount
+of additional engineering effort;e.g.,designing an operator that uses a custom MessageDigest
+algorithm instead of a known standard, such as SHA-3, would require implementing a custom
+hashing algorithm.
+7 Threat-based Mutation Scopes
+We seek to emulate the typical placement of vulnerable code by benign (T1,T2), and evasive (T3)
+developers, for which we design threemutation scopes:
+1.MainScope: Themain scopeis the simplest of the three, and seeds mutants at the beginning of
+the main method of a simple Java or Android template app developed by the authors (i.e.,instead of
+the real, third-party applications mutated by the other two scopes). This specific seeding strategy
+ensures that the mutant would always be reachable and executable, emulating basic placement by
+a benign developer (T1,T2).
+2.SimilarityScope: Thesimilarity scopeseeds security operators at locations in a target appli-
+cation’s source code where a similar API is already being used,i.e.,akin to modifying existing
+API usages and making them vulnerable. Hence, this scope emulates code placement by a typical,
+well-intentioned, developer (T1,T2), assuming that the target app we mutate is also written by a
+benign developer. This helps us evaluate if the crypto-detector is able to detect misuse atrealistic
+locations.
+3.ExhaustiveScope: As the name suggests, this scopeexhaustivelyseeds mutants atall locations
+in the target app’s code,i.e.,class definitions, conditional segments, method bodies and anonymous
+inner class object declarations. Note that some mutants may not be seeded in all of these locations;
+e.g.,a Cipher.getInstance(<parameter>) is generally surrounded by try-catch block, which cannot
+be placed at class scope. This scope emulates placement by an evasive developer (T3).
+8 Implementation
+The first iteration ofMASC, as discussed in our S&P’22 [ 5] paper, involved three components,
+namely,(1)selecting misuse cases from the taxonomy for mutation,(2)implementing mutation
+operators that instantiate the misuse cases, and(3)seeding/inserting the instantiated mutants in
+Java/Android source code at targeted locations.
+1. Selecting misuse cases from the Taxonomy: We chose22misuse cases from the taxonomy
+for mutation withMASC’s19operators (indicated by a ✓ in Fig. 2), focusing on ensuring broad
+coverageacross our taxonomy as well as on theirprevalence,i.e.,prioritizing misuse cases that
+are discussed more frequently in the artifacts used to construct the taxonomy, and which most
+crypto-detectors can be expected to target, while being influenced by the key observation in
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 14 ---
+14 Amit et al.
+Section 6,i.e.,APIs that are unrelated may still be related in how they are invoked. To elab-
+orate, consider the misuse instances of Cipher.getInstance(<parameter>) and MessageDigest.-
+getInstance(<parameter>). As string-based restrictive APIs, they are representatives or compo-
+nents of several additional clusters, such as Weak SSL protocol (e.g.,M 7-M15, instantiated us-
+ing Mac.getInstance(<parameter>), and SSLContext.getInstance(<parameter>)), Weak Algorithm
+(e.g.,M 4-M6 using Cipher.getInstance(<parameter>)) from Compromising Public-key Crypto
+cluster, Compromised Checksums (e.g.,M 25-M28 using MessageDigest.getInstance(<parameter>))
+from Compromising Authentication cluster, Compromising Secret Keys (e.g.,M 56,M 58,M 59 us-
+ing Factory.getInstance(<parameter>)), Compromising Integrity through Improper Checksum
+Use cluster (e.g.,M 64-M69) using MessageDigest.getInstance(<parameter>), and Unsafe algorithm
+usage (e.g.,M 88-M96 using Cipher.getInstance(<parameter>)) from Compromising Symmetric Ci-
+pher cluster. If a crypto-detector can not detect an identically mutated set of misuse instances
+based on both Cipher.getInstance(<parameter>) and MessageDigest.getInstance(<parameter>),
+we infer this due to a design flaw. That is, as the target detector applies the same/similar de-
+tection techniques, it would be unable to detect mutants that are based on similar, restrictive
+APIs, such as Mac.getInstance(<parameter>), SecretKeyFactory.getInstance(<parameter>), and
+SSLContext.getInstance(<parameter>). Otherwise, it is likely that the disparate detection of simi-
+larly mutated misuse instances is due to an implementation flaw. This approach lets us detect both
+flaws tied to specific APIs and generic patterns of flaws that are not necessarily tied to specific
+APIs, which we later elaborate on in Section 10.
+2. Implementing mutants: The mutation operators described in Sec. 6 are designed to be applied
+to one or more crypto APIs, for instantiating specific misuse cases. To ensure compilable mutants
+by design,MASCcarefully considers the syntactic requirements of the API being implemented (e.g.,
+the requirement of a surrounding try-catch block with appropriate exception handling), as well
+as the semantic requirements of a particular misuse being instantiated, such as the need to throw
+an exception only under a truly improbable condition (e.g.,as expressed inOP 7).MASCuses Java
+Reflection to determine the “syntactic glue” for automatically instantiating a compilable mutant,i.e.,
+exceptions thrown, requirements of being surrounded by a try-catch block, the need to implement a
+certain abstract class and certain methods, etc.MASCthen combines this automatically-derived and
+compilable syntactic glue with parameters,i.e.,values to be used in arguments, return statements, or
+conditions, which we manually define for specific operators (and misuse cases), to create mutants.
+To further ensure compile-ability and evaluation using only compilable mutants, we take two
+steps:(1)We use Eclipse JDT’s AST-based checks for identifying syntactic anomalies in the generated
+mutated apps, and(2)compile the mutated app automatically using build/test scriptsprovided
+with the original app. In the end, every single mutant analyzed by the target crypto-detector is
+compilable and accurately expresses the particular misuse case that is instantiated. This level of
+automation allowsMASCto create thousands of mutants with very little manual effort, and makes
+MASCextensible to future evolution in Java cryptographic APIs (addressingRC 3).
+3. Identifying Target Locations and Seeding Mutants: To identify target locations for the sim-
+ilarity scope, we extended the MDroid+ [61, 65] mutation analysis framework, by retargeting its
+procedure for identifying suitable mutant locations, adding support for dependencies that crypto-
+based mutations may introduce, and enabling identification of anonymous inner class objects as
+mutant-seeding locations, resulting in10additional, custom AST- and string-based location detec-
+tors. Further,MASCextends 𝜇SE [15] to implement theexhaustivescope,i.e.,to identify locations
+where crypto-APIs can be feasibly inserted to instantiate compilable mutants (e.g.,a Cipher.get-
+Instance(<parameter>) has to be contained in a try-catch block, making it infeasible to insert at
+class-level).
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 15 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 15
+Automated Evaluation ModuleMutation Operator Module
+Mutation Operators
+Conﬁguration Manager
+Extract and provide parameters
+Plug-in
+Operators
+Flexible
+Operators
+Java
+Reflection
+Restrictive
+Operators
+Mutation
+Builder
+User Provided Conﬁguration File
+Specifications, e.g., Crypto API, 
+misuse, output, operators, etc.
+Mutated 
+Misuse
+SARIF Output
+Handler 
+(reports undetected mutants)
+Crypto-detector 
+Profiler
+Crypto-detector 
+Output Wrapper
+(optional)
+OS/Crypto-detector 
+Command Handler
+input
+Fig. 3. Architecture Overview of the Main Scope of MASC
+scope = main # name of the scope to be used for mutation
+type = StringOperator # name of the operator to be used for mutation
+outputDir = app / outputs
+apiName = javax . crypto . Cipher
+invocation = getInstance # Method call from crypto - API
+secureParam = AES / GCM / NoPadding # Secure parameter to use with crypto - API
+insecureParam = AES # insecure parameter to use with crypto - API
+noise = ~ # noise value used with mutation
+variableName = cryptoVariable # variable , class name used to create necessary structures
+className = CryptoTest
+appName = < Name of the App > # name of the app for similarity - scope specific mutation
+Listing 4. Example configuration file for MASC
+Based on our prior experience of developing and using the implementation of the MASC frame-
+work, we determined several design goals, namely Diversity of Crypto-APIs (DG1), Open to
+Extension (DG2), Ease of evaluating crypto-detectors (DG3), and adapting to users with differ-
+ent levels of skills (DG4), as we demonstrated at the FSE’23 [ 4]. To satisfy these design goals
+(DG1–DG4), we implementedMASC(11 𝐾+ effective Java source line of code) following single-
+responsibility principle across modules, classes, and functions. While current implementation of
+MASCinherits themutation scopesof the original implementation with internal structural changes,
+the bulk of the changes with new features in the current implementation ofMASCare based on the
+Main Scope. Therefore, we describe the implementation details ofMASCwith a focus onMain Scope
+in the context of the design goals and provide an overview of the architecture in Figure 3.
+Configuration Manager:To makeMASCas flexible as possible, we decoupled the crypto-API
+specific parameters from the internal structure ofMASC. As a result, user can specify any crypto-
+API along with its necessary parameters through an external configuration file defining the base
+crypto-API misuse case. The configuration file follows a key-value format, as shown in Listing 4.
+Additionally, user can specify the mutation operators and scope to be used, along with other
+configuration values, thus satisfyingDG1.
+Mutation Operator Module:MASCanalyzes the specified crypto-API and uses the values specified
+by the user (e.g.,secure, and insecure parameters to be used with the API) for creating mutated
+crypto-API misuse instances. Internally, the decoupling of crypto-APIs fromMASCis made possible
+through the use ofJava Reflectionbased API analysis and Java Source Generation using the
+Java PoetryLibrary (DG1). While both the original and current implementation ofMASCcomes
+with several generalizable mutation operators, the current implementation ofMASCincludes an
+additional plug-in structure that facilitates creating custom mutation operators and custom key-
+value pairs for the configuration file. Both of these can be doneexternally,i.e.,no modification to
+source code ofMASCis necessary (DG2). We provide additional details aboutMASC’smutation
+operators in Section 6.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 16 ---
+16 Amit et al.
+Automated Evaluation Module:The current implementation ofMASCleverages the SARIF
+formatted output to automate evaluation of crypto-detectors. To make end-to-end analysis auto-
+mated,MASC’scan be configured to use crypto-detector specific commands, such ase.g.,compiling a
+mutated source code for analysis, evaluation stop conditions, command for running crypto-detector,
+output directory, and more (DG3–DG4).
+Finally,MASCis implemented to produce verbose logs. With the combination of flexible configu-
+ration, it is therefore possible to use the stand-alone binaryMASCjar file as a module of another
+software. As a proof of concept, we implementedMASC Web, apython-djangobased front-end that
+offers all the functionalities of theMASCthat uses the binary jar ofMASCas a module (DG4).
+9 Evaluation Overview and Methodology
+The two main goals of our evaluation are to (1) measure the effectiveness ofMASCat uncovering
+flaws in crypto-detectors, and (2) learn the characteristics of the flaws and their real-world impact,
+in terms of the security of end-user applications. Therefore, we formulate the following research
+questions:
+•RQ 1:CanMASCdiscover flaws in crypto-detectors?
+•RQ 2:What are the characteristics of these flaws?
+•RQ 3:What is the impact of the flaws on the effectiveness of crypto-detectors in practice?
+To answerRQ 1 –RQ 3, we performed experiments throughout several years, spanning from
+2021 to 2024. As part of our S&P’22 [5] paper, we first usedMASCto evaluate a set ofninemajor
+crypto-detectors, namely CryptoGuard, CogniCrypt, Xanitizer, Tool𝑋 , SpotBugs with FindSecBugs,
+QARK, LGTM, Github Code Security (GCS), and ShiftLeft Scan, prioritizing practically relevant
+tools that were recent and under active maintenance. As part of this study, we evaluated all of these
+crypto-detectors with their updated versions, except Tool𝑋 and Xanitizer, in addition to five new
+crypto-detectors, namely Amazon CodeGuru Security, Snyk, DeepSource, Codiga, and SonarQube,
+totaling12crypto-detectors.
+To be consistent, we addressed several changes in crypto-detectors life-cycle during this study.
+First, LGTM was merged with Github Code Security and ceased to exist separately. As Github
+Code Security still stores the test suites from LGTM suites, we used Github Code Security with
+lgtmtest suite as a proxy for the LGTM service. Furthermore, Github Code Security has two
+regularly maintained, security-specific test suites 2. First, thedefaulttest suite is described to be
+more precise by giving "fewer low confidence" results to reduce false-positives. Second,security-
+extendedis optionally available, and consists of all rules from thedefaulttest suite and additional
+rules with lower precision. Since we are interested in identifying flaws in crypto-detectors, we
+chosesecurity-extendedtest suite for this extended study for evaluating Github Code Security.
+Finally, several of these new crypto-detectors are web-based and can only be used as part of CI/CD
+workflow. As those crypto-detectors do not offer a "fixed version" for evaluation, we used the latest
+version whenever possible, and confirmed the existence of the flaws as ofApril 2024.
+AsMASC’susefulness is in systematically evaluating individual crypto-detectors by characterizing
+their detection-ability, with the goal of enabling improvement in the tools, and hence, the results of
+our evaluation indicate gaps in individual tools, and not comparative advantages.
+Step 1 – Selecting and mutating apps:During the first iteration of this study for our S&P’22 [ 5]
+paper, we usedMASCto mutate13open source Android apps from F-Droid [ 31] and Github [38],
+and four sub-systems of Apache Qpid Broker-J [75], a large Java Apache project (for list see [2]).
+Our selection was biased towards popular projects that did not contain obsolete dependencies (i.e.,
+2https://docs.github.com/en/code-security/code-scanning/managing-your-code-scanning-configuration/codeql-query-
+suites
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 17 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 17
+compilable using Android Studio 4/Java LTS 1.8). Moreover, we specifically used the similarity scope
+on 3/13Android apps, and all 4 Qpid sub-systems, as they contained several types of crypto API usage
+(e.g., Cipher, MessageDigest, X509TrustManager). In total, we generated2 , 515mutants using the13
+Android apps (producing src and apk) and17 , 788mutants using the4Java programs (producing
+src and jar), totaling20 , 303mutants. We confirmed that each mutated app was compilable and
+runnable. Generating these20k mutants tookMASCroughly15minutes, and did not require any
+human intervention, addressingRC 3. As the cost to generate this volume of mutants is feasible,
+MASCmay not benefit from generating a focused subset of mutants (as we detail in S&P’22 [5]).
+In this extension of the study, for mutation usingMASC, we selected 10 additional Android
+applications for the exhaustive scope, four Android applications for the selective scope, and one
+Java-based application from Google. Similar to the previous study, these apps were chosen based
+on few specific criteria to represent popular, regularly updated applications, such as having more
+than 200 stars in GitHub for Android-based projects, and latest commit dating back to 2022, and
+having no obsolete dependencies. Additionally, we relied on GitHub’s advance code search feature
+to identify Android applications with existing crypto-API calls to ensure that those apps can be
+mutated usingMASC’sselective scope. Finally, we manually confirmed that those 5 newly selected
+applications indeed contained crypto-API call sites.
+Using the extendedMASCwith its additional mutation operators, we mutated these 15 applications
+and generated30 , 236new mutants. We used20 , 303from the previous study, and30 , 236from this
+study, totaling50,539mutations, for evaluating the crypto-detectors.
+Step 2 – Evaluating crypto-detectors and identifyingundetectedmutants:To evaluate a
+crypto-detector, we analyzed the mutants using the crypto-detector, and identified the mutants that
+werenot detectedby it,i.e., undetectedas misuse using similar methodology in both the previous
+and current study. To facilitate accurate identification of undetected mutants, we compare the
+mutation logMASCgenerates when inserting mutants (which describes the precise location and
+type of mutant injected, for each mutant), and the reports from crypto-detectors, which for all
+the tools contained precise location features such as the class/method names, line numbers, and
+other details such as associated variables. To elaborate, we use the following methodology: We first
+compare the analysis report generated by the crypto-detector/target on a mutated app, with its
+analysis report on the original (i.e.,unmutated) version of the same app. Any difference in the two
+reports can be attributed to mutants inserted byMASC,i.e.,denotes an instance of a “mutant being
+not detected”. To identify the mutant that was not detected, we obtain location features (i.e.,type,
+file, class, method, line number and/or variables associated) of the specific “undetected mutant”
+from the crypto-detectors report on the mutated app, and use them to search for a unique mutant
+inMASC’smutation log. If a match is found, we mark that specific mutant as not detected. We
+additionally confirm the location of each undetected mutant by referring to the mutated app’s
+source code. Once all the undetected mutants are identified, the remaining mutants (i.e.,inserted in
+MASC’smutation but not detected) are flagged as undetected.
+This approach ensures that alarms by the crypto-detector for anomalies not inserted byMASC
+are not considered in the evaluation, and all mutants inserted byMASCare identified as either
+detected or undetected. Our semi-automated implementation of this methodology, which adapts to
+the disparate report formats of the studied crypto-detectors, is detailed in S&P’22 [5].
+Step 3 – Identifyingflaws(RQ 1):We analyzed over400randomly chosen, undetected mutants
+to discoverflaws, wherein a flaw is defined as a misuse case that a particular crypto-detector
+claimsto detect in its documentation, but fails to detect in practice. We took care to also exempt
+the exceptions/limitations explicitly stated in the crypto-detector’s documentation, ensuring that
+all of our identified flaws arenovel. On a similar note, while a crypto-detector may seem flawed
+because it does not detect a newer, more recently identified misuse pattern, we confirm that all the
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 18 ---
+18 Amit et al.
+flaws we report are due to misuse cases that are older than the tools in which we find them. This
+can be attributed to two features of our evaluation: our choice of the most frequently discussed
+misuse cases in a taxonomy going back 20 years and our choice of tools that were recently built or
+maintained. Finally, to confirm the flaw without the intricacies of the mutated app, we created a
+corresponding minimal app that contained only the undetected misuse instance (i.e.,the flaw), and
+re-analyzed it with the detector.
+Step 4 – Characterizing flaws (RQ 2):We characterized the flaws by grouping them by their
+most likely cause, intoflaw classes. We also tested each of the tools with the minimal examples
+for all the flaws, allowing us to further understand each flaw given its presence/absence in certain
+detectors, and their documented capabilities/limitations. We reported the flaws to the respective
+tool maintainers, and contributed 3 patches to CryptoGuard that were all integrated [2].
+Step 5 – Understanding the practicalimpactof flaws (RQ 3):To gauge the impact of the flaws,
+we studied publicly available applicationsafterinvestigatingRQ 1 andRQ 2 during the previous
+study. We first tried to determine if the misuse instances similar to the ones that led to the flaws
+were also found in real-world apps (i.e.,public GitHub repositories) using GitHub Code Search [42],
+followed by manual confirmation. Additionally, we manually searched Stack Overflow [88] and
+Cryptography Stack Exchange [85] for keywords such as "unsafe hostnameverifier" and "unsafe
+x509trustmanager". Finally, we narrowed our search space to identify the impact on appsthat
+were in fact analyzed with a crypto-detector. As only LGTM showcases the repos that it scans,
+we manually explored the top11Java repositories from this set (prioritized by the number of
+contributors), and discovered several misuse instances that LGTM tool may have failed to detect
+due to the flaws discovered byMASC.
+Step 6 – Attributing flaws to mutation vs. base instantiation:To determine whether a flaw
+detected byMASCcan be attributed to mutation, versus the crypto-detector’s inability to handle
+even a base case (i.e.,the most literal instantiations of the misuse case from the taxonomy), we
+additionally evaluated each crypto-detector with base instantiations for each misuse that led to a
+flaw exhibited by it.
+10 Results and Findings
+Our manual analysis of undetected mutants revealed19flaws in our previous S&P’22 [ 5] study,
+and six additional flaws in this study across crypto-detectors we evaluated, which we resolved to
+both design and implementation-gaps (RQ1).
+Table 1. Descriptions of Flaws discovered by Analyzing crypto-detectors
+ID Flaw Name
+(Operator, Base Misuse IDs)
+Description of Flaws
+Flaw Class 1 (FC1): String Case Mishandling +
+F1 smallCaseParameter
+(OP1,M 40,47,76,78,94)
+Not detecting an insecure algorithm provided in lower case;e.g.,
+Cipher.getInstance("des");
+Flaw Class 2 (FC2): Incorrect V alue Resolution +
+F2 value in variable
+(OP2,M 40,47,76,78,94)
+Not resolving values passed through variables.e.g., String value =
+"DES"; Cipher.getInstance(value);
+Continued on next page.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 19 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 19
+ID Flaw Name
+(Operator, Base Misuse IDs)
+Description of Flaws
+F3* secure parameter replaced
+by not secure (OP4,M 64,67)
+Not resolving parameter replacement;e.g.,
+MessageDigest.getInstance( "SHA-256".replace("SHA-256", "MD5"));
+F4* not secure parameter
+replaced by not secure
+(OP4,M 40,47,76,78,94)
+Not resolving anunsafeparameter’s replacement with another
+unsafeparametere.g.,
+Cipher.getInstance("AES".replace("A", "D")); (i.e.,where "AES" by itself
+is insecure as it defaults to using ECB).
+F5* string case transform
+(OP3,M 40,47,76,78,94)
+Not resolving the case after transformation for analysis;
+e.g.,Cipher.getInstance("des".toUpperCase( Locale.English));
+F6* noise replace
+(OP4,M 40,47,76,78,94)
+Not resolving noisy versions of insecure parameters, when noise
+is removed through a transformation;e.g.,
+Cipher.getInstance("DE$S".replace("$", ""));
+F7 parameter from method
+chaining
+(OP5,M 40,47,76,78,94)
+Not resolving insecure parameters that are passed through
+method chaining,i.e.,from a class that contains both secure and
+insecure values;e.g., Cipher.getInstance(obj.A().B().getValue());
+where obj.A().getValue() returns the secure value, but
+obj.A().B().getValue(), and obj.B().getValue() return the in-
+secure value.
+F8* deterministic byte from
+characters
+(OP6,M 86)
+Not detectingconstant IVs, if created using complex
+loops, casting, and string transformations;e.g.,a new
+IvParameterSpec(v.getBytes(),0,8), which uses a String v=""; for(int
+i=65; i<75; i++){ v+=(char)i;}
+F9 predictable byte from
+system API
+(OP6,M 86)
+Not detectingpredictable IVsthat are created using a pre-
+dictable source (e.g.,system time), converted to bytes;
+e.g.,new IvParameterSpec(val.getBytes(),0,8); , such that val = new
+Date(System.currentTimeMillis()).toString();
+Flaw Class 3 (FC3): Incorrect Resolution of Complex Inheritance and Anonymous
+Objects
+F10 X509ExtendedTrustManager
+(OP12,M 16−19,38)
+Not detectingvulnerable SSL verificationinanonymous inner class
+objectscreated from the X509ExtendedTrustManager class from JCA;e.g.,
+see Listing 10 in Appendix).
+F11 X509TrustManager
+SubType
+(OP12,M 16−19,38)
+Not detectingvulnerable SSL verificationin anonymous inner class
+objectscreated from an empty abstract classwhich implements
+theX509TrustManagerinterface;e.g.,see Listing 14).
+F12 Interface of Hostname
+Verifier
+(OP12,M 20)
+Not detectingvulnerable hostname verificationin an anonymous
+inner class object that is created from aninterface that extendsthe
+HostnameVerifier interface from JCA;e.g.,see Listing 15 in Appendix.
+Continued on next page.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 20 ---
+20 Amit et al.
+ID Flaw Name
+(Operator, Base Misuse IDs)
+Description of Flaws
+F13 Abstracted Hostname
+Verifier
+(OP12,M 20)
+Not detectingvulnerable hostname verificationin an anonymous
+inner class object that is created from anempty abstract class
+thatimplementsthe HostnameVerifier interface from JCA;e.g.,see
+Listing 12 in Appendix.
+Flaw Class 4 (FC4): Insufficient Analysis of Generic Conditions in Extensible
+Crypto-APIs
+F14 X509TrustManager
+Generic Conditions
+(OP7,OP 9,OP 12,
+M16−19,38)
+Insecure validation of an overridden checkServerTrusted method cre-
+ated within an anonymous inner class (constructed similarly as in
+F13), due to the failure to detectsecurity exceptions thrown under
+impossible conditions;e.g., if(!(true||arg0 == null||arg1 == null)) throw
+new CertificateException();
+F15 Interface Hostname
+Verifier Generic
+Conditions
+(OP8,OP 12,M 20)
+Insecure analysis of vulnerable hostname verification,i.e.,the
+verify() method within an anonymous inner class (constructed
+similarly as inF14), due to the failure to detectan always-true
+condition block that returns true;e.g., if(true || session == null) return
+true; return false;
+F16 Abstract Hostname
+Verifier Generic
+Conditions
+(OP8,OP 12,M 20)
+Insecure analysis of vulnerable hostname verification,i.e.,the
+verify() method within an anonymous inner class (constructed
+similarly as inF15), due to the failure to detectan always-true
+condition block that returns true;e.g., if(true || session == null) return
+true; return false;
+Flaw Class 5 (FC5): Insufficient Analysis of Context-specific, Conditions in Ex-
+tensible Crypto-APIs
+F17 X509TrustManager
+Specific Conditions
+(OP7,OP 12,M 16−19,38)
+Insecure validation of an overridden checkServerTrusted method
+created within an anonymous inner class created from the
+X509TrustManager, due to the failure to detectsecurity excep-
+tions thrown under impossible but context-specific conditions, i.e.,
+conditions that seem to be relevant due to specific variable use,
+but are actually not;e.g., if (!(null != s || s.equalsIgnoreCase("RSA")||
+certs.length >= 314))throw new CertificateException("RSA");
+F18 Interface Hostname
+Verifier Specific
+Conditions
+(OP8,OP 12,M 20)
+Insecure analysis of vulnerable hostname verification,i.e.,the
+verify() method within an anonymous inner class (constructed
+similarly as inF14), due to the failure to detecta context-specific
+always-true condition block that returns true;e.g., if(true ||
+session.getCipherSuite().length()>=0) return true; return false;
+F19 Abstract Hostname
+Verifier Specific
+Conditions
+(OP8,OP 12,M 20)
+Insecure analysis of vulnerable hostname verification,i.e.,the
+verify() method within an anonymous inner class (constructed
+similarly as inF15), due to the failure to detecta context-specific
+always-true condition block that returns true;e.g., if(true ||
+session.getCipherSuite().length()>=0)return true; return false;
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 21 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 21
++ flaws were observed for multiple API misuse cases, * Certain seemingly-unrealistic flaws may be
+seen in or outside a crypto-detector’s “scope”, depending on the perspective; see Section 12 for a
+broader treatment of this caveat.
+Table 2. Descriptions of Flaws discovered by Analyzing crypto-detectors in Current Iteration
+ID Flaw Name
+(Operator, Base Misuse IDs)
+Description of Flaws
+Flaw Class 2 (FC2): Incorrect V alue Resolution +
+F20 Static Bytes in Keystore
+(OP19,M 62,63)
+Not detecting bytes that are created using a static
+source converted to bytes and passed into IV;e.g.,
+new IvParameterSpec(val.getBytes(),0,8); , such that byte[] val =
+"12345678".getBytes();
+F21 Char Array to String
+(OP17,M 40,47,76,78,94)
+Being unable to convert an array of Char into
+a String object and parsing the value;e.g.,
+Cipher.getInstance(String.valueOf(cryptoVariable));, such that char[] v
+= "DES".toCharArray();
+F22 Unsafe Value from
+Substring
+(OP18,M 40,47,76,78,94)
+Not detecting a Substring misuse being parsed from a longer
+string;e.g.,Cipher.getInstance("secureParamAES".substring(11));,
+F23 Object Sensitivity
+(OP16,M 40,47,76,78,94)
+Not being able to differentiate between two instances
+of the same object type one containing a misuse
+and one containing a safe value;e.g., String secure =
+new CipherPack().safe().getpropertyName();String notsecure = new
+CipherPack().unsafe().getpropertyName(); securecipher = notsecure;
+Cipher v = Cipher.getInstance(secure);
+F24 Parameter Built from
+Method Calls
+(OP15,M 40,47,76,78,94)
+Unable to detect the construction of a misuse String based
+on calls to methods that construct the misusee.g., Class T
+{v="AES/GCM/NoPadding"; String A(){return "D";} String B(){return "ES";}
+void c(){cipher = A()+B();} String gv(){return v}} Cipher.getInstance(new
+T().add().gv());
+F25 Parameter from Nested
+Conditionals
+(OP14,M 40,47,76,78,94)
+Being unable to keep track of a variable as it is passed
+through a nested number of conditional statementse.g.,
+{Class T {int i = 0; c = "AES/GCM/NoPadding"; void A(){ if (i == 0){if (i
+== 0){ if(i == 0){ c = "AES"; } else{ c = "AES/GCM/NoPadding";}}else{ c =
+"AES/GCM/NoPadding"; } } else{ c = "AES/GCM/NoPadding"; }} String gv(){
+return c }} c.getInstance(new T().A().gv());
++ flaws were observed for multiple API misuse cases, * Certain seemingly-unrealistic flaws may be
+seen in or outside a crypto-detector’s “scope”, depending on the perspective; see Section 12 for a
+broader treatment of this caveat. Full Listings are in Appendix A.
+We organize these flaws into fiveflaw classes(RQ 2), representing the shared limitations that
+caused them. Table 1 and Table 2 provides the complete list of the flaws, categorized along flaw
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 22 ---
+22 Amit et al.
+Table 3. Flaws observed in crypto-detectors in previous iteration
+Class ID CG CC SB XT TX QA SL GCS LGTM
+FC1 F1✗ ✓ ✓ ✓ ✓Ø✓ ✓ ✓
+FC2
+F2✓ ✓ ✓ ✓ ✗Ø✓G # G #
+F3*✗ ✗ ✗ ✓ ✗Ø✗ ✓ ✓
+F4*✗ ✗ ✗ ✓ ✗Ø✗ ✗ ✗
+F5*✗ ✗G #✓ ✗ØG #✓ ✓
+F6*✗ ✗ ✗ ✓ ✗Ø✗ ✗ ✗
+F7✗ ✓ ✗ ✓ ✗Ø✗ ✓ ✓
+F8✗ ✓ ✓ ✓-Ø✓Ø✗
+F9✗ ✓ ✓ ✓-Ø✓Ø✗
+FC3
+F10✗-✓ ✓G # G #✓Ø Ø
+F11✗-✓ ✓G # G #✓Ø Ø
+F12✗-✓ ✓ ✓-✓Ø Ø
+F13✗-✓ ✓ ✓-✓Ø Ø
+FC4
+F14✗-✓ ✓ ✓ ✗ ✓Ø Ø
+F15✗-✓ ✓ ✓-✓Ø Ø
+F16✗-✓ ✓ ✓-✓Ø Ø
+FC5
+F17✗-✗ ✗ ✓ ✗ ✗Ø Ø
+F18✗-✓ ✗ ✓-✓Ø Ø
+F19✗-✓ ✓ ✓-✓Ø Ø
+✗ = Flaw Present, ✓ = Flaw Absent, G #= Flaw partially present, -= detector does not claim to
+handle the misuse associated with the flaw, Ø= detector claims to handle but did not detect
+base version of misuse; CG = CryptoGuard, CC = CogniCrypt, SB = SpotBugs, XT = Xanitizer,
+TX = Tool𝑋 , QA = QARK, SL = ShiftLeft, GCS = Github Code Security.
+*Certain seemingly-unrealistic flaws may be seen in/outside a crypto-detector’s “scope”, depend-
+ing on the perspective; see Section 12 for a broader treatment of this caveat.
+classes, while Table 3 and Table 4 provides a mapping of the flaws to the crypto-detectors that
+exhibit them.
+As we have shown in Table 3 in our previous study, a majority of the total flaws (computed by
+adding ✗ and Ø instances) identified in crypto-detectors,i.e.,45/76 or 59.21% can besolelyattributed
+to our mutation-based approach, whereas only 31/76,i.e.,40.79% couldalsobe found using base
+instantiations of the corresponding misuse cases. Further, all flaws in 6/9 crypto-detectors were only
+identified usingMASC. This demonstrates the advantage of using mutation, over simply evaluating
+with base instantiations of misuses from the taxonomy. GCS, LGTM, and QARK fail to detect base
+cases due to incomplete rule sets (see online Appendix [3] for discussion). Similarly, in our current
+study, a significant portion of the total flaws (122/196) we identified in crypto-detectors can be
+attributed to mutation based approach, whereas 74 could be found using base instantiations of the
+corresponding misuse cases as shown in Table 4. Moreover, 6 fixed flaws (✓✓in Table 4) in this
+extended study,i.e.,flaws that were present in our previous study, but are no longer present, can be
+attributed toMASCbecause of the responsibly disclosed reports submitted in S&P’22 [5].
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 23 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 23
+Table 4. Flaws observed in crypto-detectors in current iteration
+Class IDNew versions of Crypto-detectors Newly introduced Crypto-detectors
+nCG nCC nSB nQA nSL nGC nLG AC SQ SY CD DS
+FC1 F1✓✓ ✓ ✓Ø✓ ✓ ✓ ✓ ✓G #ØG #
+FC2
+F2✓ ✓ ✓Ø✓G # G #✓G #✓Ø✓
+F3*✓✓ ✗ ✗Ø✗ ✓ ✓ ✗ ✗ ✗Ø✗
+F4*✓✓ ✗ ✗Ø✗ ✓✓ ✗ ✓ ✗ ✗Ø✗
+F5*✓✓ ✗G #ØG #✓ ✓ ✗ ✗ ✗Ø✗
+F6*✗ ✗ ✗Ø✗ ✓✓ ✗ ✓ ✗ ✗Ø✗
+F7✗ ✓ ✗Ø✗ ✓ ✓-✗ ✗Ø✗
+F8✗ ✓ ✓Ø✓Ø Ø-✓ ✗Ø Ø
+F9✗ ✓ ✓Ø✓Ø Ø Ø✓ ✗Ø Ø
+F20✓ ✓ ✓Ø✓Ø Ø Ø✓ ✓Ø Ø
+F21✓ ✗ ✗Ø✗ ✓ ✗ ✗ ✗ ✗Ø✗
+F22✗ ✗ ✗Ø✗ ✓ ✗ ✗ ✗ ✗Ø✗
+F23✗ ✗ ✗Ø✗ ✗ ✗ ✗ ✗ ✗Ø✗
+F24✗ ✗ ✗Ø✗ ✗ ✗ ✗ ✗ ✗Ø✗
+F25✗ ✗ ✗Ø✗ ✗ ✗ ✗ ✗ ✗Ø✗
+FC3
+F10✗-✓G #✓ ✗ ✗Ø✓ ✓Ø✓
+F11✗-✓G #✓ ✗ ✗Ø✓ ✓Ø✓
+F12✗-✓-✓Ø Ø Ø✓ ✓Ø✓
+F13✗-✓-✓Ø Ø Ø✓ ✓Ø✓
+FC4
+F14✗-✓ ✗ ✓ ✗ ✗Ø✗ ✗Ø✗
+F15✗-✓-✓Ø Ø Ø✗ ✗Ø✗
+F16✗-✓-✓Ø Ø Ø✗ ✗Ø✗
+FC5
+F17✗-✗ ✗ ✗ ✗ ✗Ø✗ ✗Ø✗
+F18✗-✓-✓Ø Ø Ø✗ ✗Ø✗
+F19✗-✓Ø✓Ø Ø Ø✗ ✗Ø✗
+✗= Flaw Present,✓= Flaw Absent,✓✓= Flaw was present in the previous study, is no longer
+present after responsible disclosureG #= Flaw partially present,-= detector does not claim to
+handle the misuse associated with the flaw, Ø= detector claims to handle but did not detect base
+version of misuse AC = Amazon CodeGuru Security, SQ = SonarQube, SY = Snyk, CD = Codiga,
+DS = DeepSource, nCG = CryptoGuard version 04.05.03, nCC = CogniCrypt version 2.8.0,
+nSB = SpotBugs 4.0.4 with FindSecBugs version 1.12.0 , nQA = QARK version 4.0.0 , nSL = ShiftLeft
+version 2.1.1, nGCS = GitHub Code Security CI/CD Apr 2024, nLGTM = GitHub Code Scan v2.12.6
+with LGTM Ruleset.
+*Certain seemingly-unrealistic flaws may be seen in/outside a crypto-detector’s “scope”, depending
+on the perspective; see Discussion for a broader treatment of this caveat.
+In our previous study, at the initial stage of our evaluation (i.e.,before we analyzed uncaught
+mutants), we discovered that certain crypto-detectors [59, 76] analyze only a limited portion of
+the target applications, which greatly affects the reliability of their results. As these gaps were not
+detected usingMASC’sevaluation, we do not count these in our flaws or flaw classes. However, due
+to their impact on the basic guarantees provided by crypto-detectors, we believe that such gaps
+must be discussed, addressed, and avoided by future crypto-detectors, which is why we discuss
+them under a flaw classzero.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 24 ---
+24 Amit et al.
+Flaw Class Zero (FC0) –Incomplete analysis of target code:Starting from Android API level
+21 (Android 5.0), apps with over 64k reference methods are automatically split to multiple Dalvik
+Executable (DEX) byte code files in the form of classes<N>.dex. Most apps built after 2014 would
+fall into this category, as the Android Studio IDE automatically usesmultidexpackaging for any app
+built for Android 5.0 or higher [26]. However, we discovered that CryptoGuard and CogniCrypt
+do not handle multiple dex files (see Table 3), despite beingreleased 4 and 5 years after Android 21,
+respectively. Given that this flaw affected CryptoGuard’s ability to analyze a majority of Android
+mutants (i.e.,detecting only871 /2515), we developed a patch that fixes this issue, and used the
+patched version of CryptoGuard for our evaluation. The CogniCrypt maintainers confirmed that
+they are working on this issue in their upcoming release, which is why we did not create a patch, but
+used non-multidex minimal examples to confirm that each flaw discovered in CogniCrypt is not due
+to the multidex issue. Similarly, we discovered that CryptoGuard ignores any class whose package
+name contains “android.” or ends in “android”, which prevents it from analyzing important
+apps such as LastPass (com.lastpass.lpandroid) and LinkedIn (com.linkedin.android), which
+indicates the severity of even trivial implementation flaws. We submitted a patch to address this flaw
+and evaluated the patched version [2].Finally, Codiga was unable to detect any of the crypto-API
+misuse we analyzed, even though it explicitly claims that it"supports hundreds of rules for Java,
+checking that your code is safe and secure"[ 21]. When we reached out to Codiga (April 2023), we
+were informed that Codiga would shut down by May 3rd, 2023 without addressing this issue. As
+a result, we have marked all flaws accordingly (Ø),i.e.,claims to handle but does not detect base
+version of misuse in Table 4.
+The remainder of this section discusses each flaw class with representative examples as they
+manifest in crypto-detectors and theimpactof the flaws in terms of examples found in real software.
+FC1: String Case Mishandling (F1):As discussed in the motivating example (and seen inF1
+in Table 1), a developer may use des or dEs (instead of DES) in Cipher.getInstance(<parameter>)
+without JCA raising exceptions. As shown in Table 3, CryptoGuard did not detect such misuse in
+our previous study. We submitted a patch to CryptoGuard to address this flaw, which was accepted,
+and demonstrates that this flaw was recognized as an implementation gap by the CryptoGuard
+developers [2]. Since the latest version of CryptoGuard can identify this misuse, we have marked it
+as such (✓✓) in Table 4. Snyk is able to detect when the misuse is instantiated using the Message-
+Digest.getInstance(<parameter>) method (using "md5"), but not using the Cipher.getInstance-
+(<parameter>) method (using "aes", which defaults to ECB mode). Similarly, DeepSource could
+detect it for the Cipher.getInstance(<parameter>) method, but not MessageDigest.getInstance-
+(<parameter>)method, indicating a partialimplementation gap in both these crypto-detectors.
+FC2: Incorrect Value Resolution (F2 – F9, F20 – F25):The flaws in this class occur due to
+the inability of13/14of the crypto-detectors to resolve parameters passed to crypto-APIs. For
+example, considerF2, previously discussed in Listing 1 in Section 1, where the string value of
+an algorithm type (e.g., DES) is passed through a variable to Cipher.getInstance(<parameter>).
+Tool𝑋 was not able to detect this (mis)use instance, hence exhibitingF2(Table 3), and in fact,
+demonstrated a consistent inability to resolve parameter values (flawsF2–F7), indicating a
+design gap. On the contrary, as SpotBugs partially detects the type of misuse represented inF5,
+i.e.,when it is instantiated using the Cipher.getInstance(<parameter>)method, but not using the
+MessageDigest.getInstance(<parameter>) method, which indicates an implementation gap, which
+continues to exist throughout the previous and current study.
+Further, LGTM and GCS are partially susceptible to F2 because of an intricate problem in their rule-
+sets. That is, both tools are capable of tracking values passed from variables, and generally detect
+mutations similar to the one in F2 (i.e.,and also the one in Listing 1, created usingOP2). However, one
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 25 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 25
+of the mutant instances that we created usingOP 2 used AES in Cipher.getInstance(<parameter>),
+which may seem correct but is actually a misuse, since specifying AES alone initializes the cipher
+to use the highly vulnerable ECB mode as the mode of operation. Unfortunately, both LGTM and
+GCS use mostly similar CodeQL rule-set [39] which does not consider this nuance, leading both
+tools to ignore this misuse.
+Interestingly, SonarQube, as shown in Table 4, is partially susceptible to F2, as it does de-
+tect misuse for Cipher.getInstance(<parameter>) method, but not for MessageDigest.getInstance-
+(<parameter>) because of an entirely different reason. As we found from the discussion with
+SonarQube during the responsible disclosure, this flaw stems from the tendency of avoiding false-
+positives. As they elaborated, evaluating a non-constant value may result in increased number
+of false-positives, and as a result, the analyzer avoids evaluating non-constant identifiers in this
+particular case. While weak hashing algorithm and weak encryption are within OWASP’s TOP 10
+crypto API issues and are considered within scope by SonarQube, this reveals that developers of
+the same crypto-detector may treat crypto-APIs differently based on internal prioritization factors,
+which led to this particular flaw. We address this particular insight in Section 12 later on.
+Finally, we observe that CogniCrypt detects some of the more complex behaviors represented by
+flaws inFC2(i.e.,F7–F9), but does not detect the simpler ones (F3–F6). From our interaction
+with CogniCrypt’s maintainers, we have discovered that CogniCrypt should be able to detect such
+transformations by design, as they deviate from CrySL rules. However, in practice, CogniCrypt
+cannot reason about certain transformations at present (but could be modified to do so in the future),
+and produces an ambiguous output that neither flags such instances as misuse, nor as warnings for
+manual inspection, due to an implementation gap. The developers agree that CogniCrypt should
+clearly flag the API-use that it does not handle in the report, and refer such use to manual inspection.
+Impact (FC2):We found misuse similar to the instance inF2in Apache Druid, an app with10 .3𝐾
+stars and400contributors on Github (see Listing 19 in Appendix A) . Further, we found real apps
+that convert the case of algorithm values before using them in a restrictive crypto API [47] (F5,
+instantiated usingOP 3), or process values to replace "noise" [40] (F3,F4,F6, instantiated using
+OP4). We observed that ExoPlayer, a media player from Google with over16 .8K stars on GitHub,
+used the predictableRandomAPI for creating IvParameterSpec objects [41] until 2019, similar
+in nature toF9. Developers also use constants for IVs (F8), as seen in UltimateAndroid [ 89] (2.1K
+stars), and JeeSuite (570stars) [87].
+We also found instances of these flaws in apps that were analyzed with a crypto-detector,
+specifically, LGTM. Apache Ignite [36] (360contributors,3 .5K stars) contains a misuse instance
+similar to one that led toF2, where only the name of the cipher is passed to theCipher.getInstance-
+(<parameter>) API [45] which causes it to default to “ECB” mode. LGTM does not report this as it
+considers ECB use as insecure for Java (but oddly secure for JavaScript). We found similar instances
+of ECB misuse in Apache-Hive [44] (250contributors,3 .4K stars), Azure SDK for Java [ 37] (328
+contributors,857stars), which LGTM would not detect. Finally, in Apache Ignite [ 36], we found a
+Cipher.getInstance(<parameter>) invocation that contained a method call in place of the cipher
+argument (i.e.,a chain of length 1, a basic instance ofF7) [45].
+FC3: Incorrect Resolution of Complex Inheritance and Anonymous Objects (F10 – F13):
+The flaws in this class occur due to the inability of crypto-detectors to resolve complex inheritance
+relationships among classes, generally resulting from applyingflexiblemutation operators (Sec. 6.2)
+to certain misuse cases. For example, considerF11in Table 1, also illustrated in Listing 14 in
+Appendix A . Further, we find that several crypto-detectors,e.g.,Xanitizer, SpotBugs and SonarQube
+are immune to these flaws, which indicates that traversing intricate inheritance relationships is a
+design consideration for some crypto-detectors, and a design gap in others such as CryptoGuard and
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 26 ---
+26 Amit et al.
+QARK. Moreover, such indirect relationships can not only be expected from evasive developers
+(i.e.,T3) but is also found in real apps investigated by the crypto-detectors, as described below.
+Impact (FC3):We found an exact instance of the misuse representingF10(generated fromOP 12)
+in the class TrustAllSSLSocketFactory in Apache JMeter [46] (4.7K stars in GitHub).F11is the
+generic version ofF10, and fairly common in repositories and libraries (e.g.,BouncyCastle [ 12, 13]).
+F12andF13were also generated usingOP 12, but with the HostnameVerifier-related misuse, and
+we did not find similar instances in the wild in our limited search.
+FC4: Insufficient Analysis of Generic Conditions in Extensible Crypto-APIs (F14 – F16):The
+flaws in this class represent the inability of certain crypto-detectors to identify fake conditions within
+overridden methods,i.e.,unrealistic conditions, or always true condition blocks (e.g.,Listing 18 in
+Appendix A shows forF14). Flaws in this class represent the behavior of an evasive developer (T3).
+Several crypto-detectors,e.g.,Xanitizer and SpotBugs, can identify such spurious conditions.
+FC5: Insufficient Analysis of Context-specific Conditions in Extensible Crypto-APIs (F17
+– F19):The flaws in this class represent misuse similar toFC4, except that the fake conditions used
+here are contextualized to the overridden function,i.e.,they checkcontext-specificattributes (e.g.,
+the length of the certificate chain passed into the method,F17). An evasive developer may attempt
+this to add further realism to fake conditions to evade tools such as Xanitizer that are capable
+of detecting generic conditions. Indeed, we observe that Xanitizer fails to detect misuse when
+context-specific conditions are used, for bothF17andF18. Our suspicion is that this weakness is
+due to an optimization, which exempts conditions from analysis if they seem realistic.
+Particularly, we observe that Xanitizer correctly detects the fake condition inF19, and that the
+only difference betweenF19andF18is that the instances of misuse they represent occur under
+slightly different class hierarchies. Hence, our speculation is that this anaccidental benefit,i.e.,
+the difference could be the result of anincomplete implementation of the unnecessary optimization
+across different class hierarchies. SpotBugs with FindSecBugs shows a similar trend, potentially
+because Xanitizer uses SpotBugs for several SSL-related analyses. Finally, we observe that Tool𝑋 is
+immune to both genericFC4) and context-specific fake conditionsFC5).
+Impact (FC4, FC5):In this Stack Overflow post [86], the developer describes several ways in which
+they tried to get Google Play to accept their faulty TrustManager implementation, one of which is
+exactly the same as the misuse instance that led toF17(generated usingOP 7 andOP 12), which
+is a more specific variant ofF14(generatedOP 7,OP 9 andOP 12), as illustrated in Listing 11 in
+Appendix A . We observe similar evasive attempts towards vulnerable hostname verification [83]
+which are similar in nature toF15andF16, and could be instantiated usingOP 8 andOP 10. We also
+found developers trying to evade detection by applying context-specific conditions in the hostname
+verifier [84], similar toF18andF19.
+11 Limitations
+MASCdoes not attempt to replace formal verification, and hence, does not guarantee that all flaws in
+a crypto-detector will be found. Instead, it enables systematic evaluation of crypto-detectors, which
+is an advancement over manually curated benchmarks. Aside from this general design-choice, our
+approach has the following limitations:
+1. Completeness of the Taxonomy:To ensure a taxonomy that is as comprehensive as possible,
+we meticulously follow best-practices learned from prior work [23, 56], and also ensure labeling
+by two authors. However, the fact remains that regardless of how systematic our approach is,
+due to the manual and generalized of the SLR, we may miss certain subtle contexts during the
+information extraction phase (see specific examples in Online Appendix [ 3] ). Thus, while not
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 27 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 27
+necessarily complete, this taxonomy, generated through over2 person months of manual effort, is,
+to the best of our knowledge, the most comprehensive in recent literature.
+2. Focus on Generic Mutation Operators:We have currently constructed generic operators
+based on typicalusage conventions,i.e.,to apply to as many misuse instances from the taxonomy
+as possible. However, currently,MASCdoes not incorporate operators that may fall outside of
+usage-based conventions,i.e.,which may be more tightly coupled with specific misuse cases, such
+as an operator for calling create and clearPassword in a specific order for PBEKeySpec. We plan to
+incorporate such operators intoMASCin the future.
+3. Focus on Java and JCA:MASC’sapproach is largely informed by JCA and Java. Additional
+operators and adjustments will be required to adaptMASC’s implementation to JCA-equivalent
+frameworks in Java, specially when adapting our usage-based mutation operators to non-JCA
+conventions. For languages that support the OOP paradigm, such as CPP and Go, we assume
+MASC’s approach will remain the same as frameworks tend to create and maintain consistent
+patterns specific to languages. Therefore, the implementation ofMASCwill require translating the
+existing operators and scopes to equivalent OOP-based structures in the context of those languages.
+4. Evolution of APIs:Future, tangential changes in how JCA operates might require changing the
+implementation ofMASC’smutation operators. Furthermore, incremental effort will be required
+to incorporate new misuse cases that are discovered with the evolution of crypto APIs. We have
+designedMASCto be as flexible as possible by means of reflection and automated code generation
+for mutation operators, which should make adapting to such changes easier.
+5. Relative Effectiveness of Individual Operators:This paper demonstrates the key claims
+of MASC, and its overall effectiveness at finding flaws, but does not evaluate/claim therelative
+usefulness of each operatorindividually. A comprehensive investigation of relative usefulness would
+require the mutation of all/most misuse cases from the taxonomy, with every possible operator and
+scope, a broader set of apps to mutate, and a complete set of crypto-detectors, which is outside the
+scope ofMASC, but a direction for future work.
+12 Discussion and Conclusion
+Designing crypto-detectors is in no way a simple task; as these have to balance several orthogonal
+requirements, such as detecting as many vulnerabilities as possible, without introducing false posi-
+tives, while scaling to large codebases. Yet, the fact is that there is significant room for improvement
+in how crypto-detectors are built and evaluated, as evidenced by the flaws discovered usingMASC.
+To move forward, we need to understand the divergent perspectives regarding the design
+of crypto-detectors, and reach a consensus (or at least an agreeable minima) in terms of what is
+expected from crypto-detectors and how we will design and evaluate them to satisfy the expectations.
+We seek to begin this discourse within the security community by integrating several views on
+the design decisions behind crypto-detectors, informed by our results and conversations with tool
+designers (quoted with consent) during the vulnerability reporting process.
+12.1 Security-centric Evaluation vs. Technique-centric Design
+Determining what misuse is within or outside the scope for a crypto-detector is a complex question
+that yields several different viewpoints. This paper’s view issecurity-centric,i.e.,even if some
+misuse instances may seem unlikely or evasive, crypto-detectors that claim/target security-focused
+use cases (e.g.,compliance, auditing) should account for them. However, we observe that tool
+designers typically adhere to atechnique-centricperspective,i.e.,the design of crypto-detectors is
+not influenced by a threat model, but mainly by what static analysis can and cannot accomplish
+while implicitly assuming a benign developer. This quote from the maintainers of CryptoGuard
+highlights this view, wherein they state that the “lines” between what is within/outside scope“seen
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 28 ---
+28 Amit et al.
+so far were technically motivated – not use-case motivated..should we use alias analysis?... ”. This gap
+in perspective does not mean that crypto-detectors may not detect any of the mutants generated
+byMASCusing operators based on theT3threat model; rather, it only means that detection (or
+lack thereof) may not becausedby a security-centric design.
+12.2 Defining “Scope” for the Technique-centric Design
+We observe that even within crypto-detectors that take atechnique-centricapproach, there is little
+agreement on the appropriate scope of detection. For instance, Xanitizer focuses on catching every
+possible misuse instance, regardless of any external factors such as whether that kind of misuse is
+observed in the wild, or a threat model, as the designers believe that“the distinction should not be
+between ‘common’ and ‘uncommon’, but instead between ‘can be (easily) computed statically’ and ‘can
+not be computed’. ”. This makes it possible for Xanitizer to detect unknown or rare problems, but
+may also result in it not detecting a commonly observed misuse that is hard to compute statically,
+although we did not observe such cases. For SonarQube, the "cost" of analyzing a pattern versus
+whether it is easy to detect through manual analysis is an additional consideration, “... easy to
+identify for simple human readers. For our analyzer ... this kind of method is expensive ... issue is more
+of a misconfiguration on the developer’s side, trying to cover this type of case seems a bit out of scope.”
+In contrast, CryptoGuard, CogniCrypt, and GCS/LGTM (same developers) wouldconsider seemingly-
+unlikely/evasive flaws within scope(e.g.,F3–F6,F8), because they were found in the wild (unlike
+Xanitizer, for which this is not a consideration). This view aligns with our perspective, that regard-
+less of how it was generated, if a misuse instance (representing a flaw) is discovered in real apps
+(which istrue for all flaws exceptF12andF13, it should be within the detection scope. However,
+GCS/LGTM maintainers extend this definition with the condition that the observations in the
+wild be frequent, to motivate change. Note that this scope defining factor also extends to the addi-
+tional, extended security test–suite of Github Code Security, while the default test–suite focuses on
+precision, as the number of false-positives is a concern for developers of crypto-detectors, likely
+inherited from the program analysis community studies [20, 51, 54]. These divergent perspectives
+motivate the need to clearly define the expectations from crypto-detectors by the designers,i.e.,
+crypto-detectors need to clearly communicate if their use cases are for hostile/adversarial context
+(e.g.,security audit, certification, or compliance), or for developer-friendly,helping-with-coding
+context. Furthermore, to avoid creating a false sense of security, it is important to document known
+limitations, such as design considerations, and share them with (potential) users, so that the users
+can make informed decisions about their capabilities.
+12.3 Utility of Seemingly-Uncommon or Evasive Tests
+As Bessey et al. state from practical deployment experience in 2010 [14],“No bug is too foolish to
+check for”, and that“Given enough code, developers will write almost anything you can think of... ”.
+The results from our evaluation and the impact study corroborate this sentiment,i.e.,F3–F6and
+F8were all obtained using operators (OP 3,OP 4, andOP 6) modeled to emulate threatsT1andT2,
+i.e.,representingbenignbehavior (however unlikely); and indeed, these flaws were later found in
+supposedly benign applications. This suggests that the experience of Bessey et al. is valid a decade
+later, making it important to evaluate crypto-detectors with “more-than-trivial” cases to not only
+test their detection prowess, but to also account for real problems that may exist in the wild.
+12.4 The Need to Strengthen Crypto-Detectors
+We argue that it is not only justified for tools to detect uncommon cases (e.g.,given that even
+benign developers write seemingly-unlikely code), but also critical for their sustained relevance.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 29 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 29
+As designers of Coverity found [14], false negatives matter from a commercial perspective, because
+“Potential customers intentionally introduced bugs into the system, asking ‘Why didn’t you find it?’”.
+Perhaps more significantly, the importance of automated crypto-detectors with the ability
+to guaranteeassuranceis rising with the advent of newcompliancelegislation such as the IoT
+Cybersecurity Improvement Act of 2020 [52], which seeks to rein in vulnerabilities in billions of
+IoT systems that include vulnerable server-side/mobile components. Vulnerabilities foundafter
+a compliance certification may result in penalties for the developers, and financial consequences
+for the compliance checkers/labs and crypto-detectors used. Complementing static detection with
+manual or dynamic analysis may be infeasible at this scale, as tool designers noted:e.g., “...review
+an entire codebase at once, manual review can be difficult. ”(LGTM) and“Existing dynamic analysis
+tools will be able to detect them only if the code is triggered (which can be notoriously difficult)”
+(CryptoGuard). Thus, static crypto-detectors will need to become more robust, and capable of
+detecting hard-to-detect misuse instances.
+12.5 Towards Crypto-Detectors Strengthened by a Security-Centric Evaluation
+Fortunately, we observe that there is support among tool designers for moving towards stronger
+security guarantees. For instance, CogniCrypt designers see a future research direction in expressing
+evasive scenarios in the CrySL languagei.e.,“...what would be a nice future direction is to tweak
+the SAST with such optimizations/ more analysis but still allow the CrySL developer to decide if he
+wants to switch these ‘evasive user’ checks... ”, but indicate the caveat that developers may not use
+such additional configuration options [ 54]. However, we believe that such options will benefit
+independent evaluators, and developers who are unsure of the quality of their own supply chain, to
+perform a hostile review at their disposal. Similarly, the CryptoGuard designers state that“...this
+insight of evasive developers is very interesting and timely, which immediately opens up new directions. ”
+This potential paradigm-shift towards asecurity-focuseddesign of crypto-detectors is timely, and
+MASC’s rigorous evaluation with expressive test cases can play an effective role in it, by enabling
+tool designers to proactively address gaps in detection during the design phase itself, rather than
+reactively (i.e.,after a vulnerability is discovered in the wild). More importantly, further large-scale
+evaluations usingMASC, and the flaws discovered therein, will enable the community to continually
+examine the design choices made by crypto-detectors and reach consensus on what assurances
+we can feasibly expect. We envision that such development aided byMASCwill lead to a mature
+ecosystem of crypto-detectors with a well-defined and strong security posture, and which can hold
+their own in adversarial situations (e.g.,compliance assessments) within certainknownbounds,
+which will eventually lead to long-lasting security benefits for end-user software.
+Acknowledgment
+We thank the tool designers for being open to discussion, suggestions, and improvements. Moreover,
+we thank the anonymous reviewers for constructive feedback. We also thank Jake Zappin and Johnny
+Clapham, William & Mary, for contribution in extending the taxonomy. Finally, the authors have
+been supported in part by the NSF-2237012and NSF-2132281grants and Coastal Virginia Center
+for Cyber Innovation and the Commonwealth Cyber Initiative, an investment in the advancement
+of cyber R&D, innovation, and workforce development. For more information about COVA CCI and
+CCI, visit www.covacci.org and www.cyberinitiative.org. Any opinions, findings and conclusions
+expressed herein are the authors’ and do not necessarily reflect those of the sponsors.
+References
+[1] S. Afrose, S. Rahaman, and D. Yao. 2019. CryptoAPI-Bench: A Comprehensive Benchmark on Java Cryptographic API
+Misuses. In2019 IEEE Cybersecurity Development (SecDev). 49–61. doi:10.1109/SecDev.2019.00017
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 30 ---
+30 Amit et al.
+[2] Amit Seal Ami. 2021. MASC Artifact. https://github.com/Secure-Platforms-Lab-W-M/MASC.
+[3] Amit Seal Ami. 2024. MASC Online Appendix. https://github.com/Secure-Platforms-Lab-W-M/masc-journal-artifact.
+[4] Amit Seal Ami, Syed Yusuf Ahmed, Radowan Mahmud Redoy, Nathan Cooper, Kaushal Kafle, Kevin Moran, Denys
+Poshyvanyk, and Adwait Nadkarni. 2023. MASC: A Tool for Mutation-Based Evaluation of Static Crypto-API
+Misuse Detectors. InProceedings of the ACM Joint European Software Engineering Conference and Symposium on the
+Foundations of Software Engineering (ESEC/FSE’23), Demonstration Track. San Francisco. doi:10.1145/3611643.3613099
+[5] Amit Seal Ami, Nathan Cooper, Kaushal Kafle, Kevin Moran, Denys Poshyvanyk, and Adwait Nadkarni. 2022.
+Why Crypto-detectors Fail: A Systematic Evaluation of Cryptographic Misuse Detection Techniques. In2022 IEEE
+Symposium on Security and Privacy (SP). IEEE Computer Society, San Francisco, CA, USA, 397–414.
+[6] Amit Seal Ami, Kevin Moran, Denys Poshyvanyk, and Adwait Nadkarni. 2024. "False Negative - That One Is Going to
+Kill You" - Understanding Industry Perspectives of Static Analysis Based Security Testing. InProceedings of the 2024
+IEEE Symposium on Security and Privacy (S&P). IEEE Computer Society, San Francisco, CA, USA.
+[7] Ross Anderson. 1993. Why cryptosystems fail. InProceedings of the 1st ACM Conference on Computer and Communi-
+cations Security. 215–227.
+[8] Ross Anderson. 2020.Security Engineering: A Guide to Building Dependable Distributed Systems(3rd ed.). Wiley, New
+York, Chapter 28.
+[9] Android 2020. Security with HTTPS and SSL - Android Developers. https://developer.android.com/training/articles/
+security-ssl.
+[10] Steven Arzt, Siegfried Rasthofer, Christian Fritz, Eric Bodden, Alexandre Bartel, Jacques Klein, Yves le Traon, Damien
+Octeau, and Patrick McDaniel. 2014. FlowDroid: Precise Context, Flow, Field, Object-sensitive and Lifecycle-aware
+Taint Analysis for Android Apps. InProceedings of the ACM SIGPLAN Conference on Programming Language Design
+and Implementation (PLDI).
+[11] Heewon Baek, Minwook Lee, and Hyoungshick Kim. 2024. CryptoLLM: Harnessing the Power of LLMs to Detect
+Cryptographic API Misuse. InComputer Security – ESORICS 2024, Joaquin Garcia-Alfaro, Rafał Kozik, Michał Choraś,
+and Sokratis Katsikas (Eds.). Vol. 14982. Springer Nature Switzerland, Cham, 353–373. doi:10.1007/978-3-031-70879-
+4_18
+[12] BC 2020. BCX509ExtendedTrustManager (Bouncy Castle Library 1.66 API Specification). https://www.bouncycastle.
+org/docs/tlsdocs1.5on/org/bouncycastle/jsse/BCX509ExtendedTrustManager.html.
+[13] BC 2020. JGDMS/FilterX509TrustManager.java at pfirmstone/JGDMS. https://github.com/pfirmstone/
+JGDMS/blob/a44b96809783199b5fd69ffb803e0c4ceb9fad67/JGDMS/jgdms-jeri/src/main/java/net/jini/jeri/ssl/
+FilterX509TrustManager.java.
+[14] Al Bessey, Ken Block, Ben Chelf, Andy Chou, Bryan Fulton, Seth Hallem, Charles Henri-Gros, Asya Kamsky, Scott
+McPeak, and Dawson Engler. 2010. A Few Billion Lines of Code Later: Using Static Analysis to Find Bugs in the Real
+World.Commun. ACM53, 2 (Feb. 2010), 66–75. doi:10.1145/1646353.1646374
+[15] Richard Bonett, Kaushal Kafle, Kevin Moran, Adwait Nadkarni, and Denys Poshyvanyk. 2018. Discovering Flaws
+in Security-Focused Static Analysis Tools for Android using Systematic Mutation. In27th USENIX Security Sympo-
+sium (USENIX Security 18). USENIX Association, Baltimore, MD, 1263–1280. https://www.usenix.org/conference/
+usenixsecurity18/presentation/bonett
+[16] A. Braga and R. Dahab. 2016. Mining Cryptography Misuse in Online Forums. In2016 IEEE International Conference
+on Software Quality, Reliability and Security Companion (QRS-C). IEEE, 143–150. doi:10.1109/QRS-C.2016.23
+[17] Alexandre Braga, Ricardo Dahab, Nuno Antunes, Nuno Laranjeiro, and Marco Vieira. 2017. Practical Evaluation
+of Static Analysis Tools for Cryptography: Benchmarking Method and Case Study. In2017 IEEE 28th International
+Symposium on Software Reliability Engineering (ISSRE). IEEE, 170–181. doi:10.1109/ISSRE.2017.27
+[18] Alexandre Braga, Ricardo Dahab, Nuno Antunes, Nuno Laranjeiro, and Marco Vieira. 2019. Understanding How to
+Use Static Analysis Tools for Detecting Cryptography Misuse in Software.IEEE Transactions on Reliability68, 4 (Dec.
+2019), 1384–1403. doi:10.1109/TR.2019.2937214
+[19] Yikang Chen, Yibo Liu, Ka Lok Wu, Duc V Le, and Sze Yiu Chau. 2024. Towards Precise Reporting of Cryptographic
+Misuses. InProceedings 2024 Network and Distributed System Security Symposium. Internet Society, San Diego, CA,
+USA. doi:10.14722/ndss.2024.241032
+[20] Maria Christakis and Christian Bird. 2016. What Developers Want and Need from Program Analysis: An Empirical
+Study. InProceedings of the 31st IEEE/ACM International Conference on Automated Software Engineering. ACM,
+Singapore Singapore, 332–343. doi:10.1145/2970276.2970347
+[21] codiga 2024. Codiga: Static Code Analysis in Real-Time. https://www.codiga.io/static-code-analysis/.
+[22] cognicrypt 2020. CogniCrypt - Secure Integration of Cryptographic Software | CogniCrypt. https://www.eclipse.org/
+cognicrypt/.
+[23] JulietM. Corbin and Anselm Strauss. 1990. Grounded theory research: Procedures, canons, and evaluative criteria.
+Qualitative Sociology13, 1 (1990), 3–21.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 31 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 31
+[24] cryptoguard 2020. NSF Award Search: Award#1929701 - SaTC: TTP: Medium: Collaborative: Deployment-Quality
+and Accessible Solutions for Cryptography Code Development. https://www.nsf.gov/awardsearch/showAward?
+AWD_ID=1929701&HistoricalAwards=false.
+[25] cryptoguard 2020. Oracle - Industrial Experience of Finding Cryptographic Vulnerabilities in Large-scale Codebases.
+https://labs.oracle.com/pls/apex/f?p=94065:40150:0::::P40150_PUBLICATION_ID:6629.
+[26] Android Developers. 2020. Enable Multidex for Apps with over 64K Methods. https://developer.android.com/studio/
+build/multidex.
+[27] Brendan Dolan-Gavitt, Patrick Hulin, Engin Kirda, Tim Leek, Andrea Mambretti, Wil Robertson, Frederick Ulrich, and
+Ryan Whelan. 2016. Lava: Large-scale automated vulnerability addition. InProceedings of the 37th IEEE Symposium
+on Security and Privacy (S&P).
+[28] DroidBench [n. d.]. DroidBench 2.0. https://github.com/secure-software-engineering/DroidBench. Last accessed on
+June 27, 2020.
+[29] Manuel Egele, David Brumley, Yanick Fratantonio, and Christopher Kruegel. 2013. An Empirical Study of Cryp-
+tographic Misuse in Android Applications. InProceedings of the 2013 ACM SIGSAC Conference on Computer &
+Communications Security - CCS ’13. ACM Press, Berlin, Germany, 73–84. doi:10.1145/2508859.2516693
+[30] Sascha Fahl, Marian Harbach, Thomas Muders, Lars Baumgärtner, Bernd Freisleben, and Matthew Smith. 2012. Why
+Eve and Mallory Love Android: An Analysis of Android SSL (in)Security. InProceedings of the 2012 ACM Conference
+on Computer and Communications Security(Raleigh, North Carolina, USA)(CCS ’12). Association for Computing
+Machinery, New York, NY, USA, 50–61. doi:10.1145/2382196.2382205
+[31] fdroid 2020. F-Droid - Free and Open Source Android App Repository. https://f-droid.org/.
+[32] Xinming Ou Fengguo Wei, Sankardas Roy and Robby. 2014. Amandroid: A Precise and General Inter-component Data
+Flow Analysis Framework for Security Vetting of Android Apps. InProceedings of the ACM Conference on Computer
+and Communications Security (CCS).
+[33] Felix Fischer, Konstantin Bottinger, Huang Xiao, Christian Stransky, Yasemin Acar, Michael Backes, and Sascha Fahl.
+2017. Stack Overflow Considered Harmful? The Impact of Copy&Paste on Android Application Security. In2017
+IEEE Symposium on Security and Privacy (SP). IEEE, San Jose, CA, USA, 121–136. doi:10.1109/SP.2017.31
+[34] Jun Gao, Pingfan Kong, Li Li, Tegawende F. Bissyande, and Jacques Klein. 2019. Negative Results on Mining Crypto-
+API Usage Rules in Android Apps. In2019 IEEE/ACM 16th International Conference on Mining Software Repositories
+(MSR). IEEE, Montreal, QC, Canada, 388–398. doi:10.1109/MSR.2019.00065
+[35] github 2020. Announcing third-party code scanning tools: static analysis & developer security training - The GitHub
+Blog. https://github.blog/2020-10-05-announcing-third-party-code-scanning-tools-static-analysis-and-developer-
+security-training/.
+[36] github 2020. Apache/Ignite. The Apache Software Foundation. https://github.com/apache/ignite.
+[37] github 2020. Azure/azure-sdk-for-java: This repository is for active development of the Azure SDK for Java. https:
+//github.com/Azure/azure-sdk-for-java.
+[38] Github 2020. Build Software Better, Together - Github. https://github.com.
+[39] github 2020. codeql/Encryption.qll at github/codeql. https://github.com/github/codeql/blob/
+768e5190a1c9d40a4acc7143c461c3b114e7fd59/java/ql/src/semmle/code/java/security/Encryption.qll#L142.
+[40] Github 2020. encryption-machine/AsymEncrpMachine.java at mrdrivingduck/encryption-machine.
+https://github.com/mrdrivingduck/encryption-machine/blob/74c5679c86cf11f74409cfc63e1385b906734099/
+src/iot/zjt/encrypt/machine/AsymEncrpMachine.java#L95.
+[41] Github 2020. ExoPlayer/CachedContentIndex.java at google/ExoPlayer. https://github.com/google/ExoPlayer/
+blob/f182c0c1169cba7c22280058368127c24609054f/library/core/src/main/java/com/google/android/exoplayer2/
+upstream/cache/CachedContentIndex.java#L332.
+[42] github 2020. GitHub - Where software is built. https://github.com/search/advanced.
+[43] github 2020. GitHub Security Lab. https://securitylab.github.com/.
+[44] github 2020. hive/GenericUDFAesBase.java at master - apache/hive. https://github.com/apache/
+hive/blob/526bd87e9103375f0ddb8064dcfd8c31342b4c08/ql/src/java/org/apache/hadoop/hive/ql/udf/generic/
+GenericUDFAesBase.java#L108.
+[45] github 2020. ignite/IgniteUtils.java at apache/ignite. https://github.com/apache/ignite/blob/
+1a3fd112b02133892c7c95d4be607079ffa83211/modules/core/src/main/java/org/apache/ignite/internal/util/
+IgniteUtils.java#L11714.
+[46] Github 2020. jmeter/TrustAllSSLSocketFactory.java at apache/jmeter. https://github.com/apache/
+jmeter/blob/704adb91f7f967402b9b709e89f5b73f0a466283/src/core/src/main/java/org/apache/jmeter/util/
+TrustAllSSLSocketFactory.java.
+[47] Github 2020. pdf-service/Md5Util.java at elainrd/pdf-servic. https://github.com/elainrd/pdf-service/blob/
+243588e446ed875e13a99ea08e2baa3e0806c346/src/main/java/com/hhd/pdf/util/Md5Util.java#L76.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 32 ---
+32 Amit et al.
+[48] Wolf Halton, Bo Weaver, Juned Ansari, Srinivasa Kotipalli, and Mohammed A Imran. 2017. Penetration Testing:
+A Survival Guide. InPenetration Testing: A Survival Guide(first ed.). Packt Publishing. 4. Overview of Attacking
+Android Apps - QARK (Quick Android Review Kit).
+[49] Tony Hsiang-Chih Hsu. 2019. Practical Security Automation and Testing: Tools and Techniques for Automated
+Security Scanning and Testing in DevSecOps. InPractical Security Automation and Testing. Packt Publishing, Limited,
+Birmingham. Android Security Testing - Static secure code scanning with QARK.
+[50] iccbench [n. d.]. ICC-Bench. https://github.com/fgwei/ICC-Bench. Last accessed on June 27, 2020.
+[51] Nasif Imtiaz, Akond Rahman, Effat Farhana, and Laurie Williams. 2019. Challenges with Responding to Static
+Analysis Tool Alerts. In2019 IEEE/ACM 16th International Conference on Mining Software Repositories (MSR). 245–249.
+doi:10.1109/MSR.2019.00049
+[52] iot 2020. H.R.1668 - 116th Congress (2019-2020): Internet of Things Cybersecurity Improvement Act of 2020 |
+Congress.gov | Library of Congress. https://www.congress.gov/bill/116th-congress/house-bill/1668 (Accessed on
+07/21/2021).
+[53] iotSecurityRating 2021. IoT Security Rating | Identity Management & Security. https://ims.ul.com/IoT-security-rating.
+[54] Brittany Johnson, Yoonki Song, Emerson Murphy-Hill, and Robert Bowdidge. 2013. Why Don‘t Software Developers
+Use Static Analysis Tools to Find Bugs?. In2013 35th International Conference on Software Engineering (ICSE). IEEE,
+San Francisco, CA, USA, 672–681. doi:10.1109/ICSE.2013.6606613
+[55] Kaushal Kafle, Kevin Moran, Sunil Manandhar, Adwait Nadkarni, and Denys Poshyvanyk. 2019. A Study of Data
+Store-based Home Automation. InProceedings of the 9th ACM Conference on Data and Application Security and Privacy
+(CODASPY).
+[56] Barbara Kitchenham, O. Pearl Brereton, David Budgen, Mark Turner, John Bailey, and Stephen Linkman. 2009.
+Systematic Literature Reviews in Software Engineering – A Systematic Literature Review.Information and Software
+Technology51, 1 (2009), 7–15. doi:10.1016/j.infsof.2008.09.009
+[57] Srinivasa Rao Kotipalli and Mohammed A Imran. 2016. Hacking Android. InHacking Android(first ed.). Packt
+Publishing, Limited, Birmingham. 4. Overview of Attacking Android Apps - QARK(Quick Android Review Kit).
+[58] Stefan Krüger, Sarah Nadi, Michael Reif, Karim Ali, Mira Mezini, Eric Bodden, Florian Göpfert, Felix Günther, Christian
+Weinert, Daniel Demmler, and Ram Kamath. 2017. CogniCrypt: Supporting Developers in Using Cryptography. In
+Proceedings of the 32Nd IEEE/ACM International Conference on Automated Software Engineering (ASE 2017). IEEE Press,
+Piscataway, NJ, USA, 931–936.
+[59] Stefan Krüger, Johannes Späth, Karim Ali, Eric Bodden, and Mira Mezini. 2018. CrySL: An Extensible Approach to
+Validating the Correct Usage of Cryptographic APIs. In32nd European Conference on Object-Oriented Programming
+(ECOOP 2018) (Leibniz International Proceedings in Informatics (LIPIcs), Vol. 109), Todd Millstein (Ed.). Schloss Dagstuhl–
+Leibniz-Zentrum fuer Informatik, 10:1–10:27. doi:10.4230/LIPIcs.ECOOP.2018.10
+[60] lgtm 2020. LGTM - Continuous Security Analysis. https://lgtm.com/.
+[61] Mario Linares-Vásquez, Gabriele Bavota, Michele Tufano, Kevin Moran, Massimiliano Di Penta, Christopher Vendome,
+Carlos Bernal-Cárdenas, and Denys Poshyvanyk. 2017. Enabling Mutation Testing for Android Apps. InProceedings
+of the 2017 11th Joint Meeting on Foundations of Software Engineering(Paderborn, Germany)(ESEC/FSE 2017). ACM,
+New York, NY, USA, 233–244. doi:10.1145/3106237.3106275
+[62] LinkedIn Corp 2020. Linkedin/Qark. https://engineering.linkedin.com/blog/2015/08/introducing-qark.
+[63] Benjamin Livshits, Dimitrios Vardoulakis, Manu Sridharan, Yannis Smaragdakis, Ondřej Lhoták, J. Nelson Amaral,
+Bor-Yuh Evan Chang, Samuel Z. Guyer, Uday P. Khedker, and Anders Mø ller. 2015. In Defense of Soundiness: A
+Manifesto.Commun. ACM58, 2 (Jan. 2015), 44–46. doi:10.1145/2644805
+[64] Prianka Mandal, Amit Seal Ami, Victor Olaiya, Sayyed Hadi Razmjo, and Adwait Nadkarni. 2024. "Belt and suspenders"
+or "just red tape"?: Investigating Early Outcomes and Perceptions of IoT Security Compliance Enforcement. In
+Proceedings of the 2024 USENIX Security Symposium (USENIX). To appear.
+[65] Kevin Moran, Michele Tufano, Carlos Bernal-Cárdenas, Mario Linares-Vásquez, Gabriele Bavota, Christopher Vendome,
+Massimiliano Di Penta, and Denys Poshyvanyk. 2018. MDroid+: a mutation testing framework for android. In
+Proceedings of the 40th International Conference on Software Engineering: Companion Proceeedings(Gothenburg,
+Sweden)(ICSE ’18). Association for Computing Machinery, New York, NY, USA, 33–36. doi:10.1145/3183440.3183492
+[66] National Institute of Technology (NIT) Puducherry, Karaikal, India, Keerthi Vasan K., and Arun Raj Kumar P. 2016.
+Taxonomy of SSL/TLS Attacks.International Journal of Computer Network and Information Security8, 2 (Feb. 2016),
+15–24. doi:10.5815/ijcnis.2016.02.02
+[67] Marten Oltrogge, Nicolas Huaman, Sabrina Amft, Yasemin Acar, Michael Backes, and Sascha Fahl. 2021. Why Eve and
+Mallory Still Love Android: Revisiting TLS (In) Security in Android Applications. In30th USENIX Security Symposium
+(USENIX Security 21).
+[68] Oracle 2020. Java Secure Socket Extension (JSSE) Reference Guide - Oracle Help Center. https://docs.oracle.com/en/
+java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 33 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 33
+[69] OWASP 2020. Open Web Application Security Project. https://www.owasp.org/.
+[70] OWASP 2020. OWASP Benchmark. https://owasp.org/www-project-benchmark/.
+[71] owasp 2020. Test Cases for Risky or Broken Cryptographic Algorithm Erroneously Labeled as Not Vulnerable · Issue
+#92·OWASP/Benchmark. https://github.com/OWASP/Benchmark/issues/92.
+[72] Felix Pauck, Eric Bodden, and Heike Wehrheim. 2018. Do Android Taint Analysis Tools Keep Their Promises?. In
+Proceedings of the 2018 26th ACM Joint Meeting on European Software Engineering Conference and Symposium on the
+Foundations of Software Engineering (ESEC/FSE 2018). Association for Computing Machinery, Lake Buena Vista, FL,
+USA, 331–341. doi:10.1145/3236024.3236029
+[73] Kai Petersen, Sairam Vakkalanka, and Ludwik Kuzniarz. 2015. Guidelines for Conducting Systematic Mapping Studies
+in Software Engineering: An Update.Information and Software Technology64 (Aug. 2015), 1–18. doi:10.1016/j.infsof.
+2015.03.007
+[74] Lina Qiu, Yingying Wang, and Julia Rubin. 2018. Analyzing the Analyzers: FlowDroid/IccTA, AmanDroid, and
+DroidSafe. InProceedings of the 27th ACM SIGSOFT International Symposium on Software Testing and Analysis - ISSTA
+2018. ACM Press, Amsterdam, Netherlands, 176–186. doi:10.1145/3213846.3213873
+[75] qpid 2020. Broker-J - Apache Qpid. https://qpid.apache.org/components/broker-j/.
+[76] Sazzadur Rahaman, Ya Xiao, Sharmin Afrose, Fahad Shaon, Ke Tian, Miles Frantz, Murat Kantarcioglu, and Dan-
+feng (Daphne) Yao. 2019. CryptoGuard: High Precision Detection of Cryptographic Vulnerabilities in Massive-sized
+Java Projects. InProceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security - CCS ’19.
+ACM Press, London, United Kingdom, 2455–2472. doi:10.1145/3319535.3345659
+[77] shiftleft 2020. ShiftLeft Scan. https://shiftleft.io/scan.
+[78] sonarqube 2020. Code Quality and Security | SonarQube. https://www.sonarqube.org/.
+[79] Soundiness [n. d.]. Soundiness Home Page. http://soundiness.org/.
+[80] David Sounthiraraj, Justin Sahs, Garrett Greenwood, Zhiqiang Lin, and Latifur Khan. 2014. SMV-HUNTER: Large
+Scale, Automated Detection of SSL/TLS Man-in-the-Middle Vulnerabilities in Android Apps. InProceedings 2014
+Network and Distributed System Security Symposium. Internet Society, San Diego, CA. doi:10.14722/ndss.2014.23205
+[81] SpotBugs 2020. Find Security Bugs. https://find-sec-bugs.github.io/.
+[82] SpotBugs 2021. find-sec-bugs/find-sec-bugs: The SpotBugs plugin for security audits of Java web applications and
+Android applications. (Also work with Kotlin, Groovy and Scala projects). https://github.com/find-sec-bugs/find-sec-
+bugs.
+[83] stackoverflow 2020. android - Google Play Warning: How to fix incorrect implementation of HostnameVerifier? -
+Stack Overflow. https://stackoverflow.com/a/41330005.
+[84] stackoverflow 2020. android - unsafe implementation of the HostnameVerifier interface - Stack Overflow. https:
+//stackoverflow.com/questions/47069277/unsafe-implementation-of-the-hostnameverifier-interface.
+[85] stackoverflow 2020. Cryptography Stack Exchange. https://crypto.stackexchange.com.
+[86] stackoverflow 2020. Java - an Unsafe Implementation of the Interface X509TrustManager from Google.
+https://stackoverflow.com/questions/35545126/an-unsafe-implementation-of-the-interface-x509trustmanager-
+from-google.
+[87] stackoverflow 2020. jeesuite-libs/DES.java at vakinge/jeesuite-libs. https://github.com/vakinge/jeesuite-libs/blob/
+master/jeesuite-common/src/main/java/com/jeesuite/common/crypt/DES.java#L37.
+[88] stackoverflow 2020. Stack Overflow - Where Developers Learn, Share, & Build Careers. https://stackoverflow.com.
+[89] stackoverflow 2020. UltimateAndroid/TripleDES.java at cymcsg/UltimateAndroid. https://github.com/cymcsg/
+UltimateAndroid/blob/678afdda49d1e7c91a36830946a85e0fda541971/UltimateAndroid/ultimateandroid/src/main/
+java/com/marshalchen/ua/common/commonUtils/urlUtils/TripleDES.java#L144.
+[90] stackoverflow 2021. Bypass SSL Warning from google play. https://stackoverflow.com/questions/36913633/bypass-
+ssl-warning-from-google-play.
+[91] stackoverflow 2021. How to bypass SSL certificate validation in Android app? https://stackoverflow.com/questions/
+35548162/how-to-bypass-ssl-certificate-validation-in-android-app.
+[92] swamp 2020. Software Assurance Marketplace. https://continuousassurance.org/.
+[93] Junwei Tang, Jingjing Li, Ruixuan Li, Hongmu Han, Xiwu Gu, and Zhiyong Xu. 2019. SSLDetecter: Detecting
+SSL Security Vulnerabilities of Android Applications Based on a Novel Automatic Traversal Method.Security and
+Communication Networks2019 (Oct. 2019), 1–20. doi:10.1155/2019/7193684
+[94] Synopsys technology. 2020. Coverity SAST Software | Synopsys. https://www.synopsys.com/software-integrity/
+security-testing/static-analysis-sast.html.
+[95] Veracode. 2020. VERACODE’S 10TH STATE OF SOFTWARE SECURITY REPORT FINDS ORGANIZATIONS REDUCE
+RISING ‘SECURITY DEBT’ VIA DEVSECOPS, SPECIAL SPRINTS. https://www.veracode.com/veracodes-10th-state-
+software-security-report-finds-organizations-reduce-rising-security-debt.
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 34 ---
+34 Amit et al.
+[96] Ming Wen, Yepang Liu, Rongxin Wu, Xuan Xie, Shing-Chi Cheung, and Zhendong Su. 2019. Exposing Library
+API Misuses Via Mutation Analysis. In2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE).
+866–877. doi:10.1109/ICSE.2019.00093
+[97] Xanitizer. 2020. Xanitizer by RIGS IT - Because Security Matters. https://www.rigs-it.com/xanitizer/.
+[98] Li Zhang, Jiongyi Chen, Wenrui Diao, Shanqing Guo, Jian Weng, and Kehuan Zhang. 2019. CryptoREX: Large-Scale
+Analysis of Cryptographic Misuse in IoT Devices. In22nd International Symposium on Research in Attacks, Intrusions
+and Defenses (RAID 2019). USENIX Association, Chaoyang District, Beijing, 151–164.
+[99] Yuexi Zhang, Bingyu Li, Jingqiang Lin, Linghui Li, Jiaju Bai, Shijie Jia, and Qianhong Wu. 2024. Gopher: High-
+Precision and Deep-Dive Detection of Cryptographic API Misuse in the Go Ecosystem. InProceedings of the 2024
+on ACM SIGSAC Conference on Computer and Communications Security. ACM, Salt Lake City UT USA, 2978–2992.
+doi:10.1145/3658644.3690276
+[100] Chaoshun Zuo, Jianliang Wu, and Shanqing Guo. 2015. Automatically Detecting SSL Error-Handling Vulnerabilities in
+Hybrid Mobile Web Apps. InProceedings of the 10th ACM Symposium on Information, Computer and Communications
+Security (ASIA CCS ’15). ACM, New York, NY, USA, 591–596. doi:10.1145/2714576.2714583
+A Appendix: Code Snippets
+1v = new Date ( System . cu rr en tT ime Mi ll is () ) . toString () ; new IvParameterSpec ( v . getBytes () ,0 ,8) ;}
+Listing 5. Predictable/Non-Random Derivation of Value (OP 6)
+1void c h ec k S er v e rT r u st e d ( X509Certificate [] x , String s ) throws C e r t i f i c a t e E x c e p t i o n {
+2if (!( null != s && s . equalsI gnoreCas e ( " RSA " ) ) ) { throw new C e r t i f i c a t e E x c e p t i o n ( " not RSA " ) ;}
+Listing 6. Exception in analways-falsecondition block (OP 7).
+1public boolean verify ( String host , SSLSession s ) { if ( true ||
+s . getCipherSuite () . length () >=0) } return true ;} return false ;}
+Listing 7. False return within analways truecondition block (OP 8).
+1interface ITM extends X509Tru stManage r { } abstract class ATM implements X509 TrustMan ager { }
+Listing 8. Implementing an Interface with no overridden methods.
+1new H ostnameV erifier () { public boolean verify ( String h , SSLSession s ) { return true ; } };
+Listing 9. Inner class object from Abstract type (OP 12)
+1new X 5 0 9 E x t e n d e d T r u s t M a n a g e r () {
+2public void c h ec k C li e n tT r u st e d ( X509Certificate [] chain , String a ) throws C e r t i f i c a t e E x c e p t i o n {}
+3public void c h ec k S er v e rT r u st e d ( X509Certificate [] chain , String a ) throws C e r t i f i c a t e E x c e p t i o n {}
+4public X509Certificate [] g e t Ac c e pt e dI s s ue r s () { return null ;} ...};
+Listing 10. Anonymous Inner Class Object ofX509ExtendedTrustManager(F10)
+1void c h ec k S er v e rT r u st e d ( X509Certificate [] certs , String s ) throws C e r t i f i c a t e E x c e p t i o n {
+2if (!( null != s || s . equalsI gnoreCas e ( " RSA " ) || certs . length >= 314) ) {
+3throw new C e r t i f i c a t e E x c e p t i o n ( " Error " ) ;}}
+Listing 11. Specific Condition incheckServerTrustedmethod (F17)
+1abstract class AHV implements Hostnam eVerifie r {} new AHV () {
+2public boolean verify ( String h , SSLSession s ) return true ;};
+Listing 12. Anonymous Inner Class Object of An Empty Abstract Class that implements HostnameVerifier
+1public X509Certificate [] g e t Ac c e pt e dI s s ue r s () {
+2for ( int i = 0; i <100; i ++) { if ( i ==50) return E M P T Y _ X 5 0 9 C E R T I F I C A T E _ A R R A Y ;}
+3return E M P T Y _ X 5 0 9 C E R T I F I C A T E _ A R R A Y ;}
+Listing 13. Irrelevant Loop ingetAcceptedIssuersmethod ofX509TrustManager
+1abstract class AbstractTM implements X509Tr ustManag er {} new AbstractTM () {
+2public void c h ec k S er v e rT r u st e d ( X509Certificate [] c , String a ) throws C e r t i f i c a t e E x c e p t i o n {}
+3public X509Certificate [] g e t Ac c e pt e dI s s ue r s () { return null ;}};
+Listing 14. Anonymous inner class object with a vulnerablecheckServerTrustedmethod
+, Vol. 1, No. 1, Article . Publication date: February XXXX.
+
+--- PAGE 35 ---
+Mutation-based Evaluation of Cryptographic API Misuse Detectors 35
+1interface IHV extends Hostnam eVerifie r {}
+2new IHV () { public boolean verify ( String h , SSLSession s ) return true ;};
+Listing 15. Anonymous Inner Class Object of an Interface that extendsHostnameVerifier
+1KeyGenerator keyGen = KeyGenerator . getInstance ( " AES " ) ;
+2keyGen . init (128) ; SecretKey secretKey = keyGen . generateKey () ;
+Listing 16. Misuse case requiring a trivial new operator
+1if (! className . contains ( " android . " ) )
+2classNames . add ( className . substring (1 , className . length () - 1) ) ; return classNames ;
+Listing 17. CryptoGuard’s code ignoring names with "android"
+1if (!( true || arg0 == null || arg1 == null ) ) { throw new C e r t i f i c a t e E x c e p t i o n () ;}
+Listing 18. Generic Conditions incheckServerTrusted
+1this . name = name == null ? " AES " : name ;
+2this . mode = mode == null ? " CBC " : mode ;
+3this . pad = pad == null ? " PKCS5Padding " : pad ;
+4this . string = StringUtils . format ( " %
+Listing 19. Transformation String formation in Apache Druid similar toF2which uses AES in CBC mode with
+PKCS5Padding, a configuration that is known to be a misuse [33, 71].
+1Class T {
+2int i = 0; cipher = " AES / GCM / NoPadding " ;
+3public void A () { cipher = " AES / GCM / NoPadding " ;}
+4public void B () { cipher = " AES / GCM / NoPadding " ;}
+5public void C () { cipher = " AES / GCM / NoPadding " ;}
+6public void D () { cipher = " AES " ;} public String getVal () { return cipher ;}}
+7Cipher . getInstance ( new T () . A () . B () . C () . D () . getVal () ) ;
+Listing 20. Iterative Method Chaining (OP 13)
+1Class T {
+2int i = 0; cipher = " AES / GCM / NoPadding " ;
+3public void A () {
+4if ( i == 0) { if ( i == 0) { if ( i == 0) { cipher = " AES " ;}
+5else { cipher = " AES / GCM / NoPadding " ;}}
+6else { cipher = " AES / GCM / NoPadding " ;}
+7} else { cipher = " AES / GCM / NoPadding " ;}}
+8public String getVal () { return cipher ;}
+9} Cipher . getInstance ( new T () . A () . getVal () ) ;
+Listing 21. Iterative Conditionals
+1Class T { cipher = " AES / GCM / NoPadding " ;
+2public String A () { return " D " ;} public String B () { return " E " ;} public String C () { return " S " ;}
+3public void add () { cipher = A () + B () + C () ;} public String getVal () { return cipher ;}}
+4Cipher . getInstance ( new T () . add () . getVal () ) ;
+Listing 22. Method Builder (OP 15)
+1T sec = new T () ; T notsec = new T () . mthd2 () ; sec = notsec ; Cipher . getInstance ( sec . getVal () ) ;
+Listing 23. Object Sensitive, using the object created in Listing A.1
+1String var = " AES " ; char [] var1 = var . toCharArray () ; Cipher . getInstance ( String . valueOf ( var ) ) ;
+Listing 24. Build Variable
+1Cipher . getInstance ( " secureParamAES " . substring (11) ) ;
+Listing 25. Substring
+1byte [] cryptoTemp = " 12345678 " . getBytes () ;
+2javax . crypto . spec . IvParameterSpec ivSpec = new
+javax . crypto . spec . IvParameterSpec . getInstance ( cryptoTemp , " AES " ) ;
+Listing 26. Constant IV
+, Vol. 1, No. 1, Article . Publication date: February XXXX.

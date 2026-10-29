@@ -1,0 +1,55 @@
+{
+  "version": "3.0.0",
+  "module": "@ohos.security.huks / @kit.UniversalKeystoreKit",
+  "operations": [
+    {
+      "api": "generateKeyItem",
+      "SyncVariants": ["generateKeyItem", "generateKey"],
+      "aliasArgIndex": 0,
+      "optionsArgIndex": 1,
+      "createsSecretClass": "HardwareBound",
+      "createsSecretContainer": "HUKS",
+      "marksAliasAsHandle": true,
+      "description": "在 HUKS 内部生成硬件绑定密钥 κ_h，并将参数 0 (keyAlias) 标记为指向 κ_h 的不透明句柄 Handle"
+    },
+    {
+      "api": "importKeyItem",
+      "SyncVariants": ["importKeyItem", "importKey"],
+      "aliasArgIndex": 0,
+      "optionsArgIndex": 1,
+      "keyMaterialField": "inData",
+      "checksPreImportExposure": true,
+      "marksAliasAsHandle": true,
+      "description": "将外部明文密钥导入 HUKS；导入动作本身合法，但检查 inData 上游溯源链是否历经 ArkString / Log / Storage"
+    },
+    {
+      "api": "importWrappedKeyItem",
+      "SyncVariants": ["importWrappedKeyItem", "importWrappedKey"],
+      "aliasArgIndex": 0,
+      "wrappingKeyAliasArgIndex": 1,
+      "optionsArgIndex": 2,
+      "marksAliasAsHandle": true,
+      "isSafeWrappedImport": true,
+      "description": "通过加密密钥信封安全导入密钥至 HUKS"
+    },
+    {
+      "api": "exportKeyItem",
+      "SyncVariants": ["exportKeyItem", "exportKey"],
+      "aliasArgIndex": 0,
+      "returnsForm": "Raw",
+      "returnsContainer": "ArkBuffer",
+      "op": "copy",
+      "description": "从 HUKS 导出密钥字节（仅公钥或允许导出的密钥）"
+    },
+    {
+      "api": "wrapKey",
+      "SyncVariants": ["wrapKey", "wrapKeyItem", "encryptWithHuksKey", "huksWrap"],
+      "keyArgIndex": 0,
+      "kekArgIndex": 1,
+      "returnsForm": "Wrapped",
+      "returnsContainer": "ArkBuffer",
+      "op": "wrap",
+      "description": "使用包装密钥 (KEK 或 HUKS 密钥句柄) 包装目标密钥，生成 Wrapped 表示对象"
+    }
+  ]
+}

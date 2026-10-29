@@ -1,0 +1,52 @@
+[
+  {
+    "id": "A03",
+    "url": "https://codeload.github.com/CryptoAPI-Bench/CryptoAPI-Bench/zip/e6b6b50fef6970151300c1ac2de62e188ba6de19",
+    "file": "downloads/repos/CryptoAPI-Bench-e6b6b50f.zip"
+  },
+  {
+    "id": "A04",
+    "url": "https://registry.npmjs.org/arkanalyzer/-/arkanalyzer-1.0.95.tgz",
+    "file": "downloads/repos/arkanalyzer-1.0.95.tgz"
+  },
+  {
+    "id": "R20",
+    "url": "https://gitee.com/tongyuyan/harmony-utils/raw/master/README.md",
+    "file": "downloads/corpus/harmony-utils-README.md"
+  },
+  {
+    "id": "R21",
+    "url": "https://gitee.com/openharmony-sig/ohos_crypto_js/raw/master/README.md",
+    "file": "downloads/corpus/ohos-crypto-js-README.md"
+  },
+  {
+    "id": "R22",
+    "url": "https://api.github.com/repos/ohos-rs/ohos-openssl/commits/main",
+    "file": "sources/ohos-openssl-commit.json"
+  },
+  {
+    "id": "R23",
+    "url": "https://api.github.com/repos/Explore-In-HMOS/sportwatch-encrypted-decrypt-filestore/commits/main",
+    "file": "sources/wearable-demo-commit.json"
+  },
+  {
+    "id": "D23",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/security/UniversalKeystoreKit/huks-encryption-decryption-arkts.md",
+    "file": "downloads/docs/huks-encryption-decryption-arkts.md"
+  },
+  {
+    "id": "D24",
+    "url": "https://www.rfc-editor.org/rfc/rfc5116.txt",
+    "file": "downloads/docs/rfc5116-aead.txt"
+  },
+  {
+    "id": "D25",
+    "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-38D.pdf",
+    "file": "downloads/papers/NIST-SP800-38D.pdf"
+  },
+  {
+    "id": "D26",
+    "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf",
+    "file": "downloads/papers/NIST-SP800-57pt1r5.pdf"
+  }
+]

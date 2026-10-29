@@ -1,0 +1,409 @@
+Memory Integrity Enforcement: A complete vision for memory safety in Apple devices - Apple Security Research (https://security.apple.com/blog/memory-integrity-enforcement/)
+citeturn30search0 [wordlim: 200] Published: 1.1 years ago; Crawled: last month; September 9, 2025 ... Memory Integrity Enforcement (MIE) is the culmination of an unprecedented design and engineering effort, spanning half a decade, that combines the unique strengths of Apple silicon hardware with our advanced operating system security to provide industry-first, always-on memory safety protection across our devices — without compromising our best-in-class device performance.
+
+September 9, 2025
+
+# Memory Integrity Enforcement: A complete vision for memory safety in Apple devices
+
+Posted by Apple Security Engineering and Architecture (SEAR)
+
+Memory Integrity Enforcement (MIE) is the culmination of an unprecedented design and engineering effort, spanning half a decade, that combines the unique strengths of Apple silicon hardware with our advanced operating system security to provide industry-first, always-on memory safety protection across our devices — without compromising our best-in-class device performance. We believe Memory Integrity Enforcement represents the most significant upgrade to memory safety in the history of consumer operating systems.
+
+There has never been a successful, widespread malware attack against iPhone. The only system-level iOS attacks we observe in the wild come from mercenary spyware, which is vastly more complex than regular cybercriminal activity and consumer malware. Mercenary spyware is historically associated with state actors and uses exploit chains that cost millions of dollars to target a very small number of specific individuals and their devices. We would not implement such a mechanism. We believe memory safety protections need to be strictly synchronous, on by default, and working continuously. But supporting always-on, synchronous MTE across key attack surfaces while preserving a great, high-performance user experience is extremely demanding on hardware.
+
+In addition, for MTE to provide memory safety in an adversarial context, we would need to finely tune the operating system to defend the new semantics and the confidentiality of memory tags on which MTE relies. Ultimately, we determined that to deliver truly best-in-class memory safety, we would carry out a massive engineering effort spanning all of Apple — including updates to Apple silicon, our operating systems, and our software frameworks. This effort, together with our highly successful secure memory allocator work, would transform MTE from a helpful debugging tool into a groundbreaking new security feature.
+
+Today we’re introducing the culmination of this effort: Memory Integrity Enforcement (MIE), our comprehensive memory safety defense for Apple platforms. Memory Integrity Enforcement is built on the robust foundation provided by our secure memory allocators, coupled with Enhanced Memory Tagging Extension (EMTE) in synchronous mode, and supported by extensive Tag Confidentiality Enforcement policies. MIE is built right into Apple hardware and software in all models of iPhone 17 and iPhone Air and offers unparalleled, always-on memory safety protection for our key attack surfaces including the kernel, while maintaining the power and performance that users expect. In addition, we’re making EMTE available to all Apple developers in Xcode as part of the new Enhanced Security feature that we released earlier this year during WWDC.
+
+The rest of this post dives into the intensive engineering effort required to design and validate Memory Integrity Enforcement.
+
+### Designing Memory Integrity Enforcement
+
+Memory Integrity Enforcement starts with our secure memory allocators — kalloc_type, xzone malloc, and WebKit’s libpas — all of which use type information to decide how to organize memory allocations. With both use-after-free and out-of-bounds bugs, an attacker’s goal is to create overlapping interpretations of memory, which they achieve by controlling the precise position of certain allocations — of a specific type — that is advantageous to them. The type-aware placement policies of our secure memory allocators help thwart these memory corruption techniques, as we described in our kalloc_type post. Our secure allocators set a new high-water mark of software protection against memory corruption, while preserving the same or better performance as the allocators they replaced.
+
+Allocators can apply protections only at the granularity of memory pages — 16KB on iOS — which is a natural fit for multi-page allocations. 
+Memory Integrity Enforcement blocks buffer overflows
+
+Image: Memory Integrity Enforcement blocks buffer overflows
+
+The allocator is also responsible for retagging memory as it gets reused for other purposes. In the image below, the 🔼 allocation is retagged as ⏹️ after it has been freed and reallocated by the system. If a request to the retagged memory is made with the older 🔼 tag, as would be seen in use-after-free exploits, the hardware blocks it and lets the operating system take further action.
+
+Memory Integrity Enforcement blocks use-after-free access
+
+Image: Memory Integrity Enforcement blocks use-after-free access
+
+A key weakness of the original MTE specification is that access to non-tagged memory, such as global variables, is not checked by the hardware. This means attackers don’t have to face as many defensive constraints when attempting to control core application configuration and state. With Enhanced MTE, we instead specify that accessing non-tagged memory from a tagged memory region requires knowing that region’s tag, making it significantly harder for attackers to turn out-of-bounds bugs in dynamic tagged memory into a way to sidestep EMTE by directly modifying non-tagged allocations.
+Importantly, deploying EMTE with this level of precision supports our strategy to provide as many memory safety improvements as possible to users on previous iPhone generations, which don’t support EMTE.
+
+For the security evaluation of Memory Integrity Enforcement, we involved our offensive research team from the very beginning. From 2020 to 2025, they continuously analyzed and attacked the system — first conceptually, with theoretical exploitation avenues, then with practical attacks in simulated environments, and eventually on new hardware prototypes. Prolonged engagement from our offensive research team allowed us to identify and eradicate entire attack strategies and techniques before attackers could ever discover them, leading to a stronger, more mature feature from the outset.
+
+Our offensive research team identified where and how attackers are most likely to break into the system, and our deployment of Memory Integrity Enforcement is deeply guided by their findings. Notably, this includes making sure that this powerful new protection is available to third-party apps that are likely entry points for attackers — such as social networks, messaging apps, or any other app where a specific user can be targeted. 
+### Conclusion
+
+The industry-leading security of iPhone means that the vast majority of our users never face system-level attacks on their devices. Our work on memory safety is aimed primarily at the mercenary spyware and surveillance industry, which spends many millions of dollars to exploit memory corruption vulnerabilities and target a small number of individuals because of who they are and what they do. Over the past five years, we developed a comprehensive approach to memory safety that integrates the best of our hardware and software capabilities, and today’s announcement is the culmination of this ambitious vision. With the introduction of the iPhone 17 lineup and iPhone Air, we’re excited to deliver Memory Integrity Enforcement: the industry’s first ever, comprehensive, always-on memory-safety protection covering key attack surfaces — including the kernel and over 70 userland processes — built on the Enhanced Memory Tagging Extension (EMTE) and supported by secure typed allocators and tag confidentiality protections.
+
+Based on our evaluations pitting Memory Integrity Enforcement against exceptionally sophisticated mercenary spyware attacks from the last three years, we believe MIE will make exploit chains significantly more expensive and difficult to develop and maintain, disrupt many of the most effective exploitation techniques from the last 25 years, and completely redefine the landscape of memory safety for Apple products. Because of how dramatically it reduces an attacker’s ability to exploit memory corruption vulnerabilities on our devices, we believe Memory Integrity Enforcement represents the most significant upgrade to memory safety in the history of consumer operating systems.--------------------------------------------------------------------------------
+Expanding Private Cloud Compute - Apple Security Research (https://security.apple.com/blog/expanding-pcc?trk=public_post_comment-text)
+citeturn30search1 [wordlim: 200] Published: 4 months ago; Crawled: last month; Alongside the next generation of Apple Intelligence, today we’re expanding Private Cloud Compute (PCC) beyond Apple’s data centers. When Apple introduced Private Cloud Compute in 2024, we defined a new frontier for private AI inference, extending the security and privacy of Apple devices into the cloud for those AI workloads more complex than on-device models can handle.
+
+June 8, 2026
+
+# Expanding Private Cloud Compute
+
+Written by Apple Security Engineering and Architecture (SEAR), User Privacy, Core Operating Systems (Core OS), Services Engineering (ASE), and Machine Learning and AI (AIML)
+
+Alongside the next generation of Apple Intelligence, today we’re expanding Private Cloud Compute (PCC) beyond Apple’s data centers. When Apple introduced Private Cloud Compute in 2024, we defined a new frontier for private AI inference, extending the security and privacy of Apple devices into the cloud for those AI workloads more complex than on-device models can handle. Now, we are collaborating with Google and NVIDIA to run new Apple Intelligence workloads on Google Cloud, extending our industry-leading PCC privacy commitments to third-party data centers for the first time.
+
+This year, Apple collaborated with Google to leverage the technologies behind its Gemini family of models to build the next generation of Apple Foundation Models that power our Apple Intelligence features. 
+Our core PCC requirements remain exactly the same: stateless computation, enforceable guarantees, no privileged runtime access, non-targetability, and verifiable transparency. What's new with PCC on Google Cloud is the implementation: NVIDIA Confidential Computing with NVIDIA GPUs, Intel CPUs with TDX, and Google's Titan chip. On this foundation, Apple and Google collaborated to build capabilities that go far beyond a traditional confidential computing deployment:
+
+  * We do not rely solely on confidential computing technologies to mitigate attacks that leverage privileged access outside of a confidential VM, including side-channel attacks. We consider every component — from firmware through the host and guest OS stacks to application code — to be part of our trusted computing base, subject to our verifiable transparency and no-privileged-access guarantees.
+  * To mitigate the risk of supply chain attacks, we maintain a cryptographically verifiable, append-only ledger of all Google Cloud hardware that is part of the PCC fleet. For components that could be abused to exfiltrate user data if compromised, our software attestation is rooted in at least two separate roots of trust from independent vendors.
+  * Even when deployed with confidential computing, we believe the inference stack must be designed with privacy and security from the start. PCC on Google Cloud leverages many of the same architectural security patterns as PCC on Apple silicon to implement these layered protections: initial network data parsing for each request happens in a dedicated process within its own namespace, shared inference software is recycled with a short time-to-live duration, and attested keys are held in a separate, dedicated confidential VM isolated from external inputs.
+
+Together, these capabilities help ensure that even outside of Apple's hardware and data centers, user data will continue to be protected by the full force of PCC's extraordinary security and privacy properties. Regardless of where the infrastructure is hosted, Apple retains complete control over PCC software; Apple devices will only trust PCC software that is cryptographically approved by Apple. PCC on Google Cloud will be gradually ramping towards the complete set of protections throughout the summer preview period.
+
+As with PCC on Apple silicon, all binaries will be published for public inspection. We will provide public research tooling, and access to live PCC nodes in research mode through the Apple Security Bounty Program, maintaining the same depth of access for the security research community. We'll share more technical detail about PCC on Google Cloud at the Confidential Computing Summit later this month, and in an update to the PCC Security Guide and research program details launching later this year.--------------------------------------------------------------------------------
+Private Cloud Compute Security Guide | Documentation (https://security.apple.com/documentation/private-cloud-compute/)
+citeturn30search2 [wordlim: 200] Crawled: 3 months ago; Private Cloud Compute (PCC) delivers groundbreaking privacy and security protections to support computationally intensive requests for Apple Intelligence by bringing our industry-leading device security model into the cloud. ... Private Cloud Compute makes it possible for users to take advantage of such models without sacrificing the security and privacy that they expect from Apple devices.
+
+# Private Cloud Compute Security Guide
+
+A new frontier for AI privacy in the cloud.
+
+Image: Private Cloud Compute
+
+Image: PCC Features
+
+Private Cloud Compute (PCC) delivers groundbreaking privacy and security protections to support computationally intensive requests for Apple Intelligence by bringing our industry-leading device security model into the cloud. Whenever possible, Apple Intelligence processes tasks locally on device, but more sophisticated tasks require additional processing power to execute more complex foundation models in the cloud. Private Cloud Compute makes it possible for users to take advantage of such models without sacrificing the security and privacy that they expect from Apple devices.
+
+We designed Private Cloud Compute with core requirements that go beyond traditional models of cloud AI security:
+
+  * Stateless computation on personal user data: PCC must use the personal user data that it receives exclusively for the purpose of fulfilling the user’s request. User data must not be accessible after the response is returned to the user.
+
+  * Enforceable guarantees: It must be possible to constrain and analyze all the components that critically contribute to the guarantees of the overall PCC system.
+
+  * No privileged runtime access: PCC must not contain privileged interfaces that might enable Apple site reliability staff to bypass PCC privacy guarantees.
+
+  * Non-targetability: An attacker should not be able to attempt to compromise personal data that belongs to specific, targeted PCC users without attempting a broad compromise of the entire PCC system.
+
+  * Verifiable transparency: Security researchers need to be able to verify, with a high degree of confidence, that our privacy and security guarantees for PCC match our public promises.
+
+This guide is designed to walk you through these requirements and provide the resources you need to verify them for yourself, including a comprehensive look at the technical design of PCC and the specific implementation details needed to validate it.
+
+Explore our Core Requirements
+
+Start exploring the PCC design by learning about the extraordinary security requirements of the system.
+
+Explore the Virtual Research Environment
+
+Interact with and debug the PCC software stack.
+
+Inspect the Source Code
+
+To simplify security research, source code is available for certain security-critical PCC components.
+
+## Topics
+
+### Core Requirements
+
+Core Security & Privacy Requirements
+
+Dive into understanding PCC by learning about the extraordinary security requirements of the system.
+
+Stateless Computation and Enforceable Guarantees
+
+The PCC node is designed to safeguard user data and enforce that it is not retained once request processing is complete.
+
+No Privileged Runtime Access
+
+PCC is designed without privileged interfaces that might expose user data.
+
+Non-Targetability
+
+PCC is designed to ensure that an attacker cannot target specific PCC users.
+
+Verifiable Transparency
+
+Security researchers can verify the PCC privacy and security guarantees.
+
+### Hardware and Software
+
+Hardware Root of Trust
+
+The PCC inference engine enables high performance while keeping user data private.
+
+Private Filter Service
+
+Answers probabilistic membership queries from other PCC components without the queries leaving the trust boundary.
+
+PCC Agent
+
+PCC Agent executes application-specific workflows on proxy nodes, coordinating tool invocations across PCC nodes.
+
+Multi-Turn Agent
+
+The Multi-Turn Agent coordinates conversational and tool-using workflows over a persistent connection, with bounded cross-request state.
+
+Visual Lookup
+
+Privacy-preserving lookup of visual entities using embedding-based search and private information retrieval (PIR).
+
+Private Information Retrieval
+
+A cryptographic technique for retrieving data from servers outside the PCC trust boundary without revealing which records were accessed.
+
+HomeKit Secure Video Analysis
+
+The HomeKit Secure Video analysis workflow generates natural-language video descriptions and embeddings for HomeKit Secure Video recordings.
+
+Media Decoding
+
+A dedicated PCC worker decodes untrusted compressed video and images into pixel buffers, isolated from the workflows that consume them.
+
+Visual Generation
+
+PCC runs the Apple Diffusion Model to generate images.
+
+Embedding Generation
+
+An embedding tool that generates text and video embeddings.
+
+Speech Synthesis
+
+PCC Agent synthesizes spoken audio inside the PCC trust boundary.
+
+### Transparency and Management
+
+### Virtual Research Environment
+
+Virtual Research Environment
+
+Interact with and debug the PCC software stack.
+
+Get Started with the VRE
+
+Configure your system to run the PCC Virtual Research Environment (VRE).
+
+Interact with the VRE
+
+Issue requests to and configure the VRE.
+
+Research Variant
+
+Use the research variant to dive deeper into PCC.
+
+Shadow Tunneling
+
+Replace compute cloud apps with controllable proxies to exercise arbitrary behaviors in the VRE.
+
+Inspecting Releases
+--------------------------------------------------------------------------------
+Apple Intelligence and privacy on iPhone - Apple Support (https://support.apple.com/guide/iphone/apple-intelligence-and-privacy-iphe3f499e0e/27/ios/27)
+citeturn30search3 [wordlim: 200] Crawled: yesterday; For more complex requests that require more computational capacity, Apple Intelligence can use Private Cloud Compute, which extends the privacy and security of your Apple products like iPhone into the cloud to unlock even more intelligence.
+
+# Apple Intelligence and privacy on iPhone
+
+Apple Intelligence delivers intelligence that is relevant for you and grounded in your personal context while protecting your privacy with a groundbreaking step forward for privacy in AI. In many cases, Apple Intelligence models run entirely on device so that a task can be completed without data leaving your device.
+
+For more complex requests that require more computational capacity, Apple Intelligence can use Private Cloud Compute, which extends the privacy and security of your Apple products like iPhone into the cloud to unlock even more intelligence. Private Cloud Compute uses larger, server-based models. The data being processed in Private Cloud Compute is not stored or made accessible to Apple. It is processed only to fulfill your request, after which point the results are returned securely to your device and are not retained by Private Cloud Compute. And independent privacy and security researchers can verify this privacy promise at any time.
+
+Note: Apple Intelligence on iOS 27 or later is available on an Apple Intelligence-enabled iPhone 15 Pro, iPhone 15 Pro Max, or iPhone 16 model or later. Apple Intelligence is not available in all languages or regions. Usage limits may apply.*
+
+## About Private Cloud Compute
+
+When a user makes a request, Apple Intelligence analyzes whether it can be processed on device. For more complex requests, it can draw on Private Cloud Compute, which extends the privacy and security of your iPhone into the cloud. With Private Cloud Compute, only the data that is relevant to your request is processed on Apple silicon servers, before being removed. The data being processed in Private Cloud Compute is not stored or made accessible to Apple. It is processed only to fulfill your request, after which point the results are returned securely to your device and are not retained by Private Cloud Compute. Independent privacy and security researchers can inspect the code that runs on Apple silicon servers that enable Private Cloud Compute to verify this privacy promise at any time.
+
+The Apple silicon servers that form the foundation of Private Cloud Compute provide unprecedented cloud security. This starts with the Secure Enclave, which protects critical encryption keys on the server just as it does on a user’s iPhone, while Secure Boot ensures the OS running on the server is signed and verified, just like in iOS. Trusted Execution Monitor makes sure only signed and verified code runs, and attestation enables a user’s device to securely verify the identity and configuration of a Private Cloud Compute cluster before sending a request. And to verify Apple’s privacy promise, independent experts can inspect the software that runs on Private Cloud Compute servers.
+
+Note: To learn more, go to Private Cloud Compute: A new frontier for AI privacy in the cloud. Private Cloud Compute isn’t available in all regions.
+
+## Create an Apple Intelligence Report
+
+You can generate a report of requests your iPhone has sent to Private Cloud Compute.
+
+  1. Go to the Settings app Image on your iPhone.
+
+  2. Tap Privacy & Security.
+
+  3. Tap Apple Intelligence Report, then choose a report duration for the last 15 minutes (default) or last 7 days. --------------------------------------------------------------------------------
+Adding server-side intelligence with Private Cloud Compute | Apple Developer Documentation (https://developer.apple.com/documentation/FoundationModels/adding-server-side-intelligence-with-private-cloud-compute)
+citeturn30search4 [wordlim: 200] Crawled: 3 months ago;   * Adding server-side intelligence with Private Cloud Compute ... `com.apple.developer.private-cloud-compute`
+  * Adding server-side intelligence with Private Cloud Compute
+
+Article
+
+# Adding server-side intelligence with Private Cloud Compute
+
+Access a larger context window and stronger reasoning by routing session requests through Private Cloud Compute.
+
+## Overview
+
+The on-device Apple Intelligence model is useful for apps that need an always-available solution that doesn’t require a network connection. However, you may find that the feature you build needs more capabilities than the on-device model provides. The server-based model — accessed through Private Cloud Compute (PCC) — provides a larger 32K-token context size and stronger reasoning for handling long documents or extended multiturn conversations.
+
+Typically, you need to handle authentication and manage API keys with server models. You don’t need to handle either when you use PCC. People just need a device that supports Apple Intelligence and gets a daily request limit. People can upgrade their iCloud+ subscription to get more access when they want it.
+
+Important
+
+To develop with PCC you must meet certain eligibility requirements. To learn more and request access to the managed entitlement, see Accessing Private Cloud Compute.
+
+## Use the server-based Apple Intelligence model
+
+Choosing when to use PCC depends on your feature and is best made after evaluating your feature. This process helps you understand the quality of your specific feature, and whether it meets your expectations when using the on-device model. Start with the on-device model and evaluate it with the Evaluations framework. If you determine your feature needs more reasoning capability or context size, then use PCC.
+
+Capability  | `SystemLanguageModel`  | `PrivateCloudComputeLanguageModel`
+--- | --- | ---
+Preserves privacy  | ✅  | ✅
+Works offline  | ✅  | 🚫
+Usage limits  | Unlimited  | Limit per day
+Reasoning  | Not supported  | Multiple levels
+Context size  | 4K  | 32K
+
+To use the server-based model, you change a single line of code that you apply when creating your `LanguageModelSession`.     } else {
+        // Use the on-device model on older versions.
+    }
+    `
+
+Using PCC requires a network connection, so if the request fails because the network connection is unavailable, retry the request using the on-device model. PCC is only available on devices that support Apple Intelligence, so check `availability` before performing your request:
+    
+    `let model = PrivateCloudComputeLanguageModel()
+    
+    
+    switch model.availability {
+    case .available:
+        // Show your intelligence UI.
+    case .unavailable(.deviceNotEligible):
+        // Show an alternative UI.
+    case .unavailable(.systemNotReady):
+        // PCC isn't ready to serve requests.
+    case .unavailable(let other):
+        // The model is unavailable for an unknown reason.
+    }
+    `
+
+Note
+
+Model availability depends on whether the device and region supports Apple Intelligence. For a list of supported devices, see Apple Intelligence.
+
+## Handle usage limits from using PCC
+--------------------------------------------------------------------------------
+Google Online Security Blog: Advanced Protection: Google’s Strongest Security for Mobile Devices (https://security.googleblog.com/2025/05/advanced-protection-mobile-devices.html?hl=en)
+citeturn30search5 [wordlim: 200] Published: 1.5 years ago; Crawled: 5 days ago; To enhance these existing device defenses, Android 16 extends Advanced Protection with a device-level security setting for Android users. ... With the release of Android 16, users who choose to activate Advanced Protection will gain immediate access to a core suite of enhanced security features.
+
+## Advanced Protection: Google’s Strongest Security for Mobile Devices
+
+May 13, 2025
+
+Posted by Il-Sung Lee, Group Product Manager, Android Security
+
+Protecting users who need heightened security has been a long-standing commitment at Google, which is why we have our Advanced Protection Program that provides Google’s strongest protections against targeted attacks.
+To enhance these existing device defenses, Android 16 extends Advanced Protection with a device-level security setting for Android users. Whether you’re an at-risk individual – such as a journalist, elected official, or public figure – or you just prioritize security, Advanced Protection gives you the ability to activate Google’s strongest security for mobile devices, providing greater peace of mind that you’re protected against the most sophisticated threats.
+
+### Simple to activate, powerful in protection
+
+Advanced Protection ensures all of Android's highest security features are enabled and are seamlessly working together to safeguard you against online attacks, harmful apps, and data risks.
+This reflects a "defense-in-depth" strategy, where multiple security layers work together.
+  * Seamless security integration with apps: Advanced Protection acts as a single control point that enables important security settings across many of your favorite Google apps, including Chrome, Google Message, and Phone by Google. Advanced Protection will also incorporate third-party applications that choose to integrate in the future.
+
+### How your Android device becomes fortified with Advanced Protection
+
+Advanced Protection manages the following existing and new security features for your device, ensuring they are activated and cannot be disabled across critical protection areas:
+
+### Continuously evolving Advanced Protection
+
+With the release of Android 16, users who choose to activate Advanced Protection will gain immediate access to a core suite of enhanced security features. Additional Advanced Protection features like Intrusion Logging, USB protection, the option to disable auto-reconnect to insecure networks, and integration with Scam Detection for Phone by Google will become available later this year.
+
+We are committed to continuously expanding the security and privacy capabilities within Advanced Protection, so users can benefit from the best of Android’s powerful security features.--------------------------------------------------------------------------------
+Apple Private Cloud Compute SOC 3 audit reports - Apple Support (https://support.apple.com/guide/certifications/apple-private-cloud-compute-soc-3-audit-apc95a31b9d8/web)
+citeturn30search6 [wordlim: 200] Published: 2 weeks ago; Crawled: 2 days ago; The SOC 3 report is an independent examination report that describes the service commitments and system requirements of Private Cloud Compute that Apple designed and that operate in accordance with the trust services criteria relevant to security, processing integrity, and confidentiality, outlined in AICPA Trust Services Criteria, Trust Services Principles section 100, 2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy. ...   * July 2026: Examination period ending July 31, 2026
+
+# Apple Private Cloud Compute SOC 3 audit reports
+
+System and Organization Controls (SOC) reports are internal control examinations created by the American Institute of Certified Public Accountants (AICPA). Apple commissioned an independent examination of its controls over the Private Cloud Compute (PCC) Provisioning System; the SOC 3 report details the independent auditor’s examination of whether those controls operated effectively throughout the period. This report provides reasonable assurance as to whether Apple’s service commitments and system requirements were achieved based on the applicable trust criteria.
+
+## SOC 3 overview
+
+The SOC 3 report is an independent examination report that describes the service commitments and system requirements of Private Cloud Compute that Apple designed and that operate in accordance with the trust services criteria relevant to security, processing integrity, and confidentiality, outlined in AICPA Trust Services Criteria, Trust Services Principles section 100, 2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy.
+
+## SOC 3 reports
+
+You can download the reports here:
+
+  * July 2026: Examination period ending July 31, 2026
+
+  * April 2026: Examination period ending April 30, 2026
+
+  * January 2026: Examination period ending January 31, 2026
+
+  * October 2025: Examination period ending October 31, 2025
+--------------------------------------------------------------------------------
+Android Show: New Android Security and Privacy Features in 2026 (https://blog.google/security/whats-new-in-android-security-privacy-2026/)
+citeturn30search7 [wordlim: 200] Published: 5 months ago; Crawled: yesterday; We’ve been continuously enhancing the protections with key upgrades like USB protection and Intrusion Logging, a capability that we developed in partnership with Amnesty International and Reporters Without Borders, among others. ... To fortify these privacy guarantees with verifiable, hardware backed, on-device isolation, Android 17 introduces AISeal with pKVM. ... And with the launch of Gemini Intelligence, we’ve grounded our approach to security and privacy in three core principles: explicit user control, comprehensive data protection, and operational transparency to bring you powerful AI capabilities you can trust. ... To combat this, Android now automatically hides these sensitive security codes for three hours from most apps, ensuring your OTPs stay protected from unauthorized access while they are active.
+These malicious versions are created to deceive you by mimicking the official OS while secretly compromising the integrity of your device. To combat this, we are introducing Android OS verification in Android 17. Launching initially on Pixel devices, this new feature helps you verify that your device is running an official, widely distributed build of the Android OS.
+
+Android OS verification notifies a user that their device is running an official Android build
+
+Image: Android OS verification notifies a user that their device is running an official Android build
+
+Alongside this feature, we are taking another step toward ecosystem-wide transparency by utilizing a public, append-only ledger. This provides cryptographic proof that production Google applications across Android, including foundational GMS APIs, are the authentic versions released by Google. We see this ledger as a transparent "Source of Truth" that anyone can audit at any time. If a Google-signed app isn't on this ledger, we didn't intend to release it. For Pixel users, this works with our existing Pixel System Image Transparency to prove that both the system itself and the apps running on it are official production software.
+
+## Driving security innovation across your devices and network
+
+Scammers often try to steal one-time passwords (OTPs) from your text messages to hijack your private accounts—sometimes using malicious apps that have been granted the SMS permission. To combat this, Android now automatically hides these sensitive security codes for three hours from most apps, ensuring your OTPs stay protected from unauthorized access while they are active.
+
+As carriers continue to rapidly transition from 2/3G to 4/5G technologies, Android 17 is introducing a new capability for the disable 2G toggle. Carriers will now have the ability to configure this setting to default to 2G being off, proactively shielding customers from legacy technology vulnerabilities in areas where 2G infrastructure is no longer maintained.
+
+Beyond these network protocols, we are further hardening Android's long-term data protection by introducing Post-Quantum Cryptography to stay ahead of future threats. You can read more about these advanced protections and our commitment to future-proof security in our recent blog post.
+
+--------------------------------------------------------------------------------
+Appendix: Apple Intelligence Report | Documentation (https://security.apple.com/documentation/private-cloud-compute/appendix_appleintelligencereport)
+citeturn30search8 [wordlim: 200] Crawled: 3 months ago;   * Private Cloud Compute Security Guide ...   * `modelRequests` contains all Apple Intelligence requests, both requests that are handled locally (`executionEnvironment`: `OnDevice`), and requests that are processed by Private Cloud Compute (`executionEnvironment`: `PrivateCloudCompute`).
+
+  * Private Cloud Compute Security Guide
+  * Appendix: Apple Intelligence Report
+
+Article
+
+# Appendix: Apple Intelligence Report
+
+The transparency data available on client devices.
+
+## Overview
+
+After you enable the Apple Intelligence Report in `Settings > Privacy & Security`, you can export the attestation bundles of the PCC nodes to which your device has encrypted requests.
+
+The exported JSON file consists of two top-level keys:
+
+  * `modelRequests` contains all Apple Intelligence requests, both requests that are handled locally (`executionEnvironment`: `OnDevice`), and requests that are processed by Private Cloud Compute (`executionEnvironment`: `PrivateCloudCompute`).
+
+  * `privateCloudComputeRequests` contains metadata for requests processed by Private Cloud Compute:
+
+    * `pipelineKind` is always `tie-cloudboard-apple-com`, indicating it was routed to a PCC node running a TIE.
+
+    * `pipelineParameters` are additional request parameters that are visible to the PCC Gateway for routing decisions, like model or adapter.
+
+    * `attestations` is an array of attestation bundles of PCC nodes to which the device released the Data Encryption Key. The structure of attestation bundles is described in Appendix: Attestation Bundle Contents.
+
+### Base64-encoded attestation bundles
+
+Starting with macOS 26.4, iOS 26.4, and iPadOS 26.4, attestation bundles in the Apple Intelligence Report are Base64-encoded Protobuf. This replaces the previous JSON representation of the attestation bundle’s Protobuf fields, and helps ensure that the report captures the complete attestation bundle — including any fields added in the future — without requiring a client software update.
+
+You can parse, canonicalize, and verify attestation bundles from the Apple Intelligence Report using the `pccvre attestation` subcommands. For more information, see Inspect an attestation bundle.
+
+  * Appendix: Apple Intelligence Report
+  * Overview
+  * Base64-encoded attestation bundles--------------------------------------------------------------------------------
+How Android secures high-assurance digital credentials (https://blog.google/security/android-strongbox-and-open-standards-digital-credentials/)
+citeturn30search9 [wordlim: 200] Published: last month; Crawled: yesterday; Sep 01, 2026 ... For use cases with elevated security requirements—such as national eIDs—Android Strongbox provides, on devices with capable hardware, dedicated, tamper-resistant silicon designed to support compliance with stringent global security and privacy frameworks. ... Using Android Key Attestation and Remote Key Provisioning (RKP), the device generates a cryptographic verifiable certificate chain. ... Since its launch in March 2021, Android Ready SE has united leading Secure Element (SE) and SoC vendors around pre-validated, open-source applets, including Strongbox KeyMint and Weaver.
+Android’s platform-centric architecture establishes four verifiable links that wallet applications and relying parties build upon:
+
+Image: Diagram depicting Android’s chain of trust
+
+  1. Establish Trust with Hardware Key Attestation:
+Trust begins at device manufacturing. Using Android Key Attestation and Remote Key Provisioning (RKP), the device generates a cryptographic verifiable certificate chain. Credential issuers can remotely verify that the device is running genuine Android software and that private keys reside inside certified hardware before any credential data is provisioned.
+  2. Strongbox for Tamper-Resistant Device Binding:
+Once platform integrity is proven, keypairs generated inside Strongbox cryptographically bind the credential to the physical device. Strongbox executes inside a dedicated, physically isolated Secure Element (SE) certified at least at Common Criteria EAL4+ with AVA_VAN.5, providing high security assurance against physical attacks.
+--------------------------------------------------------------------------------
+Security research on Private Cloud Compute - Apple Security Research (https://security.apple.com/blog/pcc-security-research/)
+citeturn30search10 [wordlim: 200] Published: 2.0 years ago; Crawled: last month; Private Cloud Compute (PCC) fulfills computationally intensive requests for Apple Intelligence while providing groundbreaking privacy and security protections — by bringing our industry-leading device security model into the cloud.
+-----------------------------------------------------------------...

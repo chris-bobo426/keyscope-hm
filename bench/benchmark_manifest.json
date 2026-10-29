@@ -1,0 +1,846 @@
+[
+  {
+    "id": "F1_v1_direct_A_Safe",
+    "family": "F1",
+    "familyName": "句柄与密钥材料区分",
+    "variant": "v1_direct",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F1_v1_direct_A_Safe",
+    "description": "将 HUKS 密钥别名 (KeyHandle) 存入 Preferences，即便变量名为 secretKeyMaterial 也不应误报",
+    "testedCapability": "区分 Handle 与 KeyMaterial"
+  },
+  {
+    "id": "F1_v1_direct_B_Risky",
+    "family": "F1",
+    "familyName": "句柄与密钥材料区分",
+    "variant": "v1_direct",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F1_v1_direct_B_Risky",
+    "description": "将 getEncoded() 导出的密钥字节经 Base64 编码后存入 Preferences（变量名伪装为 publicConfigAlias）",
+    "testedCapability": "区分 Handle 与 KeyMaterial"
+  },
+  {
+    "id": "F2_v1_direct_A_Safe",
+    "family": "F2",
+    "familyName": "NAPI 跨语言表示转换",
+    "variant": "v1_direct",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F2_v1_direct_A_Safe",
+    "description": "Native RAND_bytes 生成密钥后经 napi_create_buffer_copy 传回受控缓冲区，双端执行 memset_s 与 fill(0) 清零",
+    "testedCapability": "跨语言 NAPI 表示摘要与受控容器判定"
+  },
+  {
+    "id": "F2_v1_direct_B_Risky",
+    "family": "F2",
+    "familyName": "NAPI 跨语言表示转换",
+    "variant": "v1_direct",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F2_v1_direct_B_Risky",
+    "description": "Native 密钥经 ToHex 与 napi_create_string_utf8 跨语言转换为不可控擦除的 ArkTS String",
+    "testedCapability": "跨语言 NAPI 表示摘要与受控容器判定"
+  },
+  {
+    "id": "F3_v1_direct_A_Safe",
+    "family": "F3",
+    "familyName": "包装密钥可恢复性不动点",
+    "variant": "v1_direct",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F3_v1_direct_A_Safe",
+    "description": "会话密钥使用 HUKS 硬件绑定密钥包装后存入 Preferences，同域仅存放 HUKS 别名，不可恢复",
+    "testedCapability": "Rec(κ, D) 递归可恢复性最小不动点"
+  },
+  {
+    "id": "F3_v1_direct_B_Risky",
+    "family": "F3",
+    "familyName": "包装密钥可恢复性不动点",
+    "variant": "v1_direct",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F3_v1_direct_B_Risky",
+    "description": "会话密钥虽经包装，但包装它的明文 KEK 被同时存入同一 Preferences (D_store)，导致两者在 D_store 均可恢复",
+    "testedCapability": "Rec(κ, D) 递归可恢复性最小不动点"
+  },
+  {
+    "id": "F4_v1_direct_A_Safe",
+    "family": "F4",
+    "familyName": "多秘密身份保留与差異化策略",
+    "variant": "v1_direct",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F4_v1_direct_A_Safe",
+    "description": "长期密钥经 HUKS 包装后落盘，临时协商密钥仅在内存使用并清零",
+    "testedCapability": "按逻辑秘密 κ 区分生命周期策略与汇合点身份保留"
+  },
+  {
+    "id": "F4_v1_direct_B_Risky",
+    "family": "F4",
+    "familyName": "多秘密身份保留与差异化策略",
+    "variant": "v1_direct",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F4_v1_direct_B_Risky",
+    "description": "分支汇合点同时指向已安全包装的长期密钥与未包装的临时会话密钥，随后写入 Preferences",
+    "testedCapability": "按逻辑秘密 κ 区分生命周期策略与汇合点身份保留"
+  },
+  {
+    "id": "F5_v1_direct_A_Safe",
+    "family": "F5",
+    "familyName": "共用辅助函数上下文敏感",
+    "variant": "v1_direct",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F5_v1_direct_A_Safe",
+    "description": "公开 IV 与秘密密钥分别调用同一个 normalizeBuffer 辅助函数，仅公开 IV 的返回值写入日志，1-call-site 隔离避免身份串扰",
+    "testedCapability": "1-call-site 堆克隆上下文敏感 (-Ctx 消融验证)"
+  },
+  {
+    "id": "F5_v1_direct_B_Risky",
+    "family": "F5",
+    "familyName": "共用辅助函数上下文敏感",
+    "variant": "v1_direct",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V3"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F5_v1_direct_B_Risky",
+    "description": "秘密密钥经共用辅助函数 normalizeBuffer 转换后被写入 hilog 系统日志",
+    "testedCapability": "1-call-site 堆克隆上下文敏感 (-Ctx 消融验证)"
+  },
+  {
+    "id": "F6_v1_direct_A_Safe",
+    "family": "F6",
+    "familyName": "单向派生与可逆编码区分",
+    "variant": "v1_direct",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F6_v1_direct_A_Safe",
+    "description": "对密钥材料计算 SHA-256 单向摘要 (OneWay) 作为指纹存入 Preferences，不可逆还原原始密钥",
+    "testedCapability": "OneWay 不可恢复表示识别 (打穿二元污点 B1)"
+  },
+  {
+    "id": "F6_v1_direct_B_Risky",
+    "family": "F6",
+    "familyName": "单向派生与可逆编码区分",
+    "variant": "v1_direct",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F6_v1_direct_B_Risky",
+    "description": "将密钥材料通过 TextDecoder 可逆解码为托管字符串并存入 Preferences",
+    "testedCapability": "OneWay 不可恢复表示识别 (打穿二元污点 B1)"
+  },
+  {
+    "id": "F7_v1_direct_A_Safe",
+    "family": "F7",
+    "familyName": "结构体字段敏感与序列化",
+    "variant": "v1_direct",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F7_v1_direct_A_Safe",
+    "description": "对象字段仅包含 HUKS 密钥别名句柄，经 JSON.stringify 序列化后存入 Preferences",
+    "testedCapability": "字段敏感指向 (fld) 与 JSON.stringify 递归检查"
+  },
+  {
+    "id": "F7_v1_direct_B_Risky",
+    "family": "F7",
+    "familyName": "结构体字段敏感与序列化",
+    "variant": "v1_direct",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F7_v1_direct_B_Risky",
+    "description": "对象字段包含导出的明文密钥字节，经 JSON.stringify 序列化为字符串后存入 Preferences",
+    "testedCapability": "字段敏感指向 (fld) 与 JSON.stringify 递归检查"
+  },
+  {
+    "id": "F8_v1_direct_A_Safe",
+    "family": "F8",
+    "familyName": "NAPI 拷贝与别名清零区分",
+    "variant": "v1_direct",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F8_v1_direct_A_Safe",
+    "description": "Native 通过 napi_create_external_arraybuffer 导出共享内存别名，ArkTS 侧调用 fill(0) 即可清零底层原件",
+    "testedCapability": "NAPI Copy vs Alias 语义与 Must-Zeroization (-CopyAlias 消融验证)"
+  },
+  {
+    "id": "F8_v1_direct_B_Risky",
+    "family": "F8",
+    "familyName": "NAPI 拷贝与别名清零区分",
+    "variant": "v1_direct",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "E1_M4"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F8_v1_direct_B_Risky",
+    "description": "Native 通过 napi_create_buffer_copy 返回副本且原件使用可被编译器优化的普通 memset，ArkTS 清零副本无法清零原件",
+    "testedCapability": "NAPI Copy vs Alias 语义与 Must-Zeroization (-CopyAlias 消融验证)"
+  },
+  {
+    "id": "F1_v2_helper_A_Safe",
+    "family": "F1",
+    "familyName": "句柄与密钥材料区分",
+    "variant": "v2_helper",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F1_v2_helper_A_Safe",
+    "description": "将 HUKS 密钥别名 (KeyHandle) 存入 Preferences，即便变量名为 secretKeyMaterial 也不应误报",
+    "testedCapability": "区分 Handle 与 KeyMaterial"
+  },
+  {
+    "id": "F1_v2_helper_B_Risky",
+    "family": "F1",
+    "familyName": "句柄与密钥材料区分",
+    "variant": "v2_helper",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F1_v2_helper_B_Risky",
+    "description": "将 getEncoded() 导出的密钥字节经 Base64 编码后存入 Preferences（变量名伪装为 publicConfigAlias）",
+    "testedCapability": "区分 Handle 与 KeyMaterial"
+  },
+  {
+    "id": "F2_v2_helper_A_Safe",
+    "family": "F2",
+    "familyName": "NAPI 跨语言表示转换",
+    "variant": "v2_helper",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F2_v2_helper_A_Safe",
+    "description": "Native RAND_bytes 生成密钥后经 napi_create_buffer_copy 传回受控缓冲区，双端执行 memset_s 与 fill(0) 清零",
+    "testedCapability": "跨语言 NAPI 表示摘要与受控容器判定"
+  },
+  {
+    "id": "F2_v2_helper_B_Risky",
+    "family": "F2",
+    "familyName": "NAPI 跨语言表示转换",
+    "variant": "v2_helper",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F2_v2_helper_B_Risky",
+    "description": "Native 密钥经 ToHex 与 napi_create_string_utf8 跨语言转换为不可控擦除的 ArkTS String",
+    "testedCapability": "跨语言 NAPI 表示摘要与受控容器判定"
+  },
+  {
+    "id": "F3_v2_helper_A_Safe",
+    "family": "F3",
+    "familyName": "包装密钥可恢复性不动点",
+    "variant": "v2_helper",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F3_v2_helper_A_Safe",
+    "description": "会话密钥使用 HUKS 硬件绑定密钥包装后存入 Preferences，同域仅存放 HUKS 别名，不可恢复",
+    "testedCapability": "Rec(κ, D) 递归可恢复性最小不动点"
+  },
+  {
+    "id": "F3_v2_helper_B_Risky",
+    "family": "F3",
+    "familyName": "包装密钥可恢复性不动点",
+    "variant": "v2_helper",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F3_v2_helper_B_Risky",
+    "description": "会话密钥虽经包装，但包装它的明文 KEK 被同时存入同一 Preferences (D_store)，导致两者在 D_store 均可恢复",
+    "testedCapability": "Rec(κ, D) 递归可恢复性最小不动点"
+  },
+  {
+    "id": "F4_v2_helper_A_Safe",
+    "family": "F4",
+    "familyName": "多秘密身份保留与差異化策略",
+    "variant": "v2_helper",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F4_v2_helper_A_Safe",
+    "description": "长期密钥经 HUKS 包装后落盘，临时协商密钥仅在内存使用并清零",
+    "testedCapability": "按逻辑秘密 κ 区分生命周期策略与汇合点身份保留"
+  },
+  {
+    "id": "F4_v2_helper_B_Risky",
+    "family": "F4",
+    "familyName": "多秘密身份保留与差异化策略",
+    "variant": "v2_helper",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F4_v2_helper_B_Risky",
+    "description": "分支汇合点同时指向已安全包装的长期密钥与未包装的临时会话密钥，随后写入 Preferences",
+    "testedCapability": "按逻辑秘密 κ 区分生命周期策略与汇合点身份保留"
+  },
+  {
+    "id": "F5_v2_helper_A_Safe",
+    "family": "F5",
+    "familyName": "共用辅助函数上下文敏感",
+    "variant": "v2_helper",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F5_v2_helper_A_Safe",
+    "description": "公开 IV 与秘密密钥分别调用同一个 normalizeBuffer 辅助函数，仅公开 IV 的返回值写入日志，1-call-site 隔离避免身份串扰",
+    "testedCapability": "1-call-site 堆克隆上下文敏感 (-Ctx 消融验证)"
+  },
+  {
+    "id": "F5_v2_helper_B_Risky",
+    "family": "F5",
+    "familyName": "共用辅助函数上下文敏感",
+    "variant": "v2_helper",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V3"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F5_v2_helper_B_Risky",
+    "description": "秘密密钥经共用辅助函数 normalizeBuffer 转换后被写入 hilog 系统日志",
+    "testedCapability": "1-call-site 堆克隆上下文敏感 (-Ctx 消融验证)"
+  },
+  {
+    "id": "F6_v2_helper_A_Safe",
+    "family": "F6",
+    "familyName": "单向派生与可逆编码区分",
+    "variant": "v2_helper",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F6_v2_helper_A_Safe",
+    "description": "对密钥材料计算 SHA-256 单向摘要 (OneWay) 作为指纹存入 Preferences，不可逆还原原始密钥",
+    "testedCapability": "OneWay 不可恢复表示识别 (打穿二元污点 B1)"
+  },
+  {
+    "id": "F6_v2_helper_B_Risky",
+    "family": "F6",
+    "familyName": "单向派生与可逆编码区分",
+    "variant": "v2_helper",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F6_v2_helper_B_Risky",
+    "description": "将密钥材料通过 TextDecoder 可逆解码为托管字符串并存入 Preferences",
+    "testedCapability": "OneWay 不可恢复表示识别 (打穿二元污点 B1)"
+  },
+  {
+    "id": "F7_v2_helper_A_Safe",
+    "family": "F7",
+    "familyName": "结构体字段敏感与序列化",
+    "variant": "v2_helper",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F7_v2_helper_A_Safe",
+    "description": "对象字段仅包含 HUKS 密钥别名句柄，经 JSON.stringify 序列化后存入 Preferences",
+    "testedCapability": "字段敏感指向 (fld) 与 JSON.stringify 递归检查"
+  },
+  {
+    "id": "F7_v2_helper_B_Risky",
+    "family": "F7",
+    "familyName": "结构体字段敏感与序列化",
+    "variant": "v2_helper",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F7_v2_helper_B_Risky",
+    "description": "对象字段包含导出的明文密钥字节，经 JSON.stringify 序列化为字符串后存入 Preferences",
+    "testedCapability": "字段敏感指向 (fld) 与 JSON.stringify 递归检查"
+  },
+  {
+    "id": "F8_v2_helper_A_Safe",
+    "family": "F8",
+    "familyName": "NAPI 拷贝与别名清零区分",
+    "variant": "v2_helper",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F8_v2_helper_A_Safe",
+    "description": "Native 通过 napi_create_external_arraybuffer 导出共享内存别名，ArkTS 侧调用 fill(0) 即可清零底层原件",
+    "testedCapability": "NAPI Copy vs Alias 语义与 Must-Zeroization (-CopyAlias 消融验证)"
+  },
+  {
+    "id": "F8_v2_helper_B_Risky",
+    "family": "F8",
+    "familyName": "NAPI 拷贝与别名清零区分",
+    "variant": "v2_helper",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "E1_M4"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F8_v2_helper_B_Risky",
+    "description": "Native 通过 napi_create_buffer_copy 返回副本且原件使用可被编译器优化的普通 memset，ArkTS 清零副本无法清零原件",
+    "testedCapability": "NAPI Copy vs Alias 语义与 Must-Zeroization (-CopyAlias 消融验证)"
+  },
+  {
+    "id": "F1_v3_field_A_Safe",
+    "family": "F1",
+    "familyName": "句柄与密钥材料区分",
+    "variant": "v3_field",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F1_v3_field_A_Safe",
+    "description": "将 HUKS 密钥别名 (KeyHandle) 存入 Preferences，即便变量名为 secretKeyMaterial 也不应误报",
+    "testedCapability": "区分 Handle 与 KeyMaterial"
+  },
+  {
+    "id": "F1_v3_field_B_Risky",
+    "family": "F1",
+    "familyName": "句柄与密钥材料区分",
+    "variant": "v3_field",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F1_v3_field_B_Risky",
+    "description": "将 getEncoded() 导出的密钥字节经 Base64 编码后存入 Preferences（变量名伪装为 publicConfigAlias）",
+    "testedCapability": "区分 Handle 与 KeyMaterial"
+  },
+  {
+    "id": "F2_v3_field_A_Safe",
+    "family": "F2",
+    "familyName": "NAPI 跨语言表示转换",
+    "variant": "v3_field",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F2_v3_field_A_Safe",
+    "description": "Native RAND_bytes 生成密钥后经 napi_create_buffer_copy 传回受控缓冲区，双端执行 memset_s 与 fill(0) 清零",
+    "testedCapability": "跨语言 NAPI 表示摘要与受控容器判定"
+  },
+  {
+    "id": "F2_v3_field_B_Risky",
+    "family": "F2",
+    "familyName": "NAPI 跨语言表示转换",
+    "variant": "v3_field",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F2_v3_field_B_Risky",
+    "description": "Native 密钥经 ToHex 与 napi_create_string_utf8 跨语言转换为不可控擦除的 ArkTS String",
+    "testedCapability": "跨语言 NAPI 表示摘要与受控容器判定"
+  },
+  {
+    "id": "F3_v3_field_A_Safe",
+    "family": "F3",
+    "familyName": "包装密钥可恢复性不动点",
+    "variant": "v3_field",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F3_v3_field_A_Safe",
+    "description": "会话密钥使用 HUKS 硬件绑定密钥包装后存入 Preferences，同域仅存放 HUKS 别名，不可恢复",
+    "testedCapability": "Rec(κ, D) 递归可恢复性最小不动点"
+  },
+  {
+    "id": "F3_v3_field_B_Risky",
+    "family": "F3",
+    "familyName": "包装密钥可恢复性不动点",
+    "variant": "v3_field",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F3_v3_field_B_Risky",
+    "description": "会话密钥虽经包装，但包装它的明文 KEK 被同时存入同一 Preferences (D_store)，导致两者在 D_store 均可恢复",
+    "testedCapability": "Rec(κ, D) 递归可恢复性最小不动点"
+  },
+  {
+    "id": "F4_v3_field_A_Safe",
+    "family": "F4",
+    "familyName": "多秘密身份保留与差異化策略",
+    "variant": "v3_field",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F4_v3_field_A_Safe",
+    "description": "长期密钥经 HUKS 包装后落盘，临时协商密钥仅在内存使用并清零",
+    "testedCapability": "按逻辑秘密 κ 区分生命周期策略与汇合点身份保留"
+  },
+  {
+    "id": "F4_v3_field_B_Risky",
+    "family": "F4",
+    "familyName": "多秘密身份保留与差异化策略",
+    "variant": "v3_field",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F4_v3_field_B_Risky",
+    "description": "分支汇合点同时指向已安全包装的长期密钥与未包装的临时会话密钥，随后写入 Preferences",
+    "testedCapability": "按逻辑秘密 κ 区分生命周期策略与汇合点身份保留"
+  },
+  {
+    "id": "F5_v3_field_A_Safe",
+    "family": "F5",
+    "familyName": "共用辅助函数上下文敏感",
+    "variant": "v3_field",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F5_v3_field_A_Safe",
+    "description": "公开 IV 与秘密密钥分别调用同一个 normalizeBuffer 辅助函数，仅公开 IV 的返回值写入日志，1-call-site 隔离避免身份串扰",
+    "testedCapability": "1-call-site 堆克隆上下文敏感 (-Ctx 消融验证)"
+  },
+  {
+    "id": "F5_v3_field_B_Risky",
+    "family": "F5",
+    "familyName": "共用辅助函数上下文敏感",
+    "variant": "v3_field",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V3"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F5_v3_field_B_Risky",
+    "description": "秘密密钥经共用辅助函数 normalizeBuffer 转换后被写入 hilog 系统日志",
+    "testedCapability": "1-call-site 堆克隆上下文敏感 (-Ctx 消融验证)"
+  },
+  {
+    "id": "F6_v3_field_A_Safe",
+    "family": "F6",
+    "familyName": "单向派生与可逆编码区分",
+    "variant": "v3_field",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F6_v3_field_A_Safe",
+    "description": "对密钥材料计算 SHA-256 单向摘要 (OneWay) 作为指纹存入 Preferences，不可逆还原原始密钥",
+    "testedCapability": "OneWay 不可恢复表示识别 (打穿二元污点 B1)"
+  },
+  {
+    "id": "F6_v3_field_B_Risky",
+    "family": "F6",
+    "familyName": "单向派生与可逆编码区分",
+    "variant": "v3_field",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F6_v3_field_B_Risky",
+    "description": "将密钥材料通过 TextDecoder 可逆解码为托管字符串并存入 Preferences",
+    "testedCapability": "OneWay 不可恢复表示识别 (打穿二元污点 B1)"
+  },
+  {
+    "id": "F7_v3_field_A_Safe",
+    "family": "F7",
+    "familyName": "结构体字段敏感与序列化",
+    "variant": "v3_field",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F7_v3_field_A_Safe",
+    "description": "对象字段仅包含 HUKS 密钥别名句柄，经 JSON.stringify 序列化后存入 Preferences",
+    "testedCapability": "字段敏感指向 (fld) 与 JSON.stringify 递归检查"
+  },
+  {
+    "id": "F7_v3_field_B_Risky",
+    "family": "F7",
+    "familyName": "结构体字段敏感与序列化",
+    "variant": "v3_field",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F7_v3_field_B_Risky",
+    "description": "对象字段包含导出的明文密钥字节，经 JSON.stringify 序列化为字符串后存入 Preferences",
+    "testedCapability": "字段敏感指向 (fld) 与 JSON.stringify 递归检查"
+  },
+  {
+    "id": "F8_v3_field_A_Safe",
+    "family": "F8",
+    "familyName": "NAPI 拷贝与别名清零区分",
+    "variant": "v3_field",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F8_v3_field_A_Safe",
+    "description": "Native 通过 napi_create_external_arraybuffer 导出共享内存别名，ArkTS 侧调用 fill(0) 即可清零底层原件",
+    "testedCapability": "NAPI Copy vs Alias 语义与 Must-Zeroization (-CopyAlias 消融验证)"
+  },
+  {
+    "id": "F8_v3_field_B_Risky",
+    "family": "F8",
+    "familyName": "NAPI 拷贝与别名清零区分",
+    "variant": "v3_field",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "E1_M4"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F8_v3_field_B_Risky",
+    "description": "Native 通过 napi_create_buffer_copy 返回副本且原件使用可被编译器优化的普通 memset，ArkTS 清零副本无法清零原件",
+    "testedCapability": "NAPI Copy vs Alias 语义与 Must-Zeroization (-CopyAlias 消融验证)"
+  },
+  {
+    "id": "F1_v4_branch_naming_A_Safe",
+    "family": "F1",
+    "familyName": "句柄与密钥材料区分",
+    "variant": "v4_branch_naming",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F1_v4_branch_naming_A_Safe",
+    "description": "将 HUKS 密钥别名 (KeyHandle) 存入 Preferences，即便变量名为 secretKeyMaterial 也不应误报",
+    "testedCapability": "区分 Handle 与 KeyMaterial"
+  },
+  {
+    "id": "F1_v4_branch_naming_B_Risky",
+    "family": "F1",
+    "familyName": "句柄与密钥材料区分",
+    "variant": "v4_branch_naming",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F1_v4_branch_naming_B_Risky",
+    "description": "将 getEncoded() 导出的密钥字节经 Base64 编码后存入 Preferences（变量名伪装为 publicConfigAlias）",
+    "testedCapability": "区分 Handle 与 KeyMaterial"
+  },
+  {
+    "id": "F2_v4_branch_naming_A_Safe",
+    "family": "F2",
+    "familyName": "NAPI 跨语言表示转换",
+    "variant": "v4_branch_naming",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F2_v4_branch_naming_A_Safe",
+    "description": "Native RAND_bytes 生成密钥后经 napi_create_buffer_copy 传回受控缓冲区，双端执行 memset_s 与 fill(0) 清零",
+    "testedCapability": "跨语言 NAPI 表示摘要与受控容器判定"
+  },
+  {
+    "id": "F2_v4_branch_naming_B_Risky",
+    "family": "F2",
+    "familyName": "NAPI 跨语言表示转换",
+    "variant": "v4_branch_naming",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F2_v4_branch_naming_B_Risky",
+    "description": "Native 密钥经 ToHex 与 napi_create_string_utf8 跨语言转换为不可控擦除的 ArkTS String",
+    "testedCapability": "跨语言 NAPI 表示摘要与受控容器判定"
+  },
+  {
+    "id": "F3_v4_branch_naming_A_Safe",
+    "family": "F3",
+    "familyName": "包装密钥可恢复性不动点",
+    "variant": "v4_branch_naming",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F3_v4_branch_naming_A_Safe",
+    "description": "会话密钥使用 HUKS 硬件绑定密钥包装后存入 Preferences，同域仅存放 HUKS 别名，不可恢复",
+    "testedCapability": "Rec(κ, D) 递归可恢复性最小不动点"
+  },
+  {
+    "id": "F3_v4_branch_naming_B_Risky",
+    "family": "F3",
+    "familyName": "包装密钥可恢复性不动点",
+    "variant": "v4_branch_naming",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F3_v4_branch_naming_B_Risky",
+    "description": "会话密钥虽经包装，但包装它的明文 KEK 被同时存入同一 Preferences (D_store)，导致两者在 D_store 均可恢复",
+    "testedCapability": "Rec(κ, D) 递归可恢复性最小不动点"
+  },
+  {
+    "id": "F4_v4_branch_naming_A_Safe",
+    "family": "F4",
+    "familyName": "多秘密身份保留与差異化策略",
+    "variant": "v4_branch_naming",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F4_v4_branch_naming_A_Safe",
+    "description": "长期密钥经 HUKS 包装后落盘，临时协商密钥仅在内存使用并清零",
+    "testedCapability": "按逻辑秘密 κ 区分生命周期策略与汇合点身份保留"
+  },
+  {
+    "id": "F4_v4_branch_naming_B_Risky",
+    "family": "F4",
+    "familyName": "多秘密身份保留与差异化策略",
+    "variant": "v4_branch_naming",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F4_v4_branch_naming_B_Risky",
+    "description": "分支汇合点同时指向已安全包装的长期密钥与未包装的临时会话密钥，随后写入 Preferences",
+    "testedCapability": "按逻辑秘密 κ 区分生命周期策略与汇合点身份保留"
+  },
+  {
+    "id": "F5_v4_branch_naming_A_Safe",
+    "family": "F5",
+    "familyName": "共用辅助函数上下文敏感",
+    "variant": "v4_branch_naming",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F5_v4_branch_naming_A_Safe",
+    "description": "公开 IV 与秘密密钥分别调用同一个 normalizeBuffer 辅助函数，仅公开 IV 的返回值写入日志，1-call-site 隔离避免身份串扰",
+    "testedCapability": "1-call-site 堆克隆上下文敏感 (-Ctx 消融验证)"
+  },
+  {
+    "id": "F5_v4_branch_naming_B_Risky",
+    "family": "F5",
+    "familyName": "共用辅助函数上下文敏感",
+    "variant": "v4_branch_naming",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V3"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F5_v4_branch_naming_B_Risky",
+    "description": "秘密密钥经共用辅助函数 normalizeBuffer 转换后被写入 hilog 系统日志",
+    "testedCapability": "1-call-site 堆克隆上下文敏感 (-Ctx 消融验证)"
+  },
+  {
+    "id": "F6_v4_branch_naming_A_Safe",
+    "family": "F6",
+    "familyName": "单向派生与可逆编码区分",
+    "variant": "v4_branch_naming",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F6_v4_branch_naming_A_Safe",
+    "description": "对密钥材料计算 SHA-256 单向摘要 (OneWay) 作为指纹存入 Preferences，不可逆还原原始密钥",
+    "testedCapability": "OneWay 不可恢复表示识别 (打穿二元污点 B1)"
+  },
+  {
+    "id": "F6_v4_branch_naming_B_Risky",
+    "family": "F6",
+    "familyName": "单向派生与可逆编码区分",
+    "variant": "v4_branch_naming",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F6_v4_branch_naming_B_Risky",
+    "description": "将密钥材料通过 TextDecoder 可逆解码为托管字符串并存入 Preferences",
+    "testedCapability": "OneWay 不可恢复表示识别 (打穿二元污点 B1)"
+  },
+  {
+    "id": "F7_v4_branch_naming_A_Safe",
+    "family": "F7",
+    "familyName": "结构体字段敏感与序列化",
+    "variant": "v4_branch_naming",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F7_v4_branch_naming_A_Safe",
+    "description": "对象字段仅包含 HUKS 密钥别名句柄，经 JSON.stringify 序列化后存入 Preferences",
+    "testedCapability": "字段敏感指向 (fld) 与 JSON.stringify 递归检查"
+  },
+  {
+    "id": "F7_v4_branch_naming_B_Risky",
+    "family": "F7",
+    "familyName": "结构体字段敏感与序列化",
+    "variant": "v4_branch_naming",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "V1",
+      "V2"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F7_v4_branch_naming_B_Risky",
+    "description": "对象字段包含导出的明文密钥字节，经 JSON.stringify 序列化为字符串后存入 Preferences",
+    "testedCapability": "字段敏感指向 (fld) 与 JSON.stringify 递归检查"
+  },
+  {
+    "id": "F8_v4_branch_naming_A_Safe",
+    "family": "F8",
+    "familyName": "NAPI 拷贝与别名清零区分",
+    "variant": "v4_branch_naming",
+    "pairRole": "A_Safe",
+    "expectedVulnerable": false,
+    "expectedRules": [],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F8_v4_branch_naming_A_Safe",
+    "description": "Native 通过 napi_create_external_arraybuffer 导出共享内存别名，ArkTS 侧调用 fill(0) 即可清零底层原件",
+    "testedCapability": "NAPI Copy vs Alias 语义与 Must-Zeroization (-CopyAlias 消融验证)"
+  },
+  {
+    "id": "F8_v4_branch_naming_B_Risky",
+    "family": "F8",
+    "familyName": "NAPI 拷贝与别名清零区分",
+    "variant": "v4_branch_naming",
+    "pairRole": "B_Risky",
+    "expectedVulnerable": true,
+    "expectedRules": [
+      "E1_M4"
+    ],
+    "projectDir": "D:\\第五届“华秦杯”网络安全创新大赛创意作品赛\\bench\\samples\\F8_v4_branch_naming_B_Risky",
+    "description": "Native 通过 napi_create_buffer_copy 返回副本且原件使用可被编译器优化的普通 memset，ArkTS 清零副本无法清零原件",
+    "testedCapability": "NAPI Copy vs Alias 语义与 Must-Zeroization (-CopyAlias 消融验证)"
+  }
+]

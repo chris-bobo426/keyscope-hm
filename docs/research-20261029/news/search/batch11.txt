@@ -1,0 +1,376 @@
+Amazon Bedrock AgentCore Identity now allows you to bring your own secrets with AWS Secrets Manager - AWS (https://aws.amazon.com/about-aws/whats-new/2026/06/agentcore-identity-secrets-manager/)
+citeturn31search0 [wordlim: 200] Published: 4 months ago; Crawled: 2 months ago; Amazon Bedrock AgentCore Identity now allows customers the ability to reference existing AWS Secrets Manager secret ARNs directly in AgentCore Identity Credential Providers. ... Now, customers create and manage their secrets in AWS Secrets Manager using their own governance and compliance policies, including custom CMKs, tagging strategies, automatic rotation and resource policies, and then reference the existing secret ARN when configuring a Credential Provider in AgentCore Identity.
+
+# Amazon Bedrock AgentCore Identity now allows you to bring your own secrets with AWS Secrets Manager
+
+Posted on: Jun 1, 2026
+
+Amazon Bedrock AgentCore Identity now allows customers the ability to reference existing AWS Secrets Manager secret ARNs directly in AgentCore Identity Credential Providers.
+Previously, AgentCore Identity used a service-managed secret approach, where secrets were created and managed by the service on the customer's behalf. This approach prevented customers from applying resource tags on create, encrypting secrets with a customer-managed key (CMK), or applying other organization-specific governance controls at the time of secret creation — causing friction for teams with strict governance requirements.
+Now, customers create and manage their secrets in AWS Secrets Manager using their own governance and compliance policies, including custom CMKs, tagging strategies, automatic rotation and resource policies, and then reference the existing secret ARN when configuring a Credential Provider in AgentCore Identity. This gives customers full ownership of how their secrets are created, classified, and governed, without changing how AgentCore Identity uses them at runtime.
+Amazon Bedrock AgentCore Identity bring your own secret is now generally available in 14 AWS Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Asia Pacific (Mumbai), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), and Europe (Stockholm). To learn more, visit the Amazon Bedrock AgentCore Identity documentation.--------------------------------------------------------------------------------
+Agents are your newest insiders. Security must move at their speed.  | Microsoft Security Blog (https://www.microsoft.com/en-us/security/blog/2026/10/19/agents-are-your-newest-insiders-security-must-move-at-their-speed/?trk=public_post_comment-text)
+citeturn31search1 [wordlim: 200] Published: last week; Crawled: 6 days ago; We are extending Microsoft Entra Agent ID with identity types for additional agent patterns, including local and previously unknown agents discovered through security sensors. ... Image: Diagram titled “Dynamic Agent Risk” showing signals from Microsoft Sentinel, Entra, Intune, Purview, Global Secure Access, and Defender feeding into context analysis, which produces a dynamic risk score for real-time detection of intent and task drift.
+## Know every agent and give it an accountable identity
+
+You cannot secure what you cannot see. Agents can be created through Microsoft platforms, integrated through partner platforms and software development kits (SDKs), or introduced locally without a central deployment process. Microsoft Security uses native integrations, connectors, and sensors across the cyber stack to discover more of the agent estate.
+
+We are expanding discovery to 35 additional types of local agents, bringing the total to 60 supported local agents, including Claude Code, OpenAI Codex, and GitHub Copilot. Organizations can bring these agents into a unified registry, regardless of how they were discovered, to understand ownership, activity, and risk.
+
+Discovery tells you that an agent exists. Identity gives security and governance systems a durable anchor for controlling it.
+
+Every agent should have a first-class identity distinct from the person using or sponsoring it. We are extending Microsoft Entra Agent ID with identity types for additional agent patterns, including local and previously unknown agents discovered through security sensors. If the agent or harness is compromised, it should not be able to disable the controls watching it.
+
+### Control the action space
+
+An agent should not be free to call any tool, API, Model Context Protocol (MCP) server, resource, or other agent it can find. Local and network and data controls must mediate those paths, observe the calls, and enforce enterprise policy. Controlling the destination alone is not enough. Security must also understand the content flowing into and out of the agent, including its sensitivity, provenance, and whether untrusted data may be influencing the agent’s behavior.
+
+### Start with no permissions, or least privilege
+
+We have spent decades applying Zero Trust and least privilege to people. Agents make those principles even more important. An agent should not automatically inherit all the standing access of its user. It should begin with no authority and receive only what it needs for the approved task, for only as long as the task requires.
+
+To enable this, we are introducing Dynamic Permissions. Organization-wide policy sets the outer boundary, including preventing an agent from obtaining authority its user does not have. Permissions can then be scoped to the task, made time-bound, and contracted or removed as the task changes or completes. Higher-impact actions can require verified human approval.
+
+> The employee retains the employee’s access. The agent receives its own identity, permissions and its own authority scoped to its current task and for the duration of the task only.
+
+## Adapt protection as agent risk changes
+
+Least privilege reduces exposure, but it does not eliminate risk. An expense-approval agent may begin a task with the right access and then encounter a prompt injection in an external document. Its configuration has not changed, but its behavior and risk have.
+
+For human users, a delay between detection and response may be manageable. For an agent operating at machine speed, it can be the difference between containment and impact. The security system must be able to understand what changed and act before a person can manually investigate every signal.
+
+That is why we are introducing Dynamic Agent Risk and Dynamic Conditional Access for agents.
+
+### Dynamic Agent Risk
+
+Dynamic Agent Risk combines signals from identity, data, endpoints, cloud, network, runtime, and the agent’s own activity. It considers how securely the agent is configured, what resources it can reach, the potential impact if something goes wrong, and whether its actions are drifting from the user’s or organization’s intent.
+--------------------------------------------------------------------------------
+IR 8547, Transition to Post-Quantum Cryptography Standards | CSRC (https://csrc.nist.gov/pubs/ir/8547/final)
+citeturn31search2 [wordlim: 200] Published: 3 weeks ago; Crawled: yesterday; Date Published: October 2026 ... It also supports the implementation of Executive Order 14412 and OMB Memorandum M-26-15, which direct federal agencies to prioritize the migration of their most sensitive systems to post-quantum cryptography. ... cryptography; post-quantum cryptography; quantum computing; public-key cryptography
+
+### NIST IR 8547
+
+# Transition to Post-Quantum Cryptography Standards
+
+Date Published: October 2026
+
+#### Author(s)
+
+Dustin Moody (NIST), Ray Perlner (NIST), Andrew Regenscheid (NIST), Angela Robinson (NIST), David Cooper (NIST)
+
+#### Abstract
+
+This report describes NIST’s approach to transitioning from quantum-vulnerable cryptographic algorithms to post-quantum digital signature algorithms and key-establishment schemes. It identifies existing quantum-vulnerable cryptographic standards and the quantum-resistant standards to which information technology products and services will need to transition. It is intended to foster engagement with industry, standards organizations, and relevant agencies to facilitate and accelerate the adoption of post-quantum cryptography. It also supports the implementation of Executive Order 14412 and OMB Memorandum M-26-15, which direct federal agencies to prioritize the migration of their most sensitive systems to post-quantum cryptography.
+
+This report describes NIST’s approach to transitioning from quantum-vulnerable cryptographic algorithms to post-quantum digital signature algorithms and key-establishment schemes. It identifies existing quantum-vulnerable cryptographic standards and the quantum-resistant standards to which information technology products and services will need to transition. It is intended to foster engagement with industry, standards organizations, and relevant agencies to facilitate and accelerate the adoption of post-quantum cryptography. It also supports the implementation of Executive Order 14412 and OMB Memorandum M-26-15, which direct federal agencies to prioritize the migration of their most sensitive systems to post-quantum cryptography.
+
+#### Keywords
+
+cryptography; post-quantum cryptography; quantum computing; public-key cryptography
+
+#### Documentation
+
+Publication:
+https://doi.org/10.6028/NIST.IR.8547
+Download URL
+
+Supplemental Material:
+Post-Quantum Cryptography
+
+Document History:
+11/12/24: IR 8547 (Draft)
+10/27/26: IR 8547 (Final)
+
+#### Topics
+
+Security and Privacy
+
+post-quantum cryptography
+
+Laws and Regulations
+
+Executive Order 14412, OMB M-26-15--------------------------------------------------------------------------------
+Controlling delegation in agentic AI with Amazon Bedrock Agent Core | AWS Public Sector Blog (https://aws.amazon.com/blogs/publicsector/controlling-delegation-in-agentic-ai-with-amazon-bedrock-agent-core/)
+citeturn31search3 [wordlim: 200] Published: last month; Crawled: yesterday; # Controlling delegation in agentic AI with Amazon Bedrock Agent Core
+
+by Brigette Bucke and Marc Cressall on 25 SEP 2026 in Amazon Bedrock AgentCore, Public Sector Permalink Share ... Marc Cressall is a senior customer solutions manager at AWS working with state and local government and higher education customers on cloud adoption, AI-driven modernization, and security architecture.
+
+# Controlling delegation in agentic AI with Amazon Bedrock Agent Core
+
+by Brigette Bucke and Marc Cressall on 25 SEP 2026 in Amazon Bedrock AgentCore, Public Sector Permalink Share
+
+Image: Controlling delegation in agentic AI with Amazon Bedrock Agent Core
+
+Prompt injection, excessive agency, and information disclosure are distinct risk categories in agentic AI, but they share an underlying condition: uncontrolled delegation. The agent hands off trust, action, or access without checking whether it should.
+
+For public sector teams, these risks carry additional weight. Agents handling citizen data, processing benefits eligibility, or triaging constituent requests operate in environments where unauthorized disclosure is not only a security event but a compliance violation.
+
+This post introduces a delegation model that gives architects a structured way to assess whether agentic systems meet their authorization and access control requirements. One input, three categories of failure, and a potential Federal Information Security Modernization Act (FISMA) incident.
+
+The attack surface didn’t necessarily grow. In some designs, several risks collapse into one input path. The system’s behavior isn’t fully determined by its code. It’s co-determined by the input, the tools available, and the data accessible at inference time. Each of these is a delegation point. Each delegation point is a place where control can slip.
+
+## Three faces of one flaw
+
+Trust gets handed to the input. If that input is adversarial, the agent’s intended behavior gets overridden. That’s prompt injection.
+
+Action gets handed to tools. If the action exceeds what the user authorized, the agent acts beyond its mandate. That’s excessive agency.
+
+Access gets handed to the retrieval layer. If the user isn’t authorized for that data, the agent surfaces content it shouldn’t. That’s information disclosure.
+
+These three risk categories share one structural problem: Something was handed off without verifying whether it should have been. --------------------------------------------------------------------------------
+NIST Report Provides Guidelines for Transition to Post-Quantum Cryptography Standards | NIST (https://www.nist.gov/news-events/news/2026/10/nist-report-provides-guidelines-transition-post-quantum-cryptography)
+citeturn31search4 [wordlim: 200] Published: yesterday; Crawled: yesterday; October 27, 2026 ...   * This report describes the timelines and migration activities for federal agencies, and it can serve as a key resource for technology providers and organizations that are developing their quantum-readiness road maps. ... In August 2024, the National Institute of Standards and Technology (NIST) released post-quantum cryptography (PQC) standards made to withstand the assault of a future quantum computer. ... National Security Memorandum 10 established the year 2035 as the primary target for completing the migration to PQC across federal systems.
+
+# NIST Report Provides Guidelines for Transition to Post-Quantum Cryptography Standards
+
+October 27, 2026
+
+  * A finalized report will help organizations transition to NIST’s post-quantum standards, which are necessary to withstand attacks by future quantum computers.
+  * The report identifies existing quantum-vulnerable cryptographic standards and the quantum-resistant standards that are designed to replace them.
+  * This report describes the timelines and migration activities for federal agencies, and it can serve as a key resource for technology providers and organizations that are developing their quantum-readiness road maps.
+
+Image: Collage illustration of servers, laptops and phones is divided into left "Old Encryption Standards" and right "New Encryption Standards."
+
+Credit: J. Wang/NIST and Shutterstock
+
+In August 2024, the National Institute of Standards and Technology (NIST) released post-quantum cryptography (PQC) standards made to withstand the assault of a future quantum computer. Now, the agency has released its high-level road map to help organizations switch to these standards. 
+
+The report, Transition to Post-Quantum Cryptography Standards (NISTIR 8547), outlines NIST’s official approach and timelines for transitioning away from quantum-vulnerable algorithms to quantum-resistant standards. It is the core technical document meant to inform federal agencies, industry partners and standards organizations about what needs to change and when during the migration to PQC standards — a cryptographic modernization with details that will vary by organization but timelines that apply broadly.
+
+“The report describes different use cases and says why one migration might take longer than another,” said NIST mathematician Dustin Moody, who heads the PQC standardization project. “We understand there’s not one strategy that fits all use cases, and we want to help people handle their migration while staying abreast of what’s changing.”
+
+While quantum computers are still in development, a sufficiently powerful device — known as a cryptanalytically relevant quantum computer — would threaten the encryption methods that protect our confidential electronic information, from email messages to financial statements. Even though the transition to PQC is beginning before such a device appears, today’s encrypted data is already at risk from the “harvest now, decrypt later” threat, where adversaries collect sensitive data now with the intention of decrypting it when quantum technology matures. This threat is one of the main reasons why the transition to PQC is urgent, driving the need to make changes on a well-considered schedule.
+
+National Security Memorandum 10 established the year 2035 as the primary target for completing the migration to PQC across federal systems. Executive Order 14412 accelerated this timeline, requiring federal high-value assets and high-impact systems to migrate by 2030 for key establishment and 2031 for digital signatures. NISTIR 8547 supports these migration timelines. While the memorandum applies specifically to federal systems, many organizations that work with the federal government will be affected as well. 
+
+The NIST report identifies quantum-vulnerable algorithms among NIST’s existing cryptographic standards. The report then provides the transition plan for the quantum-vulnerable algorithms in these standards, referencing the post-quantum algorithm standards NIST published in 2024.
+
+“We lay out how certain encryption algorithms people are using today will get phased out,” Moody said. “It’s important to know how a given algorithm might be disallowed in federal systems after a certain date, for instance, or whether it will be allowed but at the user’s own risk. Factors like this can help an organization plan.”
+
+Because migration is a logistically complex undertaking, the report also helps delineate the numerous factors that organizations should consider to complete the process. Not only are an organization’s own system components important, but also its entire cryptographic supply chain. 
+
+Some actions may take priority over others, Moody said. For example, because of the “harvest now, decrypt later” threat, organizations might prioritize migrating to the PQC key establishment standard (FIPS 203) for data that is particularly sensitive or needs to be kept secure for a long time.
+--------------------------------------------------------------------------------
+Manage end-user OAuth consent for AI agents with Amazon Bedrock AgentCore | Artificial Intelligence (https://aws.amazon.com/blogs/machine-learning/manage-end-user-oauth-consent-for-ai-agents-with-amazon-bedrock-agentcore/)
+citeturn31search5 [wordlim: 200] Published: last month; Crawled: yesterday; by Swara Gandhi, Eashan Kaushik, and Satveer Khurpa on 14 SEP 2026 in Amazon Bedrock AgentCore, Announcements, Intermediate (200) Permalink Share ... Amazon Bedrock AgentCore records consent operations in AWS CloudTrail. ... Satveer is a Principal WW Specialist Solutions Architect, Amazon Bedrock AgentCore at Amazon Web Services, specializing in agentic AI security with a focus on AgentCore Identity and Security.
+
+# Manage end-user OAuth consent for AI agents with Amazon Bedrock AgentCore
+
+by Swara Gandhi, Eashan Kaushik, and Satveer Khurpa on 14 SEP 2026 in Amazon Bedrock AgentCore, Announcements, Intermediate (200) Permalink Share
+
+AI agents often need to access services such as GitHub and Slack on a user’s behalf. Before an agent can act, the user must authenticate with the provider and explicitly approve the requested access. The application must then securely associate the resulting OAuth grant with the user who authorized it. This process is called session binding.
+
+Previously, customers using AgentCore Identity and an Authorization code grant had to build and host their own session binding infrastructure. This included presenting the authorization URL, hosting a public HTTPS callback, authenticating the returning user, managing browser sessions, and calling `CompleteResourceTokenAuth` to complete the flow.
+
+AgentCore Identity, a capability of Amazon Bedrock AgentCore, now offers a Consent portal, a managed web experience and session binding endpoint for AgentCore Gateway. --------------------------------------------------------------------------------
+How we contain Claude across products \ Anthropic (https://www.anthropic.com/research/how-we-contain-claude?trk=public_post_comment-text)
+citeturn31search6 [wordlim: 200] Published: 5 months ago; Crawled: last week; Between mid-2025 and January 2026, we received reports of vulnerabilities in Claude Code through our responsible disclosure program. ... This is a direct prompt injection—the attacker's instructions arrived through the user, not through tool output or fetched content.
+They shouldn’t be implicitly trusted just because they feel local and arrive before the user has consented.
+
+#### Risk we missed: The user as an injection vector
+
+In February 2026, during a controlled internal red-team exercise, a researcher successfully phished an employee into launching Claude Code with a malicious prompt. The phish looked like ordinary collaboration—a "can you run this for me?" email with a ready-to-paste prompt attached—and the prompt itself read like routine task instructions. But somewhere among the setup steps, it gently asked Claude to read ~/.aws/credentials, encode the contents, and POST them to an external endpoint. Across 25 retries of that prompt, Claude completed the exfiltration 24 times.
+
+This is a direct prompt injection—the attacker's instructions arrived through the user, not through tool output or fetched content. Our model-layer defenses anchor on user intent—when the user is the one typing the instruction, there's nothing anomalous for a classifier to catch. A human contractor handed the same script would have done the same thing.
+
+The only defense that holds in this situation is the environment, specifically egress controls that block the POST regardless of intent and filesystem boundaries that keep ~/.aws out of reach in the first place.
+
+(When we shared the working prompt in internal Slack for discussion, someone pointed out that some internal agents read Slack. The payload was now ambient. We added a canary string to the thread so we'd notice if anything picked it up. In a world where agents read everything, the investigation tooling is also an attack surface.)
+
+--------------------------------------------------------------------------------
+Mitigating prompt injections in browser use \ Anthropic (https://www.anthropic.com/research/prompt-injection-defenses)
+citeturn31search7 [wordlim: 200] Published: 11 months ago; Crawled: yesterday; Nov 24, 2025 ... These prompt injection attacks represent one of the most significant security challenges for browser-based AI agents. ... Opus 4.5: 8.0%, 7.6%, and 1.4%, the lowest rate in the chart.
+
+### Chapter 01: What is prompt injection?
+
+# Mitigating the risk of prompt injections in browser use
+
+  * Published
+
+Nov 24, 2025
+
+  * Team
+
+Alignment
+
+  * Topics
+
+    * Jailbreaks
+    * Computer use
+    * Safeguards
+    * Red teaming
+    * Claude Opus
+
+Claude Opus 4.5 sets a new standard in robustness to prompt injections—adversarial instructions hidden within the content that AI models process. Our new model is a major improvement over previous ones in both its core performance and in the safeguards surrounding its use. But prompt injection is far from a solved problem, particularly as models take more real-world actions. We expect to continue our progress—aiming for a future where AI models (or "agents") can handle high-value tasks without significant prompt injection risk.
+
+## What is prompt injection?
+
+For AI agents to be genuinely useful, they need to be able to act on your behalf—to browse websites, complete tasks, and work with your context and data. But this comes with risk: every webpage an agent visits is a potential vector for attack.
+
+By that, we mean that when an agent browses the internet, it encounters content it cannot fully trust. Among legitimate search results, documents, and applications, an attacker might have embedded malicious instructions to hijack the agent and change its behavior. These prompt injection attacks represent one of the most significant security challenges for browser-based AI agents.
+
+Below, we explain how prompt injections threaten browser agents, and the improvements we've made to Claude's robustness in response.
+
+These improvements have informed our decision to expand the Claude for Chrome extension from research preview to beta. It's now available for all users on the Max plan.
+
+## Why browser use creates unique prompt injection risks
+
+To understand the threat of prompt injections, consider a routine task: you ask Claude to read through your recent emails and draft replies to any meeting requests. One of those emails—ostensibly a vendor inquiry—contains hidden instructions embedded in white text, invisible to you but processed by the agent. These instructions direct the agent to forward emails containing the word "confidential" to an external address before drafting the replies you requested. A successful injection would exfiltrate sensitive communications while you wait for your responses.
+
+While all agents that process untrusted content are subject to prompt injection risks, browser use amplifies this risk in two ways. First, the attack surface is vast: every webpage, embedded document, advertisement, and dynamically loaded script represents a potential vector for malicious instructions. Second, browser agents can take a lot of different actions —navigating to URLs, filling forms, clicking buttons, downloading files—that attackers can exploit if they gain influence over the agent's behavior.
+
+## Claude's progress on browser use robustness
+
+We have made significant progress on prompt injection robustness since launching Claude for Chrome in research preview. An adaptive attacker is given 100 attempts per environment. ASR is computed as a percentage of attacks encountered by each model.
+
+Claude Opus 4.5 demonstrates stronger prompt injection robustness in browser use than previous models. In addition, since the original preview of the browser extension, we've implemented new safeguards that substantially improve safety across all Claude models.
+
+A 1% attack success rate—while a significant improvement—still represents meaningful risk. No browser agent is immune to prompt injection, and we share these findings to demonstrate progress, not to claim the problem is solved.
+
+Our work has focused on the following areas:
+
+Training Claude to resist prompt injection. We use reinforcement learning to build prompt injection robustness directly into Claude's capabilities. During model training, we expose Claude to prompt injections embedded in simulated web content, and "reward" it when it correctly identifies and refuses to comply with malicious instructions—even when those instructions are designed to appear authoritative or urgent.
+
+Improving our classifiers. We scan all untrusted content that enters the model's context window, and flag potential prompt injections with classifiers. These classifiers detect adversarial commands embedded in various forms—hidden text, manipulated images, deceptive UI elements—and adjust Claude's behavior when they identify an attack. We’ve improved the classifiers we pair with Claude for Chrome since its initial research preview, alongside improvements to the intervention that guides model behavior after they detect an attempted attack.
+
+Scaled expert human red teaming. Human security researchers consistently outperform automated systems at discovering creative attack vectors. Our internal red team continuously probes our browser agent for vulnerabilities. We also participate in external Arena-style challenges that benchmark robustness across the industry.
+
+## The path forward
+
+The web is an adversarial environment, and building browser agents that can operate safely within it requires ongoing vigilance. Prompt injection remains an active area of research, and we are committed to investing in defenses as attack techniques evolve.
+
+We will continue to publish our progress transparently, both to help customers make informed deployment decisions and to encourage broader industry investment in this critical challenge.
+
+If you're interested in helping make our models and products more robust to prompt injection, consider applying to join our team.--------------------------------------------------------------------------------
+Release notes for Amazon Bedrock AgentCore - Amazon Bedrock AgentCore (https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/release-notes.html)
+citeturn31search8 [wordlim: 200] Crawled: 4 days ago; Instead of a shared OAuth 2.0 client secret, your agents authenticate to a downstream identity provider’s token endpoint using a signed JSON Web Token (JWT) client assertion. ... AgentCore Identity calls AWS KMS to sign each assertion, so the private key never leaves KMS and every signing operation is recorded in AWS CloudTrail. ... Starting July 20, 2026, newly created agents in supported AWS Regions use the agent’s log group by default. ... Amazon Bedrock AgentCore Evaluations now evaluates agents built with OpenAI Agents, LlamaIndex, Google ADK, and Claude Agent SDK, in addition to Strands Agents and LangGraph. ... AgentCore now supports Bedrock Guardrails in policy, giving enterprises deeper safety and security controls as they scale AI agents in production.
+
+## September 2026
+
+### Harness: Interactive shells (terminals)
+
+AgentCore harness now supports persistent, interactive shell sessions over WebSocket. A shell runs in the same isolated microVM session as the harness agent and maintains environment variables, the working directory, command history, and running processes across inputs.
+
+You can reconnect to a detached shell and replay up to 256 KB of buffered output, or open as many as 10 independent shells in one harness session. Interactive shells work in the managed default environment and inside a configured custom container.
+
+Connect through the `InvokeAgentRuntimeCommandShell` WebSocket API. For connection details, framing, authentication, errors, and quotas, see Interactive shells for AgentCore harness.
+
+### Harness: Custom OpenAI-compatible endpoints
+
+OpenAI model configurations now accept an optional `apiBase`. Use this field to route direct OpenAI requests through a custom OpenAI-compatible gateway, proxy, self-hosted endpoint, or regional endpoint. 
+For more information, see Supported agent frameworks.
+
+### Consent Portal for AgentCore Identity
+
+Amazon Bedrock AgentCore Identity now offers a Consent Portal, a hosted portal that lets your end users grant consent for an agent to access resources on their behalf. You direct users to the portal’s `portalUrl`, where they review and approve the requested access before the agent proceeds.
+
+A Consent Portal requires an Amazon Bedrock AgentCore Gateway configured with JWT inbound authentication as its source, and an identity provider whose permitted scopes include `openid`. You create and manage portals with the create, get, list, update, and delete consent-portal operations.
+
+See Consent Portal.
+
+## August 2026
+
+### AWS Agent Registry is now generally available, with auto-detection and customer managed key encryption
+
+AWS Agent Registry is now generally available. This launch introduces two new features:
+
+  * Auto-detection with AWS Organizations — Automatically discover and catalog AgentCore Runtimes and Gateways across your organization’s member accounts into a single registry, with no per-account setup. Instead of a shared OAuth 2.0 client secret, your agents authenticate to a downstream identity provider’s token endpoint using a signed JSON Web Token (JWT) client assertion.
+
+You register a public key with your identity provider while the corresponding private key stays in AWS Key Management Service (KMS). AgentCore Identity calls AWS KMS to sign each assertion, so the private key never leaves KMS and every signing operation is recorded in AWS CloudTrail.
+
+Private Key JWT authentication works across all three grant flows—machine-to-machine (M2M), on-behalf-of (OBO), and user-delegated access—and supports the RS256, PS256, and ES256 signing algorithms. To get started, choose Private Key JWT as the client authentication method when you add an OAuth client in the Amazon Bedrock AgentCore console. See Private Key JWT client authentication.
+
+### Amazon Bedrock AgentCore Harness: InvokeHarness now streams MCP tool result metadata
+
+Amazon Bedrock AgentCore harness now surfaces metadata attached to MCP tool results, streaming it in the InvokeHarness response. --------------------------------------------------------------------------------
+Microsoft Entra releases and announcements - Microsoft Entra | Microsoft Learn (https://learn.microsoft.com/en-us/entra/fundamentals/whats-new?trk=public_post_comment-text)
+citeturn31search9 [wordlim: 200] Crawled: 3 weeks ago;   * The Agent registry and Agent collections blades in the Entra admin center will be retired on May 1, 2026. ...   * Microsoft Entra continues to provide the identity foundation through Agent ID. ... We’re introducing cross-tenant group synchronization, a new capability that allows organizations to synchronize security groups across Microsoft Entra tenants.
+## March 2026
+
+### Plan for change – Agent Registry consolidation into Microsoft Agent 365
+
+Type: Plan for change
+Service category: Other
+Product capability: Directory
+
+We’re consolidating agent management experiences to make it easier to observe, govern, and secure all agents in your tenant. Agent 365 will be the single source of truth, offering a unified catalog, consistent visibility, and simplified management.
+
+What’s changing
+
+  * The Agent registry and Agent collections blades in the Entra admin center will be retired on May 1, 2026.
+  * No action is required by administrators. Agent functionality and management remain unaffected. You can still access the agent inventory in the All agents view within the Microsoft 365 admin center (MAC).
+
+With this change:
+
+  * Agent 365 becomes the unified registry and control plane for agents.
+  * Microsoft Entra continues to provide the identity foundation through Agent ID.
+  * The existing registry Graph API will be deprecated and replaced by a new API powered by Agent 365. --------------------------------------------------------------------------------
+Provide identity and credential management for agent applications with Amazon Bedrock AgentCore Identity - Amazon Bedrock AgentCore (https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/identity.html)
+citeturn31search10 [wordlim: 200] Crawled: last week; Amazon Bedrock AgentCore Identity is an identity and credential management service designed specifically for AI agents and automated workloads. It provides secure authentication, authorization, and credential management capabilities that enable agents and tools to access AWS resources and third-party services on behalf of users while helping to maintain strict security controls and audit trails.
+
+Provide identity and credential management for agent applications with Amazon Bedrock AgentCore Identity - Amazon Bedrock AgentCore
+
+# Provide identity and credential management for agent applications with Amazon Bedrock AgentCore Identity
+
+Amazon Bedrock AgentCore Identity is an identity and credential management service designed specifically for AI agents and automated workloads. It provides secure authentication, authorization, and credential management capabilities that enable agents and tools to access AWS resources and third-party services on behalf of users while helping to maintain strict security controls and audit trails. Agent identities are implemented as workload identities with specialized attributes that enable agent-specific capabilities while helping to maintain compatibility with industry-standard workload identity patterns. The service integrates natively with Amazon Bedrock AgentCore to provide identity and credential management for agent applications, including Host agent or tools with Amazon Bedrock AgentCore Runtime and Amazon Bedrock AgentCore Gateway: Securely connect tools and other resources to your Gateway.
+
+###### Topics
+
+  * Overview of Amazon Bedrock AgentCore Identity
+
+  * Get started with AgentCore Identity
+
+  * Using the AgentCore Identity console
+
+  * Manage workload identities with AgentCore Identity
+
+  * Configure inbound JWT authorizer
+
+  * Manage credential providers with AgentCore Identity
+
+  * Provider setup and configuration
+
+  * Configure a consent portal
+
+  * Connect to private identity providers
+
+  * Data protection in Amazon Bedrock AgentCore Identity
+
+  * Tagging AgentCore Identity resources--------------------------------------------------------------------------------
+What's new in Microsoft Entra Agent ID | Microsoft Learn (https://learn.microsoft.com/en-us/entra/agent-id/whats-new-agent-id)
+citeturn31search11 [wordlim: 200] Published: 6 months ago; Crawled: 6 days ago; Microsoft Entra Agent ID extends Zero Trust principles to AI workloads with purpose-built identity constructs, specialized OAuth flows, and comprehensive security controls. ... Microsoft Entra Agent ID introduces new identity constructs and authentication protocols designed specifically for AI agents.
+
+# What's new in Microsoft Entra Agent ID
+
+Microsoft Entra Agent ID is now generally available. This release brings first-class identity and access management to AI agents, enabling organizations to authenticate, authorize, govern, and protect agent identities at enterprise scale. Microsoft Entra Agent ID extends Zero Trust principles to AI workloads with purpose-built identity constructs, specialized OAuth flows, and comprehensive security controls.
+
+This article summarizes the key capabilities and documentation currently available.
+
+## Manage AI agents at scale
+
+Microsoft Entra Agent ID introduces new identity constructs and authentication protocols designed specifically for AI agents. Notable updates include:
+
+  * Key concepts - New concepts added to further define core agent identity concepts and their relationships.
+  * Administrative relationships - Deeper definitions and clarified differences between owners, sponsors, and managers of agent identities, blueprints, and agents' user accounts.
+For more information, see Agent Registry convergence with Microsoft Agent 365.
+
+## Govern agent identities and lifecycle
+
+Microsoft Entra ID Governance extends lifecycle and access management capabilities to agent identities:
+
+  * Governing agent identities overview - Overview of how Microsoft Entra governs agent identity lifecycle and access.
+  * Access packages for agent identities - Govern agent access through policy-based access packages and permission assignment for both on-behalf-of (OBO) and autonomous (non-OBO) scenarios.
+  * Sponsor lifecycle workflows (New) - Automate sponsor maintenance and reassignment for agent blueprints and agent identities.
+  * Manage your agent identities (New) - View and control agent identities you own or sponsor.
+  * Agent identity sponsor templates (New) - Two new lifecycle workflow templates for notifying managers and cosponsors, and automatically transfer sponsorship when an agent identity sponsor changes roles or leaves the organization, to prevent orphaned agents.
+
+## Protect agent access to resources
+
+Conditional Access and ID Protection features extend Microsoft Entra Agent ID to help secure agent identities and their access to resources:
+
+  * Conditional Access for agents (Updated)- Improved guidance and detailed scenarios for Conditional Access policies, plus new templates for agent-specific policies.
+  * Block access for high-risk agent identities (New) - Conditional Access template to block sign-ins from risky agent identities.
+  * Autonomous agent access policy (New) - Conditional Access template for autonomous agents without user context.
+  * On behalf of agent access policy (New) - Conditional Access template for agents acting on behalf of users.--------------------------------------------------------------------------------
+Amazon Bedrock AgentCore - Developer Guide (https://docs.aws.amazon.com/pdfs/bedrock-agentcore/latest/devguide/bedrock-agentcore-dg.pdf)
+citeturn31search12 ...

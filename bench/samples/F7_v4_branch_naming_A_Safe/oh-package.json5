@@ -1,0 +1,7 @@
+{
+  "name": "f7_v4_branch_naming_a_safe",
+  "version": "1.0.0",
+  "description": "HarmonyKeyRepBench sample F7_v4_branch_naming_A_Safe",
+  "main": "entry/src/main/ets/CryptoService.ets",
+  "dependencies": {}
+}

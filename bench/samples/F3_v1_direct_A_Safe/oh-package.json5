@@ -1,0 +1,7 @@
+{
+  "name": "f3_v1_direct_a_safe",
+  "version": "1.0.0",
+  "description": "HarmonyKeyRepBench sample F3_v1_direct_A_Safe",
+  "main": "entry/src/main/ets/CryptoService.ets",
+  "dependencies": {}
+}

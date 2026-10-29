@@ -1,0 +1,118 @@
+[
+  {
+    "id": "A03",
+    "url": "https://codeload.github.com/CryptoAPI-Bench/CryptoAPI-Bench/zip/e6b6b50fef6970151300c1ac2de62e188ba6de19",
+    "file": "downloads/repos/CryptoAPI-Bench-e6b6b50f.zip",
+    "accessed_at": "2026-10-29T01:30:57.180741+08:00",
+    "status": 200,
+    "final_url": "https://codeload.github.com/CryptoAPI-Bench/CryptoAPI-Bench/zip/e6b6b50fef6970151300c1ac2de62e188ba6de19",
+    "content_type": "application/zip",
+    "bytes": 191224,
+    "sha256": "8cce7dd324e39e8ed7a86317e6926b08cc0ab0614f17691984aa87e3462d3345",
+    "downloaded": true
+  },
+  {
+    "id": "A04",
+    "url": "https://registry.npmjs.org/arkanalyzer/-/arkanalyzer-1.0.95.tgz",
+    "file": "downloads/repos/arkanalyzer-1.0.95.tgz",
+    "accessed_at": "2026-10-29T01:30:57.181746+08:00",
+    "status": 200,
+    "final_url": "https://registry.npmjs.org/arkanalyzer/-/arkanalyzer-1.0.95.tgz",
+    "content_type": "application/octet-stream",
+    "bytes": 2323847,
+    "sha256": "b8007b09ad01d88a3867dc8fb4d06acc3e07bd96455775833e9e62e67531e9e1",
+    "downloaded": true
+  },
+  {
+    "id": "R20",
+    "url": "https://gitee.com/tongyuyan/harmony-utils/raw/master/README.md",
+    "file": "downloads/corpus/harmony-utils-README.md",
+    "accessed_at": "2026-10-29T01:30:57.182249+08:00",
+    "status": 200,
+    "final_url": "https://raw.giteeusercontent.com/tongyuyan/harmony-utils/raw/master/README.md?metadata=eyJyIjoibWFzdGVyIiwiZnAiOiJSRUFETUUubWQiLCJwaWQiOjM1NDc2NTE2LCJzdG8iOiJnaXQtc2hhcmRpbmctc3RvLTQydC0wMDgiLCJycCI6InJlcG9zLzk4Lzg5Lzk4ODliZTBjYjlhYWVhZjA3OGE4ODViZWFhYWE0NTYzOGE3N2YzNDg1MTBkNmY0MWVlOGU4YmZhMWYxMDRlMTEuZ2l0IiwiaXNwIjp0cnVlLCJleHBpcmVfYXQiOjE3OTMyMDk4MDB9&signature=ICf8cAD8ipKdymqjEJDAl3ZJxgb8VaRiKgWjW0QkWyI",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 2426,
+    "sha256": "e24afcf9fd19db26a86ff0839a356db71ecce72635c6d3625b9a40c688654887",
+    "downloaded": true
+  },
+  {
+    "id": "R21",
+    "url": "https://gitee.com/openharmony-sig/ohos_crypto_js/raw/master/README.md",
+    "file": "downloads/corpus/ohos-crypto-js-README.md",
+    "accessed_at": "2026-10-29T01:30:57.182249+08:00",
+    "status": 200,
+    "final_url": "https://raw.giteeusercontent.com/openharmony-sig/ohos_crypto_js/raw/master/README.md?metadata=eyJyIjoibWFzdGVyIiwiZnAiOiJSRUFETUUubWQiLCJwaWQiOjIyMTIyMDU2LCJzdG8iOiJnaXQtc2hhcmRpbmctc3RvLTQydC0wMDUiLCJycCI6InJlcG9zL2MyLzkxL2MyOTE0MjY2ZjhlNWVjYTc4OGQ3Zjg1ZmNlMGUwZGRiNTRhYmQ2MGZlOTY3Nzc4OGY3MjIzZGY3MTg1ZThlZjcuZ2l0IiwiaXNwIjp0cnVlLCJleHBpcmVfYXQiOjE3OTMyMDk4MDB9&signature=bKWBwlPID6hLluv3DDhVnzV3liMIEkKTv6OikDmEWss",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 5459,
+    "sha256": "f47b27c58313a2ab0fa8169c1402d68bb4f00bc2aad57f8c698ca4ace2820b59",
+    "downloaded": true
+  },
+  {
+    "id": "R22",
+    "url": "https://api.github.com/repos/ohos-rs/ohos-openssl/commits/main",
+    "file": "sources/ohos-openssl-commit.json",
+    "accessed_at": "2026-10-29T01:30:57.182249+08:00",
+    "status": 200,
+    "final_url": "https://api.github.com/repos/ohos-rs/ohos-openssl/commits/main",
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 4759,
+    "sha256": "88e867067aaee81fbc49629e965722231391cbb1ffd94b1d1d592c1bf25313c0",
+    "downloaded": true
+  },
+  {
+    "id": "R23",
+    "url": "https://api.github.com/repos/Explore-In-HMOS/sportwatch-encrypted-decrypt-filestore/commits/main",
+    "file": "sources/wearable-demo-commit.json",
+    "accessed_at": "2026-10-29T01:30:57.182249+08:00",
+    "status": 200,
+    "final_url": "https://api.github.com/repos/Explore-In-HMOS/sportwatch-encrypted-decrypt-filestore/commits/main",
+    "content_type": "application/json; charset=utf-8",
+    "bytes": 4838,
+    "sha256": "931415ad074eb394a14e4d38ab6945fa882989d522e35bd040ea16d01efc65f2",
+    "downloaded": true
+  },
+  {
+    "id": "D23",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/security/UniversalKeystoreKit/huks-encryption-decryption-arkts.md",
+    "file": "downloads/docs/huks-encryption-decryption-arkts.md",
+    "accessed_at": "2026-10-29T01:30:57.183254+08:00",
+    "status": 200,
+    "final_url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/security/UniversalKeystoreKit/huks-encryption-decryption-arkts.md",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 45243,
+    "sha256": "25a5be37d7d35d6925f68c7f9a38854e2d9c1bdfe335795948bd0b3ee6b5e87a",
+    "downloaded": true
+  },
+  {
+    "id": "D24",
+    "url": "https://www.rfc-editor.org/rfc/rfc5116.txt",
+    "file": "downloads/docs/rfc5116-aead.txt",
+    "accessed_at": "2026-10-29T01:30:57.183254+08:00",
+    "status": 200,
+    "final_url": "https://www.rfc-editor.org/rfc/rfc5116.txt",
+    "content_type": "text/plain;charset=utf-8",
+    "bytes": 50539,
+    "sha256": "8762fee7c85e682fce609c75e0f5040ee7efa8fca96969ffd85df37585e0eda1",
+    "downloaded": true
+  },
+  {
+    "id": "D25",
+    "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-38D.pdf",
+    "file": "downloads/papers/NIST-SP800-38D.pdf",
+    "accessed_at": "2026-10-29T01:30:57.712579+08:00",
+    "downloaded": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "D26",
+    "url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf",
+    "file": "downloads/papers/NIST-SP800-57pt1r5.pdf",
+    "accessed_at": "2026-10-29T01:30:57.888108+08:00",
+    "status": 200,
+    "final_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf",
+    "content_type": "application/pdf",
+    "bytes": 1688080,
+    "sha256": "cc32391022c1382ac7c91490f6bcc8838e0f889925270da23ef4e800e2ecb7ad",
+    "downloaded": true
+  }
+]

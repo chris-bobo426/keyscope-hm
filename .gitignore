@@ -1,0 +1,28 @@
+# Installed dependencies and generated build files
+node_modules/
+/dist/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.tsbuildinfo
+*.o
+*.obj
+/dynamic/heap_experiment/*.exe
+
+# Machine-specific settings, credentials and runtime caches
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+*.log
+*.tmp
+*.heapsnapshot
+*.heapprofile
+.DS_Store
+Thumbs.db
+
+# Downloaded third-party research copies; keep source indexes and fetch plans
+/docs/research-20261029/downloads/
+/docs/research-20261029/news/articles/

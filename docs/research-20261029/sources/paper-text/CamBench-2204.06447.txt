@@ -1,0 +1,828 @@
+
+--- PAGE 1 ---
+arXiv:2204.06447v1  [cs.SE]  13 Apr 2022
+CamBench - Cryptographic API Misuse Detection Tool
+Benchmark Suite∗
+Michael Schlichtig†
+Heinz Nixdorf Institute at Paderborn
+University
+Paderborn, Germany
+michael.schlichtig@uni-
+paderborn.de
+Anna-Katharina Wickert†
+Technische Universität Darmstadt
+Darmstadt, Germany
+wickert@cs.tu-darmstadt.de
+Stefan Krüger
+Independent
+Germany
+krueger.stefan.research@gmail.com
+Eric Bodden
+Heinz Nixdorf Institute at Paderborn
+University & Fraunhofer IEM
+Paderborn, Germany
+eric.bodden@uni-paderborn.de
+Mira Mezini
+Technische Universität Darmstadt
+Darmstadt, Germany
+mezini@cs.tu-darmstadt.de
+ABSTRACT
+Context: Cryptographic APIs are often misused in real-world ap-
+plications. To mitigate that, many cryptographic API misus e de-
+tection tools have been introduced. However, there exists n o es-
+tablished reference benchmark for a fair and comprehensive com-
+parison and evaluation of these tools. While there are benchmarks,
+they often only address a subset of the domain or were only use d
+to evaluate a subset of existing misuse detection tools. Objective:
+To fairly compare cryptographic API misuse detection tools and
+to drive future development in this domain, we will devise su ch
+a benchmark. Openness and transparency in the generation pr o-
+cess are key factors to fairly generate and establish the nee ded
+benchmark. Method: We propose an approach where we derive
+the benchmark generation methodology from the literature w hich
+consists of general best practices in benchmarking and doma in-
+speciﬁc benchmark generation. A part of this methodology istrans-
+parency and openness of the generation process, which is achieved
+by pre-registering this work. Based on our methodology we de -
+sign CamBench, a fair “ Cryptographic API Misuse Detection Tool
+Benchmark Suite“. We will implement the ﬁrst version of Cam-
+Bench limiting the domain to Java, the JCA, and static analyses. Fi -
+nally, we will use CamBench to compare current misuse detection
+tools and compare CamBench to related benchmarks of its domain.
+CCS CONCEPTS
+• Software and its engineering→ Software libraries and repos-
+itories; Software maintenance tools ; Software veriﬁcation and
+validation; • Security and privacy → Software security engineer-
+ing.
+KEYWORDS
+cryptography, benchmark, API misuse, static analysis
+∗This study was accepted at the MSR 2022 Registered Reports Tr ack.
+† Both authors contributed equally to this research.
+1 INTRODUCTION
+Cryptography, hereafter crypto, is widely used in today’s s oftware
+to ensure the conﬁdentiality of users’ data. Concretely, th rough
+crypto, everyone can securely use online banking, purchase a book
+from the local book shop from their computer, and share sensi tive
+information with their co-workers while working remotely w ith-
+out the fear that the software leaks their data. Unfortunately, previ-
+ous research results show that developers struggle with the secure
+usage of crypto APIs and often add vulnerabilities to their code [21,
+28, 33, 50]. Most of these vulnerabilities are caused by deve lopers
+who use a crypto API in a way that is considered insecure by ex-
+perts, e.g., choosing an outdated crypto hash algorithm lik e SHA-
+1 [28]. We use the term crypto-API misuse or shortly misuse to d e-
+scribe these programming ﬂaws. Further, we focus on Java cry pto-
+APIs to provide concrete results. To support developers and secu-
+rity auditors to identify these misuses, many crypto API misuse de-
+tectors such as CryptoRex [52], CryptoLint [18], CogniCryptSAST [26],
+and CryptoGuard [37] have been developed.
+While several tools demonstrate the practical importance a nd
+their capabilities to identify issues in real-world code, a fair com-
+parison of the analysis capabilities is diﬃcult. First, all in-the-wild
+studies were conducted on diﬀerent applications and domain s. For
+example, CryptoLint [18] was evaluated on 11,748 Android apps
+in 2012 while CogniCryptSAST [26] analyzed 10,000 apps in 2017.
+While both tools demonstrated their capabilities for Andro id apps,
+it is hard to judge how they compare, as they analyzed diﬀeren t
+apps and the apps evolved over time. Further, other domains o f
+Java software are only analyzed by one tool, e.g., Apache app li-
+cations, as representatives for large Java projects [37], o r Maven
+artifacts, representatives for Java libraries [26]. Thus, a fair com-
+parison of these analyses and their capabilities is challen ging.
+An accepted standard in other ﬁelds to overcome the above-
+described problem are benchmarks. While it is time-consumi ng
+to create a proper benchmark, the advantages are signiﬁcant . A
+benchmark can set a common understanding within the commu-
+nity of the capabilities of the respective solutions, e.g., the strength
+of a misuse detector. If a benchmark is used for several tools, which
+
+--- PAGE 2 ---
+Schlichtig and Wickert, et al.
+should be the aim, a benchmark enables a fair comparison of th e
+respective solutions in the ﬁeld. Further, a proper benchma rk can
+thrive improvements of each tool and form a community to im-
+prove the state of the art signiﬁcantly. Overall, an established bench-
+mark drives the development and research in the community of its
+domain [12].
+Unfortunately, for the domain of crypto-API misuse detecti on,
+one still misses a standard benchmark. While we, as a communi ty,
+have a few custom benchmarks [6, 13, 31, 51], all of them have s ig-
+niﬁcant limitations. Some benchmarks are developed for a sp eciﬁc
+problem, e.g., parametric-based misuses [51], and are not s uitable
+outside of this problem space. Other benchmarks come with a s ig-
+niﬁcant bias as their creation was along with the developmen t of
+the respective detection tool [6].
+To solve the above-described problem, we aim to establishCam-
+Bench, a fair “ Cryptographic API Misuse Detection ToolBenchmark
+Suite“ to compare crypto-API misuse detectors. Thus, we wil l ana-
+lyze the current state of the art of benchmarking crypto-API mis-
+use detection tools, and how these benchmarks adhere to prop er
+methods for benchmarking. Further, we plan to focus on under -
+standing and deriving speciﬁc challenges that the domain ofcrypto
+API misuse detection tools poses to the design of benchmarks , e.g.,
+the evolution of security characteristics. Based on this th eoretical
+work, we want to create our fair benchmark to compare crypto-API
+misuse detectors.
+Our benchmark suite consists oftwo benchmarks and one heuris-
+tic to compare crypto-API misuse detectors. The benchmarks are a
+collection of real-world applications as well as synthetic test cases
+to evaluate the analysis capabilities. In addition to the benchmarks,
+we add an API coverage heuristic that will provide detailed i nfor-
+mation about the strengths and limitations of a misuse detec tor
+with respect to certain API classes. This property is import ant as
+an analysis which misses a class may miss a severe vulnerabil ity
+in an application due to the respective class. Thus, an asses ment
+of this property beside precision and recall is important. T o under-
+stand the impact of creating an independent benchmark, we wi ll
+compare CamBench against the existing benchmarks.
+The ﬁrst version of CamBench focuses on usages of the stan-
+dard crypto library in Java, the Java Cryptography Architec ture
+(JCA), and static analyses. To support future extensions, e .g., on
+diﬀerent APIs and dynamic analyses, one design principle of the
+benchmark is extensibility. We plan to open-source all our research
+artifacts along with our tooling. This way, we enable the extension
+of CamBench and provide tooling to simplify the creation of future
+benchmarks in related domains. Further, our tooling and our theo-
+retical work can further reduce the eﬀort to create fair benchmarks
+for arbitrary APIs, e.g., misuse of the Iterator API.
+The early validation of the design of CamBench and the bench-
+mark generation methodology is crucial to achieving the aim of a
+fair crypto-API misuse detector benchmark because it aidesin mak-
+ing the process more transparent and open as it also allows for com-
+munity feedback. Further, the validation is of importance t o avoid
+tuning of CamBench in a speciﬁc direction by the authors, as well
+as to avoid requests for changes due to the results by a review er
+who may be an author of one of the benchmarked tools. Moreover ,
+CamBench is created by members of the community and as part
+of the community, we value this eﬀort. Therefore, we believe that
+the pre-registration will strengthen the validity of CamBench the
+results we derive, and reduces bias in the creation.
+2 PRELIMINARY STUDY: BENCHMARKS
+COVERING CRYPTOGRAPHY
+To understand the diﬀerences, strengths, and weaknesses of the
+existing benchmarks for crypto misuse detectors, we will pr esent
+our preliminary study on the current state of the art of benchmarks
+for crypto misuse detection tools. We derived all discussed bench-
+marks by collecting all existing crypto benchmarks we were aware
+of and extended them through a forward- and backward search o f
+the related publications. An overview of all identiﬁed benc hmarks
+and misuse detectors that were successfully evaluated with them
+is presented in Table 1. Note, that we did not list any analysi s for
+MuBench as the API misuse detection tools used for evaluation did
+not ﬁnd any crypto misuse [9]. Similarly, we also omit the mis use
+detection tools that mark the secure and insecure test cases of the
+Ghera Benchmark as non-security critical (cf. Ranganath et al. [38])
+for readability.
+CryptoAPI-Bench [6] is the most-recent benchmark and consists
+of synthetic examples to identify misuses. In total, 171 examples
+were created along 16 diﬀerent vulnerabilities for basic (40) and
+advanced (131) cases for static analyses. The advanced tests focus
+on inter-procedurality, ﬁeld-sensitivity, and path-sensitivity. Thus,
+challenging the static analysis for several diﬀerent analy sis capa-
+bilities. However, the benchmark comprises all the vulnerabilities
+detected by CryptoGuard [37].
+While CryptoAPI-Bench focuses on analysis capabilities, theBraga
+Benchmark [13] focuses on providing developers with the best anal-
+ysis tool for their team. A team is characterized by their experience
+(novice or knowledgeable) and their support for cryptographic tasks
+(unsupported or supported). In addition to the team’s chara cteris-
+tics, the test cases of the benchmark are grouped along three com-
+plexity classes of crypto misuses. The complexity is represented as
+the abstraction level required to identify and respectivel y ﬁx the
+misuse. For example, identifying an outdated hashing algor ithm is
+considered as low complexity, while the reuse of a nonce is marked
+as a high complexity problem caused by an insecure system design
+or architecture. Thus, this benchmark sheds light on diﬀerent com-
+plexities to cover diﬀerent teams’ knowledge.
+In contrast to the previous two benchmarks, the Parametric
+Crypto Misuse Benchmark [51] derived misuse cases from in-the-
+wild code. All misuses were collected from top Java GitHub projects
+and cover crypto misuses caused by passing an insecure param e-
+ter to a function. Thus, covering one of the major problems, i n-
+correct conﬁgurations via parameters, observed in several in-the-
+wild studies [18, 26] while ignoring more complex misuses, e .g.,
+incorrect call order or misuses caused by architecture ﬂaws . While
+the previously discussed benchmarks created the benchmark ing
+infrastructure, Parametric Crypto Misuse Benchmark extended an
+existing and well established benchmark for API-misuses [8 ].
+The Parametric Crypto Misuse Benchmark benchmark is built
+upon MuBench [8] which is a benchmark for general API misuses,
+including several crypto misuses in Java. In the publicatio n from
+2016, the benchmark includes 18 misuses manually identiﬁed from
+bug ﬁxes on GitHub and SourceForge. All of these cases, except one
+
+--- PAGE 3 ---
+CamBench - Cryptographic API Misuse Detection Tool Benchmar k Suite
+ﬁx, inﬂuence the behavior of the program, such as a crash due t o
+invalid input. Thus, the misuses cover spurios behavior rather than
+insecure algorithm choices. Later, the benchmark was exten ded
+with additional 31 misuses by mining projects via BOA [17] which
+use the javax.crypto.Cipher or the entire javax.crypto package, and
+manually verifying the security of the code [9].
+The Ghera Benchmark [31] focuses on general vulnerabilities
+in Android applications being a subset of Java misuses, and t hus
+cover a few crypto misuse cases as well. In total, this benchm ark
+includes ﬁve instances of crypto vulnerabilities and eight vulner-
+abilities caused by networking. While it may be counter-int uitive,
+the later eight vulnerabilities may be covered by crypto misuse de-
+tectors as well when covering SSL and TLS related misuses, e. g.,
+the usage of TLS 1.0. While the number is low, all cases are ex-
+ecutable Android applications with a vulnerability along w ith an
+exploit of the respective vulnerability.
+While the previous benchmarks are developed in academia, th e
+OW ASP Benchmark [49] is developed by industry. Similar to our
+motivation, the underlying motivation for OW ASP Benchmarkwas
+to measure the strength and weaknesses of diﬀerent static an al-
+yses to detect vulnerabilities such as crypto misuses. To ac hieve
+this aim, version 1.2 consists, similarly to Ghera Benchmark , of
+test cases with real-world web applications that can be expl oited.
+The exploits are categorized along with the diﬀerent vulner ability
+types of OW ASP Top-10 web vulnerabilities [47], such as command
+injection and weak cryptography. In total, 246 tests for vulnerabil-
+ities are in OW ASP Benchmark.
+The overlap of the static analyses, e.g.,CogniCryptSAST [26], Cryp-
+toGuard [37], and FindSecBugs [11], analyzed on the aforementioned
+benchmarks is rather small as the motivation and domain for which
+all these benchmarks were created diﬀers. We illustrate the bench-
+marked static analyses for each previously discussed bench mark
+in Table 1. Only two tools, namely FindSecBugs (three) and Sonar-
+Qube (two), are evaluated on more than one benchmark. The re-
+maining 16 analyses are evaluated only on one benchmark. For
+example, the Ghera Benchmark evaluated analyses for Android vul-
+nerabilitites, such as Amandroid [48]. On the other hand, tools fo-
+cused on crypto misuses, such as CryptoGuard [37], are evaluated
+on the crypto-speciﬁc CryptoAPI-Bench.
+3 RESEARCH QUESTIONS
+With the research proposed in this registered report, we wil l an-
+swer the three research questions discussed in this Section. We
+start with a question that we already discussed in Section 2, and
+plan to investigate more in-depth:
+RQ1. What is the current state of the art of benchmarking cryp to
+API misuse detection tools and to which extent do benchmarks ad-
+here to appropriate methods in general benchmarking? As we have
+shown in Section 2, there is a need for a fair benchmark that pr op-
+erly covers the domain of crypto API misuse detection tools i n an
+unbiased way. Existing benchmarks are not suitable for a fai r com-
+parison as analysis properties, such as sensitivity, are no t consid-
+ered or not covered completely, or covered misuses are desig ned
+alongside one existing tool rather than the analyzed crypto APIs.
+Since existing benchmarks are insuﬃcient, a proper generat ion
+of a new benchmark is necessary. Key factors for this are tran s-
+parency and openness, as the successful DaCapo benchmark project
+has shown [12]. To achieve this goal, performing the benchma rk
+generation via a registered report is a logical consequence , as the
+proposed methodology is reviewed by experts upfront and the pro-
+cess is made known to the research community.
+RQ2. In the area of evaluating cryptographic API misuse dete ction
+tools, what requirements does a benchmark need to be tailore d to?
+For the generation of a fair benchmark, we ﬁrst need to deﬁne
+our methodology, which we derive from the literature. Understand-
+ing the domain-speciﬁc characteristics is necessary to dev elop the
+requirements a benchmark for evaluation crypto misuse dete ction
+tools needs to meet to support their evaluation and comparis on.
+Once the methodology and requirements are deﬁned, the next step
+is generating CamBench accordingly and then evaluating it.
+RQ3. Can CamBench meaningfully compare current cryptographic
+API misuse detection tools? Our ﬁnal research question is the appli-
+cation of CamBench on static analysis tools for the misuse detec-
+tion of the JCA in Java code. We plan to evaluate two aspects. First,
+we will use CamBench to compare how current crypto API misuse
+detection tools perform. Second, we will compare CamBench to the
+other benchmarks in the domain of crypto API misuse detectio n
+tools (cf. Table 1) and analyze the diﬀerences.
+Benchmark A AC CC CG CO DN FD FS J MA MF P SB SQ V X Y Z Source
+CryptoAPI-Bench [6] [6]
+Braga Benchmark [13] [13]
+Parametric Crypto Misuse
+Benchmark [51]
+[51]
+MuBench [8] [8]
+Ghera Benchmark [31] [38]
+OW ASP Benchmark[49] [14]
+Table 1: An overview of all identiﬁed benchmarks and the crypto misuse detectors ("*" marks non-academic static analyses. A:Aman-
+droid [48], AC: AppCritique* [7], CC: CogniCryptSAST [26], CG: CryptoGuard [37], CO: Coverity* [22], DN: DevKnox* [27], FD: FixDroid [35],
+FS: FindSecBugs* [11], J: Julia* [45], MA: Marvin-SA* [41], MF: MobSF * [5], P: PMD* [2], SB: SpotBugs* [3], SQ: SonarQube* [44], V: VisualCode-
+Grepper* [4], X: Xanitizer* [20], Y: Yasca* [42], and Z: OW ASP ZAP* [1] ) analyzed.
+
+--- PAGE 4 ---
+Schlichtig and Wickert, et al.
+4 METHODOLOGY
+In this section, we discuss the theoretical foundations of our bench-
+mark generation methodology and design. We have already begun
+conducting a literature survey to answer RQ1, the preliminary re-
+sults of which we presented in Section 2. As of now, our result s in-
+dicate that there is no widely accepted or established bench mark
+for the evaluation of crypto API misuse detection tools. Exi sting
+benchmarks have only been used to compare subsets of crypto
+misuse detection tools (cf. Table 1). To fully answer this qu estion,
+we will continue our literature review and supplement our ﬁn d-
+ings. For this purpose, we will adapt the procedure describe d by
+Kitchenham et al. [25].
+To answer RQ2 we consider two aspects: First, we discuss what
+the proper methodology for benchmark generation in general is,
+and how this can be applied to one domain, namely crypto API
+misuse detection tool evaluation in Section 4.1. And second , we
+analyze the special characteristics of this domain that nee d to be
+addressed by CamBench or in general a benchmark for this domain
+in Section 4.2. We conclude the theoretical foundations by d eriv-
+ing the domain-speciﬁc requirements for CamBench and develop-
+ing the domain-speciﬁc methodology for the generation of be nch-
+marks in Section 4.3. Then we use both to formulate the practi cal
+application in our execution plan for the generation of CamBench
+and its evaluation to answer RQ3 in Section 5.
+4.1 Literature review on benchmark generation
+approaches
+The creation of a benchmark for a speciﬁc domain requires ﬁrs t
+an understanding of the characteristics of well-establish ed more
+general benchmarks in the community. So far, our literature re-
+view to establish a benchmark for crypto API misuse detectio n
+tools has yielded a few relevant approaches of more general bench-
+marks. For our approach two ﬁndings are standing out, namely the
+DaCapo benchmarks [12] and the Automated Benchmark Manage-
+ment System (ABM) [16]. The DaCapo benchmarks are a collection
+of widely used open-sourced benchmarks for the Java program -
+ming language introduced in 2006 and its latest release in 20 18. In
+their report on the development and establishment of the DaCapo
+benchmarks, Blackburn et al. stressed the importance of an open
+and transparent process with community feedback. Their suc cess
+is a compelling argument to follow transparency and communi ty
+feedback as guiding principles when developing CamBench. Sim-
+ilarly, the Qualitas Corpus [46] also provides a large collection of
+real-world open-source Java code. The way the real-world ap plica-
+tions are organized and enriched with metadata, also for ver sion-
+ing, is valuable information for the design of benchmarks re gard-
+ing extensibility. However, the Qualitas Corpus was introduced in
+2010 and curated, but with its latest update in 2013 it appear s to be
+unmaintained.
+The DaCapo benchmarks and Qualitas Corpus are both bench-
+marks for Java in general targeting the evaluation of the per for-
+mance of Java code and Java virtual machines. However, evalu -
+ating tools that detect misuses of crypto APIs is a diﬀerent t ask.
+The main focus here rather lies on the correctness of the resu lts,
+i.e., precision and recall of the detected issues and the sou ndness
+of the analysis itself. Moreover, how usable such a crypto mi s-
+use detection tool is, also relies on its precision and recal l [15]
+– too many false positives are one of the main reasons why de-
+velopers omit using static analysis tools. Such domain-spe ciﬁc re-
+quirements can be better addressed by the approach of Nguyen
+Quang Do et al. called ABM [16] since domain-speciﬁc data sets
+are needed to evaluate speciﬁc research questions. They des cribe
+how to semi-automatically generate and maintain domain-speciﬁc
+benchmark suites. The benchmark suites are collected with a well-
+described process of crawling buildable open-source proje cts of
+the target domain. Therefore, they provide a representativ e set
+of real-world applications relevant in the domain. We deriv e our
+methodology from the experience that can be taken from the Da-
+Capo benchmarks and the proposed procedure byABM and provide
+a more in-depth explanation of the execution in Section 5. Mo re-
+over, ABM already describes that ﬁltering the real-world applica-
+tions for relevance is integral to being representative. He nce, un-
+derstanding the requirements of a domain is key to generatin g a
+representative benchmark suite for it.
+4.2 Analysis of the domain for benchmarking
+cryptographic API misuse detection tools
+While Section 2 presents preliminary ﬁndings of benchmarks tar-
+geted for crypto API misuse detectors, a structured literat ure re-
+view [25] is required to enrich our ﬁndings and ensure their c om-
+pleteness. The goal that crypto API misuse detection tools a im to
+achieve is detecting and reporting crypto misuses in applic ations
+that use crypto APIs. Employing crypto in general sets the fo cus
+on security. Therefore, when comparing misuse detection to ols it
+is important to evaluate their performance in terms of crypt o API
+coverage, precision and recall, and analysis capabilities. The cover-
+age is important for developers to know whether their code us ing
+a crypto API is completely or only partially covered, e.g., c ommon
+known vulnerabilities. Research on reasons why misuse dete ction
+tools are rarely used has shown that precision and recall of a tool
+play a key role [15] – too many false positives are a major reas on
+for developers to omit using a tool [23]. Moreover, the analy sis
+evaluation of analysis capabilities is important as well. Whether an
+analysis is intraprocedural, inter-procedural, ﬂow-sensitive, context-
+sensitive, ﬁeld-sensitive, path-sensitive, and object-sensitive or not
+has direct implications on what the analysis is actually abl e to de-
+tect. Unfortunately, the benchmarks identiﬁed in Section 2 either
+ignore such properties or only include a subset, such as CryptoAPI-
+Bench [6].
+4.3 Domain-speciﬁc Benchmark Requirements
+Concluding the theoretical foundations of our methodology , we
+specify the requirements speciﬁc to the domain of benchmark ing
+crypto API misuse detection tools and propose our benchmark de-
+sign besaed on the results of the previous sections. Followi ng the
+take-aways from the DaCapo benchmarks [12] (transparent and
+open process, a variety of real-world applications maximiz ing the
+domain coverage, easy to use, and providing metrics), CamBench
+will be a benchmark suite consisting of several benchmarks. A
+good example for easy to use is the well usable deployment system
+of MuBench [8], which delivers its execution pipeline as a Docker
+
+--- PAGE 5 ---
+CamBench - Cryptographic API Misuse Detection Tool Benchmar k Suite
+container and provides extensive documentation on how to us e
+and adapt the benchmark as well as on how to contribute. More-
+over, we enrich the collection process of real-world applic ation
+with the semi-automated approach of ABM [16].
+Based on these presented approaches, we derive the followin g
+requirements that CamBench must meet:
+(1) The benchmark generation process needs to be transparen t
+and consider community feedback.
+(2) The benchmark contains a representative and diverse collec-
+tion of real-world applications using crypto APIs. Project s
+fulﬁll these properties: open-source, compilable (source code
+and binaries are available), and representative of the domain’s
+real-world application, e.g., diverse size, context, . . . .
+(3) The benchmark is open-sourced.
+(4) The benchmark is provided with a deployment system.
+CamBench will be a suite of benchmarks covering the follow-
+ing three main aspects: (a) real-world applications with crypto API
+usage to evaluate the performance of misuse detection tools on rel -
+evant applications [16], (b) analysis capabilities , and (c) crypto API
+coverage to evaluate which fraction of the API a misuse detection
+tool supports. We added analysis capabilities and crypto API cov-
+erage to accommodate the requirements of the domain of bench-
+marking crypto API misuse detection tools.
+To facilitate the evaluation of analysis capabilities, we w ill de-
+velop synthetic test cases for all relevant properties. When building
+an analysis tool, it is necessary to make assumptions that ca n lead
+to unsoundness [30, 40]. Therefore, evaluating the analysis capabil-
+ities which are part of such assumptions is important to drawimpli-
+cations concerning a tool’s unsoundness and precision. The prop-
+erties we plan to include in CamBench are ﬂow-sensitivity, context-
+sensitivity, ﬁeld-sensitivity, object-sensitivity, and path-sensitivity.
+CamBench will provide a benchmark for testing the coverage of
+Java crypto-APIs. Similar to ABM’s [16] focus on automation our
+goal is to develop a process with a high degree of automation f or
+the generation of the benchmarks for the coverage of the JCA.This
+will help in maintaining and updating the benchmark in the future.
+Furthermore, we will enrich the test cases with metadata sim i-
+lar to MuBench [8] where misuse code examples are speciﬁed with
+YAML ﬁles enriched by additional information like misuse ty pe
+and description. They also provide examples for correct usa ges.
+Moreover, the metadata comprises information whether a test case
+is a (in-)secure crypto usage (whether a crypto usage is (in- )secure
+might also be context-dependent, e.g., using a hash algorit hm like
+MD5 is considered insecure [24], yet using MD5 in the context of
+ﬁle validation [10] might still be acceptable), usage categ ory [9],
+and the severity. Moreover, we will consider metadata on ver sion-
+ing of real-world projects as proposed in the Qualitas Corpus [46].
+To summarize, CamBench will provide a collection of real-world
+applications with crypto API usage following ABM [16], synthetic
+tests to evaluate the crypto API misuse detectors analysis capa-
+bilities, and a collection of test cases for checking the crypto API
+coverage of the JCA.
+5 EXECUTION PLAN
+In this section, we ﬁrst describe the generation of CamBench and
+its three kinds of benchmarks in Section 5.1, namely real-world ap-
+plications, analysis capabilities , and crypto API coverage . Then we
+will discuss the publishing and deployment process of CamBench
+in Section 5.2. Finally, we describe our intended evaluatio n in Sec-
+tion 5.3.
+5.1 Generation Plan
+For the generation of CamBench’s three benchmarks, we now de-
+scribe our plan to execute our methodology (cf. Section 4). F or the
+concrete implementation of our methodology for the ﬁrst ver sion
+of CamBench, we set the scope to the standard crypto library in
+Java, the JCA, and static analysis tools detecting misuses o f it.
+Benchmark for real-world applications. For the collection and cre-
+ation of the real-world application benchmark, we adapt the pro-
+cess speciﬁed by ABM [16]. This process consists of six steps of
+collecting, ﬁltering, and building open-source projects. The ﬁrst
+three steps are (i) mining open-source projects , (ii) ﬁltering for ac-
+tive projects and (iii) ﬁltering for known build systems. These steps
+can be automated. The subsequent steps require manual eﬀort . In
+their instantiation of ABM for the domain of Java business web ap-
+plications, Nguyen Quang Do et al. chose GitHub as a platform for
+mining open-source projects [16]. Since this has worked suc cess-
+fully and GitHub is a popular and well-used platform for host ing
+open-source projects, we intend to use it, too. The next step is (iv)
+downloading and building the projects . The real-world application
+benchmark only includes projects that build with standard b uild
+systems. Another ﬁltering step follows where, in our case, w e will
+(v) check whether the JCA is used in the projects. The last step is
+(iv) compiling the binaries and adding projects with binaries to the
+benchmark dataset (cf. requirements in Section 4).
+Furthermore, we add a step to the approach of ABM [16] by
+adding metadata ﬁles including information, on whether the usage
+is (in-)secure for selected usages of the JCA. To automatically iden-
+tify usages of the JCA in code, we plan to employ static analys es,
+such as adapted versions of CogniCrypt [26] or CryptoGuard [ 37].
+For the ground-truth, whether a JCA usage is secure or insecu re,
+we will use the guidelines of NIST [34], SOG-IS [43], or BSI [19] for
+manual labeling. Since the guidelines of the BSI are updated reg-
+ularly and are the ones updated most recently, we will primar ly
+be using them. Furthermore, the employed guidelines can be d ocu-
+mented in the metadata ﬁles. The design of the metadata ﬁles w ill
+be derived from MuBench [8] and take the experiences concerning
+versioning from Qualitas Corpus [46] into account. The expected
+dataset of the real-world application will contain too many usages
+of the JCA for the manual creation of the metadata ﬁles. There fore,
+we will select a representative subset of the JCA usages to wr ite
+the metadata ﬁles.
+Benchmark for analysis capabilities. The benchmark for evaluat-
+ing analysis capabilities will consist of synthetic test ca ses specif-
+ically designed to test relevant properties. The test cases for the
+analysis capabilities require manual eﬀort of domain experts. They
+
+--- PAGE 6 ---
+Schlichtig and Wickert, et al.
+will include test cases for ﬂow-sensitivity, context-sensitivity, ﬁeld-
+sensitivity, object-sensitivity, and path-sensitivity, as well as in-
+traprocedural and inter-procedural test cases. The select ed sensi-
+tivities are accepted as relevant capabilities for static a nalyses [29,
+36]. We will develop all test cases for this benchmark and als o pro-
+vide the test cases with the metadata ﬁles for (mis-)uses.
+Heuristic for crypto API coverage. During our preliminary study,
+we identiﬁed that understanding the covered API classes is o f im-
+portance for crypto-API misuse detectors. A detector which misses
+an API class may miss a vulnerability in an application while hav-
+ing a high precision and recall. Thus, for the assessment of t he de-
+tectors, being aware of the covered classes is of importance . While
+test generators seem to be a good choice for this task and aid o ur
+aim of maintainability and extensibility of CamBench they are in-
+adequate. Previous approaches summarized in a survey [32] h ave
+shown to be insuﬃcient for generating and establishing a gro und-
+truth needed for CamBench. Instead of using test generators, we
+propose employing a heuristic that harnesses the two other b ench-
+marks of CamBench to create an API coverage feature.
+This feature is inspired by Hermes [39] which is a framework
+to assess collections like the Qualitas Corpus and uses queries to
+derive subsets suited for analyzing, e.g., a speciﬁc API. Wi th this
+heuristic, we can extract all classes and methods of the JCA a nd
+match them with our benchmarks for real-world applications and
+analysis capabilities. We plan to use the heuristic to guide the eﬀec-
+tive generation of our benchmark. First, the heuristic will enable
+us to select a diverse set of real-world JCA usages to enrich t hem
+with the metadata. Second, as we will develop the synthetic t est
+cases ourselves, the heuristic allows us to include classesand meth-
+ods for the JCA that are not covered by the real-world applications
+benchmark. Hence, this heuristic approach covers at least all real-
+world parts of the API from the real-world applications benchmark
+as well as additional classes and methods that only occur in t he
+synthetic analysis capabilities benchmark. Overall, we assume that
+this heuristic approach should yield an almost complete cov erage
+of JCA class and method usages for a highly used API like the JC A.
+5.2 Publishing and Deployment Plan
+Open access and ease of use are key factors for establishing abench-
+mark as describe in Section 4. Hence, it is important to publi sh
+CamBench on GitHub with proper instructions and documentation.
+To encourage, include, and harness community feedback, we w ill
+make the GitHub repository accessable during the creation of Cam-
+Bench, e.g., via pull requests. We will also contact the authors of
+existing crypto API misuse detection tools and benchmarks (cf. Ta-
+ble 1).
+Here we present our plans for the GitHub repository. We will
+provide execution support for CamBench similar to MuBench [8].
+Thus, alongside the benchmark itself, we will provide the to oling
+we use for the generation together with documentation to sup port
+updating, maintaining, extending, and contributing to CamBench.
+In addition, we plan to improve the accessibility of our tool by pro-
+viding essential information, such as the number of test cas es or
+the covered API classes, directly on our README-page and using
+the GitHub release functionality. To ensure the continuous qual-
+ity of our benchmark, we will use GitHub actions for continio us
+deployment. Furthermore, CamBench will be open access with a
+unique Digital Object Identiﬁer (DOI).
+5.3 Evaluation plan
+After creating the ﬁrst version of CamBench we will perform the
+evaluation to answer RQ3. The evaluation will consist of two main
+aspects: First, how do current crypto API misuse detection t ools
+perform on CamBench? The primary motivation for this registered
+report is comparing crypto API misuse detection tools with a fair
+benchmark explicitly developed for this domain. Once CamBench
+is created, such a comparison and evaluation will be possibl e and
+therefore will be conducted. Futhermore, we envision to pro vide
+a score section, similar to OW ASP [49], in the GitHub reposit ory
+of CamBench where researchers can add their results with experi-
+ment docmentation via pull request. Second, we want to know how
+current crypto API misuse detection tool benchmarks compar e to
+CamBench in practice. We expect this to be a theoretical compar-
+ison as the approaches and goals of existing benchmarks are d i-
+verse (cf. Table 1). The generation approach of CamBench diﬀers
+from existing benchmarks (cf. Section 2, Table 1) and is inte nded
+to serve as a reference benchmark for the community. Therefo re,
+we expect CamBench to diﬀer from the other custom benchmarks
+in its composition and evaluation of the analyses. Hence, we will
+investigate these diﬀerences, also to understand how our ge ner-
+ation process for the test cases compares against the instan tiated
+benchmarks. Additionally, we will evaluate our heuristic approach
+for measuring the coverage of the JCA.
+6 THREATS TO V ALIDITY
+For the ﬁrst version of CamBench, we introduced some limitations
+(cf. Section 1) to have a clear target domain and develop a tan gible
+benchmark. These limitations are choosing a speciﬁc progra ming
+language in Java, a speciﬁc API in the JCA, and ﬁnally focusin g
+on static analysis tools. However, our methodology (cf. Sec tion 4)
+is designed for semi-automated benchmark generation and ex ten-
+sibility. Hence, extending CamBench to support other APIs or dy-
+namic analyses has very much been taken into consideration d ur-
+ing the initial development as a reasonable future step and i s as a
+result not inhibited whatsoever by the design. Furthermore, instan-
+tiating benchmarks for other programming languages by appl y-
+ing our methodology is also possible. However, these extens ions
+would each require a lot of additional eﬀort and leave a bench -
+mark that is signiﬁcantly changed in shape and size as the new
+real-world applications need to be mined with new criteria, and
+thus, the benchmarks for analysis capabilities and API cove rage
+need adaptation, too.
+Besides this, the generation of the benchmarks foranalysis capa-
+bilities and API coverage are subject to manual work by the authors.
+Since the authors are experts regarding static analysis and crypto
+API misuse detection, the chosen domain limitations make th em
+an appropriate choice to develop and label the test cases. Fu rther-
+more, community feedback is part of the generation process a nd
+will therefore help to mitigate this threat to validity.
+Lastly, employing the heuristic for the API coverage benchmark
+is a new approach that we will evaluate. Employing the heuris -
+tic seems to be a reasonable and practical approach to create the
+
+--- PAGE 7 ---
+CamBench - Cryptographic API Misuse Detection Tool Benchmar k Suite
+API coverage feature. However, this approach is untested and needs
+evaluation.
+7 IMPLICATIONS
+Benchmarks generally drive development and research in their ﬁelds
+as they provide measurable optimization goals [12]. Theref ore, es-
+tablishing a reference benchmark for the domain of benchmarking
+crypto API misuse detection tools in the form ofCamBench with its
+open and transparent generation process will help the commu nity
+manyfold: CamBench will allow to evaluate and compare current
+crypto API misuse detection tools on the same benchmark whic h
+has not been done, yet. Having this comparison, future devel op-
+ment can reference the comparison as well as CamBench in new
+contributions.
+Furthermore, by deriving, extending, and deﬁning the proce ss
+for the creation of CamBench, we hope to provide a template for
+creating and maintaining benchmarks for speciﬁc domains in need
+of a reference benchmark and thereby steering current devel op-
+ments towards more open and reproducible research.
+ACKNOWLEDGMENTS
+Funded by the Deutsche Forschungsgemeinschaft (DFG, Germa n
+Research Foundation) – SFB 1119 – 236615297 and by the German
+Federal Ministry of Education and Research and the Hessen St ate
+Ministry for Higher Education, Research and the Arts within their
+joint support of the National Research Center for Applied Cy ber-
+security ATHENE.
+REFERENCES
+[1] 2022. OW ASP ZAP. https://github.com/zaproxy/zaproxy accessed: 2015-06-03.
+[2] 2022. PMD - source code analyzer. https://github.com/p md/pmd accessed:
+2012-07-11.
+[3] 2022. spotbugs/spotbugs. https://github.com/spotbu gs/spotbugs accessed:
+2016-11-04.
+[4] 2022. VisualCodeGrepper. https://github.com/nccgro up/VCG accessed: 2015-
+01-07.
+[5] Aijn Abraham, Magaofei, Matan Dobrushin, and Vin-
+cent Nadal. 2022. Mobile Security Framework (MobSF).
+https://github.com/MobSF/Mobile-Security-Framework- MobSF accessed:
+2015-01-31.
+[6] Sharmin Afrose, Sazzadur Rahaman, and Danfeng Yao. 2019 . Cryptoapi-bench:
+A comprehensive benchmark on java cryptographic api misuse s. In IEEE Cyber-
+security Development (SecDev). IEEE.
+[7] Booz Allen. 2022. AppCritique. https://appcritique.b oozallen.com/ When we
+accessed (2022-01-26) AppCritique, it seemed that the proj ect is deprecated.
+[8] Sven Amann, Sarah Nadi, Hoan A Nguyen, Tien N Nguyen, and M ira Mezini.
+2016. MUBench: A benchmark for API-misuse detectors. In In 2016 ACM 13th
+International Conference on Mining Software Repositories (MSR). ACM.
+[9] Sven Amann, Hoan Anh Nguyen, Sarah Nadi, Tien N Nguyen, an d Mira Mezini.
+2018. A systematic evaluation of static api-misuse detectors. In IEEE Transactions
+on Software Engineering (TSE) , Vol. 45. IEEE.
+[10] Amazon Web Services (A WS). 2022. How can I check
+the integrity of an object uploaded to Amazon S3?
+https://aws.amazon.com/de/premiumsupport/knowledge-center/data-integrity-s3/,
+accessed on 2022-01-21.
+[11] Philippe Arteau. 2020. Find Security Bugs 1.11.0.
+https://ﬁnd-sec-bugs.github.io/ accessed: 2022-01-26.
+[12] S. Blackburn, R. Garner, C. Hoﬀmann, A. Khang, K. McKinl ey, R. Bentzur, A.
+Diwan, D. Feinberg, D. Frampton, S. Guyer, M. Hirzel, A. Hosk ing, and et. al.
+2006. The DaCapo Benchmarks: Java Benchmarking Developmen t and Analy-
+sis. In 21st ACM SIGPLAN conference on Object-oriented programming systems,
+languages, and applications (OOPSLA) . ACM.
+[13] Alexandre Braga, Ricardo Dahab, Nuno Antunes, Nuno Lar anjeiro, and Marco
+Vieira. 2017. Practical evaluation of static analysis tools for cryptography: Bench-
+marking method and case study. In IEEE 28th International Symposium on Soft-
+ware Reliability Engineering (ISSRE) . IEEE.
+[14] Elisa Burato, Pietro Ferrara, and Fausto Spoto. 2017. S ecurity analysis of
+the OW ASP benchmark with Julia. First Italian Conference on Cybersecurity
+(ITASEC).
+[15] Maria Christakis and Christian Bird. 2016. What Develo pers Want and Need
+from Program Analysis: An Empirical Study. In31st IEEE/ACM International Con-
+ference on Automated Software Engineering (ASE) . ACM.
+[16] Lisa Nguyen Quang Do, Michael Eichberg, and Eric Bodden . 2016. Toward an
+Automated Benchmark Management System. In 5th ACM SIGPLAN International
+Workshop on State Of the Art in Program Analysis (SOAP) . ACM.
+[17] Robert Dyer, Hoan Anh Nguyen, Hridesh Rajan, and Tien N N guyen. 2013. Boa:
+A language and infrastructure for analyzing ultra-large-s cale software reposito-
+ries. In ACM 35th International Conference on Software Engineering (ICSE). ACM.
+[18] Manuel Egele, David Brumley, Yanick Fratantonio, and C hristopher Kruegel.
+2013. An empirical study of cryptographic misuse in android applications. In
+2013 ACM SIGSAC conference on Computer and Communications s ecurity (CCS).
+ACM.
+[19] German Federal Oﬃce for Information Security (BSI). 20 22. BSI TR-
+02102-1: "Cryptographic Mechanisms: Recommendations and Key Lengths".
+https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1 .html,
+accessed on 2022-01-21.
+[20] RIGS IT GmbH. 2022. Xanitizer. https://www.xanitizer .com When we accessed
+(2022-01-26) the webpage, the Xanitizer page was under main tance.
+[21] Peter Leo Gorski, Luigi Lo Iacono, Dominik Wermke, Chri stian Stransky, Sebas-
+tian Möller, Yasemin Acar, and Sascha Fahl. 2018. Developer s Deserve Security
+Warnings, Too: On the Eﬀect of Integrated Security Advice on Cryptographic
+API Misuse. In 14th Symposium on Usable Privacy and Security (SOUPS) . USENIX
+Association.
+[22] Synopsys Inc. 2022. Coverity Scan - Static Analysis. ht tps://scan.coverity.com/
+accessed: 2022-01-26.
+[23] B. Johnson, Y. Song, E. Murphy-Hill, and R. Bowdidge. 20 13. Why don’t software
+developers use static analysis tools to ﬁnd bugs?. In ACM 35th International Con-
+ference on Software Engineering (ICSE) . ACM.
+[24] Alok Kumar Kasgar, Mukesh Kumar Dhariwal, Neeraj Tantu bay, and Hina
+Malviya. 2013. A review paper of message digest 5 (MD5). In International Jour-
+nal of Modern Engineering & Management Research , Vol. 1.
+[25] Barbara Kitchenham. 2004. Procedures for performing s ystematic reviews. Keele,
+UK, Keele University 33.
+[26] Stefan Krüger, Johannes Späth, Karim Ali, Eric Bodden, and Mira Mezini. 2019.
+Crysl: An extensible approach to validating the correct usa ge of cryptographic
+apis. In IEEE Transactions on Software Engineering (TSE) . IEEE.
+[27] XYSEC Labs. 2022. Devknox - Security Plugin for Android Studio.
+https://devknox.io/ accessed: 2022-01-26.
+[28] David Lazar, Haogang Chen, Xi Wang, and Nickolai Zeldov ich. 2014. Why does
+cryptographic software fail? A case study and open problems. In 5th Asia-Paciﬁc
+Workshop on Systems (APSys). ACM.
+[29] Li Li, Tegawendé F. Bissyandé, Mike Papadakis, Siegfri ed Rasthofer, Alexandre
+Bartel, Damien Octeau, Jacques Klein, and Le Traon. 2017. St atic analysis of
+android apps: A systematic literature review. In Information and Software Tech-
+nology, Vol. 88.
+[30] Benjamin Livshits, Manu Sridharan, Yannis Smaragdaki s, Ondřej Lhoták, J Nel-
+son Amaral, Bor-Yuh Evan Chang, Samuel Z Guyer, Uday P Khedke r, Anders
+Møller, and Dimitrios Vardoulakis. 2015. In defense of soun diness: A manifesto.
+Commun. ACM 58, 2.
+[31] Joydeep Mitra and Venkatesh-Prasad Ranganath. 2017. G hera: A repository of
+android app vulnerability benchmarks. In 13th International Conference on Pre-
+dictive Models and Data Analytics in Software Engineering ( PROMISE). ACM.
+[32] Ahmad Mustafa, Wan MN Wan-Kadir, and I Ibrahim. 2017. Co mparative evalu-
+ation of the state-of-art requirements-based test case gen eration approaches. In
+International Journal on Advanced Science, Engineering an d Information Technol-
+ogy, Vol. 7.
+[33] Sarah Nadi, Stefan Krüger, Mira Mezini, and Eric Bodden. 2016. Jumping through
+hoops: Why do Java developers struggle with cryptography AP Is?. In 38th
+IEEE/ACM International Conference on Software Engineerin g (ICSE). ACM.
+[34] National Institute of Standards and Technology (NIST) . 2022.
+SP 800-175B Rev. 1 Guideline for Using Cryptographic Stan-
+dards in the Federal Government: Cryptographic Mechanisms .
+https://csrc.nist.gov/publications/detail/sp/800-17 5b/rev-1/ﬁnal, accessed:
+2022-01-21.
+[35] Duc Cuong Nguyen, Dominik Wermke, Yasemin Acar, Michae l Backes, Charles
+Weir, and Sascha Fahl. 2017. A stitch in time: Supporting and roid developers in
+writingsecure code. In 2017 ACM SIGSAC Conference on Computer and Commu-
+nications Security (CCS) . ACM.
+[36] Lina Qiu, Yingying Wang, and Julia Rubin. 2018. Analyzi ng the analyzers: Flow-
+droid/iccta, amandroid, and droidsafe. In 27th ACM SIGSOFT International Sym-
+posium on Software Testing and Analysis (ISSTA) . ACM.
+[37] Sazzadur Rahaman, Ya Xiao, Sharmin Afrose, Fahad Shaon , Ke Tian, Miles
+Frantz, Murat Kantarcioglu, and Danfeng Yao. 2019. Cryptog uard: High preci-
+sion detection of cryptographic vulnerabilities in massiv e-sized java projects. In
+
+--- PAGE 8 ---
+Schlichtig and Wickert, et al.
+2019 ACM SIGSAC Conference on Computer and Communications S ecurity (CCS).
+ACM.
+[38] Venkatesh-Prasad Ranganath and Joydeep Mitra. 2020. A re free android app
+security analysis tools eﬀective in detecting known vulnerabilities?. In Empirical
+Software Engineering, Vol. 25. Springer.
+[39] Michael Reif, Michael Eichberg, Ben Hermann, and Mira M ezini. 2017. Hermes:
+assessment and creation of eﬀective test corpora. In 6th ACM SIGPLAN Interna-
+tional Workshop on State Of the Art in Program Analysis (SOAP) . ACM.
+[40] Thomas Reps. 2000. Undecidability of Context-Sensiti ve Data-Dependence Anal-
+ysis. ACM Trans. Program. Lang. Syst. 22, 1.
+[41] Joaquín Rinaudo and Juan Heguiabehere. 2022. Marvin St atic Analyzer.
+https://github.com/programa-stic/Marvin-static-Anal yzer accessed: 2022-01-
+26.
+[42] Michael Scovetta and Daniel Ruf. 2022. Yasca.
+https://github.com/scovetta/yasca when we accessed (202 2-01-26) the GitHub
+page, the project was deprecated.
+[43] Senior Oﬃcials Group Information Systems Security (SO G-IS). 2022.
+SOG-IS Crypto Evaluation Scheme Agreed Cryptographic Mech anisms.
+https://www.sogis.eu/uk/supporting_doc_en.html, accessed: 2022-01-21.
+[44] SonarSource. 2022. SonarQube. https://github.com/S onarSource/sonarqube
+accessed: 2011-01-05.
+[45] Fausto Spoto. 2016. The Julia Static Analyzer for Java. In Static Analysis, Xavier
+Rival (Ed.). Springer Berlin Heidelberg, Berlin, Heidelbe rg.
+[46] Ewan Tempero, Craig Anslow, Jens Dietrich, Ted Han, Jin g Li, Markus Lumpe,
+Hayden Melton, and James Noble. 2010. The Qualitas Corpus: A curated col-
+lection of Java code for empirical studies. In Asia Paciﬁc Software Engineering
+Conference (APSEC). IEEE.
+[47] Andrew van der Stock, Brian Glas, Neil Smithline, and To rsten Gigler. 2021.
+OW ASP Top 10:2021. https://owasp.org/Top10/ accessed: 20 22-01-23.
+[48] Fengguo Wei, Sankardas Roy, and Xinming Ou. 2014. Amand roid: A precise and
+general inter-component data ﬂow analysis framework for se curity vetting of
+android apps. In 2014 ACM SIGSAC conference on Computer and Communications
+security (CCS). ACM.
+[49] Dave Wichers. 2022. OW ASP Benchmark | OW ASP Foundation .
+https://owasp.org/www-project-benchmark/ accessed: 20 22-01-23.
+[50] Anna-Katharina Wickert, Lars Baumgärtner, Florian Br eitfelder, and Mira
+Mezini. 2021. Python Crypto Misuses in the Wild. In 15th ACM/IEEE Interna-
+tional Symposium on Empirical Software Engineering and Mea surement (ESEM) .
+ACM.
+[51] Anna-Katharina Wickert, Michael Reif, Michael Eichbe rg, Anam Dodhy, and
+Mira Mezini. 2019. A dataset of parametric cryptographic mi suses. In 16th Inter-
+national Conference on Mining Software Repositories (MSR) . IEEE/ACM.
+[52] Li Zhang, Jiongyi Chen, Wenrui Diao, Shanqing Guo, Jian Weng, and Kehuan
+Zhang. 2019. CryptoREX: Large-scale Analysis of Cryptogra phic Misuse in IoT
+Devices. In 22nd International Symposium on Research in Attacks, Intru sions and
+Defenses (RAID). USENIX Association.

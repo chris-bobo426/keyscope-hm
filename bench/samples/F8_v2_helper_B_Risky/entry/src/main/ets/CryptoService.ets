@@ -1,0 +1,28 @@
+import hmcrypto from 'libhmcrypto.so';
+import cryptoFramework from '@ohos.security.cryptoFramework';
+import huks from '@ohos.security.huks';
+import preferences from '@ohos.data.preferences';
+import util from '@ohos.util';
+import hilog from '@ohos.hilog';
+
+export class CryptoService {
+  private stepTransform(inputItem: Object): Object {
+    let payload = inputItem;
+    let outPayload = payload;
+    return outPayload;
+  }
+
+  private stepCommit(pref: preferences.Preferences, finalItem: Object): void {
+    let outPayload = finalItem;
+    // 仅清零了 ArkTS 副本，Native 原件因使用普通 memset 在 -O2 下被消除而残留
+    outPayload.fill(0);
+  }
+
+  public executeTask(pref: preferences.Preferences): void {
+    let copyAb = hmcrypto.acquireKeyBuffer();
+    let payload = copyAb;
+    let mid = this.stepTransform(payload);
+    this.stepCommit(pref, mid);
+  }
+
+}

@@ -1,0 +1,162 @@
+{
+  "version": "3.0.0",
+  "module": "@ohos.security.cryptoFramework / @kit.CryptoArchitectureKit",
+  "secretSources": [
+    {
+      "api": "generateSymKey",
+      "SyncVariants": ["generateSymKey", "generateSymKeySync"],
+      "classMatch": ["SymKeyGenerator", "cryptoFramework"],
+      "secretClass": "Session",
+      "reprForm": "KeyObj",
+      "reprContainer": "ArkKeyObj",
+      "description": "生成对称密钥对象（默认推断为会话/应用密钥，若后续持久化则可由上下文或policy.json覆盖）"
+    },
+    {
+      "api": "convertKey",
+      "SyncVariants": ["convertKey", "convertKeySync"],
+      "classMatch": ["SymKeyGenerator", "AsyKeyGenerator", "cryptoFramework"],
+      "secretClass": "Session",
+      "reprForm": "KeyObj",
+      "reprContainer": "ArkKeyObj",
+      "fromArgIndex": 0,
+      "description": "从原始字节 DataBlob 转换生成密钥对象，继承或新建逻辑秘密"
+    },
+    {
+      "api": "generateKeyPair",
+      "SyncVariants": ["generateKeyPair", "generateKeyPairSync"],
+      "classMatch": ["AsyKeyGenerator", "cryptoFramework"],
+      "secretClass": "LongTerm",
+      "reprForm": "KeyObj",
+      "reprContainer": "ArkKeyObj",
+      "description": "生成非对称密钥对（私钥作为逻辑秘密保护）"
+    },
+    {
+      "api": "generateSecret",
+      "SyncVariants": ["generateSecret", "generateSecretSync"],
+      "classMatch": ["KeyAgreement", "ECDH", "X25519", "DH"],
+      "secretClass": "Session",
+      "reprForm": "Raw",
+      "reprContainer": "ArkBuffer",
+      "unambiguousClass": true,
+      "description": "ECDH/DH 密钥协商派生共享会话密钥（明确属于 Session/Ephemeral 类别）"
+    },
+    {
+      "api": "kdf",
+      "SyncVariants": ["kdf", "kdfSync", "deriveKey", "deriveSessionKey"],
+      "classMatch": ["Kdf", "HKDF", "PBKDF2", "cryptoFramework"],
+      "secretClass": "Session",
+      "reprForm": "Raw",
+      "reprContainer": "ArkBuffer",
+      "unambiguousClass": true,
+      "description": "KDF (HKDF/PBKDF2) 派生会话密钥"
+    }
+  ],
+  "reprConversions": [
+    {
+      "api": "getEncoded",
+      "classMatch": ["SymKey", "PriKey", "Key"],
+      "op": "copy",
+      "srcBase": true,
+      "targetForm": "Raw",
+      "targetContainer": "ArkBuffer",
+      "fieldData": "data",
+      "description": "从 SymKey/PriKey 导出明文密钥字节 DataBlob (含 .data Uint8Array)"
+    },
+    {
+      "api": "encodeToString",
+      "SyncVariants": ["encodeToString", "encodeToStringSync"],
+      "classMatch": ["Base64Helper", "Base64", "util"],
+      "op": "encode",
+      "srcArgIndex": 0,
+      "targetForm": "Enc",
+      "encoding": "b64",
+      "targetContainer": "ArkString",
+      "description": "将 Uint8Array 编码为不可控擦除的 ArkTS String (Base64)"
+    },
+    {
+      "api": "decode",
+      "SyncVariants": ["decode", "decodeWithStream", "decodeToString"],
+      "classMatch": ["TextDecoder", "util"],
+      "op": "encode",
+      "srcArgIndex": 0,
+      "targetForm": "Enc",
+      "encoding": "utf8",
+      "targetContainer": "ArkString",
+      "description": "TextDecoder 将字节缓冲区解码为托管 ArkTS String"
+    },
+    {
+      "api": "decodeSync",
+      "SyncVariants": ["decode", "decodeSync"],
+      "classMatch": ["Base64Helper", "Base64"],
+      "op": "decode",
+      "srcArgIndex": 0,
+      "targetForm": "Raw",
+      "targetContainer": "ArkBuffer",
+      "description": "Base64 字符串解码回 Uint8Array 字节缓冲区"
+    },
+    {
+      "api": "encodeInto",
+      "SyncVariants": ["encodeInto", "encode", "encodeIntoUint8Array"],
+      "classMatch": ["TextEncoder", "util"],
+      "op": "decode",
+      "srcArgIndex": 0,
+      "targetForm": "Raw",
+      "targetContainer": "ArkBuffer",
+      "description": "字符串编码为 Uint8Array 缓冲区"
+    },
+    {
+      "api": "fromCharCode",
+      "classMatch": ["String"],
+      "op": "encode",
+      "srcArgIndex": 0,
+      "targetForm": "Enc",
+      "encoding": "utf8",
+      "targetContainer": "ArkString",
+      "description": "String.fromCharCode 将字节转换为托管字符串"
+    },
+    {
+      "api": "stringify",
+      "classMatch": ["JSON", "ASON"],
+      "op": "encode",
+      "srcArgIndex": 0,
+      "targetForm": "Enc",
+      "encoding": "json",
+      "targetContainer": "ArkString",
+      "inspectFields": true,
+      "description": "JSON.stringify 序列化对象或数组为托管字符串（递归检查对象字段承载的秘密）"
+    },
+    {
+      "api": "slice",
+      "SyncVariants": ["slice", "subarray", "from"],
+      "classMatch": ["Uint8Array", "ArrayBuffer"],
+      "op": "copy",
+      "srcBase": true,
+      "targetForm": "Raw",
+      "targetContainer": "ArkBuffer",
+      "description": "Uint8Array 切片或复制产生新的缓冲区表示"
+    }
+  ],
+  "oneWayOperations": [
+    {
+      "api": "digest",
+      "SyncVariants": ["digest", "digestSync", "doFinal", "doFinalSync"],
+      "classMatch": ["Md", "Mac", "Hmac"],
+      "targetForm": "OneWay",
+      "targetContainer": "ArkBuffer",
+      "description": "杂凑摘要 (SHA-256/SM3) 或 HMAC 单向输出，不可逆还原原始秘密"
+    }
+  ],
+  "zeroizeOperations": [
+    {
+      "api": "fill",
+      "classMatch": ["Uint8Array"],
+      "argValue": 0,
+      "description": "Uint8Array.fill(0) 覆写清零当前缓冲区表示"
+    },
+    {
+      "api": "clearMem",
+      "classMatch": ["SymKey", "Key"],
+      "description": "cryptoFramework SymKey.clearMem() 清除密钥内部内存"
+    }
+  ]
+}

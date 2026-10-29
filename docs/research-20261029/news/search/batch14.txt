@@ -1,0 +1,541 @@
+OWASP GenAI Security Project Unveils 2026 Top 10 for LLM Applications, New Agent Control Standard and Sponsors as Community Tops 30,000 Members - OWASP Gen AI Security Project (https://genai.owasp.org/2026/09/01/owasp-genai-security-project-unveils-2026-top-10-for-llm-applications-new-agent-control-standard-and-sponsors-as-community-tops-30000-members/)
+citeturn35search0 [wordlim: 200] Published: last month; Crawled: today; # OWASP GenAI Security Project Unveils 2026 Top 10 for LLM Applications, New Agent Control Standard and Sponsors as Community Tops 30,000 Members ... 2, 2026 — The OWASP GenAI Security Project, a global open-source community dedicated to advancing the security of generative AI and agentic systems, today announced a major expansion of its security resources, including the 2026 Top 10 for LLM Applications, a new Agent Control Standard for securing agentic AI systems, and expanded AI security solutions guidance.
+
+# OWASP GenAI Security Project Unveils 2026 Top 10 for LLM Applications, New Agent Control Standard and Sponsors as Community Tops 30,000 Members
+
+  * Written By: OWASPGenAIProject Editor
+  * , September 1, 2026
+
+OWASP GenAI Security Project Releases 2026 Top 10 for LLM Applications, Debuts Agent Control Standard and New Resources for Securing Generative and Agentic AI
+
+F5, WitnessAI, Evoke Security and Mondoo Inc. join as new sponsors as community expands AI security solutions guidance and surpasses 30,000 members
+
+WILMINGTON, Del. — Sept. 2, 2026 — The OWASP GenAI Security Project, a global open-source community dedicated to advancing the security of generative AI and agentic systems, today announced a major expansion of its security resources, including the 2026 Top 10 for LLM Applications, a new Agent Control Standard for securing agentic AI systems, and expanded AI security solutions guidance. The resources coincide with the project surpassing 30,000 members worldwide and welcoming four new industry sponsors.
+
+The  OWASP GenAI Security Project’s  Top 10 for LLM Applications 2026 is the latest edition of the project’s flagship guidance for identifying and mitigating the most critical security risks facing applications powered by large language models. The new edition surpassed 10,000 downloads within its first 48 hours, demonstrating the continued demand for practical, community-developed guidance as organizations move AI applications from experimentation into production.
+
+The 2026 edition was developed with contributions from hundreds of AI security experts and incorporates updated rankings, expanded threat coverage and research drawn from thousands of real-world AI security incidents. It also expands mappings to other leading frameworks, including NIST, MITRE ATLAS, CWE and the OWASP GenAI Security Project’s Top 10 for Agentic Applications.
+
+The OWASP GenAI LLM Top 10 2026 is available for download at https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/
+
+The project also welcomed additional industry sponsors supporting its open-source research and community programs. New Gold Sponsors are F5 and WitnessAI. New Silver Sponsors are Evoke Security and Mondoo Inc.
+
+Other key announcements from the events include:
+
+  * The project also unveiled its expanded AI Security Solutions Directory, an interactive resource that provides multiple lenses for understanding the rapidly evolving AI security market, including Generative AI Security, Agentic Security, and AI and Agentic Red Teaming. 
+  * The Agent Control Standard (ACS) has been donated to the OWASP GenAI Security Project. The addition of ACS complements the project’s existing work on agentic AI risks, security controls, identity, governance and testing by extending that guidance toward practical runtime enforcement.
+  * The project also highlighted the new GenAI Security Industry Framework Crosswalk, an open resource designed to help organizations connect OWASP GenAI security guidance with established security, risk and compliance frameworks.
+  * The project has now surpassed 30,000 members on LinkedIn, bringing together security practitioners, AI developers, researchers, technology providers, government participants and other contributors from around the world.
+
+Scott Clinton, chair and co-founder, OWASP GenAI Security Project, said: “Generative AI security has moved incredibly quickly from an emerging concern to an operational priority. What we saw at Black Hat and DEF CON this summer reinforces the need for open, practical guidance that security teams, developers and AI practitioners can put to work today. The growth of the project – and the breadth of contributions coming from across the industry – reflect how important community-driven standards and resources have become as AI and autonomous agents move into production.”
+
+Steve Wilson, Top 10 for LLM founder and board member at OWASP GenAI Security project, and chief AI and product officer at Exabeam, said: “The 2025 Top 10 captured what practitioners were seeing as generative AI rapidly moved into the enterprise. In 2026, we’ve taken an important step forward, testing that community expertise against thousands of real-world incidents and using the evidence to sharpen how we prioritize risk. It also points to an important evolution ahead: AI is moving from models that generate content to agents that can act autonomously. Security must evolve with it—assuming AI will sometimes fail or be fooled and putting enforceable controls around what these systems can access, decide and do.”
+
+#### Hear what our Project Sponsors and Supporters Have to Say Below:
+
+Jason Rebholz, CEO, Evoke Security said: “There are few names more synonymous with security than OWASP. When I started digging into securing agents, before anyone knew what that was, their research was one of the only resources that existed. Security teams are now sprinting to understand these risks as agents roll out, and OWASP continues to be the first stop. That’s why Evoke Security is proud to support the OWASP GenAI Security Project.”
+
+Jaimin Patel, VP Product, Prisma AIRS, Palo Alto Networks said: “The latest OWASP Top Ten for LLM Applications demonstrates the evolution of AI security from theoretical attacks to real-world incidents, where agents can access each organization’s crown jewels. Alongside the Top Ten for Agentic Applications, the 2026 LLM Top Ten provides a guiding framework on the most important AI security threats and mitigations. Palo Alto Networks is proud to contribute to the Top Ten and collaborate with OWASP to secure enterprises’ adoption of AI apps and agents.”
+
+Shankar Krishnan, Managing Director, PromptArmor said: “Agents are changing rapidly, at a pace that nobody can keep up with themselves. New vulnerabilities and risks are emerging that affect cross-functional teams, and new asset types (eg connectors, skills, plugins). Knowledge of the risks and remediations are critical for the industry to respond effectively. We are proud to be part of the OWASP GenAI Security Project and its democratization of cybersecurity resources that set the industry standard for secure AI.”
+
+Rick Caccia, Founder & CEO, WitnessAI said: “Agentic AI changes the security question from what a model can say to what a system can do. As agents gain access to tools, data, and business workflows, security teams need clear guidance for identity, governance, testing, and runtime controls. The Agent Control Standard is an important step toward that goal, and WitnessAI is proud to support the OWASP GenAI Security Project as a new Gold Sponsor.” 
+
+Michael Bargury, Co-Founder and CTO of Zenity said: “This is the first edition to weigh the community’s ranking against a large body of real incident data, and the risk where expert judgment and the record agree most clearly is Excessive Agency, now number three. That tells enterprises where to start. Give an agent real tools and real permissions and the failure shows up in what it does, so the work is to contain what a fooled agent can reach before it acts. Zenity is glad to back the community behind this list.”--------------------------------------------------------------------------------
+AIVSS Scoring System For OWASP Agentic AI Core Security Risks v0.8 (https://aivss.owasp.org/assets/publications/AIVSS%20Scoring%20System%20For%20OWASP%20Agentic%20AI%20Core%20Security%20Risks%20v0.8.pdf)
+citeturn35search12 [wordlim: 200] It serves as a resource for security researchers, AI developers, and red teamers working to understand and mitigate the risks associated with prompt injection in AI-driven applications.</td> ... <td>AgentDojo: A Dynamic Environment to Evaluate Attacks and Defenses for LLM Agents.</td> ... <td>https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/</td>
+<table id="e1">
+<tr>
+<td></td>
+<td>different types of attack intents, techniques, and evasions. It serves as a resource for security researchers, AI developers, and red teamers working to understand and mitigate the risks associated with prompt injection in AI-driven applications.</td>
+<td></td>
+</tr>
+<tr>
+<td>AgentDojo: A Dynamic Environment to Evaluate Attacks and Defenses for LLM Agents.</td>
+<td>This repository contains different baseline attacks on AI Agents, scoring &amp; environment to test them</td>
+<td>https://github.com/ethz-spylab/agentdojo/tree/main</td>
+</tr>
+<tr>
+<td>OWASP Agentic AI Top 10</td>
+<td>The OWASP Agentic AI Top 10 for 2026 is a separately published community resource derived from the OWASP AIVSS Core Agentic AI Risk categories defined in this document. It is included here as a cross-reference to the downstream application of this framework, not as an independent external validation source. Practitioners should consult both documents, noting that the Top 10 represents a prioritised practitioner-facing view of the risk categories defined in AIVSS.</td>
+<td>https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/</td>
+</tr>
+<tr>
+<td>OWASP MAS Threat Modeling</td>
+<td>Focuses on threat modeling for Multi-Agentic Systems (MAS), where multiple autonomous agents interact. Addresses new attack surfaces, coordination failures, and emergent risks from agent collaboration</td>
+<td>https://genai.owasp.org/resource/multi-agentic-system-threat-modeling-guide-v1-0/</td>
+</tr>
+</table>--------------------------------------------------------------------------------
+The State of Secrets Sprawl 2026 | GitGuardian Annual Report (https://www.gitguardian.com/waitlist)
+citeturn35search1 [wordlim: 200] Crawled: last month; Download the State of Secrets Sprawl 2026 full report ... Claude Code co-authored commits leak secrets at ~2× the baseline across all Public GitHub commits but the human factor remains also critical. ... Secrets sprawl extends beyond code: ~28% of incidents originate from leaks in collaboration and productivity tools (not just repositories), where credentials can be exposed to broader audiences, automations and AI agents. ... Secrets exposed in code alone are very different from those exposed through collaboration tools, meaning that scanning only the code will miss a meaningful portion of leaks. ... A credential that validates successfully is not necessarily dangerous, and a secret with no validation checker is not necessarily safe.
+
+Download the State of Secrets Sprawl 2026 full report
+
+Download the report
+
+5th Edition
+
+the state of
+
+# Secrets Sprawl 2026
+
+Download the report
+
+Data analysis by GitGuardian
+
+## The year software changed forever
+
+In 2025, mainstream AI adoption forever changed software engineering.
+
+43%
+
+Scanned public GitHub commits
+
+2x
+
+Leaked secrets in AI-assisted commits
+
+## 2021-2025
+
+Image
+
+New secrets detected on GitHub
+
+11M
+
+Image
+
+14M
+
+Image
+
+18M
+
+Image
+
+21M
+
+Image
+
+29M
+
+Image
+
+2021
+
+2022
+
+2023
+
+2024
+
+2025
+
+Data analysis by GitGuardian
+
+Image
+
+152%
+
+leaked secrets growth since 2021
+
+Image
+
+98%
+
+public active developers
+
+Secrets are leaking 1.6× faster than the developer population is growing since 2021.
+
+59% of compromised machines were CI/CD runners rather than personal workstations, this exposure extends well beyond the individual developer into shared build infrastructure.
+
+## AI adoption creates new credential security risks
+
+1,275,105
+
+AI-service secrets exposed
+
+Image
+
+81%
+
+YoY growth of secrets of AI-related services
+
+Credentials for AI services are accelerating faster than any other category. As teams adopt new AI tools, they also create more tokens, keys, and service identities, often without equivalent governance. These leaks are also more likely to slip through controls designed around traditional developer workflows.
+
+Growing Specific AI-related Secret Types
+
+OpenRouter
+
+48x
+
+DeepSeek
+
+23x
+
+Brave Search
+
+X13.5
+
+Firecrawl
+
+9x
+
+Clipdrop
+
+8x
+
+Vapi
+
+7.8x
+
+Perplexity
+
+7.6x
+
+Mistral AI
+
+6.8x
+
+OpenAI Project
+
+6.5x
+
+xAI
+
+6.4x
+
+* For detectors >1k hits
+
+Data analysis by GitGuardian
+
+## AI-assisted commits significantly contribute to secrets sprawl
+
+AI-assisted development moved from experiment to default. Code production accelerated, and credential exposure rose with it.
+
+Image
+
+2x
+
+Claude Code co-authored commits leak secrets at ~2× the baseline across all Public GitHub commits but the human factor remains also critical.
+
+Count of commits assisted by AI
+
+Cursor
+
+Lovable
+
+Claude Code
+
+1.3K
+
+191K
+
+352K
+
+915K
+
+1.4M
+
+2.3M
+
+2.4M
+
+3.5M
+
+Oct 2024
+
+‍
+
+‍
+
+Jan 2025
+
+‍
+
+‍
+
+Apr 2025
+
+‍
+
+‍
+
+Jul 2025
+
+‍
+
+‍
+
+Oct 2025
+
+‍
+
+‍
+
+Data analysis by GitGuardian
+
+Image: Chart
+
+### The breakout year
+
+2025 showed a clear acceleration starting early in the year, followed by a steep ramp in the second half of the year as multiple assistants gained adoption.
+
+By year-end, AI-assisted commits reached their highest levels, indicating that AI tools are becoming a standard part of how developers ship code.
+
+Exposed credentials remain a major, repeatable path to compromise. AI-assisted development has moved from experiment to default, and credentials are now leaking at every layer of the stack.
+
+Image
+
+Public and internal repositories that contain at least one secret
+
+5.6%
+
+Image
+
+32.2%
+
+Image
+
+Public repositories that contain at least one secret
+
+Internal repositories that contain at least one secret
+
+Data analysis by GitGuardian
+
+## One in four leaks originates outside of code repositories
+
+Secrets sprawl extends beyond code: ~28% of incidents originate from leaks in collaboration and productivity tools (not just repositories), where credentials can be exposed to broader audiences, automations and AI agents.
+
+28%
+
+of secrets sprawl happens exclusively outside of code repositories. Only 4% appear in both.
+
+Collaboration tools incidents are more severe with more than half being critical.
+
+Image: Secrets in SCM Chart
+
+Secrets exposed in code alone are very different from those exposed through collaboration tools, meaning that scanning only the code will miss a meaningful portion of leaks.
+--------------------------------------------------------------------------------
+OWASP GenAI Security Project Releases Top 10 Risks and Mitigations for Agentic AI Security - OWASP Gen AI Security Project (https://genai.owasp.org/2025/12/09/owasp-genai-security-project-releases-top-10-risks-and-mitigations-for-agentic-ai-security/)
+citeturn35search2 [wordlim: 200] Published: 10 months ago; Crawled: last week; Agent Behavior Hijacking, Tool Misuse and Exploitation and Identity and Privilege Abuse are some of the highlighted threats within the Top 10 and showcase how attackers can subvert agent capabilities or their supporting infrastructure. ... “The launch of the Agentic Top 10 represents a remarkably quick turnaround from OWASP in addressing security gaps for AI agents. ... As the technology industry collectively works to understand and mitigate the unique risks that come with emergent AI capabilities, frameworks like the OWASP Top 10 for Agentic AI 2026 provide valuable insights for developers and security professionals.
+#### Culmination of over 100 industry leaders’ input and extensive published resources to deliver critical guidance to address Agentic AI Security risks
+
+ 
+
+WILMINGTON, Del. — Dec. 10, 2025 — The OWASP GenAI Security Project (genai.owasp.org), a leading global open-source and expert community dedicated to delivering practical guidance and tools for securing generative and agentic AI, today released the OWASP Top 10 for Agentic Applications, a key resource to help organizations identify and mitigate the unique risks posed by autonomous AI agents. 
+
+Following more than a year of research, review and refinement, this Top 10 list reflects a culmination of input from over 100 security researchers, industry practitioners, user organizations and leading cybersecurity and Gen AI technology providers. The result is not only a list of risks and mitigations, but a suite of resources designed for practitioners providing data-driven guidance.
+
+The framework was further evaluated by the GenAI Security Project’s Agentic Security Initiative Expert Review Board which includes representatives from recognized bodies around the world such as NIST, European Commission and the Alan Turing Institute, among others. A full list of contributing organizations can be found here. 
+
+“This new OWASP Top 10 reflects incredible collaboration between AI security leaders and practitioners across the industry,” said Scott Clinton, OWASP GenAI Security Project Co-Chair, Board Member, Co-Founder. “As AI adoption accelerates faster than ever, security best practices must keep pace. The community’s responsiveness has been remarkable, and this Top 10, along with our broader open-source resources, ensures organizations are better equipped to adopt this technology safely and securely.”
+
+Agent Behavior Hijacking, Tool Misuse and Exploitation and Identity and Privilege Abuse are some of the highlighted threats within the Top 10 and showcase how attackers can subvert agent capabilities or their supporting infrastructure. Incidents involving these agentic systems are increasingly capable across industries, elevating the need for these new resources.
+
+“Companies are already exposed to Agentic AI attacks – often without realizing that agents are running in their environments,” said Keren Katz, Top 10 for Agentic AI Applications Co-Lead at OWASP, Senior Group Manager of AI Security at Tenable. --------------------------------------------------------------------------------
+Public Secrets Monitoring: AI Analysis of Leaked Credentials (https://blog.gitguardian.com/leaked-credentials/)
+citeturn35search3 [wordlim: 200] Published: last month; Crawled: yesterday;   * The exposure problem: AI-driven development pushed exposed credentials to 1.27 million last year, up 81%, and 64% of secrets confirmed valid in 2022 are still unrevoked as of January 2026. ... What makes those numbers worse is how long they stay live: of the secrets GitGuardian confirmed valid in 2022, 64% were still unrevoked when we retested them in January 2026, which means the same leaked credentials are still reaching the same systems they did on day one. ... Here, you can read about how we got a CISA GitHub leak down in under a day. ... Agent analysis makes the signal sharper: less noise to filter, clearer reasoning for the findings that do need human attention, and a faster path from "a secret was disclosed in public" to the internal question that actually matters: where did this come from, and what else is exposed?
+
+Credentials for AI services reached 1.27 million exposed across public code last year, up 81%, and 24,008 unique secrets turned up in public MCP configuration files alone. What makes those numbers worse is how long they stay live: of the secrets GitGuardian confirmed valid in 2022, 64% were still unrevoked when we retested them in January 2026, which means the same leaked credentials are still reaching the same systems they did on day one.
+
+AI-driven development has multiplied the places compromised credentials can land in public: not just source code and CI/CD pipelines, but MCP configuration files, AI tool caches, terminal session logs, and the output of agents that write code for the humans running them. The public exposure surface grew faster than any team's capacity to review it.
+
+Scale moved the bottleneck rather than creating a new one. Detection at this volume is tractable, and what has become hard is everything downstream of the alert: deciding whether the leaked key belongs to your organization at all, and whether it is serious enough to act on today.
+--------------------------------------------------------------------------------
+Top 10 for Agentic Apps 2026 Archives - OWASP Gen AI Security Project (https://genai.owasp.org/risk-maps-supported/top-10-for-agentic-apps-2026/)
+citeturn35search4 [wordlim: 200] Published: 2 months ago; Crawled: last month; OWASPGenAIProject Editor / August 8, 2026
+
+AI agent security solution that gains visibility into internal states via OpenTelemetry instrumentation — combining adversarial testing with real-time threat detection to cover all OWASP Top 10 for Agentic Applications.
+
+  *   *   *   *   * # Top 10 for Agentic Apps 2026
+
+## Deep AI Red/BlueTeam
+
+OWASPGenAIProject Editor / August 8, 2026
+
+AI agent security solution that gains visibility into internal states via OpenTelemetry instrumentation — combining adversarial testing with real-time threat detection to cover all OWASP Top 10 for Agentic Applications.
+
+## AgentWarden
+
+OWASPGenAIProject Editor / August 8, 2026
+
+AgentWarden evaluates AI agents and connected MCP tools, surfaces exfiltration and misuse risk, and enables security teams to enforce policies with runtime controls, telemetry, and dashboards before and after deployment.
+
+## AI Agentic for Pentesting
+
+OWASPGenAIProject Editor / August 8, 2026
+
+Agentic security testing platform that autonomously plans assessments, generates attack payloads, executes controlled tests against web applications and APIs, analyzes responses, identifies potential vulnerabilities, and produces remediation-focused security reports.
+--------------------------------------------------------------------------------
+State of Secrets Sprawl Report 2025 (https://www.gitguardian.com/state-of-secrets-sprawl-report-2025)
+citeturn35search5 [wordlim: 200] Crawled: yesterday; in 2024 GitGuardian scanned 69.6M public repositories of which at least 4.61% contained a secret. ... Verizon's 2024 Data Breach Investigations Report ... of all detected leaks are Generic credentials. ... This suggests that while AI enhances productivity, it may also introduce security risks, reinforcing the need for strong secret detection controls.
+
+### Secrets Sprawl Surges
+
+#### New secrets detected on GitHub
+
+Image
+
+Data analysis by GitGuardian
+
+Image
+
+25%
+
+Image
+
+Increase in leaked credentials from the previous year, indicating that secrets sprawl is worsening over time.
+
+Image
+
+In 2024, we found 23,770,171 new hardcoded secrets added to public GitHub repositories. Secrets sprawl is steadily worsening over time.
+
+### Generic Secrets: A Growing Blind Spot
+
+#### Secrets by detector nature
+
+Generic ML-certified
+
+Generic rule-based certified
+
+Specific
+
+Image
+
+Data analysis by GitGuardian
+
+Image
+
+58%
+
+Image
+
+of all detected leaks are Generic credentials.
+A sharp increase from 2023.
+
+Image
+
+GitGuardian's latest AI features now uncover significantly more generic secrets, providing the most comprehensive and accurate view of secrets sprawl.
+
+### GitHub Push Protection: Not a Silver Bullet
+
+strong
+
+GitHub’s Push Protection has its limitations. While it reduces leaks for some keys, it struggles with generic secrets—the fastest-growing category. These are harder to detect because they lack standardized patterns. Also many other keys, such as MySQL and MongoDB credentials, lack a standardized prefix and still evade GitHub's filter.
+
+#### MySQL credentials were not impacted by GitHub Push Protection
+
+Image
+
+Data analysis by GitGuardian
+
+Image
+
+#### MongoDB credentials were not impacted by GitHub Push Protection
+
+Image
+
+Data analysis by GitGuardian
+
+Image
+--------------------------------------------------------------------------------
+Secret protection must scale with software - The GitHub Blog (https://github.blog/ai-and-ml/github-copilot/secret-protection-must-scale-with-software/)
+citeturn35search6 [wordlim: 200] Published: 3 weeks ago; Crawled: yesterday;   *   *   * Today, one in three pull requests on GitHub involves an AI agent. ... That means preventing more leaks before they happen and making the response to exposures that remain less dependent on manual human effort. ... Between Q2 2024 and Q2 2026, screened pushes grew 2.84 times while pushes carrying credentials grew 2.59 times. ... Through our partner program, we work with participating secret issuers to build out detectors and report public exposures so they can respond. In Q2 2026, public scanning successfully reported an average of 26 credential matches a second, including repeat observations.
+As the amount of code grows, we must prevent more exposures and reduce human effort required by those that remain, if software development is to remain sustainable.
+
+## Prevention scales with compute
+
+I’ve spent the past few years working on secret scanning at GitHub and the past year as product lead for the area. Our greatest impact has come from connecting the dots between detection and systems that can act.
+
+GitHub’s catalog covers more than 150 technical partners through our secret scanning partnership program. Through our partner program, we work with participating secret issuers to build out detectors and report public exposures so they can respond. In Q2 2026, public scanning successfully reported an average of 26 credential matches a second, including repeat observations. Once notified, a large number of these partners immediately revoke the token: OpenAI API keys, Google Cloud account credentials, Slack webhooks, Hugging Face user tokens, SendGrid keys, etc. The owner may still need to replace the token, but revocation can happen without waiting for a developer to find and process a GitHub alert.
+--------------------------------------------------------------------------------
+OWASP Agentic Skills Top 10 | OWASP Foundation (https://owasp.org/projects/agentic-skills-top-10?trk=public_post_comment-text)
+citeturn35search7 [wordlim: 200] Crawled: last week; The OWASP Agentic Skills Top 10 (AST10) is the first comprehensive security framework for AI agent skills. ... 1.0-2026
+# OWASP Agentic Skills Top 10
+
+The OWASP Agentic Skills Top 10 (AST10) is the first comprehensive security framework for AI agent skills. It documents the 10 most critical security risks in agentic AI skills across all major AI agent platforms, providing evidence-based mitigations and prevention strategies.
+
+## About OWASP Agentic Skills Top 10
+
+The OWASP Agentic Skills Top 10 (AST10) documents the 10 most critical security risks in agentic AI skills across all major AI agent platforms. Skills represent the execution layer that gives agents real-world impact: they define not just what resources agents can access, but how they orchestrate multi-step workflows autonomously.
+
+While significant attention has been devoted to securing large language models (LLMs) and the Model Context Protocol (MCP) tool layer, the intermediate behavior layer—embodied in agentic skills—has emerged as a particularly vulnerable and under-protected component of the AI agent ecosystem. This project exists to close that gap.
+
+Mental Model: MCP = how the model talks to tools; AST10 = what those tools actually do.
+--------------------------------------------------------------------------------
+Security for the Quantum Era: Implementing Post-Quantum Cryptography in Android (https://blog.google/security/security-for-the-quantum-era-implementing-post-quantum-cryptography-in-android/)
+citeturn35search8 [wordlim: 200] Published: 7 months ago; Crawled: today; # Security for the Quantum Era: Implementing Post-Quantum Cryptography in Android ... Google’s post-quantum transition began in 2016, and Android 17 marks the first phase of Android’s post-quantum transition:
+
+# Security for the Quantum Era: Implementing Post-Quantum Cryptography in Android
+
+Mar 25, 2026
+
+Eric Lynch
+
+Product Manager
+
+Dom Elliott
+
+Principal, Product Management
+
+* * *
+
+Modern digital security is at a turning point. We are on the threshold of using quantum computers to solve "impossible" problems in drug discovery, materials science, and energy—tasks that even the most powerful classical supercomputers cannot handle. However, the same unique ability to consider different options simultaneously also allows these machines to bypass our current digital locks. This puts the public-key cryptography we’ve relied on for decades at risk, potentially compromising everything from bank transfers to trade secrets. To secure our future, it is vital to adopt the new Post-Quantum Cryptography (PQC) standards National Institute of Standards and Technology (NIST) is urging before large-scale, fault-tolerant quantum computers become a reality.
+
+To stay ahead of the curve, the technology industry must undertake a proactive, multi-year migration to Post-Quantum Cryptography (PQC). --------------------------------------------------------------------------------
+Google’s timeline for PQC migration (https://blog.google/innovation-and-ai/technology/safety-security/cryptography-migration-timeline/)
+citeturn35search9 [wordlim: 200] Published: 7 months ago; Crawled: yesterday; Mar 25, 2026 ... Google’s introducing a 2029 timeline to secure the quantum era with post-quantum cryptography (PQC) migration. ... As an example of our ongoing PQC commitments, Android 17 is integrating PQC digital signature protection using ML-DSA in alignment with the National Institute of Standards and Technology (NIST). This continues to put advanced PQC technology directly into the hands of our customers, building on our Google Chrome support for PQC, providing PQC solutions in Cloud and insights and guidance for leaders on their PQC Journey.
+The threat to encryption is relevant today with store-now-decrypt-later attacks, while digital signatures are a future threat that require the transition to PQC prior to a Cryptographically Relevant Quantum Computer (CRQC). That’s why we’ve adjusted our threat model to prioritize PQC migration for authentication services — an important component of online security and digital signature migrations. We recommend that other engineering teams follow suit.
+
+As an example of our ongoing PQC commitments, Android 17 is integrating PQC digital signature protection using ML-DSA in alignment with the National Institute of Standards and Technology (NIST). This continues to put advanced PQC technology directly into the hands of our customers, building on our Google Chrome support for PQC, providing PQC solutions in Cloud and insights and guidance for leaders on their PQC Journey.
+
+Stay tuned for more updates on our PQC transition.--------------------------------------------------------------------------------
+Cultivating a robust and efficient quantum-safe HTTPS (https://blog.google/security/cultivating-a-robust-and-efficient-quantum-safe-https/)
+citeturn35search10 [wordlim: 200] Published: 8 months ago; Crawled: today; To ensure the scalability and efficiency of the ecosystem, Chrome has no immediate plan to add traditional X.509 certificates containing post-quantum cryptography to the Chrome Root Store. ...   * Phase 2 (Q1 2027): Once the core technology is validated, we intend to invite CT Log operators with at least one “usable” log in Chrome before February 1, 2026 to participate in the initial bootstrapping of public MTCs.
+
+# Cultivating a robust and efficient quantum-safe HTTPS
+
+Feb 27, 2026
+
+Chrome Secure Web Networking Team
+
+Today we're announcing a new program in Chrome to make HTTPS certificates secure against quantum computers. The Internet Engineering Task Force (IETF) recently created a working group, PKI, Logs, And Tree Signatures (“PLANTS”), aiming to address the performance and bandwidth challenges that the increased size of quantum-resistant cryptography introduces into TLS connections requiring Certificate Transparency (CT). We recently shared our call to action to secure quantum computing and have written about challenges introduced by quantum-resistant cryptography and some of the steps we’ve taken to address them in earlier blog posts.
+
+To ensure the scalability and efficiency of the ecosystem, Chrome has no immediate plan to add traditional X.509 certificates containing post-quantum cryptography to the Chrome Root Store. --------------------------------------------------------------------------------
+GitHub’s model for secret detection: Finding more secrets with less noise - The GitHub Blog (https://github.blog/ai-and-ml/githubs-model-for-secret-detection-finding-more-secrets-with-less-noise/)
+citeturn35search11 [wordlim: 200] Published: 2 weeks ago; Crawled: today; October 13, 2026 Updated October 14, 2026 ... To address this challenge, we trained a secret classifier specifically for GitHub’s product needs: distinguishing real credentials from lookalikes while meeting the speed and efficiency requirements of scanning at scale.
+
+In our companion post, Secret protection must scale with software, we explained why secret protection must keep pace with AI-accelerated development. ... These cases are hard negatives: strings that match a credential pattern but are not usable credentials. ... Candidate generation: Regex filters scan content for potential secrets with high recall.
+
+These cases are hard negatives: strings that match a credential pattern but are not usable credentials. Adding more rules can suppress some of them, but each exception risks hiding a real secret. A learned classifier can instead use signals such as file path, secret type, variable names, and nearby code or text.
+
+That is why we shipped a new scanner using a two-stage pipeline:
+
+  1. Candidate generation: Regex filters scan content for potential secrets with high recall. This stage is optimized to catch broad families of credential-like patterns quickly and deterministically.
+  2. Context-aware classification: A fine-tuned ModernBERT classifier evaluates each candidate and its surrounding context. It is trained to recognize the signals that separate real secrets from false positives, including placeholder values, examples, documentation snippets, generated content, and non-sensitive identifiers. Because the model is small and efficient to run on our inference infrastructure, it costs much less to serve and is simpler to scale than an LLM-based pipeline.
+
+Impact:
+
+  * 11.5% user acceptance improvement, reducing false positives.
+  * 86% faster post-push secret detection execution time.
+  * More than 98% cost savings compared with the LLM-based pipeline.
+
+--------------------------------------------------------------------------------
+OWASP Top 10 For Agentic (https://genai.owasp.org/download/52117/?tmstv=1765059207)
+citeturn35search13 [wordlim: 200] Published: 7 months ago; OWASP Top 10 For Agentic 
+Applications 2026 
+OWASP Gen AI Security Project -
+--------------------------------------------------------------------------------
+GenAI Security Project 2026 Roadmap (Q1 '26) - Google Sheets (https://genai.owasp.org/download/48717/?tmstv=1751506032)
+citeturn35search14 [wordlim: 200] Published: 7 months ago; GenAI Security Project Roadmap for 2026 ... <td>Agentic Top 10 Cheat sheet<br><br>Top 10 Code Samples Repository v1<br><br>Automated ASI Agentic Exploits &amp; Incident Tracker<br>GenAI Research Council Initiative - Agentic Research Scorecard<br>Academic Agentic Partnership Kit<br>CISO Agentic Security Navigator (Curated navigation to our guides Top10, State Of, Threat Modelling etc)<br>Security Engineer Agentic Security Navigator (Curated navigation to our guides Top10, Threat Modelling, Securing Agentic Apps, State of, MCPs etc for Engineering functions)<br>Engineering Agentic Security Navigator (Curated navigation to our guides Top10, Threat Modelling, Securing Agentic Apps, State of, MCPs etc for Engineering functions)<br>Citizen Development Agentic Security Navigator<br>ASI Agent - part of the GenAI security project effort<br>Industry Expert Voices - Model Provider Perspectives on Agentic Security<br>Industry Expert Voices - Vibe Coding and Agentic Security Best Practices (with Lovable)</td>
+--------------------------------------------------------------------------------
+Copy of Agentic Security Research Initiative Proposal (https://genai.owasp.org/download/44348/?tmstv=1734330814)
+citeturn35search15 [wordlim: 200] Published: 4 months ago; OWASP Top 10 for LLMs - Agentic Security Research Initiative ... identified in the OWASP Top 10 for Large Language Model Applications, Agentic AI systems present ... Limited to the single conversational thread with an agent.
+--------------------------------------------------------------------------------
+OWASP_Meeting Stuttgart (https://owasp.org/www-chapter-stuttgart/assets/slides/2025-02-11_AI_Security_And_Insights_Into_OWASP_Top_10_LLM.pdf)
+citeturn35search16 [wordlim: 200] Agentic Security Initiative #1 ... - 72% are familiar with the OWASP Top 10 for LLMs ... - A top feature of AI agent systems that teams are building is orchestration of third party tools or APIs
+--------------------------------------------------------------------------------
+Protecting Non-Human Identities (https://blog.gitguardian.com/content/files/2025/10/Regulatory-%40-Framework-Controls-Adressing-NHI-secrets-VP--5-.pdf)
+citeturn35search17 [wordlim: 200] Published: 8 months ago; OWASP NHI Top 10 (2025) ... hardcoded secrets and support dedicated secret management tools ... credential management, ... automated detection of hard-coded passwords/credentials (8.6.1) via
+

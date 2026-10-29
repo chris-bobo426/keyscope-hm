@@ -1,0 +1,143 @@
+
+zeroize_O0.o:	file format coff-x86-64
+
+Disassembly of section .text:
+
+0000000000000000 <wipe_with_plain_memset>:
+       0: 55                           	pushq	%rbp
+       1: 48 89 e5                     	movq	%rsp, %rbp
+       4: 48 83 ec 40                  	subq	$64, %rsp
+       8: 48 89 4d 10                  	movq	%rcx, 16(%rbp)
+       c: 48 89 55 18                  	movq	%rdx, 24(%rbp)
+      10: c7 45 fc 00 00 00 00         	movl	$0, -4(%rbp)
+      17: eb 25                        	jmp	0x3e <wipe_with_plain_memset+0x3e>
+      19: 8b 45 fc                     	movl	-4(%rbp), %eax
+      1c: 48 63 d0                     	movslq	%eax, %rdx
+      1f: 48 8b 45 10                  	movq	16(%rbp), %rax
+      23: 48 01 d0                     	addq	%rdx, %rax
+      26: 0f b6 00                     	movzbl	(%rax), %eax
+      29: 8b 55 fc                     	movl	-4(%rbp), %edx
+      2c: 83 c2 5a                     	addl	$90, %edx
+      2f: 31 c2                        	xorl	%eax, %edx
+      31: 8b 45 fc                     	movl	-4(%rbp), %eax
+      34: 48 98                        	cltq
+      36: 88 54 05 e0                  	movb	%dl, -32(%rbp,%rax)
+      3a: 83 45 fc 01                  	addl	$1, -4(%rbp)
+      3e: 83 7d fc 0f                  	cmpl	$15, -4(%rbp)
+      42: 7e d5                        	jle	0x19 <wipe_with_plain_memset+0x19>
+      44: 48 8b 55 18                  	movq	24(%rbp), %rdx
+      48: 48 8d 45 e0                  	leaq	-32(%rbp), %rax
+      4c: 49 89 d0                     	movq	%rdx, %r8
+      4f: ba 10 00 00 00               	movl	$16, %edx
+      54: 48 89 c1                     	movq	%rax, %rcx
+      57: e8 00 00 00 00               	callq	0x5c <wipe_with_plain_memset+0x5c>
+		0000000000000058:  IMAGE_REL_AMD64_REL32	use_key_for_sm4_encrypt
+      5c: 48 8d 45 e0                  	leaq	-32(%rbp), %rax
+      60: 41 b8 10 00 00 00            	movl	$16, %r8d
+      66: ba 00 00 00 00               	movl	$0, %edx
+      6b: 48 89 c1                     	movq	%rax, %rcx
+      6e: e8 00 00 00 00               	callq	0x73 <wipe_with_plain_memset+0x73>
+		000000000000006f:  IMAGE_REL_AMD64_REL32	memset
+      73: b8 00 00 00 00               	movl	$0, %eax
+      78: 48 83 c4 40                  	addq	$64, %rsp
+      7c: 5d                           	popq	%rbp
+      7d: c3                           	retq
+
+000000000000007e <wipe_with_volatile_cleanse>:
+      7e: 55                           	pushq	%rbp
+      7f: 48 89 e5                     	movq	%rsp, %rbp
+      82: 48 83 ec 50                  	subq	$80, %rsp
+      86: 48 89 4d 10                  	movq	%rcx, 16(%rbp)
+      8a: 48 89 55 18                  	movq	%rdx, 24(%rbp)
+      8e: c7 45 fc 00 00 00 00         	movl	$0, -4(%rbp)
+      95: eb 25                        	jmp	0xbc <wipe_with_volatile_cleanse+0x3e>
+      97: 8b 45 fc                     	movl	-4(%rbp), %eax
+      9a: 48 63 d0                     	movslq	%eax, %rdx
+      9d: 48 8b 45 10                  	movq	16(%rbp), %rax
+      a1: 48 01 d0                     	addq	%rdx, %rax
+      a4: 0f b6 00                     	movzbl	(%rax), %eax
+      a7: 8b 55 fc                     	movl	-4(%rbp), %edx
+      aa: 83 c2 5a                     	addl	$90, %edx
+      ad: 31 c2                        	xorl	%eax, %edx
+      af: 8b 45 fc                     	movl	-4(%rbp), %eax
+      b2: 48 98                        	cltq
+      b4: 88 54 05 d0                  	movb	%dl, -48(%rbp,%rax)
+      b8: 83 45 fc 01                  	addl	$1, -4(%rbp)
+      bc: 83 7d fc 0f                  	cmpl	$15, -4(%rbp)
+      c0: 7e d5                        	jle	0x97 <wipe_with_volatile_cleanse+0x19>
+      c2: 48 8b 55 18                  	movq	24(%rbp), %rdx
+      c6: 48 8d 45 d0                  	leaq	-48(%rbp), %rax
+      ca: 49 89 d0                     	movq	%rdx, %r8
+      cd: ba 10 00 00 00               	movl	$16, %edx
+      d2: 48 89 c1                     	movq	%rax, %rcx
+      d5: e8 00 00 00 00               	callq	0xda <wipe_with_volatile_cleanse+0x5c>
+		00000000000000d6:  IMAGE_REL_AMD64_REL32	use_key_for_sm4_encrypt
+      da: 48 8d 45 d0                  	leaq	-48(%rbp), %rax
+      de: 48 89 45 e8                  	movq	%rax, -24(%rbp)
+      e2: 48 c7 45 f0 00 00 00 00      	movq	$0, -16(%rbp)
+      ea: eb 13                        	jmp	0xff <wipe_with_volatile_cleanse+0x81>
+      ec: 48 8b 55 e8                  	movq	-24(%rbp), %rdx
+      f0: 48 8b 45 f0                  	movq	-16(%rbp), %rax
+      f4: 48 01 d0                     	addq	%rdx, %rax
+      f7: c6 00 00                     	movb	$0, (%rax)
+      fa: 48 83 45 f0 01               	addq	$1, -16(%rbp)
+      ff: 48 83 7d f0 0f               	cmpq	$15, -16(%rbp)
+     104: 76 e6                        	jbe	0xec <wipe_with_volatile_cleanse+0x6e>
+     106: b8 00 00 00 00               	movl	$0, %eax
+     10b: 48 83 c4 50                  	addq	$80, %rsp
+     10f: 5d                           	popq	%rbp
+     110: c3                           	retq
+
+0000000000000111 <wipe_with_explicit_barrier>:
+     111: 55                           	pushq	%rbp
+     112: 48 89 e5                     	movq	%rsp, %rbp
+     115: 48 83 ec 40                  	subq	$64, %rsp
+     119: 48 89 4d 10                  	movq	%rcx, 16(%rbp)
+     11d: 48 89 55 18                  	movq	%rdx, 24(%rbp)
+     121: c7 45 fc 00 00 00 00         	movl	$0, -4(%rbp)
+     128: eb 25                        	jmp	0x14f <wipe_with_explicit_barrier+0x3e>
+     12a: 8b 45 fc                     	movl	-4(%rbp), %eax
+     12d: 48 63 d0                     	movslq	%eax, %rdx
+     130: 48 8b 45 10                  	movq	16(%rbp), %rax
+     134: 48 01 d0                     	addq	%rdx, %rax
+     137: 0f b6 00                     	movzbl	(%rax), %eax
+     13a: 8b 55 fc                     	movl	-4(%rbp), %edx
+     13d: 83 c2 5a                     	addl	$90, %edx
+     140: 31 c2                        	xorl	%eax, %edx
+     142: 8b 45 fc                     	movl	-4(%rbp), %eax
+     145: 48 98                        	cltq
+     147: 88 54 05 e0                  	movb	%dl, -32(%rbp,%rax)
+     14b: 83 45 fc 01                  	addl	$1, -4(%rbp)
+     14f: 83 7d fc 0f                  	cmpl	$15, -4(%rbp)
+     153: 7e d5                        	jle	0x12a <wipe_with_explicit_barrier+0x19>
+     155: 48 8b 55 18                  	movq	24(%rbp), %rdx
+     159: 48 8d 45 e0                  	leaq	-32(%rbp), %rax
+     15d: 49 89 d0                     	movq	%rdx, %r8
+     160: ba 10 00 00 00               	movl	$16, %edx
+     165: 48 89 c1                     	movq	%rax, %rcx
+     168: e8 00 00 00 00               	callq	0x16d <wipe_with_explicit_barrier+0x5c>
+		0000000000000169:  IMAGE_REL_AMD64_REL32	use_key_for_sm4_encrypt
+     16d: 48 8d 45 e0                  	leaq	-32(%rbp), %rax
+     171: 41 b8 10 00 00 00            	movl	$16, %r8d
+     177: ba 00 00 00 00               	movl	$0, %edx
+     17c: 48 89 c1                     	movq	%rax, %rcx
+     17f: e8 00 00 00 00               	callq	0x184 <wipe_with_explicit_barrier+0x73>
+		0000000000000180:  IMAGE_REL_AMD64_REL32	memset
+     184: 48 8d 45 e0                  	leaq	-32(%rbp), %rax
+     188: b8 00 00 00 00               	movl	$0, %eax
+     18d: 48 83 c4 40                  	addq	$64, %rsp
+     191: 5d                           	popq	%rbp
+     192: c3                           	retq
+     193: 90                           	nop
+     194: 90                           	nop
+     195: 90                           	nop
+     196: 90                           	nop
+     197: 90                           	nop
+     198: 90                           	nop
+     199: 90                           	nop
+     19a: 90                           	nop
+     19b: 90                           	nop
+     19c: 90                           	nop
+     19d: 90                           	nop
+     19e: 90                           	nop
+     19f: 90                           	nop

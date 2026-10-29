@@ -1,0 +1,91 @@
+官方公告_关于我们_华为云 (https://www.huaweicloud.com/notice.html)
+citeturn29search0 [wordlim: 200] Crawled: today; 〖安全公告〗 PHP远程代码执行漏洞预警（CVE-2026-109618/CVE-2026-109619） ... 〖产品公告〗 关于中国站云数据库RDS（MySQL、PostgreSQL、SQL Server、MariaDB）服务SLA的更新公告
+--------------------------------------------------------------------------------
+华为携手伙伴发布制造与大企业开源鸿蒙伙伴发展计划，共建开源鸿蒙新生态 - 华为企业业务 (https://e.huawei.com/cn/news/2026/industries/manufacturing/openharmony-partner-development-program)
+citeturn29search1 [wordlim: 200] Published: last month; Crawled: last week; [中国，上海，2026年9月18日] 华为全联接大会2026期间，在制造与大企业全球峰会上，华为携手首批16家合作伙伴发布制造与大企业开源鸿蒙伙伴发展计划——“鸿企100”，联合伙伴共建制造与大企业开源鸿蒙新生态。 ... “鸿企100”聚焦生产产线鸿蒙化、智能产品与装备鸿蒙化、产业楼宇与园区鸿蒙化三大核心场景，覆盖电子、汽车、机械重工、制药、零售、建筑建造、农牧养殖等多个行业领域，秉承开放协作、行业使能、合作共赢的理念，面向全产业链生态伙伴，开启联创招募，携手打造高竞争力的制造业开源鸿蒙解决方案，推动方案落地复制，共建制造与大企业开源鸿蒙新生态。
+--------------------------------------------------------------------------------
+关于HarmonyOS 7 公共问题的相关说明 | 华为官网 (https://consumer.huawei.com/cn/support/content/zh-cn16103427/)
+citeturn29search2 [wordlim: 200] Crawled: today; 截至2026年9月28日，鸿蒙生态可获取应用和服务超过45万，当前鸿蒙应用已能覆盖日常所需，覆盖了便捷生活、出行文旅、金融理财、社交资讯、政务民生、生产力工具、影音娱乐、游戏、新闻媒体、企业办公等18个垂域，鸿蒙应用体验进入成熟好用阶段，创新体验和创新应用正在不断涌现。 ... HarmonyOS 7 是华为公司基于开源项目OpenHarmony研发的全场景智能操作系统。
+--------------------------------------------------------------------------------
+信任中心-华为云 (https://www.huaweicloud.com/intl/zh-cn/securecenter/overallsafety.html)
+citeturn29search3 [wordlim: 200] Crawled: 3 weeks ago; 信任中心 ... 华润隆地基于华为云数智融合解决方案，先利用华为云数据治理生产线DataArts打破数据孤岛，构建数据标准统一的一键入湖式数据底座；同时迈出“AI赋能业务”第一步，基于华为云的澎湃AI算力和一站式AI开发平台ModelArts，接入满血版DeepSeek大模型，赋能自身AI通用平台，在企业级知识库、智能对话、公文写作、合同审查等多元业务场景实现算法与场景的深度融合，为华润隆地数字化转型注入新动能。 ... 〖2026-09-09〗微软2026年9月份月度安全漏洞预警
+--------------------------------------------------------------------------------
+HarmonyOS 7 开发者 Beta 正式启动，全场景智能操作系统再升级 - 华为 (https://www.huawei.com/cn/news/2026/6/harmonyos7-hdc)
+citeturn29search4 [wordlim: 200] Published: 4 months ago; Crawled: yesterday; 围绕Agent时代的智能化创新，华为带来五大核心发布：HarmonyOS 7首秀、鸿蒙智能向Agent架构全面演进、鸿蒙智能体框架升级至2.0、鸿蒙空间计算首次发布、开源盘古openPangu 2.0。 ... [1] 数据来源于华为实验室，测试机型为HUAWEI Mate 80 Pro Max，对比版本为HarmonyOS 6出厂版本对比HarmonyOS 7出厂版本，“性能提升”测试应用为2026年6月版本，年负载增长测试应用为2026年6月版本对比2025年6月版本，具体请以实际为准。 ... [10] 数据来源于华为实验室，测试机型为HUAWEI Mate80 Pro Max，测试版本为HarmonyOS 6出厂版本对比HarmonyOS 7最新版本，测试应用为异环2026年7月版本，功能需Hota升级支持，数据仅供参考，具体请以实际为准。
+--------------------------------------------------------------------------------
+新闻报道_新闻中心_关于我们_华为云 (https://www.huaweicloud.com/news.html)
+citeturn29search5 [wordlim: 200] Crawled: last month; 4 09月 2026 2026 / 09 / 4 华为云Stack全面领跑中国软件定义计算市场，六年蝉联第一 近日，国际数据公司（IDC）发布最新的《中国软件定义计算软件市场半年跟踪，2025H2》和《中国云系统与服务管理软件市场半年跟踪，2025年H2》。 ... 依托本地云在数据驻留、安全合规和低时延等方面的核心优势，华为将帮助客户更高效地构建和部署智能体，推动AI技术加速转化为产业价值，全面赋能尼日利亚智能化跃迁。 ... 25 07月 2026 2026 / 07 / 25 华为云天筹AI求解器斩获2026 IEEE WCCI竞赛冠军 近日，在 2026 IEEE计算智能世界大会（IEEE World Congress on Computational Intelligence，IEEE WCCI）混合变量昂贵优化竞赛中，由华为云天筹AI求解器团队、中南大学智能学习与优化团队联合而成的“OptVerse-CSU”团队，提出大模型驱动“自适应分治强化+算法进化”技术方案，在比赛评测集EOPCCV中以卓越的算法性能荣膺冠军。
+--------------------------------------------------------------------------------
+信任中心-华为 (https://www.huawei.com/cn/trust-center)
+citeturn29search6 [wordlim: 200] Crawled: yesterday;   * 新安全技术 安全可信，构建数字世界的信任基石 ...   * 2025年9月18日 华为数据安全治理实践 ...   * 2016年06月26日 华为网络安全白皮书（2016年6月）
+--------------------------------------------------------------------------------
+开发者月刊-华为开发者联盟 (https://developer.huawei.com/consumer/cn/monthly?ha_source=202510yk&ha_sourceId=89000503)
+citeturn29search7 [wordlim: 200] Crawled: 2 weeks ago; 邀你围绕 AI 智能化体验、全场景一体协同、安全隐私保护、3D空间化等主题，玩转鸿蒙创新特性，赢取丰厚奖金！
+
+2026年2月利用“闪控球”实现小窗跨应用交互，提升多任务处理效率；开启“防窥保护”智能守护屏幕隐私信息，减少被窥视风险；使用“互动卡片”创新破框视效给用户带来交互新体验，提升应用点击与转化。
+
+2026年1月“智感握姿”功能利用 HarmonyOS 的多模态融合感知能力，帮助应用识别用户左/右手操作设备屏幕，让交互更便捷；Share Kit 支持用户通过“碰一碰”、 “一抓一放”等创新交互，轻松实现内容跨设备分享。
+--------------------------------------------------------------------------------
+最新公告_服务公告_云容器引擎 CCE-华为云 (https://support.huaweicloud.com/intl/zh-cn/bulletin-cce/cce_bulletin_0001.html)
+citeturn29search8 [wordlim: 200] Published: last month; Crawled: yesterday; 12  | 关于CCE集群default-secret密钥权限变更的说明  | 产品变更公告  | 2026/01/30 ... 26  | Kubernetes安全漏洞公告（CVE-2025-0426）  | 漏洞公告  | 2025/03/25
+--------------------------------------------------------------------------------
+AI辅助研发与开放能力全链路升级 华为携手开发者共写鸿蒙新故事 (https://feeds-drcn.cloud.huawei.com.cn/landingpage/latest?cpid=666&ctype=news&docid=1051001eab1224aef0983a7371797499600367d&dy_scenario=relate&pageType=26&r=CN&tn=0804948c353968fac31d0d0154e927f74baccf62a47dd98b130698037e51eb0a&to_app=hwbrowser)
+citeturn29search9 [wordlim: 200] Published: 4 months ago; Crawled: last month; 〖环球网科技综合报道〗6月12日，华为开发者大会2026（HDC2026）主题演讲在东莞篮球中心举办。 ... 龚体表示，当前，鸿蒙6升级率已超过98%，过去一年TOP应用用户满意度提升超过50%，鸿蒙生态之所以能成，因为所有伙伴大家一起干，因为鸿蒙听劝，面向伙伴和开发者反馈的需求，积极响应快速闭环，让鸿蒙越来越好。 ... 未来，华为将从开源鸿蒙的“技术贡献者”进一步转变为“产业全域使能者”，加速OpenHarmony生态规模化发展。
+--------------------------------------------------------------------------------
+安全可信 - 华为 (https://www.huawei.com/cn/trust-center/trustworthy)
+citeturn29search10 [wordlim: 200] Crawled: today; 中国政府已经做过澄清，独立的法律教授及知名的国际律师事务所也清晰表达了他们的观点：企业的协助支持义务的前提必须是“依法”，中国没有任何一部法律赋予国家情报机关权力要求电信设备制造企业植入后门或者中断客户网络。 ... 图1-1：华为可信任框架Huawei Trustworthiness Framework ... 安全性（Security）：产品有良好的抗攻击能力，保护业务和数据的机密性、完整性和可用性。 ... 我们还要保证产品从创新到客户现场的整个过程是完整、双向一致可追溯的，并在必要的时候提供恰当的（权限分离、信任、行为监控）机密性保护，确保产品没有被仿冒、篡改，确保部署、维护、处置作业过程和作业工具可信，敏感数据没有被泄漏。
+--------------------------------------------------------------------------------
+华为云_安全活动_云安全专场_主机安全_态势感知_Web应用防火墙_SSL证书_网页防篡改_DDoS高防_云防火墙_等保合规_华为云 (https://activity.huaweicloud.com/security.html)
+citeturn29search11 [wordlim: 200] Published: 2 months ago; Crawled: last month; {"header":{"state":2,"promotionTag":"","isFeatured":false,"featuredTitle":"","featuredBackgroundImage":"","layout":"horizontal","icon":"","tip":"","titlePc":"企业主机安全 HSS","titleLink":"https://www.huaweicloud.com/product/hss.html","subtitlePc":"<p>多云主机管理，病毒云查杀，漏洞修复</p>","tags":[{"text":"限购1单，每单10台","style":"normal"}]},"multimedia":{"img":"","video":"","backgroundImage":{"pc":"https://res-static.hc-cdn.cn/cloudbu-site/china/zh-cn/828activity-2025/4-product/282-bg4-Sky.jpg","mb":"https://res-static.hc-cdn.cn/cloudbu-site/china/zh-cn/828activity-2025/4-product/mb1.jpg"}},"description":{"specs":[],"intros":[]},"collapse":{"title":"","subtitle":"","definitionList":[]},"promotion":{"packageUrl":"https://res-static.hc-cdn.cn/activity/zh-cn/pkgDataConfig/jinghuihui-anquan/1787626534456.json","promotionId":"P2608240841548661FKWX4A1KD43UW","isCombination":true,"combinationSbar":false,"combinationStyle":false,"synchronizedOptions":["数据中心","时长"],"selectAtLeast":1,"selectAtLeastErrorTemplate":"请最少选择${selectAtLeast}款产品","requiredErrorTemplate":"该产品必选","productConfigs":[{"title":"","orderTitle":"","titleTooltip":"","type":"select","additionTemplate":"加 <b>${current}元</b> 换购价值 <b>${origin}元</b> ${title}","required":true,"selected":false,"hiddenSpecs":["容器安全"],"specTips":[],"optionConfig":[{"itemTitle":"版本","value":"旗舰版","fixed":false,"visible":true},{"itemTitle":"数据中心","value":"华北-北京四","fixed":false,"visible":true},{"itemTitle":"时长","value":"1个月","fixed":false,"visible":true}],"name":"企业主机安全|主机安全","order":{"inquiryId":"INQ2608250246550911GQ51MJ08QXO0M","plugin":{"id":"CSP2008101749499511AWD4WB194T3Q5","comm":{"region":"cn-north-4","chargeMode":2,"periodNum":1,"buyNum":1},"spec":[{"csType":"hws.service.type.hss","resType":"hws.resource.type.hss","resSpecCode":"hss.version.premium","specNum":1}]},"current":110,"origin":200}}]},"price":{"currentPriceStyle":"red","currency":"¥","accuracy":2,"priceError":"计算中...","current":0,"currentTemplate":"${currency}${current}","origin":0,"originTemplate":"原价${currency}${origin}","unit":"","tooltip":""},"orderDetail":{"show":true,"type":"discount","title":"优惠明细","currentTip":"预估到手价","originTip":"原价","discountTip":"活动优惠","instructionsTitle":"规则说明","instructionsContent":"<p>1、账号限制：不限个企，不限等级</p><p>2、限购：限购1单，每单10台</p><p>3、是否可叠加优惠：不可以</p>","instructionsNote":"* 具体结算金额请以支付页实际抵扣金额为准，具体规则请详见活动规则","combinationPriceViewTemplate":{"discountTemplate":"节省${currency}${discount}","currentTemplate":"${currency}${current}"}},"button":{"mainBtnCheck":true,"mainBtnText":"立即购买","mainBtnPcHref":"","mainBtnMbHref":"","subBtnText":"","subBtnHref":"","initDomainMainBtnText":"请先查询域名"},"flashSale":{"hasFlashSale":false,"timePlans":[{"timePlanId":"","flashSaleTime":["00:00:00","23:59:59"]}],"beforeFlashSaleMainBtnText":"秒杀未开始","afterFlashSaleMainBtnText":"秒杀已结束","runoutFlashSaleMainBtnText":"已抢光，看看其他","runoutFlashSaleMainBtnHref":"","flashSaleProgressTemplate":"已抢购${progress}%"},"userScope":{"scope":"verified","title":"温馨提示","messagePc":"<p>抱歉，当前套餐仅对新用户开放。
+--------------------------------------------------------------------------------
+05b20250624C (https://epaper.cena.com.cn/pc/attachment/202506/24/790b1f4c-1ac2-41d4-b9db-0d8460f8ccd8.pdf)
+citeturn29search12 [wordlim: 200] Published: 1.3 years ago; 为进一步彰显其对全球基础设施的长期承诺，AWS 于 2025 年 5 月宣布投资超过 40 亿美元，计划在 2026 年年底前在智利设立新的云区域。 ... 会上，华为常务董事、终端BG董事长余承东表示：“开源鸿蒙是发展最快的开源操作系统，鸿蒙生态已经进入‘飞轮加速’的新阶段。 ... 会议期间，华为推出全新 AI 辅助编程工具 DevEco CodeGenie，针对鸿蒙系统做出专门优化调整，能够准确理解上下文，在代码续写、问题定位、UI 生成上带来30%以上的效率提升；同时，以开源共建的方式将主流跨平台框架完成了鸿蒙化，并在此基础上实现一次开发多端部署，开发者只需一套技术、开发一份代码，即可覆盖多设备、多场景，进一步提升开发效率。
+--------------------------------------------------------------------------------
+B2026-01-26A0201 (https://cjrb.cjn.cn/resfile/2026-01-26/2/26r02c.pdf)
+citeturn29search13 [wordlim: 200] Published: 9 months ago; 长江日报讯（记者李佳 通讯员武经宣）近日，武汉市人民政府办公厅印发的《武汉市加快培育发展开源鸿蒙生态的实施方案》（以下简称《方案》）明确提出，在软硬件适配方面，不仅要打造50款开源鸿蒙原生应用、推动150款成熟软件App鸿蒙化，还将培育手机、手环等智能穿戴设备，家电、门锁、摄像头等智能家居设备，以及汽车、道路、灯杆等“车路云”设备和泛物联网设备，每年完成20多款终端设备开源鸿蒙适配。 ... 下半版中部的大型蓝色信息图，标题为“打造全国重要的开源鸿蒙技术创新和产业创新基地”，左侧竖排“到2027年”，上方分为“目标”和“三大场景矩阵”两栏；下方配有鸿蒙生态展厅照片。 ... 在华中科技大学科技园，中科凡语（武汉）科技有限公司研发的“智策大模型”，几乎十秒钟就能自动生成一篇调研报告。“ ... 右侧栏为“武汉市市管干部任前公示公告”框，内含多名干部的任前公示信息、出生年月、民族、学历学位、现任职务等，以及公示时间“2026年1月26日至2026年1月30日”、举报网址“http://www.wuhan12380.gov.cn”、举报电话“027-12380-2”、短信举报号码“13707112380”，底部署名“中共武汉市委组织部 2026年1月25日”。
+--------------------------------------------------------------------------------
+可信数据空间发展行动计划（2024—2028 年） (https://www.gov.cn/zhengce/zhengceku/202411/P020250105293637969784.pdf)
+citeturn29search14 [wordlim: 200] Published: 1.4 years ago; 引导可信数据空间运营者建立空间资源使用合约和合作规范，利用 ... 据空间信任管控能力。 ... 引导可信数据空间运营者提供数据标识、语义转换等技术服
+--------------------------------------------------------------------------------
+中国移动-人工智能行业：AI原生基础设施实践指南(2026)-251227.pdf (https://pdf.dfcfw.com/pdf/H3_AP202512281809787794_1.pdf?1766931650000.pdf=)
+citeturn29search15 [wordlim: 200] Crawled: 10 months ago; AI 原生基础设施实践指南（2026） ... **模型训推可信：** 在模型训推层构建面向模型训推全流程的风险识别与拦截工具，打造覆盖“事前预防—事中追踪—事后审核”的全链路安全工具集，针对模型训练阶段可能出现的数据投毒、恶意样本混入、异常分布等问题实施风险识别与拦截，对模型推理阶段的恶意提示词注入、对抗攻击、异常调用行为等风险进行持续监测与证据留存，实现“风险可感知、可管控、可追溯”的闭环管理，打造 AI 可信训练场、隐私训推体系和风险可视化工具，为模型安全提供系统化保障。
+
+**可信应用治理：** 在可信应用治理层面向大规模、分布式的智能交互场景，通过融合区块链、隐私计算、可信身份等关键技术，打牢虚实共生、智能协同的数字可信能力，构建“身份可认证、记忆可留存、行为可追溯”信任协同体系，进而打造集“数字身份、数据资产、可信流通”于一体的“记忆银行”。
+--------------------------------------------------------------------------------
+服务公告 (https://support.huaweicloud.com/intl/zh-cn/bulletin-dcs/bulletin-dcs-pdf.pdf)
+citeturn29search16 [wordlim: 200] Published: 8 months ago; 版本号 6.2.6.5 | 更新级别 HIGH | 发布日期 2025-03-30 | 类型 缺陷修复 | 说明 修复安全漏洞 CVE-2024-469 81。 --- | --- | --- | --- | ---
+--------------------------------------------------------------------------------
+2026年6月23日— 6月29日  农历五月初九至五月十五 (https://static.time-weekly.com/time-weekly/72fd1f7775810676fc746251315a5c59/20260622/9cc1b2798ba347fc8a3b1a627f0546cf.pdf)
+citeturn29search17 [wordlim: 200] Published: 4 months ago; 的2倍；并与鸿蒙生态融合，计划于6 ... 打开应用，只需直接向AI表达需求、 ... 1200余类设备接入开源鸿蒙，覆盖范 ... 脑洞大开麦等多项活动，将舞台的聚 ... 余承东在HDC 2026主题演讲
+--------------------------------------------------------------------------------
+开源鸿蒙 (https://zh.wikipedia.org/wiki/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99)
+citeturn29search18 [wordlim: 200] Crawled: 2 months ago; 华为于2020年9月及2021年5月分两次将鸿蒙操作系统的L0-L2分支源代码捐献给开放原子开源基金会，该基金会将受捐赠代码开源，根据基金会命名规范将该项目命名为OpenAtom OpenHarmony，并组建开源项目群，遵循Apache许可证。 ...  6.0.0.1发行版本  | 2025年12月23日  | 修复了linux kernel等开源组件的安全漏洞；修复了部分功能和系统稳定性issue，增强系统安全性与稳定性。 ... *  預發布了開源鴻蒙6.1LTS版本 開源鴻蒙開發者大會2026廣州舉行. ... *  华为开发者论坛. huawei.
+--------------------------------------------------------------------------------
+iOS新增自拍年龄核验 游戏工作室增收 荣耀追加屏幕订单 (https://www.reddit.com/r/u_ArticleLogical9458/comments/1xh3jcd/ios%E6%96%B0%E5%A2%9E%E8%87%AA%E6%8B%8D%E5%B9%B4%E9%BE%84%E6%A0%B8%E9%AA%8C_%E6%B8%B8%E6%88%8F%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%A2%9E%E6%94%B6_%E8%8D%A3%E8%80%80%E8%BF%BD%E5%8A%A0%E5%B1%8F%E5%B9%95%E8%AE%A2%E5%8D%95/)
+citeturn29reddit19 [wordlim: 200] Published: today; Crawled: today; [Tuesday October 27 2026] [+1 votes] ... 苹果在隐私说明中提到，年龄测算模型运行于设备本地以及私有云环境。采集的自拍图像不会对外传输，苹果本身也无法获取原图；核验完成后，影像会直接删除，不会留存备份，以此保护用户生物信息安全。 ... 清风曾经在大厂负责游戏运营与商业化项目，长期对接厂商和玩家，积累了行业资源，也熟悉赛道内潜藏的各类风险。 ... 清风没有盲目投流，而是把每一笔订单作为运营样本，整理玩家需求标签，拆分交付流程，把售后问题沉淀进标准化SOP。
+--------------------------------------------------------------------------------
+鸿蒙操作系统 (https://zh.wikipedia.org/wiki/%E9%B8%BF%E8%92%99%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
+citeturn29search20 [wordlim: 200] Crawled: 2 months ago; 在2019年8月的华为开发者大会上，华为消费者业务首席执行官余承东表示鸿蒙操作系统主要面向物联网设备，如果由 Google 主导的开源操作系统 Android 不向华为开放，鸿蒙操作系统也可以搭载在智能手机上。 ... 鸿蒙操作系统2.0测试版本于2020年9月10日发布后，华为亦公开了开源鸿蒙OpenHarmony的代码。 ... *  华为正式发布 HarmonyOS 6，10 月 22 日开启公测. consumer.huawei.com. ... *  Huawei launched HarmonyOS 6.0 developer beta.
+--------------------------------------------------------------------------------
+中科院软件所亲自承认国家队为鸿蒙系统替换了数万个开源组件 (https://www.reddit.com/r/LiberalGooseGroup/comments/1rexk5v/%E4%B8%AD%E7%A7%91%E9%99%A2%E8%BD%AF%E4%BB%B6%E6%89%80%E4%BA%B2%E8%87%AA%E6%89%BF%E8%AE%A4%E5%9B%BD%E5%AE%B6%E9%98%9F%E4%B8%BA%E9%B8%BF%E8%92%99%E7%B3%BB%E7%BB%9F%E6%9B%BF%E6%8D%A2%E4%BA%86%E6%95%B0%E4%B8%87%E4%B8%AA%E5%BC%80%E6%BA%90%E7%BB%84%E4%BB%B6/)
+citeturn29reddit21 [wordlim: 200] Published: 8 months ago; 以下搬运自中科院官方网站 https://www.cas.cn/cm/202602/t20260226\_5102856.shtml ... 为向产业界证明开源鸿蒙的公共与开放属性，软件所选择从芯片适配这一环节入手。 ... 开源鸿蒙项目2020年正式开源以来，已覆盖能源、电力、水利、航天、教育、医疗、交通等关键领域，成为支撑中国数字经济的“隐形底座”。
+--------------------------------------------------------------------------------
+鸿蒙操作系统5 (https://zh.wikipedia.org/wiki/%E9%B8%BF%E8%92%99%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F5)
+citeturn29search22 [wordlim: 200] Crawled: 4 months ago; *  HarmonyOS 6 开发者Beta正式启动：打造无处不在的AI体验. huawei. ... [2025-09-13]. doi:10.26914/c.cnkihy.2025.017945. ... *  热点观察 | 纯血鸿蒙：中国操作系统自主创新的里程碑与破局者 _大公网. www.takungpao.com.
+--------------------------------------------------------------------------------
+英特尔晶圆厂工期延后、互联网基础设施爆发安全事故、游戏交易平台测评出炉 (https://www.reddit.com/r/u_ArticleLogical9458/comments/1xcmrjh/%E8%8B%B1%E7%89%B9%E5%B0%94%E6%99%B6%E5%9C%86%E5%8E%82%E5%B7%A5%E6%9C%9F%E5%BB%B6%E5%90%8E%E4%BA%92%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%88%86%E5%8F%91%E5%AE%89%E5%85%A8%E4%BA%8B%E6%95%85%E6%B8%B8%E6%88%8F%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E6%B5%8B%E8%AF%84%E5%87%BA%E7%82%89/)
+citeturn29reddit23 [wordlim: 200] Published: 6 days ago; Crawled: 6 days ago; 其余平台评分与问题分别为：代练通6.6分，押金规则争议大，赔付门槛高；5371为6.2分，理赔周期长，打手水平参差不齐；7881为5.8分，验号不够细致；交易猫5.1分，账号找回投诉较多；盼之代售4.2分，验号疏漏，售后推诿；螃蟹3.9分，理赔流程繁琐；代练丸子3.7分，打手审核宽松，毁号、外挂相关投诉多发。  
+博主最后总结，有代肝、上分、托管需求可以优先考虑懂淘；其余几家平台投诉存量偏高，下单前务必仔细阅读赔付条款。 ... 全球互联网基础设施集中爆发多起安全事件，印度数字证书机构eMudhra私钥配置失误、PHP曝出潜伏十年的高危漏洞、Node.js同步发布严重安全补丁，多重风险叠加，不少网站临时关闭进行防护。 ... PHP漏洞编号CVE-2026-109618、CVE-2026-109619，风险评分极高，自PHP5.4版本起就已经存在，攻击者无需登录即可远程执行代码。 ... Node.js同步修复Brotli解码器越界写入漏洞，还解决了证书绕过、DNS解析异常、权限绕过等问题，覆盖22.x、24.x、26.x版本，运维人员需要尽快升级到对应安全版本。
+--------------------------------------------------------------------------------
+鸿蒙内核 (https://zh.wikipedia.org/wiki/%E9%B8%BF%E8%92%99%E5%86%85%E6%A0%B8)
+citeturn29search24 [wordlim: 200] Crawled: 4 months ago; 源码模式 | 封闭源代码, 包含开源组件 ... 鸿蒙内核（英文: HongMeng Kernel）是华为自主研发的计算机操作系统内核。
+--------------------------------------------------------------------------------
+HarmonyOS (https://en.wikipedia.org/wiki/HarmonyOS)
+citeturn29search25 [wordlim: 200] Crawled: last week; Official website | developer.huawei.com/consumer/en/harmonyos/develop/ ... Simplified Chinese | 鸿蒙操作系统 ... The latest stable version is HarmonyOS 6; it was released on 25 November 2025.
+--------------------------------------------------------------------------------
+LiteOS (https://zh.wikipedia.org/wiki/LiteOS)
+citeturn29search26 [wordlim: 200] Crawled: 9 months ago; 官方網站 | www.huawei.com/liteos ... LiteOS是华为开发的轻量级实时操作系统，也是开源的物联网操作系统，遵照三句版BSD许可协议发布，并符合可移植操作系统接口标准。 ... LiteOS曾经用于华为及荣耀品牌的智能手表，并于2021年6月开始整合到面向物联网的鸿蒙操作系统中。
+--------------------------------------------------------------------------------
+多款App无法完全适配？ 华为鸿蒙5惹争议 (https://www.reddit.com/r/China_irl/comments/1o29es3)
+citeturn29reddit27 [wordlim: 200] Published: 1.1 years ago; Crawled: last year; —— 新浪科技 https://finance.sina.cn/china/gncj/2025-10-08/detail-infteiim0423164.d.html ...     苹果也不都是开源的，新App适配速度却是最快的，要有一套优秀的开发工具，系统也不能太隔路，最好是墨守成规容易上手……总之 虽然我很恶心华为 但它能走到这一步我认可它相当的困难，可是又拿消费者当韭菜 高价付费测试就😅 ... 到底是因为鸿蒙套皮安卓，安卓开源鸿蒙不开，本身也是个笑话
+

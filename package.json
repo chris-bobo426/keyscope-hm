@@ -1,0 +1,37 @@
+{
+  "name": "keyscope-hm",
+  "version": "3.0.0",
+  "description": "鸿钥卫士 KeyScope-HM —— 面向 HarmonyOS 混合应用的跨运行时密钥表示与暴露风险分析系统",
+  "main": "dist/cli.js",
+  "scripts": {
+    "build": "tsc",
+    "analyze": "tsx core-ts/cli.ts",
+    "ui": "tsx core-ts/server.ts",
+    "eval:bench": "tsx eval/run_benchmark_eval.ts",
+    "eval:realworld": "tsx realworld/run_realworld_scan.ts",
+    "eval:dynamic": "tsx dynamic/run_dynamic_experiments.ts",
+    "test": "tsx eval/run_all_tests.ts"
+  },
+  "keywords": [
+    "HarmonyOS",
+    "OpenHarmony",
+    "ArkTS",
+    "NAPI",
+    "Cryptography",
+    "Key-Management",
+    "Static-Analysis",
+    "ArkAnalyzer",
+    "LSR",
+    "RepFlow"
+  ],
+  "author": "KeyScope-HM Team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "arkanalyzer": "^1.0.95"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

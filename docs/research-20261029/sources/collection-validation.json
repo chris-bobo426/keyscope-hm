@@ -1,0 +1,147 @@
+{
+  "pdfs": [
+    {
+      "file": "downloads/papers/APAK-2602.00457.pdf",
+      "pages": 12,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/ArkAnalyzer-2501.05798.pdf",
+      "pages": 11,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/CamBench-2204.06447.pdf",
+      "pages": 8,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/CryptoAPI-Bench-SecDev2019.pdf",
+      "pages": 13,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/CryptoDetectors-MASC-2107.07065.pdf",
+      "pages": 35,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/HapCiD-2609.20099.pdf",
+      "pages": 11,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/HapRay-2606.23512.pdf",
+      "pages": 13,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/HapTest-FSE2025.pdf",
+      "pages": 10,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/HarmoBridge-ASE2025.pdf",
+      "pages": 12,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/HarmonyOS6-security-whitepaper.pdf",
+      "pages": 91,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/JScamd-USENIX2026.pdf",
+      "pages": 21,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/NIST-SP800-38D.pdf",
+      "pages": 39,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/NIST-SP800-57pt1r5.pdf",
+      "pages": 171,
+      "valid_pdf": true
+    },
+    {
+      "file": "downloads/papers/NIST-SP800-57pt1r6-DRAFT.pdf",
+      "pages": 201,
+      "valid_pdf": true
+    }
+  ],
+  "archives": [
+    {
+      "file": "downloads/repos/arkanalyzer-1.0.95.tgz",
+      "entries": 737,
+      "readable": true,
+      "license_paths": [
+        "package/lib/node_modules/ohos-typescript/LICENSE",
+        "package/LICENSE"
+      ]
+    },
+    {
+      "file": "downloads/repos/ArkAnalyzer-Lab-b87443c1.zip",
+      "entries": 109,
+      "crc_error": null,
+      "license_paths": []
+    },
+    {
+      "file": "downloads/repos/ArkTaint-ab724f3c.zip",
+      "entries": 7915,
+      "crc_error": null,
+      "license_paths": [
+        "ArkTaint-ab724f3ce00fd2fa53fa782d5f11f3513baf59ba/arktaint-frontend/.uploads/1782846067705-516993/projects/HiSH/LICENSE",
+        "ArkTaint-ab724f3ce00fd2fa53fa782d5f11f3513baf59ba/arktaint-frontend/.uploads/1782846559447-clyzws/projects/HiSH/LICENSE",
+        "ArkTaint-ab724f3ce00fd2fa53fa782d5f11f3513baf59ba/arktaint-frontend/.uploads/1783246977136-65nh8f/projects/HiSH/LICENSE"
+      ]
+    },
+    {
+      "file": "downloads/repos/CrossFlowBench-94bcbe79.zip",
+      "entries": 1565,
+      "crc_error": null,
+      "license_paths": []
+    },
+    {
+      "file": "downloads/repos/CryptoAPI-Bench-e6b6b50f.zip",
+      "entries": 234,
+      "crc_error": null,
+      "license_paths": [
+        "CryptoAPI-Bench-e6b6b50fef6970151300c1ac2de62e188ba6de19/LICENSE"
+      ]
+    },
+    {
+      "file": "downloads/repos/JScamd-v3.zip",
+      "entries": 528,
+      "crc_error": null,
+      "license_paths": []
+    }
+  ],
+  "official_samples": [
+    {
+      "name": "crypto",
+      "subtree_sha": "ac2d35d009aa2074acb087fef4761fbfde8ee0b1",
+      "truncated": false,
+      "files": 49,
+      "missing": [],
+      "hash_mismatch": []
+    },
+    {
+      "name": "huks",
+      "subtree_sha": "c0950995741f75bb99c86f8dfce0fb280f8e4f1b",
+      "truncated": false,
+      "files": 47,
+      "missing": [],
+      "hash_mismatch": []
+    },
+    {
+      "name": "napi-arraybuffer",
+      "subtree_sha": "27016af7ee868df1a5cda495879d5b307f9bcf9f",
+      "truncated": false,
+      "files": 42,
+      "missing": [],
+      "hash_mismatch": []
+    }
+  ]
+}

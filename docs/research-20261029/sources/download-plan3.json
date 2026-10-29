@@ -1,0 +1,117 @@
+[
+  {
+    "id": "P11",
+    "url": "https://jialewu17.github.io/files/HarmoBridge_ASE25.pdf",
+    "file": "downloads/papers/HarmoBridge-ASE2025.pdf"
+  },
+  {
+    "id": "P12",
+    "url": "https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/privacy/privary-new/260713/HarmonyOS%206.0%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E7%99%BD%E7%9A%AE%E4%B9%A6.pdf",
+    "file": "downloads/papers/HarmonyOS6-security-whitepaper.pdf"
+  },
+  {
+    "id": "R11",
+    "url": "https://api.github.com/repos/SMAT-Lab/ArkAnalyzer-HapRay/commits/main",
+    "file": "sources/HapRay-commit.json"
+  },
+  {
+    "id": "R12",
+    "url": "https://api.github.com/repos/kakahuote1/ArkTaint/commits/main",
+    "file": "sources/ArkTaint-commit.json"
+  },
+  {
+    "id": "R13",
+    "url": "https://api.github.com/repos/SMAT-Lab/ArkAnalyzer-Lab/commits/main",
+    "file": "sources/ArkAnalyzer-Lab-commit.json"
+  },
+  {
+    "id": "R14",
+    "url": "https://zenodo.org/api/records/20395867",
+    "file": "sources/JScamd-paper-record.json"
+  },
+  {
+    "id": "R15",
+    "url": "https://api.github.com/repos/openharmony/applications_app_samples/commits/master",
+    "file": "sources/official-samples-commit.json"
+  },
+  {
+    "id": "N01",
+    "url": "https://gitcode.com/openharmony/security/raw/master/zh/security-disclosure/2026/2026-10.md",
+    "file": "downloads/news/OpenHarmony-security-2026-10.md"
+  },
+  {
+    "id": "N02",
+    "url": "https://raw.githubusercontent.com/openharmony/security/master/zh/security-disclosure/2026/2026-10.md",
+    "file": "downloads/news/OpenHarmony-security-github-2026-10.md"
+  },
+  {
+    "id": "N03",
+    "url": "https://lists.openatom.io/hyperkitty/list/security%40openharmony.io/thread/OG43E3V7OFHS5GTYBXI5V7EKVGK2B75O/",
+    "file": "downloads/news/OpenHarmony-security-2026-09.html"
+  },
+  {
+    "id": "N04",
+    "url": "https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations",
+    "file": "downloads/docs/deveco-snapshot.html"
+  },
+  {
+    "id": "R16",
+    "url": "https://clang.llvm.org/docs/LibTooling.html",
+    "file": "downloads/docs/clang-libtooling.html"
+  },
+  {
+    "id": "R17",
+    "url": "https://clang.llvm.org/docs/JSONCompilationDatabase.html",
+    "file": "downloads/docs/clang-compile-commands.html"
+  },
+  {
+    "id": "R18",
+    "url": "https://www.rfc-editor.org/rfc/rfc4648.txt",
+    "file": "downloads/docs/rfc4648-base64.txt"
+  },
+  {
+    "id": "D14",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/apis-arkdata/js-apis-data-preferences.md",
+    "file": "downloads/docs/preferences.md"
+  },
+  {
+    "id": "D15",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/ui/state-management/arkts-appstorage.md",
+    "file": "downloads/docs/appstorage.md"
+  },
+  {
+    "id": "D16",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/ui/state-management/arkts-persiststorage.md",
+    "file": "downloads/docs/persistentstorage.md"
+  },
+  {
+    "id": "D17",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/apis-arkts/js-apis-util.md",
+    "file": "downloads/docs/util-base64.md"
+  },
+  {
+    "id": "D18",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/apis-performance-analysis-kit/js-apis-hidebug.md",
+    "file": "downloads/docs/hidebug.md"
+  },
+  {
+    "id": "D19",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/security/UniversalKeystoreKit/huks-key-export-overview.md",
+    "file": "downloads/docs/huks-export.md"
+  },
+  {
+    "id": "D20",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/release-notes/OpenHarmony-v6.1-release.md",
+    "file": "downloads/docs/OpenHarmony-v6.1-release.md"
+  },
+  {
+    "id": "D21",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/napi/use-napi-about-arraybuffer.md",
+    "file": "downloads/docs/napi-arraybuffer.md"
+  },
+  {
+    "id": "D22",
+    "url": "https://raw.githubusercontent.com/openharmony/docs/f41b9345badd47c7ab0c263344cd7f4b5a549afb/zh-cn/application-dev/reference/native-lib/napi.md",
+    "file": "downloads/docs/openharmony-native-napi.md"
+  }
+]

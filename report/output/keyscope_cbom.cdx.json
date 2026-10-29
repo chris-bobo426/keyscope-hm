@@ -1,0 +1,2541 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "serialNumber": "urn:uuid:keyscope-hm-v3-1793236167964",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-29T01:09:27.964Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "name": "KeyScope-HM",
+          "version": "3.0.0",
+          "description": "HarmonyOS Hybrid Application Cross-Runtime Key Representation & CBOM Analyzer"
+        }
+      ]
+    },
+    "properties": [
+      {
+        "name": "keyscope:totalCryptoAlgorithms",
+        "value": "40"
+      },
+      {
+        "name": "keyscope:quantumVulnerableCount",
+        "value": "17"
+      },
+      {
+        "name": "keyscope:weakAlgorithmCount",
+        "value": "17"
+      },
+      {
+        "name": "keyscope:gmCompliantCount",
+        "value": "9"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_cipher::CBOM-CipherModel.ts:27:RSA512|PRIMES_2",
+      "name": "RSA512|PRIMES_2",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CipherModel.ts:27 in project harmonyos_cipher",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "512",
+          "mode": "primes_2",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_cipher/entry/src/main/ets/model/CipherModel.ts",
+            "line": 27
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_cipher"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CipherModel.ts:27"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_cipher::CBOM-CipherModel.ts:28:RSA512|PKCS1",
+      "name": "RSA512|PKCS1",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CipherModel.ts:28 in project harmonyos_cipher",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "512",
+          "mode": "pkcs1",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_cipher/entry/src/main/ets/model/CipherModel.ts",
+            "line": 28
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_cipher"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CipherModel.ts:28"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_cipher::CBOM-CipherModel.ts:29:AES128",
+      "name": "AES128",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CipherModel.ts:29 in project harmonyos_cipher",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_cipher/entry/src/main/ets/model/CipherModel.ts",
+            "line": 29
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_cipher"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CipherModel.ts:29"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_cipher::CBOM-CipherModel.ts:30:AES128|PKCS7",
+      "name": "AES128|PKCS7",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CipherModel.ts:30 in project harmonyos_cipher",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "mode": "pkcs7",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_cipher/entry/src/main/ets/model/CipherModel.ts",
+            "line": 30
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_cipher"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CipherModel.ts:30"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_cipher::κ(CipherModel.ts:103)",
+      "name": "κ(CipherModel.ts:103)",
+      "description": "cryptoFramework.convertKey",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_cipher"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CipherModel.ts:103"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_cipher::κ(CipherModel.ts:22)",
+      "name": "κ(CipherModel.ts:22)",
+      "description": "Hardcoded Base64 symmetric key in ArkString (AES_ENCRYPT_KEY)",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_cipher"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "LongTerm"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CipherModel.ts:22"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-AuthCodeDetail.ets:45:HMAC",
+      "name": "HMAC",
+      "version": "1.0",
+      "description": "Cryptographic primitive (mac) invoked at AuthCodeDetail.ets:45 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "mac",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/AuthCodeDetail.ets",
+            "line": 45
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "AuthCodeDetail.ets:45"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-AuthCodeDetail.ets:63:SHA256",
+      "name": "SHA256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (hash) invoked at AuthCodeDetail.ets:63 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "nistQuantumSecurityLevel": 5
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/AuthCodeDetail.ets",
+            "line": 63
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "AuthCodeDetail.ets:63"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:111:AES128|GCM|PKCS7",
+      "name": "AES128|GCM|PKCS7",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:111 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "mode": "gcm",
+          "padding": "pkcs7",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 111
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:111"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:113:AES128",
+      "name": "AES128",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:113 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 113
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:113"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:132:AES128|CBC|PKCS7",
+      "name": "AES128|CBC|PKCS7",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:132 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "mode": "cbc",
+          "padding": "pkcs7",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 132
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:132"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:134:AES128",
+      "name": "AES128",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:134 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 134
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:134"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:152:AES128|ECB|PKCS7",
+      "name": "AES128|ECB|PKCS7",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:152 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "mode": "ecb",
+          "padding": "pkcs7",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 152
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:152"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:154:AES128",
+      "name": "AES128",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:154 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 154
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:154"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:171:3DES192|ECB|PKCS7",
+      "name": "3DES192|ECB|PKCS7",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:171 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "192",
+          "mode": "ecb",
+          "padding": "pkcs7",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 171
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:171"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:174:3DES192",
+      "name": "3DES192",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:174 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "192",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 174
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:174"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:191:SM4_128|ECB|PKCS7",
+      "name": "SM4_128|ECB|PKCS7",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:191 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "mode": "ecb",
+          "padding": "pkcs7",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 191
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:191"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:193:SM4_128",
+      "name": "SM4_128",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:193 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 193
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:193"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:211:SM4_128|CBC|PKCS7",
+      "name": "SM4_128|CBC|PKCS7",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:211 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "mode": "cbc",
+          "padding": "pkcs7",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 211
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:211"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:213:SM4_128",
+      "name": "SM4_128",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at CryptoDetail.ets:213 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "128",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 213
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:213"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:233:RSA1024",
+      "name": "RSA1024",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CryptoDetail.ets:233 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "1024",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 233
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:233"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:237:RSA1024|PKCS1",
+      "name": "RSA1024|PKCS1",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CryptoDetail.ets:237 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "1024",
+          "mode": "pkcs1",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 237
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:237"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:264:RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1",
+      "name": "RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CryptoDetail.ets:264 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "2048",
+          "mode": "pkcs1_oaep",
+          "padding": "sha256",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 264
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:264"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:308:SM2_256",
+      "name": "SM2_256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CryptoDetail.ets:308 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "256",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 308
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:308"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:318:SM2_256",
+      "name": "SM2_256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CryptoDetail.ets:318 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "256",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 318
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:318"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:323:SM2_256|SM3",
+      "name": "SM2_256|SM3",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CryptoDetail.ets:323 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "256",
+          "mode": "sm3",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 323
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:323"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:350:RSA1024",
+      "name": "RSA1024",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CryptoDetail.ets:350 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "1024",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 350
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:350"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-CryptoDetail.ets:354:RSA1024|PKCS1",
+      "name": "RSA1024|PKCS1",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at CryptoDetail.ets:354 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "1024",
+          "mode": "pkcs1",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets",
+            "line": 354
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:354"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SignatureDetail.ets:49:RSA1024|PKCS1|SHA256",
+      "name": "RSA1024|PKCS1|SHA256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at SignatureDetail.ets:49 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "1024",
+          "mode": "pkcs1",
+          "padding": "sha256",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/SignatureDetail.ets",
+            "line": 49
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SignatureDetail.ets:49"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SignatureDetail.ets:104:RSA1024|PKCS1|SHA256",
+      "name": "RSA1024|PKCS1|SHA256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at SignatureDetail.ets:104 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "1024",
+          "mode": "pkcs1",
+          "padding": "sha256",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/SignatureDetail.ets",
+            "line": 104
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SignatureDetail.ets:104"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SignatureDetail.ets:124:RSA2048|PSS|SHA256|MGF1_SHA256",
+      "name": "RSA2048|PSS|SHA256|MGF1_SHA256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at SignatureDetail.ets:124 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "2048",
+          "mode": "pss",
+          "padding": "sha256",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/SignatureDetail.ets",
+            "line": 124
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SignatureDetail.ets:124"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SummaryDetail.ets:45:SHA256",
+      "name": "SHA256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (hash) invoked at SummaryDetail.ets:45 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "nistQuantumSecurityLevel": 5
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/SummaryDetail.ets",
+            "line": 45
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SummaryDetail.ets:45"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SignatureViewModel.ets:21:RSA1024|PKCS1|SHA256",
+      "name": "RSA1024|PKCS1|SHA256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at SignatureViewModel.ets:21 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "1024",
+          "mode": "pkcs1",
+          "padding": "sha256",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/viewmodel/SignatureViewModel.ets",
+            "line": 21
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SignatureViewModel.ets:21"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SignatureViewModel.ets:22:RSA1024|PKCS1|SHA256",
+      "name": "RSA1024|PKCS1|SHA256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at SignatureViewModel.ets:22 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "1024",
+          "mode": "pkcs1",
+          "padding": "sha256",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/viewmodel/SignatureViewModel.ets",
+            "line": 22
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SignatureViewModel.ets:22"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SignatureViewModel.ets:25:SM2_256|SM3",
+      "name": "SM2_256|SM3",
+      "version": "1.0",
+      "description": "Cryptographic primitive (asymmetric) invoked at SignatureViewModel.ets:25 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "asymmetric",
+          "parameterSetIdentifier": "256",
+          "mode": "sm3",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/viewmodel/SignatureViewModel.ets",
+            "line": 25
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SignatureViewModel.ets:25"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SummaryViewModel.ets:21:SHA256",
+      "name": "SHA256",
+      "version": "1.0",
+      "description": "Cryptographic primitive (hash) invoked at SummaryViewModel.ets:21 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "256",
+          "nistQuantumSecurityLevel": 5
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/viewmodel/SummaryViewModel.ets",
+            "line": 21
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SummaryViewModel.ets:21"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SummaryViewModel.ets:23:MD5",
+      "name": "MD5",
+      "version": "1.0",
+      "description": "Cryptographic primitive (hash) invoked at SummaryViewModel.ets:23 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "5",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/viewmodel/SummaryViewModel.ets",
+            "line": 23
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SummaryViewModel.ets:23"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::CBOM-SummaryViewModel.ets:24:SM3",
+      "name": "SM3",
+      "version": "1.0",
+      "description": "Cryptographic primitive (hash) invoked at SummaryViewModel.ets:24 in project harmonyos_crypto_collection",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "hash",
+          "parameterSetIdentifier": "3",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/viewmodel/SummaryViewModel.ets",
+            "line": 24
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SummaryViewModel.ets:24"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::κ(CryptoDetail.ets:256)",
+      "name": "κ(CryptoDetail.ets:256)",
+      "description": "cryptoFramework.generateKeyPair",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "LongTerm"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:256"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::κ(SignatureDetail.ets:73)",
+      "name": "κ(SignatureDetail.ets:73)",
+      "description": "cryptoFramework.generateKeyPair",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "LongTerm"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SignatureDetail.ets:73"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::κ(SignatureDetail.ets:125)",
+      "name": "κ(SignatureDetail.ets:125)",
+      "description": "cryptoFramework.generateKeyPair",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "LongTerm"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SignatureDetail.ets:125"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::κ(SignatureDetail.ets:156)",
+      "name": "κ(SignatureDetail.ets:156)",
+      "description": "cryptoFramework.generateKeyPair",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "LongTerm"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "SignatureDetail.ets:156"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::κ(CryptoUtil.ets:65)",
+      "name": "κ(CryptoUtil.ets:65)",
+      "description": "AES-GCM symmetric key",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoUtil.ets:65"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::κ(AuthCodeDetail.ets:58)",
+      "name": "κ(AuthCodeDetail.ets:58)",
+      "description": "Key constructed from ArkString literal via buffer.from()",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "AuthCodeDetail.ets:58"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::κ(CryptoDetail.ets:43)",
+      "name": "κ(CryptoDetail.ets:43)",
+      "description": "ArkUI @State hex private key in ArkString (sk)",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "LongTerm"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:43"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "harmonyos_crypto_collection::κ(CryptoDetail.ets:112)",
+      "name": "κ(CryptoDetail.ets:112)",
+      "description": "Raw symmetric key buffer keyData without .fill(0)",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "harmonyos_crypto_collection"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "CryptoDetail.ets:112"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ohos_coap::κ(coap-client.cpp:612)",
+      "name": "κ(coap-client.cpp:612)",
+      "description": "Session authentication token (baseToken) in SetNativeToken",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "ohos_coap"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "coap-client.cpp:612"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ohos_crypto_js::CBOM-Index.ets:319:EvpKDF",
+      "name": "EvpKDF",
+      "version": "1.0",
+      "description": "Cryptographic primitive (kdf) invoked at Index.ets:319 in project ohos_crypto_js",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets",
+            "line": 319
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "ohos_crypto_js"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "Index.ets:319"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "7.5"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ohos_crypto_js::CBOM-Index.ets:337:PBKDF2",
+      "name": "PBKDF2",
+      "version": "1.0",
+      "description": "Cryptographic primitive (kdf) invoked at Index.ets:337 in project ohos_crypto_js",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "kdf",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets",
+            "line": 337
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "ohos_crypto_js"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "Index.ets:337"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ohos_crypto_js::CBOM-TestDESTime.ets:29:3DES_ECB",
+      "name": "3DES|ECB|PKCS7",
+      "version": "1.0",
+      "description": "Cryptographic primitive (symmetric) invoked at TestDESTime.ets:29 in project ohos_crypto_js",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "symmetric",
+          "parameterSetIdentifier": "192",
+          "mode": "ecb",
+          "padding": "pkcs7",
+          "nistQuantumSecurityLevel": 1
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/TestDESTime.ets",
+            "line": 29
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "ohos_crypto_js"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "TestDESTime.ets:29"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ohos_crypto_js::κ(Index.ets:319)",
+      "name": "κ(Index.ets:319)",
+      "description": "Derived key from CryptoJS.EvpKDF converted to ArkString",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "ohos_crypto_js"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "Index.ets:319"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ohos_crypto_js::κ(Index.ets:337)",
+      "name": "κ(Index.ets:337)",
+      "description": "Derived key from CryptoJS.PBKDF2 converted to ArkString",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "ohos_crypto_js"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "Index.ets:337"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ohos_crypto_js::κ(TestDESTime.ets:29)",
+      "name": "κ(TestDESTime.ets:29)",
+      "description": "TripleDES key stored as ArkString",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "ohos_crypto_js"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "TestDESTime.ets:29"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ohos_mqtt::κ(connect_context.cpp:236)",
+      "name": "κ(connect_context.cpp:236)",
+      "description": "SSL privateKeyPassword passed across NAPI as ArkString in ConnectContext::ParseSslOptions",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "private-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "ohos_mqtt"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "LongTerm"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "connect_context.cpp:236"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "ohos_mqtt::κ(mqtt_impl.cpp:540)",
+      "name": "κ(mqtt_impl.cpp:540)",
+      "description": "Native password buffer freed via delete[] without memset_s in MqttImpl::FreeConnectcontext",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "ohos_mqtt"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "mqtt_impl.cpp:540"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "openharmony_security_crypto_framework::CBOM-napi_key_agreement.cpp:198:ECDH_X25519",
+      "name": "ECDH|X25519",
+      "version": "1.0",
+      "description": "Cryptographic primitive (key_agreement) invoked at napi_key_agreement.cpp:198 in project openharmony_security_crypto_framework",
+      "cryptoProperties": {
+        "assetType": "algorithm",
+        "algorithmProperties": {
+          "primitive": "key_agreement",
+          "nistQuantumSecurityLevel": 0
+        }
+      },
+      "evidence": {
+        "occurrences": [
+          {
+            "location": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/openharmony_security_crypto_framework/frameworks/js/napi/crypto/src/napi_key_agreement.cpp",
+            "line": 198
+          }
+        ]
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "openharmony_security_crypto_framework"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "napi_key_agreement.cpp:198"
+        },
+        {
+          "name": "keyscope:quantumVulnerable",
+          "value": "true"
+        },
+        {
+          "name": "keyscope:weakAlgorithm",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:gmCompliant",
+          "value": "false"
+        },
+        {
+          "name": "keyscope:hndlScore",
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "openharmony_security_crypto_framework::κ(napi_key_agreement.cpp:198)",
+      "name": "κ(napi_key_agreement.cpp:198)",
+      "description": "Native shared secret in returnSecret freed without zeroization",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "openharmony_security_crypto_framework"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "napi_key_agreement.cpp:198"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "openharmony_security_huks::κ(huks_napi_common.cpp:168)",
+      "name": "κ(huks_napi_common.cpp:168)",
+      "description": "Native copy of HKS_TAG_TYPE_BYTES key/derive parameter freed without memset_s in FreeParsedParams",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "openharmony_security_huks"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "huks_napi_common.cpp:168"
+        }
+      ]
+    },
+    {
+      "type": "cryptographic-asset",
+      "bom-ref": "openharmony_security_huks::κ(huks_napi_common_item.cpp:235)",
+      "name": "κ(huks_napi_common_item.cpp:235)",
+      "description": "Native copy of HKS_TAG_TYPE_BYTES key/derive parameter freed without memset_s in FreeParsedParams",
+      "cryptoProperties": {
+        "assetType": "related-crypto-material",
+        "relatedCryptoMaterialProperties": {
+          "type": "secret-key",
+          "state": "in-use"
+        }
+      },
+      "properties": [
+        {
+          "name": "keyscope:project",
+          "value": "openharmony_security_huks"
+        },
+        {
+          "name": "keyscope:secretClass",
+          "value": "Session"
+        },
+        {
+          "name": "keyscope:site",
+          "value": "huks_napi_common_item.cpp:235"
+        }
+      ]
+    }
+  ]
+}

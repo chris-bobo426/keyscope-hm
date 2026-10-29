@@ -1,0 +1,513 @@
+Internal Error ()
+citeturn27view0 [wordlim: 200] Source: open({"ref_id":"https://developer.huawei.com/consumer/cn/forum/topic/0208218910102969058","lineno":null}); 
+Failed to fetch https://developer.huawei.com/consumer/cn/forum/topic/0208218910102969058: (400) Timeout fetching--------------------------------------------------------------------------------
+隐私 - 华为官网 (https://consumer.huawei.com/cn/privacy/)
+citeturn27view1 [wordlim: 200] Crawled: today; Content type: text/html; Source: open({"ref_id":"https://consumer.huawei.com/cn/privacy/","lineno":null}); Total lines: 246
+L0: [Input] [Input] [Input] [Input] [Input] [Input] [Input] [Input]
+L1: # 概述
+L2: 
+L3: [Input]
+L4: 
+L5: [Input] [Input] [Input] [Input] [Input] [Input] [Input] [Input] [Input] [Input] [Input] [Input]
+L6: 
+L7:   * HUAWEI 隐私
+L8: 
+L9:   * 【0†概览】
+L10:   * 【1†内置安全】
+L11:   * 【2†隐私管控】
+L12:   * 【3†第三方隐私安全认证】
+L13:   * 【4†隐私声明】
+L14: 
+L15: 【5†Image】 【6†Image】 【7†Image】
+L16: 
+L17: 【8†Image】 【9†Image】 【10†Image】 【11†Image】 【12†Image】 【13†Image】 【14†Image】 【15†Image】 【16†Image】 【17†Image】 【18†Image】 【19†Image】 【20†Image】 【21†Image】
+L18: 
+L19: 华为 用创新科技
+L20: 保护你的隐私
+L21: 
+L22: 了解更多>>
+L23: 
+L24: App 尽心职守
+L25: 
+L26: 【22†Image】 【6†Image】
+L27: 
+L28: 【23†Image】 【23†Image】 【23†Image】
+L29: 
+L30: 不让隐私失守
+L31: 
+L32: 【1†更多 App 安全特性】
+L33: 【24†Image: 华为浏览器】
+L34: 
+L35: 【25†Image】
+L36: 
+L37: 华为浏览器
+L38: 
+L39: 隐私无忧
+L40: 任你安心浏览
+L41: 
+L42: 华为浏览器
+L43: 
+L44: 部分广告商和网站通过 Cookie，设备指纹特征等组合生成某种信息来追踪你，并在你浏览网页时提供广告。华为浏览器默认开启“拦截跟踪型 Cookie "自动识别跟踪网站并拦截跟踪 Cookie 请求、默认禁用可识别用户设备指纹 API 参数，以减少对你的跟踪。在网页浏览过程中，我们为你自动屏蔽网页自动打开和下载 App 的行为，减少干扰，以确保更流畅的网页浏览体验。
+L45: 
+L46: 【26†Image】 【27†Image】
+L47: 
+L48: 【28†Image: 华为钱包】
+L49: 
+L50: 【29†Image】
+L51: 
+L52: 华为钱包
+L53: 
+L54: 帮你加密
+L55: 也能帮你"智慧"出卡
+L56: 
+L57: 华为钱包
+L58: 
+L59: 华为钱包通过智能识别和情景感知，为你自动匹配并快速唤起相应场景下你需要的卡片。例如通过地铁闸机时，无须解锁即可识别交通卡完成刷卡。在为你智能推荐卡片的过程中，你的数据在你的设备上进行处理，不会保存在任何服务器中，充分保护你的隐私安全。
+L60: 
+L61: 【26†Image】 【27†Image】
+L62: 
+L63: 【30†Image: 华为运动健康】
+L64: 
+L65: 【31†Image】
+L66: 
+L67: 华为运动健康
+L68: 让你的私人数据
+L69: 保持私密
+L70: 
+L71: 华为运动健康
+L72: 
+L73: 你在华为运动健康中的个人数据会通过设备级的密钥加密保存在手机应用内部，每台设备会生成属于该设备的密钥，即便华为也无法解密。在运动健康中的个人数据，都由你来决定怎样使用、共享给谁或谁能访问你的数据。
+L74: 
+L75: 【26†Image】 【27†Image】
+L76: 
+L77: 【32†Image: 华为智慧生活】
+L78: 
+L79: 【33†Image】
+L80: 
+L81: 智慧生活
+L82: 
+L83: 帮你管理
+L84: 但不涉足你的生活
+L85: 
+L86: 智慧生活
+L87: 
+L88: 在为你提供设备管理服务时，智慧生活仅会收集和处理提供服务必需的相关数据，这些数据将通过加密通道传输至华为云并加密保存。当你在智慧生活应用中解除设备绑定时，设备相关数据将从华为云上自动删除。
+L89: 
+L90: 【26†Image】 【27†Image】
+L91: 
+L92: 【34†Image: 华为小艺】
+L93: 
+L94: 【35†Image】
+L95: 
+L96: 小艺
+L97: 
+L98: 不知道你是谁
+L99: 但会帮你每一个小忙
+L100: 
+L101: 小艺
+L102: 
+L103: 在使用智慧语音服务时，你的敏感个人信息如声纹数据、语音指令等，都只会在设备端侧进行处理；在语音实现模拟点击场景下，如语音订餐、订车、查询天气，相关数据都经过加密传输，仅用于提升服务的精确度，而不会关联到你的语音、位置信息，也不能对你进行位置跟踪或行为分析。
+L104: 【26†Image】 【27†Image】
+L105: 
+L106: 【36†Image: 华为畅连】
+L107: 
+L108: 【37†Image】
+L109: 
+L110: 畅连
+L111: 
+L112: 只帮你传递信息
+L113: 不查看你的信息
+L114: 
+L115: 畅连
+L116: 
+L117: 畅连是基于华为账号的跨终端社交通信服务，提供包括音视频通话和消息等功能。你的朋友或者家人可以通过你绑定在该服务的手机号码联系到你的手机或者平板、智慧屏、音箱等设备，你的通讯内容在你的各个设备上都会受到端对端的加密保护。在此过程中收集和处理的相关数据，都会加密存储，保证你的隐私安全。
+L118: 
+L119: 【26†Image】 【27†Image】
+L120: 
+L121: 云端层层加密
+L122: 
+L123: 【38†Image】
+L124: 
+L125: 【6†Image】 【22†Image】
+L126: 
+L127: 数据重重保护
+L128: 
+L129: 【1†更多云端安全特性】
+L130: 
+L131: 【39†Image: 华为畅连】
+L132: 
+L133: 云空间
+L134: 
+L135: 云空间帮你安全存储图库、联系人、日历等重要数据，严格把控数据采集、传输和存储的每个环节，个人数据多层加密或端到端加密，任何人未经同意都无法访问和获取。
+L136: 
+L137: 你的隐私防控
+L138: 
+L139: 【40†Image】 【22†Image】 【6†Image】
+L140: 
+L141: 让你全权掌控 【41†Image: 钥匙】
+L142: 
+L143: 【2†更多隐私管控措施】
+L144: 
+L145: 隐私与安全中心
+L146: 隐私数据使用信息透明展示，并可便捷管理应用权限；还有系统级安全风险检测及隐私保护建议，为你主动规避应用高风险行为；全新隐私安全中心让应用行为更透明、隐私管理更便捷。
+L147: 
+L148: 【42†Image: 华为隐私与安全中心】
+L149: 
+L150: 坚盾守护模式
+L151: 
+L152: 当你处于高度针对型网络攻击环境时，开启坚盾守护模式，将提升你设备的防护状态，保护你的设备不被复杂网络攻击，保护你的个人信息安⁠全⁠。
+L153: 
+L154: 【43†Image: 华为坚盾守护模式】
+L155: 
+L156: 图片脱敏
+L157: 
+L158: 开启图片隐私保护功能，图片中的拍摄地点、时间、与设备型号等敏感信息将会被去除，在任何社交圈都可安心分享。
+L159: 
+L160: 【44†Image: 华为图片脱敏】
+L161: 
+L162: 未成年人模式
+L163: 
+L164: 开启未成年人模式后，为使用设备的孩子提供全面守护措施，自动设置屏幕停用时段、可用时长、可用应用、休息提醒等，并联动应用提供适龄内容，营造绿色健康的网络环⁠境⁠。
+L165: 
+L166: 【45†Image: 华为未成年人模式】
+L167: 
+L168: 【46†Image】
+L169: 
+L170: 【47†Image】
+L171: 
+L172: 【48†Image】
+L173: 
+L174: 进一步了解隐私安全
+L175: 
+L176: 【49†Image】
+L177: 
+L178: 【50†Image: 隐私安全 由你掌控】
+L179: 
+L180: 隐私安全 由你掌控
+L181: 
+L182: 【51†观看视频】
+L183: 【52†Image: HarmonyOS 6.0 安全技术白皮书】
+L184: 
+L185: HarmonyOS 6.0 安全技术白皮书
+L186: 
+L187: 【53†点击下载】
+L188: 
+L189: 【54†Image: 鸿蒙智能安全白皮书】
+L190: 
+L191: 鸿蒙智能安全白皮书
+L192: 
+L193: 【55†点击下载】
+L194: 
+L195: 【56†Image: 华为应用市场 2025 年安全隐私报告】
+L196: 
+L197: 华为应用市场 2025 年安全隐私报告
+L198: 
+L199: 【57†点击下载】
+L200: 
+L201: 【46†Image】
+L202: 
+L203: 【47†Image】
+L204: 
+L205: 【58†Image】
+L206: 
+L207: 四大主张
+L208: 
+L209: 自上而下的组织与流程保障
+L210: 制定严苛的隐私安全原则
+L211: 与业界权威机构合作构建安全验证体系
+L212: 向生态伙伴开放安全与隐私能力
+L213: 
+L214: 三大承诺
+L215: 
+L216: 隐私是用户的基本权利
+L217: 你的数据，全部为你加密
+L218: 你的信息，由你全权掌控
+L219: 
+L220: 购买产品
+L221: 
+L222: 服务支持
+L223: 
+L224: 应用与下载
+L225: 
+L226: 新闻中心
+L227: 
+L228: 关于我们
+L229: 
+L230: 在线支持
+L231: 
+L232: 版权所有 © 华为终端有限公司 1998-2026。保留一切权利。【59†粤A2-20044005号†beian.miit.gov.cn】
+L233: 
+L234:   * 【60†网站地图】
+L235:   * 【61†使用条款】
+L236:   * 【4†隐私声明】
+L237:   * 【62†关于cookies】
+L238:   * 【63†法律信息】
+L239: 【64†China - 简体中文】
+L240: 
+L241: 【64†China - 简体中文】
+L242: 
+L243: [Input]
+L244: 
+L245: [Input]
+--------------------------------------------------------------------------------
+信任中心-华为 (https://www.huawei.com/cn/trust-center)
+citeturn27view2 [wordlim: 200] Crawled: yesterday; Content type: text/html; Source: open({"ref_id":"https://www.huawei.com/cn/trust-center","lineno":null}); Total lines: 258
+L0: [Input] [Input]
+L1: 
+L2: 【0†集团网站】 【0†选择区域/语言】
+L3: 
+L4: 集团网站
+L5: 
+L6: 【1†企业业务网站†e.huawei.com】
+L7: 
+L8: 【2†运营商业务网站†carrier.huawei.com】
+L9: 
+L10: 【3†消费者业务网站†consumer.huawei.com】
+L11: 
+L12: 【4†华为云业务网站†www.huaweicloud.com】
+L13: 
+L14: 【5†数字能源业务网站†digitalpower.huawei.com】
+L15: 
+L16: 【6†智能汽车解决方案业务网站†auto.huawei.com】
+L17: ### 选择区域/语言
+L18:   * Australia - 【7†English】
+L19:   * Brazil - 【8†Português】
+L20:   * China - 【9†简体中文】
+L21:   * Europe - 【10†English】
+L22:   * France - 【11†Français】
+L23:   * Germany - 【12†Deutsch】
+L24:   * Ireland - 【13†English】
+L25:   * Italy - 【14†Italiano】
+L26:   * Japan - 【15†日本語】
+L27:   * Kazakhstan - 【16†Қазақ тілі】
+L28:   * Kazakhstan - 【17†Русский】
+L29:   * Kenya - 【18†English】
+L30:   * Korea - 【19†한국어】
+L31:   * Malaysia - 【20†English】
+L32:   * Mexico - 【21†Español】
+L33:   * Mongolia - 【22†Монгол】
+L34:   * Netherlands - 【23†Nederlands】
+L35:   * New Zealand - 【24†English】
+L36:   * Poland - 【25†Polski】
+L37:   * Romania - 【26†Română】
+L38:   * Singapore - 【27†English】
+L39:   * South Africa - 【28†English】
+L40:   * Spain - 【29†Español】
+L41:   * Switzerland - 【30†Deutsch】
+L42:   * Switzerland - 【31†Français】
+L43:   * Switzerland - 【32†Italiano】
+L44:   * Switzerland - 【33†English】
+L45:   * Tanzania - 【34†English】
+L46:   * Thailand - 【35†ภาษาไทย】
+L47:   * Türkiye - 【36†Türkçe】
+L48:   * Ukraine - 【37†Українська】
+L49:   * United Kingdom - 【38†English】
+L50:   * Uzbekistan - 【39†Русский】
+L51:   * Uzbekistan - 【40†O’zbek】
+L52:   * Vietnam - 【41†Tiếng Việt】
+L53:   * Global - 【42†English】
+L54: [Input] [Input] [Input] [Input] [Input] [Input] [Input] [Input] [Input]
+L55: 
+L56:   *     * 【43†手机†consumer.huawei.com】
+L57:     * 【44†电脑†consumer.huawei.com】
+L58:     * 【45†平板†consumer.huawei.com】
+L59:     * 【46†智慧屏†consumer.huawei.com】
+L60:     * 【47†穿戴†consumer.huawei.com】
+L61:     * 【48†耳机音箱†consumer.huawei.com】
+L62:     * 【49†全屋智能†consumer.huawei.com】
+L63:     * 【50†路由器†consumer.huawei.com】
+L64:     * 【51†HarmonyOS†consumer.huawei.com】
+L65:     * 【52†全部产品†consumer.huawei.com】
+L66: 
+L67: 【52†消费者业务网站†consumer.huawei.com】
+L68: 
+L69:   * ### 产品
+L70: #### 联接
+L71: 
+L72:     * 【2†运营商网络†carrier.huawei.com】
+L73:     * 【53†企业网络†e.huawei.com】
+L74:     * 【54†企业光网络†e.huawei.com】
+L75:     * 【55†企业无线†e.huawei.com】
+L76: 
+L77: #### 计算
+L78: 
+L79:     * 【56†通用计算†e.huawei.com】
+L80:     * 【57†AI计算†e.huawei.com】
+L81:     * 【58†数据存储†e.huawei.com】
+L82: 
+L83: #### 云
+L84: 
+L85:     * 【4†华为云†www.huaweicloud.com】
+L86: 
+L87: #### 数字能源
+L88: 
+L89:     * 【59†智能光伏†solar.huawei.com】
+L90:     * 【60†智能电动†digitalpower.huawei.com】
+L91:     * 【61†智能充电网络†digitalpower.huawei.com】
+L92:     * 【62†数据中心能源及关键供电†digitalpower.huawei.com】
+L93:     * 【63†站点能源†digitalpower.huawei.com】
+L94: 
+L95: ### 行业解决方案
+L96: ### 热点话题
+L97: 
+L98: 【1†企业业务网站†e.huawei.com】
+L99: 
+L100: 【2†运营商业务网站†carrier.huawei.com】
+L101: 
+L102: 【4†华为云网站†www.huaweicloud.com】
+L103: 
+L104: 【5†数字能源网站†digitalpower.huawei.com】
+L105: 
+L106: 【64†智能汽车解决方案网站†auto.huawei.com】
+L107: 
+L108:   * ### 个人及家庭产品
+L109: 
+L110: ### 华为云业务
+L111: 
+L112: ### 企业业务
+L113: 
+L114: ### 运营商业务
+L115: 
+L116: ### 数字能源业务
+L117: 
+L118:   * ### 合作伙伴
+L119: 
+L120: ### 开发者
+L121: ### 学习与认证
+L122: 
+L123:   * ### 关于华为
+L124: 
+L125:     * 【65†公司简介】
+L126:     * 【66†公司年报】
+L127:     * 【67†公司治理】
+L128:     * 【68†管理层信息】
+L129:     * 【69†联系我们】
+L130: 
+L131:     * 【70†可持续发展】
+L132:     * 【71†信任中心】
+L133:     * 【72†华为开源】
+L134:     * 【73†创新与知识产权】
+L135:     * 【74†合规与诚信】
+L136: 
+L137:     * 【75†招贤纳士†career.huawei.com】
+L138:     * 【76†债券投资者】
+L139:     * 【77†供应商†supplier.huawei.com】
+L140:     * 【78†公共政策】
+L141: 
+L142: ### 新闻与活动
+L143: ### 发现华为
+L144: 
+L145: 搜索历史 【79†Image】清空
+L146: 
+L147: 热门链接
+L148: 
+L149:   * 【80†HUAWEI Mate 90†consumer.huawei.com】
+L150:   * 【81†HiSuite华为手机助手†consumer.huawei.com】
+L151:   * 【82†消费者产品保修查询†consumer.huawei.com】
+L152:   * 【83†华为电脑管家†consumer.huawei.com】
+L153:   * 【84†穿戴†consumer.huawei.com】
+L154:   * 【85†ensp†info.support.huawei.com】
+L155:   * 【86†打印机†consumer.huawei.com】
+L156:   * 【87†驱动程序下载†consumer.huawei.com】
+L157: 
+L158: 搜索历史 【79†Image】清空
+L159: 
+L160: 热门链接
+L161:   * 【80†HUAWEI Mate 90†consumer.huawei.com】
+L162:   * 【81†HiSuite华为手机助手†consumer.huawei.com】
+L163:   * 【82†消费者产品保修查询†consumer.huawei.com】
+L164:   * 【83†华为电脑管家†consumer.huawei.com】
+L165:   * 【84†穿戴†consumer.huawei.com】
+L166:   * 【85†ensp†info.support.huawei.com】
+L167:   * 【86†打印机†consumer.huawei.com】
+L168:   * 【87†驱动程序下载†consumer.huawei.com】
+L169: 
+L170: [Input]
+L171: 
+L172: 【88†关于华为】
+L173: 
+L174:   * 【65†公司简介】
+L175: 
+L176:   * 【67†公司治理】
+L177: 
+L178:   * 【68†管理层信息】
+L179: 
+L180:   * 【66†年报】
+L181: 
+L182:   * 【70†可持续发展】
+L183: 
+L184:   * 【71†信任中心】
+L185: 
+L186:   * 【72†华为开源】
+L187: 
+L188:   * 【73†创新与知识产权】
+L189: 
+L190:   * 【74†合规与诚信】
+L191: 
+L192:   * 【78†公共政策】
+L193: 
+L194:   * 【76†债券投资者】
+L195: 
+L196: 展开更多
+L197: # 信任中心
+L198: 
+L199: 华为承诺，将构筑并全面实施端到端的全球网络安全保障体系作为公司的重要发展战略之一，将公司对网络和业务安全性保障的责任置于公司的商业利益之上。
+L200: 
+L201: —— 任正非 | 华为CEO
+L202: 
+L203: ## 言行一致
+L204: 
+L205: 【89†安全可信 我们是谁，我们建立什么，我们提供什么，我们信赖什么 了解更多】
+L206: 
+L207: 【90†隐私保护 责任，合规，透明 了解更多】 【91†开放透明 透明中心，标准认证 了解更多】
+L208: ## 开放创新
+L209: 
+L210:   * 【92†5G网络安全 5G技术在安全和隐私保护上相比3G和4G有更完善的保障机制。】
+L211: 
+L212:   * 【93†云安全 云安全是华为云的忠实承诺，用户可从华为云的安全方案和架构中获益，保障数据安全中立和业务顺畅运行。†www.huaweicloud.com】
+L213: 
+L214:   * 【94†智能终端隐私&安全 透明可控，用户受益，安全，合法合规†consumer.huawei.com】
+L215: 
+L216:   * 【95†AI安全 透明可解释，全栈AI安全保障全联接超智能世界】
+L217: 
+L218:   * 【96†新安全技术 安全可信，构建数字世界的信任基石】
+L219: 
+L220:   * 【97†HiSec安全解决方案 智能防御，保护万物互联的数字世界†e.huawei.com】
+L221: ## 资源
+L222:   * 【98†2025年9月18日 华为数据安全治理实践†www-file.huawei.com】
+L223:   * 【99†2025年9月18日 华为算力基础设施安全技术白皮书†www-file.huawei.com】
+L224:   * 【100†2025年05月07日 华为云安全白皮书(2025年5月)†www-file.huawei.com】
+L225:   * 【101†2024年09月14日 AI系统的网络安全治理实践†www-file.huawei.com】
+L226:   * 【102†2023年09月18日 华为漏洞管理白皮书†www-file.huawei.com】
+L227:   * 【103†2022年11月07日 华为隐私保护治理白皮书：隐私合规17/27框架†www-file.huawei.com】
+L228:   * 【104†2021年06月08日 华为产品安全基线白皮书†www-file.huawei.com】
+L229:   * 【105†2020年01月22日 华为网络安全立场†www-file.huawei.com】
+L230:   * 【106†2019年05月31日 华为5G安全白皮书(2019年5月)†www-file.huawei.com】
+L231:   * 【107†2018年10月01日 华为AI安全白皮书（2018年10月）】
+L232:   * 【108†2016年06月26日 华为网络安全白皮书（2016年6月）†www-file.huawei.com】
+L233:   * 【109†2014年12月01日 华为网络安全白皮书（2014年12月）†www-file.huawei.com】
+L234:   * 【110†2013年10月01日 华为网络安全白皮书（2013年10月）†www-file.huawei.com】
+L235:   * 【111†2012年09月15日 华为网络安全白皮书（2012年9月）†www-file.huawei.com】
+L236: [Input]
+L237: ### 关于华为
+L238: 
+L239: ### 新闻与活动
+L240: 
+L241: ### 发现华为
+L242: 
+L243: ### 我们的产品
+L244: 
+L245: ### 技术支持
+L246: 
+L247:   * 【112†华为商城†www.vmall.com】
+L248:   * 【4†华为云†www.huaweicloud.com】
+L249:   * 【113†华为JDC社区†jdc.huawei.com】
+L250:   * 【114†华为心声社区†xinsheng.huawei.com】
+L251: 
+L252: 版权所有 © 1998-@year 华为技术有限公司 【115†粤A2-20044005号†beian.miit.gov.cn】  【116†粤公网安备44030702002388号†www.beian.gov.cn】
+L253: 
+L254:   * 【69†联系我们】
+L255:   * 【117†法律声明】
+L256:   * 【118†隐私政策】
+L257:   * 【119†除名查询】
+

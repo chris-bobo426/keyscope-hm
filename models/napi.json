@@ -1,0 +1,160 @@
+{
+  "version": "3.0.0",
+  "module": "Node-API (NAPI) & Native C/C++ Crypto Models",
+  "nativeSecretSources": [
+    {
+      "func": "RAND_bytes",
+      "bufArgIndex": 0,
+      "lenArgIndex": 1,
+      "secretClass": "Session",
+      "container": "NativeHeap",
+      "form": "Raw",
+      "description": "OpenSSL CSPRNG 生成随机密钥材料"
+    },
+    {
+      "func": "EVP_PKEY_derive",
+      "bufArgIndex": 1,
+      "secretClass": "Session",
+      "unambiguousClass": true,
+      "container": "NativeHeap",
+      "form": "Raw",
+      "description": "OpenSSL EVP 密钥协商派生共享会话秘密"
+    },
+    {
+      "func": "ECDH_compute_key",
+      "bufArgIndex": 0,
+      "secretClass": "Session",
+      "unambiguousClass": true,
+      "container": "NativeHeap",
+      "form": "Raw",
+      "description": "ECDH 计算共享会话密钥"
+    },
+    {
+      "func": "HKDF",
+      "bufArgIndex": 0,
+      "secretClass": "Session",
+      "unambiguousClass": true,
+      "container": "NativeHeap",
+      "form": "Raw",
+      "description": "HKDF 派生会话密钥"
+    },
+    {
+      "func": "PKCS5_PBKDF2_HMAC",
+      "bufArgIndex": 6,
+      "secretClass": "Session",
+      "unambiguousClass": true,
+      "container": "NativeHeap",
+      "form": "Raw",
+      "description": "PBKDF2 派生密钥"
+    },
+    {
+      "func": "HITLS_CRYPT_DeriveKey",
+      "bufArgIndex": 0,
+      "secretClass": "Session",
+      "unambiguousClass": true,
+      "container": "NativeHeap",
+      "form": "Raw",
+      "description": "OpenHiTLS 派生会话密钥"
+    },
+    {
+      "func": "SM4_KeyGen",
+      "bufArgIndex": 0,
+      "secretClass": "Session",
+      "container": "NativeHeap",
+      "form": "Raw",
+      "description": "国密 SM4 密钥生成"
+    }
+  ],
+  "napiBoundaryRules": [
+    {
+      "func": "napi_create_string_utf8",
+      "srcArgIndex": 1,
+      "dstArgIndex": 3,
+      "semantics": "copy",
+      "op": "encode",
+      "targetForm": "Enc",
+      "encoding": "utf8",
+      "targetContainer": "ArkString",
+      "description": "拷贝 Native 缓冲区至不可控擦除的 ArkTS String (UTF-8)"
+    },
+    {
+      "func": "napi_create_string_latin1",
+      "srcArgIndex": 1,
+      "dstArgIndex": 3,
+      "semantics": "copy",
+      "op": "encode",
+      "targetForm": "Enc",
+      "encoding": "latin1",
+      "targetContainer": "ArkString",
+      "description": "拷贝 Native 缓冲区至不可控擦除的 ArkTS String (Latin1)"
+    },
+    {
+      "func": "napi_create_string_utf16",
+      "srcArgIndex": 1,
+      "dstArgIndex": 3,
+      "semantics": "copy",
+      "op": "encode",
+      "targetForm": "Enc",
+      "encoding": "utf16",
+      "targetContainer": "ArkString",
+      "description": "拷贝 Native 缓冲区至不可控擦除的 ArkTS String (UTF-16)"
+    },
+    {
+      "func": "napi_create_buffer_copy",
+      "srcArgIndex": 2,
+      "rawCopyPtrArgIndex": 3,
+      "dstArgIndex": 4,
+      "semantics": "copy",
+      "op": "copy",
+      "targetForm": "Raw",
+      "targetContainer": "ArkBuffer",
+      "description": "拷贝 Native 缓冲区以创建独立的 ArkTS Buffer 副本（原 Native 缓冲区与新副本各自独立存在）"
+    },
+    {
+      "func": "napi_create_arraybuffer",
+      "rawPtrArgIndex": 2,
+      "dstArgIndex": 3,
+      "semantics": "copy",
+      "op": "copy",
+      "targetForm": "Raw",
+      "targetContainer": "ArkBuffer",
+      "description": "分配新的 ArkTS ArrayBuffer（配合 memcpy 产生独立副本）"
+    },
+    {
+      "func": "napi_create_external_arraybuffer",
+      "srcArgIndex": 1,
+      "dstArgIndex": 5,
+      "semantics": "alias",
+      "op": "alias",
+      "targetForm": "Raw",
+      "targetContainer": "ArkBuffer",
+      "sharesMemoryWithSrc": true,
+      "description": "别名共享：不新建密钥副本，ArkTS ArrayBuffer 与 Native 缓冲区共享同一块物理内存"
+    },
+    {
+      "func": "napi_get_arraybuffer_info",
+      "srcArgIndex": 1,
+      "dstPtrArgIndex": 2,
+      "semantics": "alias",
+      "op": "alias",
+      "targetForm": "Raw",
+      "targetContainer": "NativeHeap",
+      "sharesMemoryWithSrc": true,
+      "description": "别名共享：Native 指针直接指向 ArkTS ArrayBuffer 底层内存"
+    },
+    {
+      "func": "napi_get_value_string_utf8",
+      "srcArgIndex": 1,
+      "dstBufArgIndex": 2,
+      "semantics": "copy",
+      "op": "copy",
+      "targetForm": "Raw",
+      "targetContainer": "NativeHeap",
+      "description": "将 ArkTS String 拷贝至 Native 字符缓冲区"
+    }
+  ],
+  "nativeZeroizeFunctions": {
+    "safe": ["memset_s", "explicit_bzero", "OPENSSL_cleanse", "sodium_memzero", "SecureZeroMemory", "volatile_zeroize"],
+    "unsafeOptimizable": ["memset", "bzero"]
+  }
+}

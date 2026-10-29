@@ -1,0 +1,310 @@
+7 Billion Passkeys and Counting: The Next Chapter of Passwordless Authentication | FIDO Alliance (https://fidoalliance.org/7-billion-passkeys-and-counting-the-next-chapter-of-passwordless-authentication/?cst=&query-cdbd12d0-page=4)
+citeturn38search0 [wordlim: 200] Published: last week; Crawled: 6 days ago; Today, we’re releasing the 2026 Passkey Index, drawing data from 15 major consumer services from around the world, up from nine last year: Abanca, Amazon, Banesco, JPMorgan Chase, CVS, Google, KDDI, LY Corporation, Mercari, Microsoft, NTT DOCOMO, PayPal, Shopify, TikTok and WhatsApp. ... That’s why at Authenticate we will be introducing our new FIDO Passkey Rubric.
+
+# 7 Billion Passkeys and Counting: The Next Chapter of Passwordless Authentication
+
+October 15, 2026
+
+Passkeys have reached a new milestone, FIDO now estimates that 7 billion passkeys are in use worldwide. And new data suggests something even more important is happening. People aren’t just creating passkeys, but they are routinely using them to authenticate.
+
+And with Authenticate 2026 just around the corner, there is no better time to look at how far the ecosystem has come, what’s driving adoption and what it will take to make passkeys the default way we sign in. 
+
+Today, we’re releasing the 2026 Passkey Index, drawing data from 15 major consumer services from around the world, up from nine last year: Abanca, Amazon, Banesco, JPMorgan Chase, CVS, Google, KDDI, LY Corporation, Mercari, Microsoft, NTT DOCOMO, PayPal, Shopify, TikTok and WhatsApp. The findings tell a great story.  
+
+Passkeys are becoming mainstream
+
+So what did we learn? Above all, passkeys have moved from deployment to adoption. --------------------------------------------------------------------------------
+Vulnerability (https://www.cert-in.org.in/s2cMainServlet?VLCODE=CIVN-2026-0336&pageid=PUBVLNOTES01)
+citeturn38search1 [wordlim: 200] Published: 4 months ago; Crawled: today; Use after free vulnerability in Samsung KNOX security framework Original Issue Date:June 24, 2026
+Home - Vulnerability Notes Image: Print
+CERT-In Vulnerability Note CIVN-2026-0336
+Use after free vulnerability in Samsung KNOX security framework Original Issue Date:June 24, 2026
+Severity Rating: HIGH Software Affected
+
+  * Samsung Mobile Devices running software versions prior to SMR Jan-2026 Release 1 in Android 13, 14, 15, 16
+Overview A vulnerability has been reported in SamsungÂ¿s KNOX security framework, which could allow a local attacker to execute arbitrary code on the targeted system. Target Audience:
+All end-user organizations and individuals using Samsung devices with affected KNOX security framework. Risk Assessment:
+High risk of device compromise, unauthorized access, and security bypass. Impact Assessment: 
+Potential for arbitrary code execution, device compromise, data theft, or unauthorized access. Description Samsung Knox is a security framework integrated into Samsung Galaxy devices that provides device protection and security management capabilities.
+This vulnerability exists due to a Use-After-Free condition in PROCA driver.
+Successful exploitation of this vulnerability could allow a local attacker to execute arbitrary code on the targeted system.
+Solution Apply appropriate updates as mentioned by the vendor:
+https://security.samsungmobile.com/securityUpdate.smsb?year=2026&month=01
+Vendor Information Samsung
+https://security.samsungmobile.com/
+References SecurityWeek
+https://www.securityweek.com/eight-year-old-samsung-knox-flaw-exposed-millions-of-galaxy-devices-to-kernel-attacks/
+CVE Name
+CVE-2026-20971
+Disclaimer The information provided herein is on "as is" basis, without warranty of any kind. Contact Information Email: info@cert-in.org.in--------------------------------------------------------------------------------
+제품뉴스 | Samsung Business 대한민국 (https://www.samsung.com/sec/business/insights/news/news_260330_05/)
+citeturn38search2 [wordlim: 200] Published: 7 months ago; Crawled: last month; 2026-03-30 ... 삼성전자는 2015년부터 스마트 TV에 자체 보안 솔루션 ‘삼성 녹스(Knox)’를 적용해 올해로 12년간 CC 인증을 받았다. ... 검증 항목은 ▲커널 영역의 무결성을 실시간으로 모니터링하는 ‘SIM(System Integrity Monitor)’ ▲웹 브라우저 사용 시 피싱 사이트 접속을 차단하는 ‘WBS(Web Browser Security)’ ▲실행 파일의 서명을 검증해 비인가 실행을 차단하는 ‘UEP(Unauthorized Execution Prevention)’이다.
+
+# 제품뉴스
+
+## 삼성전자, 업계 최초 스마트 모니터 CC 인증 획득…개인정보보호 솔루션 강화
+
+2026-03-30
+
+삼성전자 2026년형 스마트 TV와 스마트 모니터에 적용된 보안 솔루션이 국제 공통평가기준(Common Criteria, 이하 CC) 인증을 획득했다.
+
+CC 인증은 정보보호가 필요한 제품의 보안성을 평가하는 국제 표준 인증으로 전 세계 36개국이 상호 인정하는 평가 인증이다.
+
+삼성전자는 2015년부터 스마트 TV에 자체 보안 솔루션 ‘삼성 녹스(Knox)’를 적용해 올해로 12년간 CC 인증을 받았다. 또 올해 업계 최초로 스마트 모니터도 CC 인증을 획득하며 업계 최고 수준의 보안 성능을 입증했다.
+
+이번 인증은 삼성 스마트 TV와 스마트 모니터에 적용된 삼성 녹스의 핵심 보안 역량에 대한 엄격한 검증을 통해 수여됐다.
+
+검증 항목은 ▲커널 영역의 무결성을 실시간으로 모니터링하는 ‘SIM(System Integrity Monitor)’ ▲웹 브라우저 사용 시 피싱 사이트 접속을 차단하는 ‘WBS(Web Browser Security)’ ▲실행 파일의 서명을 검증해 비인가 실행을 차단하는 ‘UEP(Unauthorized Execution Prevention)’이다.
+--------------------------------------------------------------------------------
+The latest blogs from GitHub - The GitHub Blog (https://github.blog/latest/)
+citeturn38search3 [wordlim: 200] Crawled: today; Shilpa Kumari · October 22, 2026 ... ### GitHub’s model for secret detection: Finding more secrets with less noise
+
+Image: An abstract illustration of connected blocks surrounding a central shield with a checkmark representing secure and verified systems.
+
+AI & ML
+
+### GitHub’s model for secret detection: Finding more secrets with less noise
+
+GitHub’s context-aware secret classifier improves detection quality, raises weighted acceptance by 11.5%, and reduces median scan execution time by 86%.
+
+Batu Ozturkler & Shengyu Fu · October 13, 2026
+
+Image: GitHub Copilot app for Beginners: Teach Copilot your codebase
+
+AI & ML
+
+### GitHub Copilot app for Beginners: How to teach Copilot about your codebase
+
+Learn how to add custom instructions and skills to your repository, use custom agents, and connect MCP servers like Playwright.
+
+Christopher Harrison · October 12, 2026
+
+Image: Mona floating among green cubes featuring GitHub invertocat logos in a decorative scene.
+
+Career growth
+
+### Hack the World: Why hackathons are still the best place to learn to build
+
+The barriers to building software have collapsed. Today, anyone can build. Hackathons are a great place to start learning.
+
+Ed Summers · October 9, 2026
+
+Image: Bug bounty graphic
+
+Security
+
+### How one bug bounty researcher chooses the features they investigate
+
+As we kick off Cybersecurity Awareness Month, the GitHub Bug Bounty team spotlights @vaib25vicky, exploring their methodology, techniques, and experiences hacking on GitHub.
+
+Shilpa Kumari · October 8, 2026
+
+Image: Copilot moves through a decorative field of floating cubes marked with sync and check icons.
+
+AI & ML
+
+### Secret protection must scale with software
+
+Developers aren’t becoming more careless; they’re being outpaced. The tools that let developers create more software should also take on more of the work of protecting it.
+
+Erin Havens · October 7, 2026
+
+Image: Image featuring the GitHub invertocat logo displayed on a floating cube against a decorative background.
+
+Architecture & optimization
+
+### Building Git infrastructure for agent-scale development
+
+We’re rebuilding GitHub’s Git infrastructure while GitHub keeps running, creating a foundation for agent-scale software development.
+
+Brian Celenza · October 6, 2026
+
+Image: Geometric blocks featuring the GitHub invertocat logo and a web icon in a decorative background.
+
+AI & ML
+
+### ReviewBench: An open benchmark for AI code review
+
+We’re launching ReviewBench, a benchmark for code review agents built on representative GitHub pull requests, multi-source ground truth, calibrated evaluation, and production-aligned metrics.
+
+Michelle Zhou & Alejandro Carderera de Diego · October 5, 2026
+
+Image: Decorative header image with a Copilot logo and the phrase 'Branching Out_'
+
+AI & ML
+
+### AI is changing developer work. Here are three skills to strengthen.
+
+Learn to direct AI agents, critically review their output, and keep technical judgment at the center of your workflow.
+
+Gwen Davis · October 2, 2026
+--------------------------------------------------------------------------------
+Transition to Post-Quantum Cryptography Standards | NIST (https://www.nist.gov/publications/transition-post-quantum-cryptography-standards)
+citeturn38search4 [wordlim: 200] Published: yesterday; Crawled: today; (2026), Transition to Post-Quantum Cryptography Standards, NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD, [online], https://doi.org/10.6028/NIST.IR.8547, https://nps-ext.nist.gov/nps/nps_public_api/api/Publication/file/961337 (Accessed October 28, 2026)
+
+# Transition to Post-Quantum Cryptography Standards
+
+Published
+
+October 27, 2026
+
+### Author(s)
+
+Dustin Moody, Ray Perlner, Angela Robinson, Andrew Regenscheid, David Cooper
+
+### Abstract
+
+This report describes NIST's approach to transitioning from quantum-vulnerable cryptographic algorithms to post-quantum digital signature algorithms and key-establishment schemes. It identifies existing quantum-vulnerable cryptographic standards and the quantum-resistant standards to which information technology products and services will need to transition. It is intended to foster engagement with industry, standards organizations, and relevant agencies to facilitate and accelerate the adoption of post-quantum cryptography. It also supports the implementation of Executive Order 14412 and OMB Memorandum M-26-15, which direct federal agencies to prioritize the migration of their most sensitive systems to post-quantum cryptography.
+
+Citation
+
+NIST Interagency/Internal Report (NISTIR) - 8547
+
+Report Number
+
+8547
+
+NIST Pub Series
+
+NIST Interagency/Internal Report (NISTIR)
+
+Pub Type
+
+NIST Pubs
+
+### Download Paper
+
+https://doi.org/10.6028/NIST.IR.8547
+
+Local Download
+
+### Keywords
+
+cryptography, post-quantum cryptography, public-key cryptography, quantum computing
+
+Cryptography
+
+## Citation
+
+Moody, D. , Perlner, R. , Robinson, A. , Regenscheid, A. and Cooper, D. (2026), Transition to Post-Quantum Cryptography Standards, NIST Interagency/Internal Report (NISTIR), National Institute of Standards and Technology, Gaithersburg, MD, [online], https://doi.org/10.6028/NIST.IR.8547, https://nps-ext.nist.gov/nps/nps_public_api/api/Publication/file/961337 (Accessed October 28, 2026)--------------------------------------------------------------------------------
+Five Billion Passkeys: FIDO Alliance Reports Mainstream Global Usage on World Passkey Day 2026 | FIDO Alliance (https://fidoalliance.org/fido-alliance-reports-accelerating-global-passkey-adoption-on-world-passkey-day-2026/?cst=&query-cdbd12d0-page=76)
+citeturn38search5 [wordlim: 200] Published: 5 months ago; Crawled: 6 days ago; MOUNTAIN VIEW, Calif., May 7, 2026 – On World Passkey Day 2026, the FIDO Alliance released new findings from its State of Passkeys 2026 report, highlighting strong global adoption and usage of passkeys across both consumer and enterprise environments.The findings come as the FIDO Alliance estimates that 5 billion passkeys are now in use worldwide.
+
+# FIDO Alliance Reports Accelerating Global Passkey Adoption on World Passkey Day 2026
+
+May 7, 2026
+
+Global research from the FIDO Alliance finds near-universal awareness of passkeys, with high adoption rates among consumers and enterprises
+
+MOUNTAIN VIEW, Calif., May 7, 2026 – On World Passkey Day 2026, the FIDO Alliance released new findings from its State of Passkeys 2026 report, highlighting strong global adoption and usage of passkeys across both consumer and enterprise environments.The findings come as the FIDO Alliance estimates that 5 billion passkeys are now in use worldwide.
+
+Based on research spanning 11,000 consumers and 1,400 enterprise decision-makers across ten countries, the report highlights the global uptake of passkeys:
+
+  * 90% of people are now aware of passkeys, up significantly year-over-year
+  * 75% of people have enabled a passkey on at least one account
+  * 49% of people use passkeys regularly when available 
+  * 68% of organizations have deployed or are actively deploying passkeys for employee sign-ins
+--------------------------------------------------------------------------------
+Galaxy Launches Bitcoin Quantum Readiness Initiative to Protect Bitcoin's Cryptographic Foundations | Galaxy (https://www.galaxy.com/newsroom/galaxy-launches-bitcoin-quantum-readiness-initiative)
+citeturn38search6 [wordlim: 200] Published: 3 months ago; Crawled: yesterday; newsroom • July 21, 2026 ... The initiative includes up to $5 million in grant funding for developers working on post-quantum solutions for Bitcoin, a dedicated research and publishing program through Galaxy Research, and the formation of a Quantum Advisory Council of leading experts in quantum computing and post-quantum cryptography.
+--------------------------------------------------------------------------------
+Authenticate U.S. 2026 | FIDO Alliance (https://authenticatecon.com/event/authenticate-u-s-2026/)
+citeturn38search7 [wordlim: 200] Crawled: today; Now in its 7th year, the FIDO Alliance-hosted Authenticate Conference has become renowned for its high-quality content and vibrant community of professionals committed to advancing passkeys and related technologies to create a more secure web. ... ### The 2026 Passkey Index: Moving Passkeys from Deployment to Everyday Use
+--------------------------------------------------------------------------------
+Device Compatibility Knox Solutions | Samsung Knox (https://www.samsungknox.com/en/knox-platform/supported-devices/kaiKnox)
+citeturn38search8 [wordlim: 200] Published: 3 months ago; Crawled: 3 months ago; Android - Secured by Knox ... Security MR guaranteed up to: January, 2029 ... Galaxy Z Flip6 *
+--------------------------------------------------------------------------------
+Post-quantum cryptography | NIST (https://www.nist.gov/pqc?trk=public_post_comment-text)
+citeturn38search9 [wordlim: 200] Published: 10 months ago; Crawled: 2 weeks ago; # Post-quantum cryptography ... On July 28, 2026, Anthropic announced that it used a super intelligence (SI) model to discover a vulnerability in a lattice-based digital signature algorithm called HAWK, which was under consideration for standardization.
+--------------------------------------------------------------------------------
+Policy update on Knox supported versions | Fundamentals | Samsung Knox Documentation (https://docs.samsungknox.com/admin/fundamentals/kbas/kba-655-policy-update-on-knox-supported-versions/)
+citeturn38search10 [wordlim: 200] Crawled: 4 days ago; Enhance the security of Knox products by restricting the supported versions to recent ones that have valid security patches from OS or hardware. ... You may continue to use Knox products on such devices, but the Samsung teams won’t provide support for issues on those devices. ... Last updated July 22nd, 2026
+--------------------------------------------------------------------------------
+Samsung Knox Expands CC Certification for Displays | Samsung Gulf (https://www.samsung.com/ae/news/local/samsung-knox-now-protects-displays-with-industry-recognized-cc-certification/)
+citeturn38search11 [wordlim: 200] Published: 7 months ago; Crawled: 2 weeks ago; Latest News ... SEOUL, Korea – March 25, 2026 – Samsung Electronics Co., Ltd. today announced that its security solution, Samsung Knox, has achieved Common Criteria (CC) certification for monitors, expanding the verified security it has maintained on smart TVs for a decade.
+--------------------------------------------------------------------------------
+The State of Passkeys 2026: (https://fidoalliance.org/wp-content/uploads/2026/05/The-State-of-Passkeys-Global-Consumer-and-Workforce-Report-1.pdf)
+citeturn38search12 [wordlim: 200] Published: 5 months ago; Among those without near-term passkey plans: ... www.fidoalliance.org
+--------------------------------------------------------------------------------
+SAMSUNG ELECTRONICS Co., Ltd. (https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf)
+citeturn38search13 [wordlim: 200] Published: 5 months ago; DX Division Research project | Details --- | --- DX Division | □ Galaxy A17 5G (August 2025) DX Division None | - Enhanced design and camera performance compared to A16 5G models to strengthen competitiveness in the DX Division None | entry-level 5G market DX Division None | - Screen: 6.7" FHD+ (2340 x 1080) DX Division None | - Size (H x W x D) & weight: 164.4 x 77.9 x 7.5mm, 192g DX Division None | - Platform (H/W, S/W): Exynos 1330, Android 15, One UI 7.0 DX Division None | - Offers slimmer design (7.5t) compared to predecessor with enhanced camera performance (50MP OIS) DX Division None | - Enhanced durability with GFRP on the rear cover * GFRP: glass-fiber reinforced plastic DX Division None |  Provides 6 OS upgrades and 6 years of security updates/strengthened security and privacy via Knox Vault DX Division | □ Galaxy A07 (August 2025) DX Division None | - Volume-driving model for the 4G Entry market DX Division None | - Screen: 6.7" HD+ (1600 x 720) DX Division None | - Size (H x W x D) & weight: 167.4 x 77.4 x 7.6mm, 184g DX Division None | - Platform (H/W, S/W): G99, Android 15, One UI 7.0 DX Division None | - Applied 6.7" large display and provides Smoothing Viewing experience DX Division None | - Offers enhanced AP (6nm) compared to the previous model and a slim design (7.6mm) DX Division None | - Provides 6 OS upgrades and 6 years of security updates/strengthened security and privacy via Knox Vault DX Division None | □ Galaxy A17 (September 2025) DX Division None | - LTE device following the A16, featuring enhanced camera experience and a slim design DX Division None | - Screen: 6.7” FHD+ (2340 x 1080) DX Division None | - Size (H x W x D) & weight: 164.4 x 77.9 x 7.5mm, 190g DX Division None | - Platform (H/W, S/W): G99, Android 15, One UI 7.0 DX Division None | - Offers immersive viewing experience with 6.7” Super AMOLED Display DX Division None | - Offers slimmer design (7.5t) compared to the previous model with enhanced camera performance (50MP OIS) DX Division None | - Provides 6 OS upgrades and 6 years of security updates/strengthened security and privacy via Knox Vault DX Division None | □ Galaxy A07 5G (January 2026) DX Division None | - Addressed Entry 5G market with a 6,000mAh battery and enhanced display performance versus the previous A06- DX Division None | 5G models DX Division None | - Screen: 6.7” HD+ (1600 x 720) DX Division None | - Size (H x W x D) & weight: 167.4 x 77.4 x 8.2mm, 199g DX Division None | - Platform (H/W, S/W): 24E, Android 16, One UI 8.0 DX Division None | - Provides extended usage time with a 6,000mAh battery DX Division None | - Improved outdoor visibility through a 120Hz display refresh rate and High Brightness Mode (HBM) at 800nits DX Division | □ Galaxy Book4 Ultra (January 2024) DX Division None | - Screen: 16” WQXGA+ (2880 x 1800) DX Division None | - Size (W x H x D) & weight: 355.4 x 250.4 x 16.5mm; 1.86kg DX Division None | - Platform/OS: Intel® Core™ Ultra Processor, Windows 11 DX Division None | - Dynamic AMOLED 2X: 3K (2880x1800), 120Hz, color volume 120% (DCI-P3 basis), 500nit (HDR) DX Division None | - Graphic: NVIDIA® GeForce RTX™ 4050/4070 DX Division None | - AKG Quad speaker (Woofer Max 5W x 2, Tweeter 2W x 2), Smart Amp, Dolby Atmos®, 2M Camera DX Division None | - Memory, SSD: LPDDR5X, NVMe SSD DX Division None | - Bluetooth v5.3, WiFi 6E, 802.11 ax 2x2 DX Division None | - Battery: 76Wh DX Division Galaxy Book | DX Division (~March 2026.)
+--------------------------------------------------------------------------------
+FIDO Alliance and the Path to the Post-Password World (https://www.teletrust.de/fileadmin/user_upload/RSA-2026_TeleTrusT-FIDO_FIDO_Alliance.pdf)
+citeturn38search14 [wordlim: 200] Published: 7 months ago; - fido ALLIANCE: “93% login success rate (Passkey Index)” ... 11  © FIDO Alliance 2026
+--------------------------------------------------------------------------------
+Samsung Galaxy Devices on Android 16 - Fall  Validation Report  Version 0.2, February 25, 2026 (https://www.commoncriteriaportal.org/nfs/ccpfiles/files/epfiles/st_vid11664-vr.pdf)
+citeturn38search15 [wordlim: 200] Published: 7 months ago; Samsung Galaxy Devices on Android 16 - Fall  Validation Report  Version 0.2, February 25, 2026 ... The Samsung Knox Software Development Kit (SDK) builds on top of the existing Android security model by expanding the current set of security configuration options to more than 600 configurable policies and including additional security functionality such as application allow and block listing.
+--------------------------------------------------------------------------------
+Passkeys now carry 36% of sign-ins, up from 26% last year (https://www.reddit.com/r/Information_Security/comments/1xgvy0t/passkeys_now_carry_36_of_signins_up_from_26_last/)
+citeturn38reddit16 [wordlim: 200] Published: yesterday; FIDO Alliance just released its 2026 Passkey Index.
+--------------------------------------------------------------------------------
+【Samsung Electronics 2025 Q4 Earnings Call】 (https://irsvc.teletogether.com/sec/pdf/2025Q4_script_eng.pdf?1=)
+citeturn38search17 [wordlim: 200] Published: 7 months ago; In 2026, amid significant industry changes due to rising component prices, we ... broader application of competitive AI features and Knox security solutions, ... lot of good news recently about HBM4 performance from Samsung.
+--------------------------------------------------------------------------------
+Galaxy Tech Talk_Jan 2026 (https://www.goapl.com/wp-content/uploads/2026/01/Galaxy-Tech-Talk_Jan-2026.pdf)
+citeturn38search18 [wordlim: 200] Published: 9 months ago; Crawled: 9 months ago; On behalf of all of us at Galaxy, I wish you a very happy, healthy, and successful 2026. ... We predict the rise of pre-integrated, shipping-container-scale units that combine liquid-cooled GPU racks, on-prem PQC (Post-Quantum Cryptography) appliances, and curated AI software stacks.
+--------------------------------------------------------------------------------
+State of Passkey Authentication in the Wild: A Census of the Top 100K sites (https://arxiv.org/abs/2602.15135)
+citeturn38academia19 [wordlim: 200] Published: 8 months ago; Date: Mon Feb 16 19:28:55 2026 ... Built on the FIDO2 standard, they eliminate shared secrets and resist phishing while offering usability through platform credential managers. ... Some expose explicit ``Sign in with passkey'' buttons, others hide options under multi-step flows or rely on conditional mediation, and many adopt external mechanisms such as JavaScript libraries or OAuth-based identity providers.
+--------------------------------------------------------------------------------
+S26 Hacked with a single email. (https://www.reddit.com/r/samsunggalaxy/comments/1x11nba/s26_hacked_with_a_single_email/)
+citeturn38reddit20 [wordlim: 200] Published: 2 weeks ago; And how tf does samsung take 4-6 weeks to send the monthly android security updates? ...   My last security update is october 2025 (probably bc I have Samsung Galaxy A13 5G) ... So from this news , the Knox security is a myth ?
+--------------------------------------------------------------------------------
+Passkey issue on FIDO card on Android (https://www.reddit.com/r/Passkeys/comments/1vnhy0o/passkey_issue_on_fido_card_on_android/)
+citeturn38reddit21 [wordlim: 200] Published: 2 months ago; [Thursday August 13 2026] [+3 votes] ... On IOS I can log into Google using the passkey on the FIDO card.
+--------------------------------------------------------------------------------
+FIDO Alliance (https://en.wikipedia.org/wiki/FIDO_Alliance)
+citeturn38search22 [wordlim: 200] Crawled: last week; * (2021-03-29) A collaborative educational resource combining FIDO authentication with web-based payment standards was launched by the FIDO Alliance, EMVCo, and the W3C. ... * (2026-05-07) Global deployment of active passkeys was estimated to have reached 5 billion in an announcement on World Passkey Day 2026.
+--------------------------------------------------------------------------------
+Post-Quantum Session Establishment for Matter over Thread: Message Size, Transport, and Protocol Options (https://arxiv.org/abs/2610.13026)
+citeturn38academia23 [wordlim: 200] Published: 2 weeks ago; Date: Fri Oct  9 05:32:12 2026 ... A byte-exact model of the CASE messages shows that a drop-in ML-KEM-768/ML-DSA-44 handshake grows from 1.6 kB to 22.8 kB and that no fully post-quantum configuration built from FIPS 203/204/205 algorithms fits the message limit.
+--------------------------------------------------------------------------------
+Bug hunters say they’ve found a way to hijack a Samsung Galaxy S26 completely (https://www.reddit.com/r/CyberNews/comments/1x0lkfa/bug_hunters_say_theyve_found_a_way_to_hijack_a/)
+citeturn38reddit24 [wordlim: 200] Published: 2 weeks ago; [Thursday October 08 2026] [+114 votes] ... More: https://cnews.link/hackers-crack-samsung-galaxy-s26-zero-day-email-attack-4/ ... Damn I mean we all knew samsung's security was horrible, but this is a new low 🤡 ... All that Knox and anti-bootloader unlocking BS just for this LOL
+--------------------------------------------------------------------------------
+5 billion passkeys in 2026 : mostly in Apple and Google clouds. Is that the privacy trade people think they made ? (https://www.reddit.com/r/PasswordManagers/comments/1weqhss/5_billion_passkeys_in_2026_mostly_in_apple_and/)
+citeturn38reddit25 [wordlim: 200] Published: last month; Last May, the FIDO Alliance estimated **5 billion passkeys** in active use: 75% of surveyed people have enabled at least one, 90% know they exist. ... * FIDO State of Passkeys 2026 · May 2026 ...   When Apple coined the term *passkey* for WebAuthn discoverable credentials and introduced them in 2022, they were synced, not device-bound.
+--------------------------------------------------------------------------------
+Is anyone else missing App Protection (Knox Antivirus) in One UI 7 on Galaxy Tab? (https://www.reddit.com/r/GalaxyTab/comments/1k7jpe2/is_anyone_else_missing_app_protection_knox/)
+citeturn38reddit26 [wordlim: 200] Published: 1.5 years ago; Supposedly Knox still maintains security though, and now with any of my newer Samsung devices I can check up on the security on the other ones, and reportedly everything is OK. ... [Thursday June 25 2026] [+1 votes]
+--------------------------------------------------------------------------------
+Samsung Knox (https://en.wikipedia.org/wiki/Samsung_Knox)
+citeturn38search27 [wordlim: 200] Crawled: last month; 3.14 / 31 August 2026; 20 days ago ... In October 2014, a security researcher discovered that Samsung Knox stores PINs in plain text rather than storing salted and hashed PINs and processing them by obfuscated code.
+--------------------------------------------------------------------------------
+Synced iCloud Keychain passkey registration succeeds despite Device-Bound-only passkey profile (https://www.reddit.com/r/entra/comments/1x0xsp1/synced_icloud_keychain_passkey_registration/)
+citeturn38reddit28 [wordlim: 200] Published: 2 weeks ago; [Thursday October 08 2026] [+16 votes] ... Our Passkey (FIDO2) settings:
+--------------------------------------------------------------------------------
+Anyone else getting authentication loops when trying to add passkeys (FIDO policy) for iphone users? (https://www.reddit.com/r/microsoft365/comments/1uj41ia/anyone_else_getting_authentication_loops_when/)
+citeturn38reddit29 [wordlim: 200] Published: 4 months ago; [Monday June 29 2026] [+1 votes] ... And then we put them into the FIDO policy group, it tells them to add a passkey, and then MS continues to ask for verification.
+--------------------------------------------------------------------------------
+Most needed feature (https://www.reddit.com/r/S25Ultra/comments/1wzznk6/most_needed_feature/)
+citeturn38reddit30 [wordlim: 200] Published: 3 weeks ago; [Wednesday October 07 2026] [+26 votes]
+**The** **App lock** **is the only thing I want from Samsung in Oneui 9.5 , this feature is a must , all the chinese brand has it from the start and Samsung has knox security why not they use it at it's best they just have to give us an App lock feature.
+--------------------------------------------------------------------------------
+When is passkey / FIDO2 support planned? (https://www.reddit.com/r/Infomaniak/comments/1wfb39d/when_is_passkey_fido2_support_planned/)
+citeturn38reddit31 [wordlim: 200] Published: last month; As I really don't want to decrease my account security in 2026, when many services already offer solid passkey / FIDO2 support, is there a timeline for when Infomaniak will offer state-of-the art unphishable account security?
+--------------------------------------------------------------------------------
+Microsoft Entra Passkey campaign in Sept, but should be in Dec. - MC1450134 (https://www.reddit.com/r/sysadmin/comments/1w05g5s/microsoft_entra_passkey_campaign_in_sept_but/)
+citeturn38reddit32 [wordlim: 200] Published: 2 months ago; Any Microsoft Entra tenant with its FIDO2/Passkey registration campaign set to Microsoft-managed will begin prompting users to create an Entra passkey on September 1, 2026.
+--------------------------------------------------------------------------------
+PSA: Samsung devices bought at full price can be KNOX locked and rendered unusable in exceptional circumstances (https://www.reddit.com/r/Android/comments/1poac96/psa_samsung_devices_bought_at_full_price_can_be/)
+citeturn38reddit33 [wordlim: 200] Published: 10 months ago; According to Samsung's documentation, KNOX Guard is a security solution, part of the KNOX suite, that allows a Samsung device to be completely locked at a low level, in hardware. ...       [Sunday March 22 2026] [+1 votes]
+--------------------------------------------------------------------------------
+An Analysis of Attack Vectors Against FIDO2 Authentication (https://arxiv.org/abs/2604.20826)
+citeturn38academia34 [wordlim: 200] Published: 6 months ago; Date: Wed Apr 22 17:52:56 2026 ... This paper examines passkeys, also known as FIDO2, which claim to provide phishing-resistant authentication through asymmetric cryptography. ... We present passkey workflows and review state-of-the-art attack vectors from related work alongside newly identified approaches.
+--------------------------------------------------------------------------------
+Post-quantum cryptography (https://en.wikipedia.org/wiki/Post-quantum_cryptography)
+citeturn38search35 [wordlim: 200] Crawled: 5 days ago; As of 2026, quantum computers lack the processing power to break widely used cryptographic algorithms; however, because of the length of time required for migration to quantum-safe cryptography, cryptographers are already designing new algorithms to prepare for Y2Q or "Q-Day", the day when current algorithms will be vulnerable to quantum computing attacks. ... NIST finalized the first three FIPS Post-Quantum Cryptography standards in August 2024.
+--------------------------------------------------------------------------------
+Passkey (credential) (https://en.wikipedia.org/wiki/Passkey_%28credential%29)
+citeturn38search36 [wordlim: 200] Crawled: 3 days ago; The current popular implementation of passkeys for general public usage in web technologies is proposed by FIDO Alliance and standardised by the World Wide Web Consortium under the WebAuthn standard, and “passkey” is the de-facto non-technical term used to refer to WebAuthn credentials. ... However, as of 2026, most platforms still offer other methods of authentication alongside passkeys, which may reduce the benefits of using passkeys.
+--------------------------------------------------------------------------------
+Accelerating HQC for Post-Quantum TLS 1.3 on x86 IoT Gateways (https://arxiv.org/abs/2610.11107)
+citeturn38academia37 [wordlim: 200] Published: 2 weeks ago; Date: Thu Oct  8 02:27:37 2026
+
+Post-quantum TLS at an IoT gateway must protect many device connections without large increases in handshake delay, CPU cost, or network traffic.
+--------------------------------------------------------------------------------
+WebAuthn (https://en.wikipedia.org/wiki/WebAuthn)
+citeturn38search38 [wordlim: 200] Crawled: 2 days ago; Public-key authentication standard ... 26 May 2026
+Organization | FIDO2 Project (FIDO Alliance and W3C)
+

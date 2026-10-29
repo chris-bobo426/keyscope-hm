@@ -1,0 +1,1245 @@
+
+--- PAGE 1 ---
+HapCiD: Detecting API-related Compatibility Issues in
+OpenHarmony Apps
+Daihang Chen
+Beihang University
+Beijing, China
+chendaihang@buaa.edu.cn
+Yonghui Liu∗
+Australian National University
+Canberra, Australia
+Yonghui.Liu@anu.edu.au
+Mingyi Zhou
+Beihang University
+Beijing, China
+zhoumingyi@buaa.edu.cn
+Li Li
+Beihang University
+Beijing, China
+lilicoding@ieee.org
+Abstract
+OpenHarmony, an emerging open-source mobile platform, is
+rapidly gaining attention in the mobile development community.
+Its fast-evolving Software Development Kit (SDK) introduces
+numerous Application Programming Interfaces (APIs) to boost
+developer productivity but inevitably introduces compatibility
+challenges—an issue well known from platforms like Android.
+However, existing compatibility analysis tools are ineffective for
+OpenHarmony due to its newly introduced ArkTS programming
+language and the lack of a mature behavioral model to capture
+app execution semantics. To bridge this gap, we present HapCiD,
+an open-source tool for automatically detecting API-related com-
+patibility issues in OpenHarmony apps. Applied to 4,478 apps,
+HapCiD successfully detects 2,040 compatibility issues across 163
+apps with 100% accuracy. Based on these findings, we conduct a
+comprehensive study of compatibility issues, categorizing their
+types, examining existing mitigation strategies, and proposing fu-
+ture improvements. HapCiD and all experimental data are publicly
+available at: https://github.com/ElouanDai/HapCiD.
+CCS Concepts
+•Software and its engineering → Software testing and debug-
+ging;Software libraries and repositories.
+Keywords
+OpenHarmony, API compatibility, compatibility issue detection,
+API evolution
+ACM Reference Format:
+Daihang Chen, Yonghui Liu, Mingyi Zhou, and Li Li. 2026. HapCiD: De-
+tecting API-related Compatibility Issues in OpenHarmony Apps. InPro-
+ceedings of The 17th International Conference on Internetware (Internetware
+∗Corresponding author.
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+Internetware 2026, Gold Coast, Australia
+©2026 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ACM ISBN 978-x-xxxx-xxxx-x/YYYY/MM
+https://doi.org/10.1145/nnnnnnn.nnnnnnn
+2026).ACM, New York, NY, USA, 11 pages. https://doi.org/10.1145/nnnnnnn.
+nnnnnnn
+1 Introduction
+OpenHarmony is an open-source mobile operating system (OS) ini-
+tially developed by Huawei and now maintained by the OpenAtom
+Foundation [9]. As the operating system continually updates, OS
+providers periodically release new Software Development Kit (SDK)
+versions to enable developers to harness the full potential of a de-
+vice [17]. These frequent updates, however, can lead to compatibility
+issues—particularly when applications depend on APIs that aren’t
+supported across their specified system versions.
+The consequences of API compatibility issues are well docu-
+mented in Android, a mature mobile OS ecosystem. Incompatible
+API usage has caused severe functional and security issues, such
+as application crashes in widely used media streaming apps re-
+lying on deprecated audio APIs in Android API levels 21 and 23,
+or potential security vulnerabilities in Notification API implemen-
+tations allowing unauthorized notification access on Android 12
+devices [4, 5].
+OpenHarmony is a newly designed mobile OS featuring multiple
+SDK versions, facing similar risks. Like Android, it lets developers
+pick which system versions the applications work on, eliminating
+compatibility issues. Developers could set bothCompatibleand
+Compilesettings for each application, similar to Android’sminSd-
+kVersionandtargetSdkVersion. These attributes inform users and
+app marketplaces about the SDK versions supported for the appli-
+cation. Developers who set theCompileSDK version higher than
+the actual version may inadvertently createbackward compatibility
+issues. Conversely, if theCompatibleversion is lower than the mini-
+mum SDK version, it could potentially lead toforward compatibility
+issues.
+Although various solutions have been explored to automate the
+identification of compatibility issues in Android apps [7, 10, 11, 13,
+15, 18, 42, 44]. For example, Wei et al. [43] developed a tool called
+FicFinder to automatically identify compatibility issues caused by
+Android fragmentation. However, the tool requires significant hu-
+man effort to summarize rule-based API/context pairs from empiri-
+cal studies. Huang et al. [13] proposed CIDER to primarily detect
+callback API compatibility issues. It requires heavy manual efforts
+to construct a graph-based model for each SDK version to capture
+arXiv:2609.20099v1  [cs.SE]  17 Sep 2026
+
+--- PAGE 2 ---
+Internetware 2026, 18–20 July 2026, Gold Coast, Australia Chen et al.
+control flow inconsistencies resulting from API evolution. How-
+ever, existing tools for Android cannot be applied to OpenHarmony
+Apps, primarily due to the following reasons, which will be elabo-
+rated on in the background section: (1)OpenHarmony utilizes a
+novel framework supported by a layered architecture, and (2)
+OpenHarmony apps are developed using a newly designed
+language called ArkTS.Therefore, there is a strong need to in-
+vent an automatic detection method for the compatibility issue of
+OpenHarmony Apps.
+To fill this gap, in this work, we propose an approach called
+HapCiD for OpenHarmony Apps, which automates the detection
+of ArkTS API-related compatibility issues in OpenHarmony Apps.
+Specifically, we design an analysis framework to support the unique
+features of OpenHarmony Apps, the layered architecture, and the
+newly designed ArkTS programming language ArkTS. HapCiD
+automatically extracts OpenHarmony APIs from each SDK version
+and then models and characterizes the corresponding lifecycle for
+each API. This allows for the detection of potential compatibility
+issues arising from the APIs invoked in individual applications.
+Based on our proposed tool,1)we investigate the compatibility
+issue of existing OpenHarmony apps, Similar to Android, from
+4,478 OpenHarmony projects, we identify 2,040 compatibility is-
+sues, distributed across 163 different open source applications. We
+manually evaluate these detected issues and confirm that our tool
+achieves 100% accuracy in detecting the API compatibility issue
+of OpenHarmony Apps.2)We then categorize the issues into two
+groups: backward and forward compatibility issues. Our results
+show that 1,144 of them are forward compatibility issues and 896
+of them are backward compatibility issues, attributed to several
+major updates between API versions 10 and 20. Among them, we
+found that 48.5% of the OpenHarmony applications use deprecated
+APIs. It shows that developers need to pay more attention to this,
+as OpenHarmony is a rapidly evolving operating system.3)Next,
+we collected and accessed the commit records of 44 open source
+repositories that have compatibility issues to investigate existing
+solutions. From the systematic analysis of these commits, we sum-
+marize the solutions to each category of API compatibility issues
+and provide case studies for them.4)From the commit record, we
+find that developers have not paid attention to compatibility issues
+in most cases. We notice that a large number of developers just try
+to modify the compatible SDK version of an application; thus, they
+do not accurately mitigate them, and the original problems persist
+even after the modification. Based on our findings, our method
+also offers the corresponding repair suggestions that can effectively
+address problems after they have been identified [23].
+Our contributions are shown below.
+• We introduce HapCiD, the tool designed specifically to detect
+compatibility issues in OpenHarmony applications. Through
+manual evaluation on an open source app dataset, HapCiD
+identified 1,144 backward compatibility issues and 896 for-
+ward compatibility issues, demonstrating 100% detection
+accuracy.
+• We provide a detailed analysis and summary of the com-
+patibility issues detected across various OpenHarmony ap-
+plications, offering targeted solutions based on case study
+evaluations.
+• We present an overview of the evolution of OpenHarmony
+APIs to examine the prevalence of existing issues and solu-
+tions within current OpenHarmony applications. This inves-
+tigation also explores the level of awareness and concern
+about API compatibility issues among developers, providing
+future improvements to solve them.
+• We open source our proposed HapCiD and the collected
+dataset that has real-world OpenHarmony apps.
+2 Background
+2.1 OpenHarmony Versions and API Evolution
+Since its 2020 launch, OpenHarmony has undergone major evolu-
+tion. Version 1.0 provided foundational API support for lightweight
+devices. Version 2.0 integrated Linux kernel for enhanced scalabil-
+ity and stability. Version 3.0 strengthened distributed architecture
+for cross-device collaboration. Version 4.0 added over 4,000 APIs,
+improved hardware adaptation, graphics, and distributed data man-
+agement. The 5.0 series marked significant progress: Version 5.0.0
+(API 12) introduced enhanced application lifecycle management,
+ArkUI custom rendering, app cloning, and improved security and
+media support. OpenHarmony 6.0 (API 20) further improves ArkUI
+layouts, window management (including in-window text display),
+distributed data handling (via asset and asset group support), loca-
+tion services, and the input method framework.
+Prior to OpenHarmony v3.0 (API 7), application development re-
+lied primarily on Java. Since then, ArkTS has become the primary de-
+velopment language. Built on TypeScript, ArkTS integrates with the
+ArkUI framework to provide declarative UI and state management
+capabilities, enabling more concise and intuitive cross-platform
+development.As ArkTS has superseded the Java version, this
+work focuses exclusively on ArkTS-based applications.
+Table 1: The version information of major OpenHarmony
+versions.
+NO. OpenHarmony Version API Version Release Date
+1 OpenHarmony-v3.0-LTS 7 2021/09
+2 OpenHarmony-v3.1-Release 8 2022/03
+3 OpenHarmony-v3.2-Release 9 2023/04
+4 OpenHarmony-v4.0-Release 10 2023/10
+5 OpenHarmony-v4.1-Release 11 2024/03
+6 OpenHarmony-v5.0.0-Release 12 2024/09
+7 OpenHarmony-v5.0.1-Release 13 2024/11
+8 OpenHarmony-v5.0.2-Release 14 2025/01
+9 OpenHarmony-v5.0.3-Release 15 2025/03
+10 OpenHarmony-v5.1.0-Release 18 2025/05
+11 OpenHarmony-v6.0-Release 20 2025/09
+12 OpenHarmony-v6.1-Release 23 2026/03
+Table 1 shows the correspondence between each major Open-
+Harmony version, API level, and their respective release dates. We
+focus exclusively on the Release versions of these important major
+updates as representatives for API evolution analysis (therefore,
+intermediate or non-Release API levels such as 16, 17, and 19 are
+not included in the scope of this study). We choose to use the Re-
+lease version of each major release as a representative sample and
+consider the ArkTS version of OpenHarmony 3.0 as the reference
+
+--- PAGE 3 ---
+HapCiD: Detecting API-related Compatibility Issues in OpenHarmony Apps Internetware 2026, 18–20 July 2026, Gold Coast, Australia
+Figure 1: The statistics of API numbers of OpenHarmony versions
+benchmark for studying the evolution of API versions. Although
+the OpenHarmony 6.1 Release version was released in March 2026,
+the official OpenHarmony community has stated that it plans to
+release the OpenHarmony 6.1 LTS version before June 30, 2026, as
+the new primary long-term maintenance and compatibility evalua-
+tion version [30]. Therefore, this paper only considers the versions
+up to OpenHarmony 6.0 Release (API 20) and earlier.
+We focus specifically on the changes in the number of APIs from
+API version 8 to API version 18 to explore the potential API com-
+patibility issues arising from updates in OpenHarmony versions.
+Using SDKs from long-term support and release versions as API
+version representatives, we parsed and statistically evaluated API
+changes.
+Figure 1 displays the total number of APIs for each version from
+API 8 to API 20, including the number of API additions, removals,
+and deprecations. The total number of APIs has increased from
+10,013 in API version 8 to 35,898 in API version 20, reflecting a total
+growth of 2.58 times across twelve versions. Our analysis includes
+the count of APIs marked with @deprecated in each OpenHar-
+mony SDK version, which constitutes approximately 9.3% of all API
+methods by API version 20. In addition, we have developed an API
+lifecycle model that facilitates querying the addition or removal of
+each API, allowing calculation of the net change in API numbers
+between consecutive versions. We observed that a substantial num-
+ber of APIs were added during the transitions from API version 8
+to 9 and from API version 11 to 12. Concurrently, as API versions
+evolved, a significant number of APIs were removed, especially in
+API version 10, where more than 1,000 APIs were removed com-
+pared to version 9. Without appropriate measures to protect against
+behavior that accesses unavailable APIs, applications could crash,
+negatively impacting user experience. Similarly, using deprecated
+APIs can also pose compatibility issues; these APIs might harbor
+security vulnerabilities, compromising application safety, and are
+therefore not recommended for use.
+2.2 API Compatibility Issues
+In the rapidly evolving landscape of mobile software development,
+API compatibility issues pose significant challenges for developers
+and users alike. As the OpenHarmony operating system continues
+to update its Software Development Kit (SDK), each new version
+introduces changes to the API set, including adjustments, removals,
+compileSdkVersion
+Compiler
+Actual Min VersioncompatibleSdkVersion Actual Max Version
+Backward
+Compatibility Issue
+Forward
+Compatibility Issue
+Developer
+Set Compatible Version Set Compile Version
+System Version
+Figure 2: Examples of Forward and Backward Compatibility.
+and additions of APIs to support emerging functionalities. Con-
+sequently, invoking APIs on devices incompatible with the SDK
+version can lead to compatibility issues, resulting in poor user ex-
+periences such as application installation failures or crashes when
+accessing certain features.
+As shown in Figure 2, the origins of API compatibility issues
+in OpenHarmony apps can be traced to the discrepancy between
+the device’s SDK version and the version specified at compile time.
+Applications operate as expected when the device’s OpenHarmony
+SDK version is equal to or higher than the compile-time version.
+Backward Compatibility Issuesmay arise when developers set
+the compatible version lower than the actual compatible SDK ver-
+sion, causing application crashes due to the invocation of inappro-
+priate APIs on versions between the compatible and actual com-
+patible versions.Forward Compatibility Issuesoccur when an
+application runs on versions higher than its maximum supported
+version, leading to failures when related APIs are called.
+Existing research on Android API compatibility issues highlights
+that many mobile application developers struggle to accurately
+control the range of versions their applications use and often fail to
+respond to SDK version updates. This lack of proper version man-
+agement significantly affects the user experience, as applications
+become unable to run on systems equipped with the appropriate
+SDK version. To address this challenge, a tool that can detect the
+correct SDK range for OpenHarmony applications is crucial for de-
+velopers, enabling them to ensure smooth operation across various
+device configurations and SDK versions.
+
+--- PAGE 4 ---
+Internetware 2026, 18–20 July 2026, Gold Coast, Australia Chen et al.
+2.3 Compatibility Issue Example in
+OpenHarmony Apps
+Listing 1 shows code snippet from an open-source app to demo the
+usage of feature, International [29]. The Compatibility and Com-
+pilation settings for this app are set at 8 and 9, respectively. This
+suggests that the developer intends for the app to function optimally
+on an API Version 9 operating system while maintaining minimum
+compatibility with API Version 8. Unfortunately, within this app, the
+developer invokes API “ohos.i18n.i18n.getSystemCountries(language:
+string)” and “ohos.i18n.i18n.isSuggested(language: string, region?:
+string)”, as illustrated in Line 3 and 8, which were introduced into
+package “ohos.i18n.i18n” in API Version 7 and were both moved
+into package “ohos.i18n.system” in API Version 9. Thus, if the app
+runs on a mobile device with an API Version 9 environment and
+invocations of these API are triggered, it will result in the app crash-
+ing. This is a typical case of a forward compatibility issue, where
+the developer inadvertently calls an API that is not compatible with
+the specified version and fails to implement versioning protection
+when the potentially problematic API is invoked. Such instances
+are not coincidental during our preliminary exploration. Therefore,
+it is crucial to employ a detection tool specifically designed to ad-
+dress API-induced compatibility issues arising from inappropriate
+OpenHarmony SDK version settings.
+1aboutToAppear() {
+2Logger.info(TAG,`this.country = ${this.country}`)
+3this.countryIds = i18n.getSystemCountries(this.localLanguage)
+4Logger.info(TAG,`systemCountryIds = ${JSON.stringify(this.
+countryIds)}`)
+5this.countryIds.forEach(id => {
+6let country = i18n.getDisplayCountry(id, this.
+localLanguage)
+7this.countries.push({ key: country, value:''})
+8if (i18n.isSuggested(this.localLanguage, id)) {
+9this.suggestIds.push(id)
+10this.suggestCounties.push({ key: country, value:''})
+11}
+12})
+13}
+Code 1: An example of Forward Compatibility Issue.
+3 Approach
+HapCiD aims to detect API compatibility issues in OpenHarmony
+applications by comparing the SDK API model with its actual us-
+age. To achieve this, HapCiD first builds a comprehensive model
+for the previously unexplored SDK usage. It then identifies usage
+instances within the targeted apps, which is challenging due to
+OpenHarmony’s novel development language. Finally, HapCiD per-
+forms a comparative analysis to detect abnormal utilization of the
+corresponding SDK APIs.
+3.1 SDK Evolution Modeling (SEM)
+The aim of the SEM module is to create a dependable and reusable
+framework that allows for the integration and querying of method
+and field API lifecycle information by any tool or method that
+requires it.
+To accomplish the SDK Evolution Modeling, SEM is divided into
+the following two steps:
+1export default class Animator {
+2/**
+3* Create an animator object for custom animation.
+4* @param { AnimatorOptions } options - Options.
+5* @returns { AnimatorResult } animator result
+6* @syscap SystemCapability.ArkUI.ArkUI.Full
+7* @since 6
+8* @deprecated since 9
+9* @useinstead ohos.animator.create
+10*/
+11static createAnimator(options: AnimatorOptions): AnimatorResult;
+12}
+Code 2: Example API Declaration
+API Extraction. From the interface_sdk-js[ 28] repository on
+the official OpenHarmony organization on the Gitee platform, the
+source code and API declaration files for historical versions of Open-
+Harmony are obtained. The APIs declared in the Long-Term Support
+or release versions of the historical OpenHarmony SDKs represent
+all the APIs included in a particular version of an API. Building on
+the basic API parsing tool, collect_API, functionality is extended
+and enhanced to extract API information. The specific implementa-
+tion method involves using Node.js’s fs module to read .d.ts files in
+the project, which contain OpenHarmony’s API definitions; parsing
+these definition files to convert TypeScript code into an abstract
+syntax tree; traversing the AST to precisely identify which APIs
+are declared, including method names, parameter lists, parameter
+types, and return types, with special attention given to annotations
+indicating APIs that have been deprecated or modified in specific
+versions; and collecting and summarizing all API information to
+generate corresponding API reports for each OpenHarmony SDK
+version. Below, using an API declared in the @ohos.animator.d.ts
+file from the OpenHarmony-v5.0-Release version SDK that is used
+to create animations in OpenHarmony applications as an example,
+the key API information and the extraction process focused on in
+the API extraction phase are detailed.
+1//@ohos.file.photoAccessHelper.d.ts
+2declare namespace photoAccessHelper {
+3interface MediaAssetDataHandler<T> {
+4onDataPrepared(data: T, map?: Map<string, string>): void;
+5}
+6}
+7//@ohos.account.appAccount.d.ts
+8declare namespace appAccount {
+9interface AppAccountManager {
+10addAccount(name: string, extraInfo?: string): Promise<void>;
+11}
+12}
+13// Example usage of MediaAssetDataHandler
+14class PhotoHandler implements photoAccessHelper.
+MediaAssetDataHandler<string> {
+15onDataPrepared(data: string): void {
+16console.log(`Received data: ${data}`);
+17}
+18}
+19// Example usage of AppAccountManager
+20const accountManager = new appAccount.AppAccountManager();
+21accountManager.addAccount("user1");
+22accountManager.addAccount("user2", "extraInfo2");
+Code 3: Example API Syntax Features
+API Feature Summarization. Accurately capturing API life-
+cycles in ArkTS demands careful handling of advanced features
+
+--- PAGE 5 ---
+HapCiD: Detecting API-related Compatibility Issues in OpenHarmony Apps Internetware 2026, 18–20 July 2026, Gold Coast, Australia
+SDK Evolution Modeling (SEM)
+api
+OpenHarmony SDK
+Compatibility
+Issues
+1 3
+API Extraction API Feature
+Summarization
+API Evolution
+Modeling
+SDK API Usage Extraction (SUE)2
+Locating
+ArkTS Code
+  Constructing 
+Conditional Call Graph 
+Resolving
+API Usage
+Comparative
+Analysis (CA)
+API
+Lifecycle
+Model
+API
+Usage
+Cases
+Comparative
+Analysis
+OpenHarmony App
+Figure 3: Overview of HapCiD.
+like generics and varargs, which complicate signature matching
+in application code. These syntactic complexities make building a
+precise lifecycle model challenging, as detailed below.
+• Generic Type.ArkTS inherits TypeScript’s basic syntax.
+Generic functions offer flexibility by adapting to various
+data types while maintaining type safety. Generics empower
+SDK APIs to create functions that work with various data
+types. While Generic Types simplify maintenance and re-
+duce code duplication, they can complicate the modeling of
+an API’s lifecycle, making it more challenging to determine
+the API’s lifespan accurately. For instance, consider the
+method "onDataPrepared(data: T, map?: Map<string, string>):
+void" in the "MediaAssetDataHandler" interface (line 4 in
+Listing 3), which incorporates a generic type (T). When
+matching this signature with the application code, it may
+not always be straightforward to identify usage instances,
+as demonstrated by line 15 in Listing 3.
+• Varargs.Like API methods with generic types, certain API
+methods employ variable arguments (varargs), which can
+pose challenges when trying to detect their usage in Open-
+Harmony apps. For example, consider the API method "ad-
+dAccount(name: string, extraInfo?: string): Promise<void>"
+within the "AppAccountManager" interface (line 10 in List-
+ing 3), which includes a varargs parameter. The actual usage
+of this API might involve "addAccount(string, string)" or "ad-
+dAccount(string, string, string)" (lines 21 and 22 in Listing 3),
+and in any scenario, it will exhibit distinct syntactical char-
+acteristics compared to the method signature.
+To address the potential inaccuracies and omissions resulting
+from the above two challenges, SEM incorporates an analysis phase
+for those extracted API Information. During this phase, SEM en-
+riches the gathered API signatures with additional data concerning
+the possible concrete parameters and their corresponding types.
+This augmentation enhances the accuracy and completeness of the
+information collected.
+API Evolution Modeling. Following the augmentation of APIs,
+SEM processes consecutive versions of the APIs to determine if
+the current API has been encountered previously. Through this
+method, we pinpoint the versions in which each API was intro-
+duced and subsequently removed. After analyzing all versions, we
+successfully construct a model representing the lifecycle of APIs.
+Engaging with this model enables the identification of the lifecycle
+for any particular API. For example, the lifecycle for thegetSys-
+temCountries(language: string)API within theohos.i18nnamespace
+mentioned in Listing 1 starts from API Version 7 and continues
+through to API Version 8.
+As SEM’s extraction process is entirely automated, any updates
+to the API’s lifecycle extracted by SEM can be effortlessly accom-
+modated, even in the event of updates to the OpenHarmony SDK.
+It is important to emphasize that the ALM module, along with its
+associated query interface, is entirely decoupled from the imple-
+mentation of HapCiD. This independence makes it easily adaptable
+to other methods and tools. The present HapCiD implementation
+has already incorporated a query interface to facilitate such adapt-
+ability.
+3.2 SDK API Usage Extraction (SUE)
+In this module, our objective is to identify all APIs invoked by
+the scrutinized application and extract those APIs that meet the
+detection criteria as the final output. It is essential to emphasize
+that SUE requires access to the source code of the application. To
+perform API extraction, SUE is divided into the following three
+sequential steps:
+Locating ArkTS Code and Converting to TS Code.When
+building OpenHarmony applications, developers distribute module
+functionalities across multiple files using the ArkTS programming
+language. We use the ArkTS2TS tool to identify all files with the ex-
+tension ’.ets’ and convert them into semantically equivalent ts files.
+The converted results, along with other ts code from the application,
+are then loaded into a static analysis tool called ArkAnalyzer[3](a
+tool specifically introduced by the OpenHarmony team for perform-
+ing static analysis on OpenHarmony applications) and linked with
+the corresponding version of the OpenHarmony SDK.
+Constructing Condition Call Graph.We can identify APIs
+that may cause compatibility issues by checking whether the de-
+tected APIs fall within the version range specified by the application
+developer. However, this approach may lead to false positives. This
+is because some developers adopt the API protection strategy de-
+scribed below to ensure that API calls are made only when the
+device version is within the required range.
+
+--- PAGE 6 ---
+Internetware 2026, 18–20 July 2026, Gold Coast, Australia Chen et al.
+API Protection strategyThis strategy aims to ensure consistent
+functionality across various device versions and prevent errors by
+selectively invoking different APIs based on the current SDK ver-
+sion. OpenHarmony’s SDK provides the “deviceInfo.sdkAPIVersion”
+API, which allows developers to obtain the API version of the de-
+vice running the application. Based on this, developers can decide
+whether to call a specific API and whether the system needs to
+throw an exception to alert the user, thereby reducing potential
+risks caused by API compatibility issues.
+Listing 4 demonstrates a real-world implementation of API pro-
+tection in the ohos-MPChart application from the OpenHarmony-
+SIG organization. The application utilizes potentially version-
+sensitive APIs like clip() and fill() from the ArkUI.CanvasRenderer
+module which is only suitable for API version 8 or higher. Thus, the
+developer employs the getSDKInt() method to determine the API
+version of the device on which it is running. This method provides
+a basis for determining the support for the clip() method, protecting
+against compatibility issues with APIs during application execution.
+For instance, within the ensureClipPathSupported() function, if
+the API version is found to be too low, the system will throw an
+exception.
+1// (a) Example 1 of API Protection
+2public static getSDKInt(): number {
+3return deviceInfo.sdkAPIVersion;
+4}
+5
+6private isClipPathSupported(): boolean {
+7return Utils.getSDKInt() >= 8;
+8}
+9
+10private ensureClipPathSupported(): void {
+11if (Utils.getSDKInt() < 8) {
+12throw new Error("Fill-drawables not (yet) supported below API
+level 8, " +
+13"this code was run on API level " + Utils.getSDKInt() + ".");
+14}
+15}
+16
+17// (b) Example 2 of API Protection
+18public fillRect(c: canvasRenderingContext2D, ...): void {
+19switch (this.mType) {
+20...
+21case FillType.COLOR:
+22if (this.isClipPathSupported()) {
+23...
+24c.clip();
+25...
+26}
+27...
+28case FillType.DRAWABLE:
+29this.ensureClipPathSupported();
+30...
+31c.clip();
+32...
+33}
+34...
+35}
+Code 4: An Example of API Protection Mechanisms
+The fillRect() function is an integral part of the main source
+code logic of the application, which effectively utilizes the two
+previously mentioned functions for API protection. This strategy
+determines whether to invoke a specific API or whether to throw
+an exception. In response to this issue, HapCiD also employs call
+graph methods to identify if there are any API protection issues
+within the application’s source code. It has successfully detected
+the API protection behavior in this case, thereby preventing the
+generation of API compatibility issue alerts.
+Existing research indicates that there are no cases in the An-
+droid domain where potential compatibility issues with APIs are
+preemptively safeguarded by throwing exceptions via functions
+such as ensureClipPathSupported(). Therefore, this finding within
+OpenHarmony applications can be considered a unique feature
+associated with applications developed using the ArkTS language,
+demonstrating the importance of the analysis as a typical case.
+To accurately identify protected APIs, we construct conditional
+call graphs to model API invocations under version-specific con-
+ditions. This involves analyzing the application’s control flow and
+data dependencies to determine whether API calls are safeguarded
+by version checks. Through a specialized analysis in the SUE mod-
+ule, we ensure APIs are invoked in appropriate system environ-
+ments, enabling precise detection of protected APIs and reducing
+false positives.
+Resolve API Usage.SUE determines API usage by assessing
+whether all methods called and properties accessed by the appli-
+cation are OpenHarmony APIs. We focus on all APIs that have
+appeared across various versions of OpenHarmony. Upon detect-
+ing an OpenHarmony API, we generate an output that provides
+detailed information about the API, including its call pathway and
+any other relevant information.
+3.3 Comparative Analysis (CA)
+With the OpenHarmony API lifecycle model obtained from SEM
+and all API calls in the app under detection derived from SUE,
+CA’s role is to correlate these two sets of information. Each API
+discerned by SUE can be referred to in the lifecycle model. Upon
+retrieving the respective lifecycle, CA compares it with the Compile
+and Compatible set by the developers. APIs that do not comply with
+the lifecycle are reported as compatibility issues. This approach
+allows us to generate dependable compatibility issue reports and
+effectively pinpoint potential compatibility issue APIs based on
+their paths. More specifically, the produced reports enumerate all
+the APIs invoked by the app with compatibility issues, detailing
+the lifecycle of these APIs as well as every method that has called
+upon these problematic APIs.
+4 Evaluation
+To evaluate whether HapCiD can effectively detect compatibility is-
+sues in OpenHarmony applications, we aim to address the following
+four key research questions.
+• RQ1:How effective is HapCiD in detecting compatibility
+issues in OpenHarmony applications?
+• RQ2:What compatibility issues do OpenHarmony applica-
+tions have?
+• RQ3:What practice do developers adopt on those compati-
+bility issues?
+Data Collection:To our knowledge, no publicly available dataset
+exists for OpenHarmony applications. We curated a comprehensive
+dataset from Gitee and GitHub to (1) evaluate HapCiD’s detection
+
+--- PAGE 7 ---
+HapCiD: Detecting API-related Compatibility Issues in OpenHarmony Apps Internetware 2026, 18–20 July 2026, Gold Coast, Australia
+Table 2: Distribution of Applications by Source and Compile API Version.
+Source App Repos Apps 8 9 10 11 12 13 14 15 16 17 18 19 20 Error
+OpenHarmony 48 2572 135 170 94 59 124 4 186 27 9 0 36 2 1724 2
+OpenHarmony-SIG 255 581 89 32 92 15 339 13 0 0 0 0 0 0 0 1
+OpenHarmony-TPC 44 265 10 42 136 1 68 8 0 0 0 0 0 0 0 0
+Other Sources on Gitee 52 336 3 44 35 8 166 7 3 5 13 28 5 18 0 1
+Github 89 724 226 258 123 18 64 9 3 15 1 2 2 0 3 0
+Total 488 4478 463 546 480 101 761 41 192 47 23 30 43 20 1727 4
+capability and (2) analyze developer practices for addressing API
+compatibility issues.
+As of March 2026, we collected 4,478 successfully compiled
+OpenHarmony applications written in ArkTS from 488 repositories.
+These applications use APIs ranging from versions 8 to 20, covering
+the full spectrum from the earliest to the latest API versions avail-
+able for ArkTS-based development. Table 2 presents the distribution
+of applications by source and compile API version.
+The applications are sourced primarily from three key or-
+ganizations (OpenHarmony [ 8], OpenHarmony-SIG [ 37], and
+openharmony-TPC [38] ) in the OpenHarmony community, with
+additional repositories from GitHub and other repositories on Gitee
+to enhance coverage.
+4.1 RQ1 - Assessing HapCiD’s Effectiveness
+To assess the effectiveness of HapCiD in detecting API compatibility
+issues, this study conducted an analysis on a dataset of 4,478 open
+source applications collected from the Gitee and GitHub platforms.
+The analysis detected 1,144 backward compatibility issues in 89
+different applications and 896 forward compatibility issues in 87
+applications.
+To ensure the reliability and reproducibility of our findings, we
+performed a rigorous manual verification process with a clear, au-
+ditable protocol:
+Ten researchers participated in the verification, divided into two
+independent groups of five people each. One group was responsible
+for verifying all forward compatibility issues, while the other group
+verified all backward compatibility issues.
+The verification criteria for each reported issue were as follows:
+• The application must be successfully installed and launched
+on the target OpenHarmony device.
+• The specific API flagged by HapCiD as causing a compat-
+ibility issue must be triggered during normal usage of the
+corresponding functionality.
+• We checked whether the functionality worked correctly or
+resulted in a crash / abnormal behavior due to the incompat-
+ible API.
+All verifications were conducted on official OpenHarmony emu-
+lators and physical devices running the exact SDK versions reported
+in each application’sbuild-profile.json5 (compileSdkVersion
+and compatibleSdkVersion). Each issue was independently reviewed
+by at least two researchers within its group.
+After thorough verification, all 2,040 compatibility issues re-
+ported by HapCiD were confirmed to be true positives: the flagged
+APIs indeed caused either application crashes or malfunction of the
+corresponding features when the incompatible SDK version was
+used.
+Table 3: Results of open source applications detected by Hap-
+CiD.
+No. App Name Developer SettingsCompatibility Issues
+CompileCompatibleForwardBackward
+1 relationalStore 20 9 0 166
+2 Pasteboard 20 9 0 122
+4 photos 9 9 84 0
+5 preferencesEtstest 20 9 0 64
+6 InputMethodWind 20 12 0 61
+7 taskpool_lib_standard220 10 0 58
+8 filemanager 9 9 50 0
+9 openharmony-learning10 10 44 3
+10 dataObjectStagetest 20 9 0 43
+11 analogclock 11 9 2 32
+12 ipc_stagetest 20 11 0 32
+13 FaceRecognition 8 8 9 23
+14 InputMethodEngine 20 14 0 30
+15 MediaCollections 9 9 26 0
+16 Recorder 9 9 24 0
+17 CameraView 9 9 24 0
+18 MultiMedia 9 9 23 0
+Table 3 lists the applications with more than 20 detected com-
+patibility issues. The third and fourth columns display the range
+of developer version settings for the applications. In the OpenHar-
+mony application configuration files, developers need to configure
+two properties: the compile SDK version (compileSdkVersion) and
+the compatible SDK version (compatibleSdkVersion). The compile
+SDK version is the SDK version that the code depends on during
+compilation, specifying the API library version used when building
+the application. Applications compiled with this version can access
+all the new APIs introduced in that SDK version. The compatible
+SDK version is used to declare the minimum SDK version with
+which the application is compatible, typically set to ensure the ap-
+plication can run on older SDK versions without issues. The fifth
+and sixth columns show the compatibility issues identified by Hap-
+CiD. Most backward compatibility issues were found in applications
+with a compatible version of 9. Out of the 4,478 applications, 163
+had compatibility issues, accounting for 3.6% of the total number
+of applications.
+Table 4 presents the ten APIs most frequently associated with
+backward compatibility issues and the four most representative
+APIs causing forward compatibility issues, as forward compatibil-
+ity problems typically arise from the removal of entire API pack-
+ages. Most backward compatibility issues stem from new APIs
+introduced in API version 10 and later, which developers often
+fail to recognize as unavailable in earlier versions. Additionally,
+
+--- PAGE 8 ---
+Internetware 2026, 18–20 July 2026, Gold Coast, Australia Chen et al.
+Table 4: Representative APIs with Compatibility Issues.
+No. API LifecycleCount
+Backward Compatibility
+1 ohos.data.relationalStore.RdbStore.createTransaction 14+ 53
+2 ohos.pasteboard.SystemPasteboard.hasDataSync 11+ 28
+3 ohos.data.relationalStore.RdbStore.batchInsertWithConflictResolution18+ 23
+4 ohos.pasteboard.SystemPasteboard.getMimeTypes 14+ 22
+5 ohos.pasteboard.SystemPasteboard.getDataWithProgress15+ 20
+6 ohos.taskpool.SequenceRunner.execute 11+ 20
+7 ohos.data.unifiedDataChannel.UnifiedData.constructor10+ 18
+8 ohos.rpc.MessageSequence.writeArrayBuffer 12+ 18
+9 ohos.data.preferences.Preferences.getSync 10+ 16
+10 ohos.data.unifiedDataChannel.UnifiedData.addRecord 10+ 16
+Forward Compatibility
+1 ohos.multimedia.mediaLibrary.mediaLibrary.getMediaLibrary[6,11] 86
+2 ohos.multimedia.mediaLibrary.FileAsset.title [7,11] 71
+3 ohos.multimedia.mediaLibrary.FileAsset.mediaType [8,11] 62
+4 ohos.i18n.i18n.getSystemLanguages [7,8] 8
+forward compatibility issues are predominantly caused by APIs
+in the ohos.multimedia.mediaLibrary module. This module was
+introduced in API version 6, deprecated starting from API version
+9, and removed in API version 12, leading to compatibility issues
+when applications run on devices with higher API versions.
+In summary, in the open source application dataset mentioned
+above, HapCiD identified 2,040 compatibility issues, including 1,144
+forward compatibility issues and 896 backward compatibility issues,
+distributed in 163 different open source applications. We reviewed
+all compatibility issues caused by different APIs, manually located
+the problem modules in each application, reviewed the relevant
+code snippets, and ran the applications on OpenHarmony devices
+to trigger these suspect APIs to confirm whether they cause com-
+patibility issues or lead to application crashes. All compatibility
+issues have been manually verified and confirmed as accurate, with
+each issue being reproducible on OpenHarmony devices.
+Answers to RQ1:HapCiD demonstrates high effectiveness in de-
+tecting API compatibility issues within OpenHarmony open-source
+applications. By leveraging HapCiD, we can precisely identify APIs
+causing compatibility problems, ensuring accurate detection across
+the analyzed projects.
+4.2 RQ2 - Examining compatibility issue
+variations
+With proposed SDK API Evolution Modeling, compatibility issues
+fall into three categories:
+4.2.1 API Introduction.This is the most prevalent type detected. It
+occurs when developers invoke APIs without verifying their exis-
+tence in the compile SDK version or compatible SDK version, often
+leading to runtime errors, performance issues, or functional/secu-
+rity problems.
+Case Study:ohos.pasteboard.SystemPasteboard.hasDataSync.
+HapCiD identified a backward compatibility issue related to this
+API. The API was first introduced in OpenHarmony SDK API ver-
+sion 11. Applications using this API set the compatible SDK version
+to 9, causing compatibility issues when users run the application on
+OpenHarmony mobile devices with API version 9 or 10. For exam-
+ple, in the Pasteboard application, the results HapCiD show that this
+API is called within the PasteboardGetMimeTypesTest() function.
+Following this discovery, we ran the application using this API on
+an OpenHarmony mobile device with API version 10, resulting in
+an application crash. Subsequently, we extracted error information
+to confirm that the crash was due to an API compatibility issue.
+Repair Suggestions:Considering the frequent addition of APIs
+in existing applications, we advocate two remedial methods. The
+first is to adjust the application’s compatible SDK version from a
+lower version to one that matches the considered API. The second
+method involves selecting an alternative API based on the SDK
+version of the user’s device. After applying the suggested fixes, we
+re-evaluated the applications with HapCiD. Modifying the compat-
+ible SDK version eliminated the alerts for this API compatibility
+issue, and applications using API protection strategy to safeguard
+backward compatibility also showed no detectable issues.
+4.2.2 API Deprecation.This issue occurs when older versions of
+APIs are marked as deprecated in newer versions but are not im-
+mediately removed. Although these APIs remain usable, they are
+not recommended for use in the official documentation, and devel-
+opers are encouraged to use newly introduced APIs instead. In fact,
+API deprecation is very common between OpenHarmony versions,
+leading to a significant number of applications in our dataset using
+deprecated APIs. Furthermore, there are numerous instances of
+entire modules being moved or deprecated in the history of Open-
+Harmony’s API updates. Despite these APIs still being usable, we
+hope that developers will pay attention to the potential risks of
+compatibility issues they pose.
+Table 5: Usage of Deprecated APIs in Applications
+Source Apps Deprecated API AppsDeprecated APIs
+OpenHarmony 2572 1237 27247
+OpenHarmony-SIG 581 156 1694
+OpenHarmony-TPC 265 157 1152
+Other sources on Gitee 336 109 990
+Github 724 514 5904
+Total 4478 2173 36987
+Table 5 shows the statistics on the usage of deprecated APIs
+within the open source OpenHarmony application dataset. We
+found that 48.5% of the applications use deprecated APIs. Within
+the main OpenHarmony organization of 2,572 applications, each
+application uses an average of 10.59 deprecated API instances, high-
+lighting the need for developers to pay more attention.
+Case Study:ohos.multimedia.mediaLibrary.
+The media library management module was introduced in API
+version 6 and includes eight APIs to manage media assets. This
+module was deprecated starting from API version 9 and completely
+removed in API version 12. In API version 9, two of its APIs were re-
+placed by updated ones in the ohos.file.photoAccessHelper module,
+while the remaining six APIs were left without direct alternatives.
+Additionally, one of the replacement APIs was also deprecated in
+API version 11 and was subsequently replaced by a new API within
+the same module.
+Among the 896 forward compatibility issues detected in RQ1,
+832 originate from APIs in the media library management module
+which has been removed, accounting for 92.9% of the total forward
+compatibility issues. This significant proportion underscores the
+substantial compatibility risks associated with using deprecated
+
+--- PAGE 9 ---
+HapCiD: Detecting API-related Compatibility Issues in OpenHarmony Apps Internetware 2026, 18–20 July 2026, Gold Coast, Australia
+APIs, highlighting the need for timely detection and resolution to
+prevent issues as API versions evolve.
+Repair Suggestions:While these deprecated APIs may not
+cause severe compatibility issues or directly lead to application
+crashes, resolving these issues is crucial for developers since dep-
+recated APIs might be removed in future SDK updates. In such
+cases, using the previously mentioned technique of obtaining API
+versions to safeguard APIs is often more effective than directly
+modifying the compatible SDK version, as the code can still run
+correctly under previous SDK versions. After implementing protec-
+tion using the API safeguard mechanism, we are no longer able to
+identify similar compatibility issues.
+4.2.3 API Removal.This type of forward compatibility issue oc-
+curs when older version APIs are removed from newly released
+SDKs, resulting in incompatibility between applications that use
+old versions and systems that run new SDKs.
+Case Study:ohos.i18n.
+The application "International" experienced six forward compat-
+ibility issues due to the deletion of APIs of the old version in a new
+version. Since API 9, some APIs from the ohos.i18n.i18n class within
+the ohos.i18n package were migrated to the ohos.i18n.System in
+the ohos.i18n package. This migration caused the application to
+malfunction on devices installed with API 9 or higher version SDKs,
+leading to severe compatibility issues. API calls for the compatibil-
+ity problem were located in the IDE. When this application ran on a
+device emulator with API 9 installed, opening the page containing
+the problematic API calls caused the application to crash. This type
+of compatibility issue is difficult to detect and resolve during the
+development process because no corresponding alerts appear in the
+IDE linked to the old version SDK. This illustrates how potential
+compatibility problems can significantly affect the user experience
+when using the application and can also pose certain security risks.
+Repair Suggestions:In this case, compatibility issues might
+cause a "method not found" error, leading to application crashes.
+Adjusting the application’s compatible SDK version settings would
+limit the applicable SDK versions for the application, which is not
+the best solution. Instead, we recommend using an API protec-
+tion mechanism to safeguard old-version APIs and employ custom
+functions or updated APIs for newer versions. After applying the
+suggested fixes to all affected open-source applications, we re-tested
+them with HapCiD. The results showed that modifiable compatibil-
+ity issues were no longer detected, and all getAPIVersion-protected
+APIs were correctly identified as protected.
+Answers to RQ2:We provide a taxonomy of compatibility issues in
+OpenHarmony applications, categorizing them into API introduction,
+deprecation, and removal, and propose targeted fixes based on our
+findings and illustrative cases.
+4.3 RQ3 - Compatibility Issues While
+Developing
+To study how developers perceive and handle API compatibility
+issues in OpenHarmony applications, we analyzed commit histories
+of 44 repositories containing the 163 applications with issues found
+in RQ1. This allowed us to observe how these issues evolved over
+time and whether developers attempted to fix them.
+Setup:For repositories officially managed within the OpenHar-
+mony community, we analyzed all tagged versions with HapCiD
+and compared adjacent versions to track issue resolution. For repos-
+itories maintained by individual developers or third parties, which
+typically lack standardized tags, we selected 20 historical commits
+using equidistant sampling (for example, from the 413 commits in
+"harmony-utils" we sampled one every 20 commits).
+Results:We tracked each application’s evolution by comparing
+adjacent versions. Whenever compatibility patterns changed—new
+issues appeared or existing ones disappeared—we manually in-
+spected the corresponding commits to understand the developer
+actions, and summarized the representative cases in Table 6.
+Table 6: Compatibility Issues Fixed While Developing.
+Repository CommitΔIssues Changes
+app_samples 97db735 -20 compatibleSdkVersion 6 to 9
+applications_contacts818f173 -16 compatibleSdkVersion 9 to 10
+app_samples b6e58b5 -13 compatibleSdkVersion 9 to 10
+security_privacy_center9d87890 -5 compatibleSdkVersion 10 to 11
+applications_print_spooler5e330ef -4 compatibleSdkVersion 9 to 10
+applications_contactsf0065631 +1 compatibleSdkVersion 10 to 9
+4.3.1 Developer A wareness and Practices.Troubling Awareness
+on Compatibility Issues.Our results show that most repositories
+ignore compatibility issues: once present, they persist unchanged
+across versions. For example, applications_filepicker repeatedly
+uses the API 10 interface “ohos.file.fs.Filter” with compatibleSdkVer-
+sion 9, and the issue remains unresolved in 14 versions, revealing a
+fundamental lack of awareness.
+Successful Actions on Compatibility Issues.Some develop-
+ers promptly identify and fix compatibility problems by adjusting
+compileSdkVersion and compatibleSdkVersion. For instance, in one
+commit, the applications_print_spooler application in the main
+OpenHarmony organization raised compatibleSdkVersion from 9 to
+10, which resolved issues introduced by APIs in the ohos.net.mdns
+package at API 10. These cases show that at least a subset of de-
+velopers recognize API compatibility issues and can address them
+effectively.
+Failed action on Compatibility Issues.However, we also
+found that a small number of developers do not fully understand
+API compatibility issues. They attempt to modify the compatibleSd-
+kVersion, but the original compatibility issues still persist. Addition-
+ally, we observed that some developers mistakenly exacerbate API
+compatibility issues by incorrectly modifying compatibleSdkVer-
+sion. For example, in a particular update, the applications_contacts
+application in the main openharmony organization reduced the
+compatibleSdkVersion to 9, resulting in the emergence of new com-
+patibility issues from the invocation of certain APIs introduced in
+API 10. These observations show that most OpenHarmony develop-
+ers currently pay insufficient attention to API compatibility issues
+and lack effective methods to identify and fix them.
+4.3.2 Fix Recommendation.We further explored targeted repair
+strategies for specific compatibility problems. A concrete exam-
+ple involves theMultiMediaapplication, which exhibited forward
+compatibility issues due to the use of the removed API mediaLi-
+brary.getMediaLibrary in ohos.multimedia.mediaLibrary. Listing 5
+
+--- PAGE 10 ---
+Internetware 2026, 18–20 July 2026, Gold Coast, Australia Chen et al.
+illustrates this case. The API declaration, extracted from the file
+“@ohos.multimedia.mediaLibrary.d.ts”, indicates that getMediaLi-
+brary was introduced in API version 6, deprecated in API version 9,
+and removed in API version 12, resulting in a lifecycle of [6,11]. The
+“@useinstead” annotation suggests replacing it with an API from
+the “ohos.file.picker” module. By consulting the OpenHarmony
+documentation[27], we identified the replacement API as “pho-
+toAccessHelper.getPhotoAccessHelper” from module “SystemCapa-
+bility.FileManagement.PhotoAccessHelper.Core”. The problematic
+code in MultiMedia used getMediaLibrary to obtain a media li-
+brary instance. To resolve the compatibility issue, we replaced this
+call with photoAccessHelper.getPhotoAccessHelper, ensuring com-
+patibility with API versions 9 and above. After the fix, HapCiD
+detected no issues for this API, and runtime tests on API 12 devices
+confirmed stability.
+1// @ohos.multimedia.mediaLibrary.d.ts
+2declare namespace mediaLibrary {
+3/**
+4* Obtains a MediaLibrary instance.
+5* @since 6
+6* @syscap SystemCapability.Multimedia.MediaLibrary.Core
+7* @deprecated since 9
+8* @useinstead ohos.file.picker
+9*/
+10function getMediaLibrary(): MediaLibrary;
+11}
+12// Original problematic code
+13const media = mediaLibrary.getMediaLibrary(context);
+14// Fixed code
+15const media = photoAccessHelper.getPhotoAccessHelper(context);
+16or
+17if (sdkAPIVersion < 9) {
+18media = mediaLibrary.getMediaLibrary(uiAbility.context);
+19}
+Code 5: Fix Recommendation for MultiMedia Application
+Answers to RQ3:1. Most OpenHarmony developers are either un-
+aware of existing compatibility issues or do not treat them as priorities.
+2. Effective compatibility needs understanding API lifecycles and ap-
+plying semantically equivalent replacements where necessary.
+5 Related work
+Since OpenHarmony is still a relatively new system with limited
+investigation, we turn to prior research in the Android ecosystem
+and other relevant topics for valuable insights [39]. The problem
+of compatibility issues has persistently posed challenges for both
+users and developers, making it a prominent and extensively studied
+subject.
+API Evolution.As APIs continue to evolve, developers and pro-
+fessionals face numerous challenges in software maintenance [21,
+26]. In the literature, various studies on API evolutions across dif-
+ferent ecosystems have been published, with the aim of facilitating
+and advancing the process of managing API changes. Sawant et
+al. [33, 34] investigated the consequences of deprecating five Java
+APIs within a sample of 25,357 customers. Following this, they
+conducted semi-structured interviews (2015) with 17 third-party
+Java API providers and surveyed 170 Java developers to gain a com-
+prehensive understanding of the requirements and perspectives
+surrounding deprecation, encompassing both API producers and
+users [32]. Li and his colleagues [16, 19, 20] have investigated the
+ripple effects caused by API evolution within the Android frame-
+work. There are works to investigate the evolution of Python li-
+braries and reveal that there are compatibility issues [31, 40, 45].
+For example, Wang et al. [40] proposed dlocator to locate the us-
+age of deprecated APIs in client applications. The authors further
+proposed SnifferDog [41] to automatically restore the execution
+environment of Jupyter notebooks based on the analysis of API
+usages and the pre-build API bank. Although previous studies have
+focused predominantly on evaluating the implications of API evo-
+lution within diverse software ecosystems, this aspect has yet to be
+investigated within OpenHarmony applications. Our research not
+only examines compatibility concerns that stem from the evolution
+of the OpenHarmony SDK, but also introduces a tool called HapCiD
+for the detection and resolution of such issues in OpenHarmony
+applications.
+Compatibility Issues.Over the past few years, researchers
+have proposed a range of tools aimed at identifying Android com-
+patibility issues [1]. Dynamic-based approaches [6, 14] have been
+adopted to generate tests to identify app GUI inconsistencies across
+Android devices. However, these approaches often rely on random
+test generation strategies, which can be ineffective in triggering
+inconsistencies within the vast search space of the configuration
+attributes of an app. Most tools [12, 13, 18, 25, 35, 42, 44] adopted
+static-based approaches for detecting compatibility issues by their
+predefined patterns to facilitate detection. However, it is necessary
+to continue to adapt those predefined patterns associated with com-
+patibility issue detection tools to support the latest changes in the
+mobile ecosystem [2, 22]. Scalabrino et al. [ 35, 36] conclude the
+rules through an analysis of conditional API usage and assign a
+confidence level to each rule, thus facilitating the identification of
+potentially problematic APIs for Android compatibility issues. Li et
+al. [18] achieve detection of Android compatibility issues by con-
+structing a model of the API lifecycle and conducting comparisons
+of API calls to assess whether an API is responsible for compati-
+bility concerns. In communities outside of the Android ecosystem,
+there is notable research focused on compatibility concerns. Ma et
+al. [24] employ a similar approach to CiD, using HarmonyOS Java
+SDKs to examine the development of HarmonyOS Java APIs. Zhou
+et al. [46] introduced a prototype tool called Deprecation Watcher,
+which demonstrates high precision and recall in identifying the us-
+age of deprecated APIs within the Java source code. Although there
+have been numerous studies on compatibility issues, our research
+stands out as pioneering the exploration of compatibility issues
+within applications developed using the newly designed language,
+ArkTS, for the innovative OpenHarmony OS.
+6 Conclusion
+OpenHarmony’s rapidly evolving APIs create compatibility risks
+that Android-focused tools cannot adequately address. We pre-
+sented HapCiD, the first automated methodology for detecting
+API-related compatibility issues in OpenHarmony applications. Ap-
+plied to OpenHarmony community apps, HapCiD identified and
+categorized recurring issues and produced repair recommendations.
+The results demonstrate their prevalence and the need for lifecycle-
+aware remediation. The tool, replication package, and experimental
+data are available at https://github.com/ElouanDai/HapCiD.
+
+--- PAGE 11 ---
+HapCiD: Detecting API-related Compatibility Issues in OpenHarmony Apps Internetware 2026, 18–20 July 2026, Gold Coast, Australia
+References
+[1] Haipeng Cai, Ziyi Zhang, Li Li, and Xiaoqin Fu. 2019. A large-scale study of
+application incompatibilities in android. InProceedings of the 28th ACM SIGSOFT
+International Symposium on Software Testing and Analysis. 216–227.
+[2] Haonan Chen, Daihang Chen, Yonghui Liu, Xiaoyu Sun, and Li Li. 2024. Are
+your android app analyzers still relevant?. InProceedings of the IEEE/ACM 11th
+International Conference on Mobile Software Engineering and Systems. 69–73.
+[3] Haonan Chen, Daihang Chen, Yizhuo Yang, Lingyun Xu, Liang Gao, Mingyi Zhou,
+Chunming Hu, and Li Li. 2025. ArkAnalyzer: The Static Analysis Framework for
+OpenHarmony.arXiv preprint arXiv:2501.05798(2025).
+[4] Google ExoPlayer. 2021.Crash ExoPlayer.Builder in android version 5 and 6
+(android api 21 and 23). https://github.com/google/ExoPlayer/issues/9704
+[5] Google ExoPlayer. 2022.Media controls missing in notification on Android 13.
+https://github.com/google/ExoPlayer/issues/10752
+[6] Mattia Fazzini and Alessandro Orso. 2017. Automated cross-platform inconsis-
+tency detection for mobile apps. In2017 32nd IEEE/ACM International Conference
+on Automated Software Engineering (ASE). IEEE, 308–318.
+[7] Mattia Fazzini, Qi Xin, and Alessandro Orso. 2019. Automated API-usage up-
+date for Android apps. InProceedings of the 28th ACM SIGSOFT international
+symposium on software testing and analysis. 204–215.
+[8] OpenAtom Foundation. 2024. OpenHarmony: A Comprehensive Open Source
+Project for All-Scenario, Fully-Connected, and Intelligent Era. https://gitee.com/
+openharmony. Accessed on: 2024-04-10.
+[9] OpenAtom Foundation. 2025.OpenAtom Foundation. https://www.openatom.
+org/
+[10] Stefanus A Haryono, Ferdian Thung, Hong Jin Kang, Lucas Serrano, Gilles Muller,
+Julia Lawall, David Lo, and Lingxiao Jiang. 2020. Automatic Android deprecated-
+API usage update by learning from single updated example. InProceedings of the
+28th international conference on program comprehension. 401–405.
+[11] Stefanus A Haryono, Ferdian Thung, David Lo, Lingxiao Jiang, Julia Lawall,
+Hong Jin Kang, Lucas Serrano, and Gilles Muller. 2022. AndroEvolve: auto-
+mated Android API update with data flow analysis and variable denormalization.
+Empirical Software Engineering27, 3 (2022), 73.
+[12] Dongjie He, Lian Li, Lei Wang, Hengjie Zheng, Guangwei Li, and Jingling Xue.
+2018. Understanding and detecting evolution-induced compatibility issues in
+android apps. InProceedings of the 33rd ACM/IEEE International Conference on
+Automated Software Engineering. 167–177.
+[13] Huaxun Huang, Lili Wei, Yepang Liu, and Shing-Chi Cheung. 2018. Under-
+standing and detecting callback compatibility issues for android applications. In
+Proceedings of the 33rd ACM/IEEE International Conference on Automated Software
+Engineering. 532–542.
+[14] Taeyeon Ki, Chang Min Park, Karthik Dantu, Steven Y Ko, and Lukasz Ziarek.
+2019. Mimic: UI compatibility testing system for Android apps. In2019 IEEE/ACM
+41st International Conference on Software Engineering (ICSE). IEEE, 246–256.
+[15] Pingfan Kong, Li Li, Jun Gao, Kui Liu, Tegawendé F Bissyandé, and Jacques Klein.
+2018. Automated testing of android apps: A systematic literature review.IEEE
+Transactions on Reliability68, 1 (2018), 45–66.
+[16] Li Li, Tegawendé F Bissyandé, Jacques Klein, and Yves Le Traon. 2016. An
+investigation into the use of common libraries in android apps. In2016 IEEE
+23Rd international conference on software analysis, evolution, and reengineering
+(SANER), Vol. 1. IEEE, 403–414.
+[17] Li Li, Tegawendé F Bissyandé, Yves Le Traon, and Jacques Klein. 2016. Access-
+ing inaccessible android apis: An empirical study. In2016 IEEE International
+Conference on Software Maintenance and Evolution (ICSME). IEEE, 411–422.
+[18] Li Li, Tegawendé F Bissyandé, Haoyu Wang, and Jacques Klein. 2018. Cid:
+Automating the detection of api-related compatibility issues in android apps.
+InProceedings of the 27th ACM SIGSOFT International Symposium on Software
+Testing and Analysis. 153–163.
+[19] Li Li, Jun Gao, Tegawendé F Bissyandé, Lei Ma, Xin Xia, and Jacques Klein. 2018.
+Characterising deprecated android apis. InProceedings of the 15th International
+Conference on Mining Software Repositories. 254–264.
+[20] Li Li, Jun Gao, Tegawendé F Bissyandé, Lei Ma, Xin Xia, and Jacques Klein. 2020.
+Cda: Characterising deprecated android apis.Empirical Software Engineering25
+(2020), 2058–2098.
+[21] Li Li, Xiang Gao, Hailong Sun, Chunming Hu, Xiaoyu Sun, Haoyu Wang, Haipeng
+Cai, Ting Su, Xiapu Luo, Tegawendé F Bissyandé, et al. 2023. Software Engineering
+for OpenHarmony: A Research Roadmap.arXiv preprint arXiv:2311.01311(2023).
+[22] Pei Liu, Yanjie Zhao, Haipeng Cai, Mattia Fazzini, John Grundy, and Li Li. 2022.
+Automatically detecting api-induced compatibility issues in android apps: A
+comparative analysis (replicability study). InProceedings of the 31st ACM SIGSOFT
+International Symposium on Software Testing and Analysis. 617–628.
+[23] Yue Liu, Chakkrit Tantithamthavorn, Yonghui Liu, Patanamon Thongtanunam,
+and Li Li. 2022. Autoupdate: Automatically recommend code updates for android
+apps.arXiv preprint arXiv2209 (2022).
+[24] Tianzhi Ma, Yanjie Zhao, Li Li, and Liang Liu. 2023. CiD4HMOS: A Solution to
+HarmonyOS Compatibility Issues. In2023 38th IEEE/ACM International Conference
+on Automated Software Engineering (ASE). IEEE, 2006–2017.
+[25] Tarek Mahmud, Meiru Che, and Guowei Yang. 2021. Android compatibility issue
+detection using api differences. In2021 IEEE International Conference on Software
+Analysis, Evolution and Reengineering (SANER). IEEE, 480–490.
+[26] William Martin, Federica Sarro, Yue Jia, Yuanyuan Zhang, and Mark Harman.
+2016. A survey of app store analysis for software engineering.IEEE transactions
+on software engineering43, 9 (2016), 817–847.
+[27] OpenHarmony. 2023. MediaLibrary Management
+(@ohos.multimedia.medialibrary). OpenHarmony Documentation. Version
+4.1. Retrieved August 2, 2025 from https://docs.openharmony.cn/pages/v4.1/zh-
+cn/application-dev/reference/apis-media-library-kit/js-apis-medialibrary.md.
+[28] OpenHarmony. 2024. Basic API Parsing Tool. https://gitee.com/openharmony/
+interface_sdk-js/tree/master/build-tools/collect_api. Accessed on: 2024-04-10.
+[29] OpenHarmony. 2024. International Application Samples. https://github.com/
+openharmony/app_samples/tree/master/common/International. Accessed on:
+2024-04-10.
+[30] OpenHarmony Community. 2026.OpenHarmony 6.1 Release. OpenAtom
+Foundation. https://gitcode.com/openharmony/docs/blob/master/zh-cn/release-
+notes/OpenHarmony-v6.1-release.md
+[31] Haowei Quan, Jiawei Wang, Bo Li, Xiaoning Du, Kui Liu, and Li Li. 2022. Char-
+acterizing Python Method Evolution with PyMevol: An Essential Step Towards
+Enabling Reliable Software Systems. In2022 IEEE International Symposium on
+Software Reliability Engineering Workshops (ISSREW). IEEE, 81–86.
+[32] Anand Ashok Sawant, Mauricio Aniche, Arie van Deursen, and Alberto Bacchelli.
+2018. Understanding developers’ needs on deprecation as a language feature. In
+Proceedings of the 40th International Conference on Software Engineering. 561–571.
+[33] Anand Ashok Sawant, Romain Robbes, and Alberto Bacchelli. 2016. On the
+reaction to deprecation of 25,357 clients of 4+ 1 popular Java APIs. In2016 IEEE
+International Conference on Software Maintenance and Evolution (ICSME). IEEE,
+400–410.
+[34] Anand Ashok Sawant, Romain Robbes, and Alberto Bacchelli. 2018. On the
+reaction to deprecation of clients of 4+ 1 popular Java APIs and the JDK.Empirical
+Software Engineering23 (2018), 2158–2197.
+[35] Simone Scalabrino, Gabriele Bavota, Mario Linares-Vásquez, Michele Lanza, and
+Rocco Oliveto. 2019. Data-driven solutions to detect api compatibility issues in
+android: an empirical study. In2019 IEEE/ACM 16th International Conference on
+Mining Software Repositories (MSR). IEEE, 288–298.
+[36] Simone Scalabrino, Gabriele Bavota, Mario Linares-Vásquez, Valentina Piantadosi,
+Michele Lanza, and Rocco Oliveto. 2020. API compatibility issues in Android:
+Causes and effectiveness of data-driven detection techniques.Empirical Software
+Engineering25, 6 (2020), 5006–5046.
+[37] OpenHarmony SIG. 2024. OpenHarmony SIG Organization and PR Command
+Support List. https://gitee.com/openharmony-sig. Accessed on: 2024-06-07.
+[38] OpenHarmony Third Party Components SIG. 2024. OpenHarmony-TPC: Third
+Party Components Repository for OpenHarmony Applications. https://gitee.
+com/openharmony-tpc. Accessed on: 2024-04-10.
+[39] Fanyu Wang, Chetan Arora, Yonghui Liu, Kaicheng Huang, Chakkrit Tan-
+tithamthavorn, Aldeida Aleti, Dishan Sambathkumar, and David Lo. 2025. Multi-
+modal requirements data-based acceptance criteria generation using llms. In
+2025 40th IEEE/ACM International Conference on Automated Software Engineering
+(ASE). IEEE, 3334–3345.
+[40] Jiawei Wang, Li Li, Kui Liu, and Haipeng Cai. 2020. Exploring how deprecated
+Python library APIs are (not) handled. InProceedings of the 28th acm joint meeting
+on european software engineering conference and symposium on the foundations of
+software engineering. 233–244.
+[41] Jiawei Wang, Li Li, and Andreas Zeller. 2021. Restoring execution environments
+of Jupyter notebooks. In2021 IEEE/ACM 43rd International Conference on Software
+Engineering (ICSE). IEEE, 1622–1633.
+[42] Lili Wei, Yepang Liu, and Shing-Chi Cheung. 2016. Taming android fragmentation:
+Characterizing and detecting compatibility issues for android apps. InProceedings
+of the 31st IEEE/ACM International Conference on Automated Software Engineering.
+226–237.
+[43] Lili Wei, Yepang Liu, Shing-Chi Cheung, Huaxun Huang, Xuan Lu, and Xuanzhe
+Liu. 2018. Understanding and detecting fragmentation-induced compatibility
+issues for android apps.IEEE Transactions on Software Engineering46, 11 (2018),
+1176–1199.
+[44] Guowei Yang, Jeffrey Jones, Austin Moninger, and Meiru Che. 2018. How do
+android operating system updates impact apps?. InProceedings of the 5th Interna-
+tional Conference on Mobile Software Engineering and Systems. 156–160.
+[45] Zhaoxu Zhang, Hengcheng Zhu, Ming Wen, Yida Tao, Yepang Liu, and Yingfei
+Xiong. 2020. How do python framework apis evolve? an exploratory study. In2020
+ieee 27th international conference on software analysis, evolution and reengineering
+(saner). IEEE, 81–92.
+[46] Jing Zhou and Robert J Walker. 2016. API deprecation: a retrospective analysis and
+detection method for code examples on the web. InProceedings of the 2016 24th
+ACM SIGSOFT International Symposium on Foundations of Software Engineering.
+266–277.

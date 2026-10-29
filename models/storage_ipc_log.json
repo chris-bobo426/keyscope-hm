@@ -1,0 +1,101 @@
+{
+  "version": "3.0.0",
+  "module": "Storage, IPC, and Logging Sinks",
+  "storageSinks": [
+    {
+      "api": "put",
+      "SyncVariants": ["put", "putSync"],
+      "classMatch": ["Preferences", "preferences"],
+      "keyArgIndex": 0,
+      "valArgIndex": 1,
+      "targetContainer": "Storage",
+      "op": "persist",
+      "description": "@ohos.data.preferences 键值对持久化落盘"
+    },
+    {
+      "api": "write",
+      "SyncVariants": ["write", "writeSync", "writeText", "writeTextSync"],
+      "classMatch": ["fs", "fileIo"],
+      "valArgIndex": 1,
+      "targetContainer": "Storage",
+      "op": "persist",
+      "description": "@ohos.file.fs 文件系统写入"
+    },
+    {
+      "api": "insert",
+      "SyncVariants": ["insert", "insertSync", "batchInsert"],
+      "classMatch": ["RdbStore", "relationalStore"],
+      "valArgIndex": 1,
+      "targetContainer": "Storage",
+      "op": "persist",
+      "description": "@ohos.data.relationalStore 关系型数据库写入"
+    },
+    {
+      "api": "put",
+      "classMatch": ["KVStore", "SingleKVStore", "DeviceKVStore", "distributedKVStore"],
+      "keyArgIndex": 0,
+      "valArgIndex": 1,
+      "targetContainer": "Storage",
+      "op": "persist",
+      "description": "@ohos.data.distributedKVStore 分布式键值库写入"
+    },
+    {
+      "api": "setOrCreate",
+      "SyncVariants": ["setOrCreate", "set"],
+      "classMatch": ["AppStorage", "PersistentStorage"],
+      "keyArgIndex": 0,
+      "valArgIndex": 1,
+      "targetContainer": "Storage",
+      "op": "persist",
+      "description": "ArkUI PersistentStorage / AppStorage 状态存储"
+    }
+  ],
+  "ipcSinks": [
+    {
+      "api": "startAbility",
+      "SyncVariants": ["startAbility", "startServiceExtensionAbility", "connectServiceExtensionAbility", "publish"],
+      "classMatch": ["UIAbilityContext", "Context", "commonEventManager", "ipc"],
+      "valArgIndex": 0,
+      "targetContainer": "IPC",
+      "op": "send",
+      "description": "跨组件/跨进程 Want 传输或公共事件发布"
+    },
+    {
+      "api": "writeString",
+      "SyncVariants": ["writeString", "writeByteArray", "writeIntArray", "writeRawDataBuffer"],
+      "classMatch": ["MessageSequence", "MessageParcel", "rpc"],
+      "valArgIndex": 0,
+      "targetContainer": "IPC",
+      "op": "send",
+      "description": "@ohos.rpc 跨进程序列化写入"
+    },
+    {
+      "api": "ipcSendWant",
+      "classMatch": ["*"],
+      "valArgIndex": 1,
+      "targetContainer": "IPC",
+      "op": "send",
+      "description": "IPC Want 参数发送封装"
+    }
+  ],
+  "logSinks": [
+    {
+      "api": "info",
+      "SyncVariants": ["debug", "info", "warn", "error", "fatal"],
+      "classMatch": ["hilog"],
+      "valArgIndex": -1,
+      "targetContainer": "Log",
+      "op": "log",
+      "description": "@ohos.hilog 系统日志输出"
+    },
+    {
+      "api": "log",
+      "SyncVariants": ["log", "info", "warn", "error", "debug"],
+      "classMatch": ["console"],
+      "valArgIndex": -1,
+      "targetContainer": "Log",
+      "op": "log",
+      "description": "console 日志输出"
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+openPangu-2.0-Pro模型及技术报告正式开源上线 - 华为 (https://www.huawei.com/cn/news/2026/7/openpangu)
+citeturn37search0 [wordlim: 200] Published: 2 months ago; Crawled: yesterday;  [中国，深圳，2026年7月31日] 华为开源盘古5050亿参数的openPangu-2.0-Pro模型（模型权重、基础推理代码）及技术报告正式开源上线。
+
+# openPangu-2.0-Pro模型及技术报告正式开源上线
+
+关键信息：
+
+  * openPangu-2.0-Pro模型、技术报告全新上线，欢迎广大用户下载使用。
+
+* * *
+
+ [中国，深圳，2026年7月31日] 华为开源盘古5050亿参数的openPangu-2.0-Pro模型（模型权重、基础推理代码）及技术报告正式开源上线。
+
+ 开源盘古openPangu是华为开源AI模型品牌，致力于通过昇腾原生训练与推理技术，为业界用好昇腾提供最佳实践参考，助力打造Agent时代强大的智能底座，加快人工智能商业创新和生态繁荣。
+
+ openPangu-2.0 模型相关组件已陆续上线开源平台。我们诚邀全球开发者、企业伙伴及研究人员下载使用，或访问华为云MaaS模型即服务平台在线体验，欢迎广大用户反馈使用意见，助力开源生态持续进步。
+
+更多开源信息，敬请访问：Ascend Tribe开源社区、华为云MaaS模型即服务平台--------------------------------------------------------------------------------
+HarmonyOS 7 开发者 Beta 正式启动，全场景智能操作系统再升级 - 华为 (https://www.huawei.com/cn/news/2026/6/harmonyos7-hdc)
+citeturn37search1 [wordlim: 200] Published: 4 months ago; Crawled: yesterday; [中国，东莞，2026年6月12日] 在2026年华为开发者大会（HDC 2026）上，华为终端宣布HarmonyOS 7 开发者 Beta 正式启动。围绕Agent时代的智能化创新，华为带来五大核心发布：HarmonyOS 7首秀、鸿蒙智能向Agent架构全面演进、鸿蒙智能体框架升级至2.0、鸿蒙空间计算首次发布、开源盘古openPangu 2.0。
+
+# HarmonyOS 7 开发者 Beta 正式启动，全场景智能操作系统再升级
+
+[中国，东莞，2026年6月12日] 在2026年华为开发者大会（HDC 2026）上，华为终端宣布HarmonyOS 7 开发者 Beta 正式启动。围绕Agent时代的智能化创新，华为带来五大核心发布：HarmonyOS 7首秀、鸿蒙智能向Agent架构全面演进、鸿蒙智能体框架升级至2.0、鸿蒙空间计算首次发布、开源盘古openPangu 2.0。与此同时，鸿蒙底座完成三大关键升级：超丝滑^{[1]}方舟引擎首次搭载性能大模型、鸿蒙星盾安全^{[2]}更智能主动防护、鸿蒙星河互联^{[3]}架构进一步打通跨生态、跨设备互联，构筑万物智联新体验。
+
+从千行万业的数字化纵深，到个人终端的创新体验，HarmonyOS正构筑起坚实的数字底座^{[4]}。鸿蒙世界，奔腾不息。
+
+生态跨越：规模与体验迈入全新发展阶段
+
+华为常务董事、产品投资评审委员会主任、终端BG董事长余承东宣布HarmonyOS 6 终端设备数突破^{[5]}6600万，标志着鸿蒙生态在规模与创新体验上实现历史性跨越。
+--------------------------------------------------------------------------------
+以开放之云，重塑Agentic AI开发新范式 - 华为 (https://www.huawei.com/cn/news/2026/9/hc-solve-industry-challenges-ai)
+citeturn37search2 [wordlim: 200] Published: last month; Crawled: today; [中国，上海，2026年9月19日] 华为全联接大会2026期间，华为云伙伴与生态部总裁康晓宇发表“以开放之云，重塑Agentic AI开发新范式”主题演讲，提出以“创新生产力×开放生态力”双轮驱动，帮助开发者用好工具，用AI解行业难题。 ...   * 在创新引擎层面，华为云码道CodeArts代码智能体、DocZip智能文档服务、AI Shell部署发布智能体分别面向代码开发、文档处理与部署运维等高频任务，让智能体能力更顺畅地融入开发流程。
+
+提供Agentic时代创新生产力，从“资源供给者”升级为“任务完成平台”
+
+Agentic时代，开发者面临的挑战已不只是“做出智能体”，而是让智能体稳定运行、可靠完成任务，并真正进入生产环境。为此，华为云面向开发者升级能力体系，从“资源供给者”升级为“任务完成平台”， 构建创新底座、创新引擎、创新加速器三层体系。
+
+  * 在创新底座层面，华为云通过智果AgentArts智能体平台开放底层能力，帮助开发者构建运行稳定、可观测、风险可控的智能体应用，同时减少重复搭建等基础工程的投入，让开发者更稳健地上云用云。
+  * 在创新引擎层面，华为云码道CodeArts代码智能体、DocZip智能文档服务、AI Shell部署发布智能体分别面向代码开发、文档处理与部署运维等高频任务，让智能体能力更顺畅地融入开发流程。
+  * 在创新加速层面，华为云提供Hands-on最佳实践中心，围绕AI云原生实践中心、鸿蒙开发实践中心、AI办公实践中心、IaC实践中心，打通AI应用从开发、部署、运维到运营全流程，缩短创新周期，让Agent开发成果可落地。
+--------------------------------------------------------------------------------
+华为云码道（CodeArts）代码智能体公测版正式发布，开启智能体编码新实践-华为云 (https://www.huaweicloud.com/news/2026/20260226150052593.html)
+citeturn37search3 [wordlim: 200] Published: 8 months ago; Crawled: today; 〖中国，深圳，2026年2月26日〗今日，以“AI编码实干派，码力全开”为主题的华为云码道（CodeArts）代码智能体新春发布会在线上成功召开。
+
+新闻报道
+
+华为云码道（CodeArts）代码智能体公测版正式发布，开启智能体编码新实践
+
+2026-02-26
+
+〖中国，深圳，2026年2月26日〗今日，以“AI编码实干派，码力全开”为主题的华为云码道（CodeArts）代码智能体新春发布会在线上成功召开。华为云码道公测版正式发布，为开发者和企业提供具备工程化能力的智能编码解决方案。
+
+华为云码道是基于华为多年研发实践与千亿级代码库沉淀，凝练研发工程化能力与企业级开发标准，依托华为云算力底座打造的AI编码智能体。其集代码大模型、IDE、自主开发模式为一体，覆盖代码生成、研发知识问答、单元测试用例生成、专家技能Skills、Codebase代码库索引、规范驱动开发等AI Coding技术，同时接入开源模型GLM-5.0、DeepSeek-V3.2以及华为自研模型，并提供鸿蒙的专属模型，可为开发者提高研发效率，提供极致的智能化编码体验。
+--------------------------------------------------------------------------------
+华为云星耀创想者大赛收官 - 华为 (https://www.huawei.com/cn/news/2026/10/cloud-xingyao-robot-ai)
+citeturn37search4 [wordlim: 200] Published: 2 weeks ago; Crawled: today;  [中国，上海，2026年10月8日] 近日，以“用AI做点星东西”为主题的华为云星耀创想者大赛在上海举行。 ... 华为云码道CodeArts代码智能体支持AI Coding及鸿蒙应用开发，智果AgentArts支持企业级智能体应用开发，果办OfficeAce提供办公场景下的智能化能力，CloudRobo具身智能开发平台覆盖数据生产、评测、模型训练、仿真验证和模型部署等开发环节，为相关赛事提供技术及平台支撑。
+华为公司董事、华为云CEO周跃峰出席活动并为获奖选手颁奖。
+
+Image
+
+华为公司董事、华为云CEO周跃峰（左一）与获奖选手合影
+
+随着AI应用加速进入业务和产业场景，如何让开发者更高效地将创意转化为实际作品，成为AI创新实践中的重要环节。华为云星耀创想者大赛以“赛训融合”为核心，将产品技术、开发工具、实战赛题和产业场景融入赛事，为不同方向的开发者提供实践平台，鼓励参赛者围绕实际问题开展开发和应用探索。
+
+围绕不同的创新方向，华为云提供多项产品与平台能力。华为云码道CodeArts代码智能体支持AI Coding及鸿蒙应用开发，智果AgentArts支持企业级智能体应用开发，果办OfficeAce提供办公场景下的智能化能力，CloudRobo具身智能开发平台覆盖数据生产、评测、模型训练、仿真验证和模型部署等开发环节，为相关赛事提供技术及平台支撑。参赛者结合具体赛题完成作品开发，并通过路演、任务挑战及真机实操等环节展示和验证成果。
+
+在颁奖典礼上，华为云伙伴与生态部总裁康晓宇表示，华为云星耀创想者大赛不只是一场技术竞技，更是一场开放的生态共创。大家立足真实业务痛点，依托智能体平台打造出一批有价值、可落地的创新方案。
+
+Image
+
+华为云伙伴与生态部总裁康晓宇
+
+赛事之外，华为云也将围绕优秀团队和作品进一步开展产业连接。通过对接华为云开发者生态及产业伙伴，为具有应用潜力的作品提供展示、场景验证和商业合作机会，帮助优秀成果继续在真实业务环境中进行验证。
+
+未来，华为云将继续开放AI平台能力和开发者资源，完善赛训融合机制，并围绕赛事中的优秀团队和作品提供技术、场景及生态支持，推动更多创新成果进入真实业务场景，助力千行百业智能化升级。
+
+FAQs
+
+Q1：什么是华为云星耀创想者大赛？
+华为云星耀创想者大赛是面向多元 AI 创想者的综合赛事活动，设置九大赛事，依托华为云AI开发平台及相关工具能力，以赛训融合模式，汇聚企业、高校、独立开发者与青少年创客，完成从创意原型到作品产出，并且对接产业资源，推动 AI 创新成果落地真实行业场景。
+
+Q2：本次大赛有哪些核心技术平台向参赛者开放？
+大赛开放华为云码道CodeArts、智果AgentArts、果办OfficeAce、openJiuwen、CloudRobo 具身智能开发平台等产品，覆盖智能编码、企业级智能体构建、办公智能体、具身机器人开发等能力，配套算力券、技术专家支撑，降低参赛者创新开发门槛。--------------------------------------------------------------------------------
+Huawei Cloud Launches CodeArts Agent in Singapore - Huawei (https://www.huawei.com/sg/news/2026/9/huawei-cloud-launches-codearts-agent-in-singapore)
+citeturn37search5 [wordlim: 200] Published: 2 months ago; Crawled: today; [Singapore, 28 Aug 2026] – Huawei Cloud announced the commercial launch of CodeArts Agent in Singapore, delivering an engineering-grade AI-powered coding solution to local developers and enterprises.
+
+# Huawei Cloud Launches CodeArts Agent in Singapore
+
+Engineering-grade AI coding solution brings 16 specialised agents across the software development lifecycle
+
+[Singapore, 28 Aug 2026] – Huawei Cloud announced the commercial launch of CodeArts Agent in Singapore, delivering an engineering-grade AI-powered coding solution to local developers and enterprises. By combining code models, integrated development environment (IDE) capabilities, and autonomous development workflows, CodeArts Agent enables developers to tackle complex software engineering tasks with greater efficiency and helps organisations accelerate AI-powered transformation in software development.
+
+The announcement was made at Huawei Cloud AI Boost Day Singapore, where industry leaders and developers gathered to explore the AI builder paradigm, practical enterprise AI adoption, and the future of AI-driven growth. Under the theme "AI Builder Paradigm," Huawei Cloud shared its perspective on the evolution of AI-assisted software development and demonstrated CodeArts Agent's core capabilities.
+--------------------------------------------------------------------------------
+最新动态_华为云码道CodeArts代码智能体-华为云 (https://support.huaweicloud.com/wtsnew-codeartsagent/index.html)
+citeturn37search6 [wordlim: 200] Crawled: yesterday; 2026年10月16日 ... 1  | 新增CodeArts AI Features Extension插件  | 华为云码道IDE搭载华为自研Java语言支持，打造的下一代Java开发体验，提供主流框架深度支持与原生AI增强能力。
+
+2026年10月16日
+
+序号  | 功能名称  | 功能描述  | 阶段  | 相关文档
+--- | --- | --- | --- | ---
+1  | 上线Skill创新大赛活动  | 本次活动由华为与小红书联合主办，赛事详情请参见赛事介绍。  | 商用  | 
+
+2026年10月15日
+
+序号  | 功能名称  | 功能描述  | 阶段  | 相关文档
+--- | --- | --- | --- | ---
+1  | 新增GLM-5.3大模型  | 上线GLM-5.3旗舰大模型，专为长上下文长程任务打造，强化复杂工程场景能力，保障任务稳定交付。  | 商用  | 自定义智能体 > 修改本地自定义智能体使用的默认模型 添加上下文 > 上下文压缩
+2  | 帮助文档优化  | 
+
+  * 《常见问题》手册中新增“如何调节模型思考强度？”，介绍模型思考强度的调节方法。
+  * 更新《用户指南（码道IDE）》手册中“上下文 > 添加上下文”章节，优化“压缩上下文”中内容。
+ | 商用  | 如何调节模型思考强度？ | 公测  | 码道网页端
+2  | 发布26.9.101版本  | 
+
+  * 修复CPU占用率过高时提示信息不准确的问题
+  * 修复特定场景下AI对话框无法正常加载的问题
+ | 商用  | 
+3  | 码道CodeArts桌面端支持心愿墙  | 心愿墙用于展示用户对产品的功能需求与改进建议。  | 公测  | 心愿墙管理
+
+2026年09月10日
+
+序号  | 功能名称  | 功能描述  | 阶段  | 相关文档
+--- | --- | --- | --- | ---
+1  | 新增CodebaseWiki  | 支持一键生成、增量更新、代码同步的嵌入式Wiki文档，兼顾人类阅读与Agent记忆双场景。  | 商用  | CodebaseWiki
+2  | Visual Studio Code/Jetbrain插件支持macOS操作系统  | Visual Studio Code/JetBrains插件现已支持macOS操作系统，兼容ARM64（Apple Silicon）与x86_64（Intel）架构。  | 商用  | Visual Studio Code约束与限制 JetBrains约束与限制
+3  | 变更文件样式优化  | 优化变更文件弹窗，接受按钮高亮展示，提升操作辨识度。  --------------------------------------------------------------------------------
+华为云码道创作季_1024创作征集令-华为云 (https://activity.huaweicloud.com/codearts_creators.html)
+citeturn37search7 [wordlim: 200] Crawled: today; 活动时间：2026年10月24日—11月20日23:59（北京时间） ... 使用华为云码道CodeArts，分享你的创作成果与开发经验，有机会赢取瑞幸咖啡券、码道周边、华为耳机等惊喜好礼！ ... 作品点赞前 10名获 “人气助力奖”，每人获得耳机HUAWEI FreeBuds SE 3一个。
+
+活动信息
+
+活动时间：2026年10月24日—11月20日23:59（北京时间）
+
+获奖名单：本次获奖名单将于11月30日通过开发者活动页面公布。
+
+社交平台分享作品赢好礼
+
+一个有趣的小游戏、一款实用工具，或是一次真实项目中的开发实践……你用AI Coding实现过哪些想法？
+
+使用华为云码道CodeArts，分享你的创作成果与开发经验，有机会赢取瑞幸咖啡券、码道周边、华为耳机等惊喜好礼！
+
+## 四重创作好礼
+
+四档奖励可叠加，每人每档限获一次。未进入前1000名的用户，仍可参与其他奖项！
+
+## 四重创作好礼
+
+四档奖励可叠加，每人每档限获一次。未进入前1000名的用户，仍可参与其他奖项！ 
+
+### 人气助力奖｜10名
+
+### 人气助力奖｜10名
+
+作品点赞前 10名获 “人气助力奖”，每人获得耳机HUAWEI FreeBuds SE 3一个。
+
+作品点赞前 10名获 “人气助力奖”，每人获得耳机HUAWEI FreeBuds SE 3一个。
+--------------------------------------------------------------------------------
+〖安全与隐私〗鸿蒙星盾安全-智能安全的演进和生态创新-华为开发者话题 | 华为开发者联盟 (https://developer.huawei.com/consumer/cn/forum/topic/0208218910102969058)
+citeturn37search8 [wordlim: 200] Crawled: last week; # 〖安全与隐私〗鸿蒙星盾安全-智能安全的演进和生态创新 ... https://developer.huawei.com/consumer/cn/training/course/live/C401780994452488729? ... 浏览65 编辑于2026-07-08 10:36广东
+
+### HarmonyOS 7
+
+# 〖安全与隐私〗鸿蒙星盾安全-智能安全的演进和生态创新
+
+1、直播回放地址
+
+https://developer.huawei.com/consumer/cn/training/course/live/C401780994452488729?pathId=801781688446237513
+
+2、资料下载
+
+Image: attachmenttype
+
+03.智能时代HarmonyOS星盾安全架构演进现状与未来- 脱敏版.pdf
+
+Image: download
+
+Image: attachmenttype
+
+04.基于鸿蒙设备的可信生态建设和实践.pdf
+
+Image: download
+
+Image: attachmenttype
+
+07.聚力金融安全升级，共创鸿蒙系统数智新境- 脱敏版.pdf
+
+Image: download
+
+Image: attachmenttype
+
+08.基于HarmonyOS的下一代数字信任体系- 脱敏版.pdf
+
+Image: download
+
+Image: attachmenttype
+
+10.亚信安全基于鸿蒙破局端侧“性能与安全”的零和博弈- 脱敏版.pdf
+
+Image: download
+
+Image: attachmenttype
+
+11.奇安信基于鸿蒙星盾安全架构的全域协同体系构建- 脱敏版.pdf
+
+Image: download
+
+Image: attachmenttype
+
+12.HarmonyOS体系下AI Agent Skill生态安全_脱敏.pdf
+
+Image: download
+
+Image: attachmenttype
+
+09.平台TEE级分布式数字身份DID能力构建及应用场景- 脱敏版.pdf
+
+Image: download
+
+浏览65 编辑于2026-07-08 10:36广东--------------------------------------------------------------------------------
+华为云面向泰国发布Agentic基础设施，启动华为云码道代码智能体公测-华为云 (https://www.huaweicloud.com/intl/zh-cn/news/20260724141504678.html)
+citeturn37search9 [wordlim: 200] Published: 3 months ago; Crawled: last month; 7月23日，华为云泰国峰会2026于泰国曼谷成功举办，来自泰国政府、企业、行业合作伙伴及技术社区的代表齐聚一堂，共同探讨云与AI如何赋能泰国数字经济的高质量发展。会上，华为云宣布Agentic基础设施面向泰国市场开放，并同步启动华为云码道（CodeArts）代码智能体公测。
+--------------------------------------------------------------------------------
+什么是华为云码道CodeArts_产品介绍_华为云码道CodeArts代码智能体-华为云 (https://support.huaweicloud.com/productdesc-codeartsagent/codeartsagent_pd_0001.html)
+citeturn37search10 [wordlim: 200] Crawled: today; 更新时间：2026-09-29 GMT+08:00 ... 码道CodeArts插件  | 融入开发环境的代码智能体  | 在原有开发环境中使用AI编码、代码解释、智能问答，提高日常研发效率。
+--------------------------------------------------------------------------------
+盘古开源赋能伙伴：华为智算底座再升级-华为云 (https://www.huaweicloud.com/partners/support/news/latestnews/20260928.html)
+citeturn37search11 [wordlim: 200] Published: last month; Crawled: today; 2026-09-28 ... openPangu-2.0全流程训练代码开源，昇腾Agent生态持续释放。
+--------------------------------------------------------------------------------
+The Application Guide to the Integration of Industry and AI (https://www-file.huawei.com/admin/asset/v1/pro/view/c91dcb7998ce426da5e2cd8424a2d9b1.pdf)
+citeturn37search12 [wordlim: 200] Published: 6 months ago; Crawled: 6 months ago; Huawei is committed to open-sourcing and opening up OpenPangu, the Mind series of application-enablement suites and toolchains, the CANN algorithm, and the Lingqu foundational protocol.
+--------------------------------------------------------------------------------
+2026年6月23日— 6月29日  农历五月初九至五月十五 (https://static.time-weekly.com/time-weekly/72fd1f7775810676fc746251315a5c59/20260622/9cc1b2798ba347fc8a3b1a627f0546cf.pdf)
+citeturn37search13 [wordlim: 200] Published: 4 months ago; 2026年端午节前夕，AI版支付 ... openPangu 2.0。
+--------------------------------------------------------------------------------
+本期特辑 由华为云与应用现代化产业联盟联合策划CLOUD 云+应用现代化成就高质量增长的现代化企业P11P₀₈P05P01应用现代化背景下软件应用 (https://res-static.hc-cdn.cn/cloudbu-site/china/zh-cn/cloudplus/eighteeth/CLOUD_eighteenthphase.pdf)
+citeturn37search14 [wordlim: 200] Published: 7 months ago; HUAWEI华为云 CodeArts 软件开发生产线集成23款工具，让一站式软件开发高效、智能、更安全12道安全防线10倍研发提效智能研发在软件生命周期的12大攻击点搭建软
+--------------------------------------------------------------------------------
+openPangu
+
+International priority date claimed: 30 (https://www.ipo.gov.uk/tm/t-tmj/tm-journals/2026-005/jnl.pdf)
+citeturn37search15 [wordlim: 200] Published: 9 months ago; openPangu ... HUAWEI TECHNOLOGIES CO., LTD. ... radio, webcast, the internet, electronic communications networks, computer networks and wireless communication networks; entertainment services, namely, production of webcasts in the field of sports, sports statistics, sports information, current news and gaming; entertainment services, namely, production and distribution of ongoing television programs in the field of sports, sports statistics, sports information, current news and gaming; entertainment services, namely, providing temporary use of non-downloadable interactive games; entertainment services, namely, providing on-line computer games; entertainment services, namely, providing online electronic games; providing entertainment news and information specifically in the field of sports, sports statistics, sports information, current news and gaming via an Internet website portal; entertainment services, namely, providing an ongoing multimedia program featuring sports, sports statistics, sports information, current news and gaming distributed via various platforms across multiple forms of transmission media; entertainment services, namely, the provision of continuing multimedia programs featuring sports, sports statistics, sports information, current news and gaming delivered by television, satellite, radio, webcast, the internet, electronic communications networks, computer networks and wireless communication networks. ... List of cases accepted for opposition purposes as shown in Journal 2026/005 published on 30 January 2026.
+--------------------------------------------------------------------------------
+开发指南 (https://doc.hcs.huawei.com/zh-cn/codearts/doc/download/pdf/codearts-devg.pdf)
+citeturn37search16 [wordlim: 200] Published: 11 months ago; 软件开发生产线(CodeArts) ... Red line-art illustration of a hand holding a globe-like shape across the center of the page. ... Huawei logo at bottom right: red flower emblem above the word “HUAWEI”.
+--------------------------------------------------------------------------------
+PowerPoint 演示文稿 (https://e.huawei.com/marketingcloud/pep/asset/20000001/Material/f615eec13b394c1c8eea8f18586a6cd4/M2T1A669N1007235515610308687/HiFS%20Frontier%20Forum%202024%20William%20Dong%E4%B8%A8Accelerate%20Intelligence%20with%20Everything%20as%20a%20Service_pdf_.pdf)
+citeturn37search17 [wordlim: 200] Published: 2.4 years ago; CodeArts: Software development pipeline ... HUAWEI
+--------------------------------------------------------------------------------
+Huawei PanGu (https://en.wikipedia.org/wiki/Huawei_PanGu)
+citeturn37search18 [wordlim: 200] Crawled: last month; On June 30, 2025 Huawei has open-sourced its Pangu models as openPangu AI models, including a 7-billion-parameter openPangu model and a 72-billion-parameter openPangu Pro MoE (Mixture-of-Experts) model. ... "Huawei rolls out latest version of its deep learning AI model, Pangu - GCC Business News". ... Retrieved July 6, 2025.
+--------------------------------------------------------------------------------
+iOS新增自拍年龄核验 游戏工作室增收 荣耀追加屏幕订单 (https://www.reddit.com/r/u_ArticleLogical9458/comments/1xh3jcd/ios%E6%96%B0%E5%A2%9E%E8%87%AA%E6%8B%8D%E5%B9%B4%E9%BE%84%E6%A0%B8%E9%AA%8C_%E6%B8%B8%E6%88%8F%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%A2%9E%E6%94%B6_%E8%8D%A3%E8%80%80%E8%BF%BD%E5%8A%A0%E5%B1%8F%E5%B9%95%E8%AE%A2%E5%8D%95/)
+citeturn37reddit19 [wordlim: 200] Published: today; Crawled: today; [Tuesday October 27 2026] [+1 votes] ... 10月28号 今日新闻综合报道 ... 苹果在隐私说明中提到，年龄测算模型运行于设备本地以及私有云环境。采集的自拍图像不会对外传输，苹果本身也无法获取原图；核验完成后，影像会直接删除，不会留存备份，以此保护用户生物信息安全。 ... 清风曾经在大厂负责游戏运营与商业化项目，长期对接厂商和玩家，积累了行业资源，也熟悉赛道内潜藏的各类风险。
+--------------------------------------------------------------------------------
+Huawei opensouced openPangu-2.0-Pro, 505B-A18B (https://www.reddit.com/r/LocalLLaMA/comments/1vbj6uf/huawei_opensouced_openpangu20pro_505ba18b/)
+citeturn37reddit20 [wordlim: 200] Published: 2 months ago; [Friday July 31 2026] [+78 votes] ... source: https://ai.gitcode.com/ascend-tribe/openPangu-2.0-Pro ... Nothing special in terms of performance, but the interesting bit is that it was trained on Huawei Ascend, e.g. without Nvidia or AMD.
+--------------------------------------------------------------------------------
+An Empirical Study of OpenPangu Quantization on Ascend NPUs (https://arxiv.org/abs/2606.21257)
+citeturn37academia21 [wordlim: 200] Published: 4 months ago; Date: Fri Jun 19 09:33:11 2026 ... This paper conducts a controlled empirical study of OpenPangu 1B and 7B models on Huawei Ascend 910B1 NPUs.
+--------------------------------------------------------------------------------
+DScheLLM: Enabling Dynamic Scheduling through a Fine-Tuned Dual-System Large language Model (https://arxiv.org/abs/2601.09100)
+citeturn37academia22 [wordlim: 200] Published: 9 months ago; Date: Wed Jan 14 03:02:22 2026 ... The Huawei OpenPangu Embedded-7B model is subsequently fine-tuned under the hybrid reasoning paradigms using LoRA.
+--------------------------------------------------------------------------------
+Huawei Cloud moves CodeArts Agent to general availability in Asia Pacific (https://www.reddit.com/r/artificial/comments/1w10rmj/huawei_cloud_moves_codearts_agent_to_general/)
+citeturn37reddit23 [wordlim: 200] Published: 2 months ago; [Friday August 28 2026] [+1 votes] ... PR Newswire: https://www.prnewswire.com/apac/news-releases/huawei-cloud-codearts-agent-now-available-across-asia-pacific-bringing-agentic-ai-to-software-development-302862642.html
+--------------------------------------------------------------------------------
+Huawei open-sources OpenPangu-2.0-Flash - 92B total,6B active (https://www.reddit.com/r/LocalLLaMA/comments/1ujn5u3/huawei_opensources_openpangu20flash_92b_total6b/)
+citeturn37reddit24 [wordlim: 200] Published: 4 months ago; [Tuesday June 30 2026] [+359 votes] ... TODAY: \#Huawei open-sources OpenPangu-2.0-Flash ... I guess that the good news is that Huawei has chosen to go in the direction of full open source by releasing weights, datasets / training.
+--------------------------------------------------------------------------------
+Huawei Released openPangu 2.0 (Will open source on June 30) (https://www.reddit.com/r/LocalLLaMA/comments/1u3q1j9/huawei_released_openpangu_20_will_open_source_on/)
+citeturn37reddit25 [wordlim: 200] Published: 4 months ago; At the Huawei Developer Conference (HDC 2026) held on June 12, Richard Yu, Executive Director of Huawei, officially launched the brand-new, open-source Pangu large model—openPangu 2.0. ... Huawei announced plans to progressively open-source the core components of openPangu 2.0 starting June 30, fully empowering developers:
+--------------------------------------------------------------------------------
+Traceable Cross-Source RAG for Chinese Tibetan Medicine Question Answering (https://arxiv.org/abs/2602.05195)
+citeturn37academia26 [wordlim: 200] Published: 8 months ago; Date: Thu Feb  5 01:46:09 2026 ... All answers are generated by a lightweight generator, \textsc{openPangu-Embedded-7B}.
+--------------------------------------------------------------------------------
+Open Models - June 2026 (https://www.reddit.com/r/LocalLLaMA/comments/1ukorvr/open_models_june_2026/)
+citeturn37reddit27 [wordlim: 200] Published: 3 months ago; [Wednesday July 01 2026] [+5 votes] ... OpenPangu 2.0 was also released.
+--------------------------------------------------------------------------------
+Post-Training Quantization of OpenPangu Models for Efficient Deployment on Atlas A2 (https://arxiv.org/abs/2512.23367)
+citeturn37academia28 [wordlim: 200] Published: 10 months ago; Huawei's openPangu-Embedded-1B and openPangu-Embedded-7B, variants of the openPangu large language model, integrate three distinct Chain-of-Thought (CoT) reasoning paradigms, namely slow_think, auto_think, and no_think.
+--------------------------------------------------------------------------------
+model: add openPangu-2.0-Flash (92B-A6B) with MLA-latent cache, DSA/SWA, mHC, and multi-head MTP by joelfarthing · Pull Request #2065 · ikawrakow/ik_llama.cpp (https://www.reddit.com/r/LocalLLaMA/comments/1v03psf/model_add_openpangu20flash_92ba6b_with_mlalatent/)
+citeturn37reddit29 [wordlim: 200] Published: 3 months ago; **openPangu-2.0-Flash** \- 92B A6B & 512K Context Length ...   Huawei Released openPangu 2.0
+--------------------------------------------------------------------------------
+Huawei released weights of Pangu Ultra,a 718B model. (https://www.reddit.com/r/LocalLLaMA/comments/1mhctvk)
+citeturn37reddit30 [wordlim: 200] Published: 1.2 years ago; Crawled: last year; As far as licensing, they have a custom license which seems relatively permissive beyond the fact that you must include attribution like "Powered by openPangu" and "openPangu is a trademark of Huawei Technologies Co., Ltd." in your product. ...   Why did news of Deepseek R1 being released/trained on 5k-10k Nvidia GPUs crash the US stock market but OpenPangu being trained on zero Nvidia GPUs isn't being discussed at all? ... "q_lora_rank": 1536,
+

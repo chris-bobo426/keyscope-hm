@@ -1,0 +1,1282 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "KeyScope-HM",
+          "fullName": "KeyScope-HM v3.0: Cross-Runtime Key Representation & Exposure Analyzer for HarmonyOS",
+          "semanticVersion": "3.0.0",
+          "informationUri": "https://gitee.com/openharmony-sig/arkanalyzer",
+          "rules": [
+            {
+              "id": "V1",
+              "name": "KeyMaterialInImmutableString",
+              "shortDescription": {
+                "text": "V1: 可恢复密钥材料进入不可变托管字符串容器 (ArkString / D_mem)"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/316.html",
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "V2",
+              "name": "KeyMaterialInUntrustedPersistenceOrIPC",
+              "shortDescription": {
+                "text": "V2: 可恢复密钥材料未经受控包装落入持久化存储或跨进程通道 (D_pers / D_ipc)"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/312.html",
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "V3",
+              "name": "KeyMaterialInLogSink",
+              "shortDescription": {
+                "text": "V3: 可恢复密钥材料或其编码表示输出至日志通道 (D_log)"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/532.html",
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "E1_M4",
+              "name": "MissingOrEliminatedBufferZeroization",
+              "shortDescription": {
+                "text": "E1(M4): 原始密钥缓冲区缺失路径必达清零或使用易被编译器 DSE 消除的普通 memset"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/226.html",
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            },
+            {
+              "id": "E2_M3",
+              "name": "AEADStaticOrReusedNonce",
+              "shortDescription": {
+                "text": "E2(M3): 认证加密模式 (GCM/CCM/CTR) 静态或跨次复用 IV/Nonce"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/323.html",
+              "defaultConfiguration": {
+                "level": "error"
+              }
+            },
+            {
+              "id": "E3_M2",
+              "name": "HuksPreImportPlaintextExposure",
+              "shortDescription": {
+                "text": "E3(M2): 明文密钥在导入 HUKS 硬件边界前存在不可清零驻留或暴露链"
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/312.html",
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "V1",
+          "level": "warning",
+          "message": {
+            "text": "[harmonyos_cipher] 逻辑秘密 κ(CipherModel.ts:22) (LongTerm) 的可恢复表示 ρ(CipherModel.ts:22@REALWORLD) [form=Enc] 进入不可按需清零的托管字符串容器 (ArkString / D_mem)，扩大了潜在明文驻留范围 (Remediation: 避免使用 Base64Helper.encodeToString / TextDecoder / napi_create_string_utf8 将密钥材料转换为不可变 ArkTS String；改用 Uint8Array / ArrayBuffer 承载并在使用完毕后调用 .fill(0) 及 memset_s 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_cipher/entry/src/main/ets/model/CipherModel.ts"
+                },
+                "region": {
+                  "startLine": 22
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(CipherModel.ts:22)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_cipher/entry/src/main/ets/model/CipherModel.ts"
+                          },
+                          "region": {
+                            "startLine": 22
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(CipherModel.ts:22) (LongTerm)] -> Repr ρ(CipherModel.ts:22@REALWORLD) [form=Enc, container=ArkString]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "harmonyos_cipher",
+            "findingId": "KS-001",
+            "cwe": "CWE-316/CWE-226",
+            "confidenceGrade": "Medium",
+            "secretId": "κ(CipherModel.ts:22)",
+            "secretClass": "LongTerm",
+            "reprId": "ρ(CipherModel.ts:22@REALWORLD)",
+            "form": "Enc",
+            "container": "ArkString",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "V1",
+          "level": "error",
+          "message": {
+            "text": "[harmonyos_crypto_collection] 逻辑秘密 κ(AuthCodeDetail.ets:58) (Session) 的可恢复表示 ρ(AuthCodeDetail.ets:58@REALWORLD) [form=Enc] 进入不可按需清零的托管字符串容器 (ArkString / D_mem)，扩大了潜在明文驻留范围 (Remediation: 避免使用 Base64Helper.encodeToString / TextDecoder / napi_create_string_utf8 将密钥材料转换为不可变 ArkTS String；改用 Uint8Array / ArrayBuffer 承载并在使用完毕后调用 .fill(0) 及 memset_s 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/AuthCodeDetail.ets"
+                },
+                "region": {
+                  "startLine": 58
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(AuthCodeDetail.ets:58)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/AuthCodeDetail.ets"
+                          },
+                          "region": {
+                            "startLine": 58
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(AuthCodeDetail.ets:58) (Session)] -> Repr ρ(AuthCodeDetail.ets:58@REALWORLD) [form=Enc, container=ArkString]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "harmonyos_crypto_collection",
+            "findingId": "KS-001",
+            "cwe": "CWE-316/CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(AuthCodeDetail.ets:58)",
+            "secretClass": "Session",
+            "reprId": "ρ(AuthCodeDetail.ets:58@REALWORLD)",
+            "form": "Enc",
+            "container": "ArkString",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "V1",
+          "level": "warning",
+          "message": {
+            "text": "[harmonyos_crypto_collection] 逻辑秘密 κ(CryptoDetail.ets:43) (LongTerm) 的可恢复表示 ρ(CryptoDetail.ets:43@REALWORLD) [form=Enc] 进入不可按需清零的托管字符串容器 (ArkString / D_mem)，扩大了潜在明文驻留范围 (Remediation: 避免使用 Base64Helper.encodeToString / TextDecoder / napi_create_string_utf8 将密钥材料转换为不可变 ArkTS String；改用 Uint8Array / ArrayBuffer 承载并在使用完毕后调用 .fill(0) 及 memset_s 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets"
+                },
+                "region": {
+                  "startLine": 43
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(CryptoDetail.ets:43)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets"
+                          },
+                          "region": {
+                            "startLine": 43
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(CryptoDetail.ets:43) (LongTerm)] -> Repr ρ(CryptoDetail.ets:43@REALWORLD) [form=Enc, container=ArkString]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "harmonyos_crypto_collection",
+            "findingId": "KS-002",
+            "cwe": "CWE-316/CWE-226",
+            "confidenceGrade": "Medium",
+            "secretId": "κ(CryptoDetail.ets:43)",
+            "secretClass": "LongTerm",
+            "reprId": "ρ(CryptoDetail.ets:43@REALWORLD)",
+            "form": "Enc",
+            "container": "ArkString",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "E1_M4",
+          "level": "error",
+          "message": {
+            "text": "[harmonyos_crypto_collection] 缓冲区表示 ρ(CryptoDetail.ets:112@REALWORLD) 在异常或提前返回分支上遗漏了清零操作，违反 Must-Zeroization 要求 (Remediation: 确保所有退出分支（含错误返回分支）及跨语言拷贝的原件与副本均调用 memset_s / explicit_bzero / .fill(0) 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets"
+                },
+                "region": {
+                  "startLine": 112
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(CryptoDetail.ets:112)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/view/CryptoDetail.ets"
+                          },
+                          "region": {
+                            "startLine": 112
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(CryptoDetail.ets:112) (Session)] -> Repr ρ(CryptoDetail.ets:112@REALWORLD) [form=Raw, container=ArkBuffer]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "harmonyos_crypto_collection",
+            "findingId": "KS-003",
+            "cwe": "CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(CryptoDetail.ets:112)",
+            "secretClass": "Session",
+            "reprId": "ρ(CryptoDetail.ets:112@REALWORLD)",
+            "form": "Raw",
+            "container": "ArkBuffer",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "E2_M3",
+          "level": "error",
+          "message": {
+            "text": "[harmonyos_crypto_collection] 在 AES128|GCM|PKCS7 模式下检测到静态或跨次复用的 IV/Nonce (Static all-zero IV from CryptoUtil.ets:29)，直接破坏认证加密机密性与完整性 (Remediation: 每次调用 cipher.init 加密时均应使用 cryptoFramework.createRandom().generateRandomSync(12) 生成全新随机 Nonce。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/utils/CryptoUtil.ets"
+                },
+                "region": {
+                  "startLine": 65
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for ρ(CryptoUtil.ets:65@REALWORLD)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/harmonyos_crypto_collection/entry/src/main/ets/utils/CryptoUtil.ets"
+                          },
+                          "region": {
+                            "startLine": 65
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: ρ(CryptoUtil.ets:65@REALWORLD) (Session)] -> Repr Static all-zero IV from CryptoUtil.ets:29 [form=Raw, container=ArkBuffer]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "harmonyos_crypto_collection",
+            "findingId": "KS-004",
+            "cwe": "CWE-323/CWE-329",
+            "confidenceGrade": "High",
+            "secretId": "ρ(CryptoUtil.ets:65@REALWORLD)",
+            "secretClass": "Session",
+            "reprId": "Static all-zero IV from CryptoUtil.ets:29",
+            "form": "Raw",
+            "container": "ArkBuffer",
+            "exposureDomain": "D_safe"
+          }
+        },
+        {
+          "ruleId": "V3",
+          "level": "error",
+          "message": {
+            "text": "[ohos_coap] 逻辑秘密 κ(coap-client.cpp:612) (Session) 的可恢复表示 ρ(coap-client.cpp:629@NATIVE_NAPI) 被输出至日志域 (D_log) (Remediation: 立即移除将密钥材料或其可逆编码传入 hilog / console 的日志语句。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_coap/libcoap/src/main/cpp/coap-client.cpp"
+                },
+                "region": {
+                  "startLine": 629
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(coap-client.cpp:612)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_coap/libcoap/src/main/cpp/coap-client.cpp"
+                          },
+                          "region": {
+                            "startLine": 629
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(coap-client.cpp:612) (Session)] -> Repr ρ(coap-client.cpp:629@NATIVE_NAPI) [form=Enc<hex>, container=Log]"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_coap/libcoap/src/main/cpp/coap-client.cpp"
+                          },
+                          "region": {
+                            "startLine": 629
+                          }
+                        },
+                        "message": {
+                          "text": "ρ(coap-client.cpp:612@NATIVE_NAPI) --[log]--> ρ(coap-client.cpp:629@NATIVE_NAPI) (SetNativeToken -> LOGI(tokenString.c_str()))"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_coap",
+            "findingId": "KS-001",
+            "cwe": "CWE-532",
+            "confidenceGrade": "High",
+            "secretId": "κ(coap-client.cpp:612)",
+            "secretClass": "Session",
+            "reprId": "ρ(coap-client.cpp:629@NATIVE_NAPI)",
+            "form": "Enc<hex>",
+            "container": "Log",
+            "exposureDomain": "D_log"
+          }
+        },
+        {
+          "ruleId": "V1",
+          "level": "error",
+          "message": {
+            "text": "[ohos_coap] 逻辑秘密 κ(coap-client.cpp:612) (Session) 的可恢复表示 ρ(coap-client.cpp:1077@NATIVE_NAPI) [form=Enc<hex>] 进入不可按需清零的托管字符串容器 (ArkString / D_mem)，扩大了潜在明文驻留范围 (Remediation: 避免使用 Base64Helper.encodeToString / TextDecoder / napi_create_string_utf8 将密钥材料转换为不可变 ArkTS String；改用 Uint8Array / ArrayBuffer 承载并在使用完毕后调用 .fill(0) 及 memset_s 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_coap/libcoap/src/main/cpp/coap-client.cpp"
+                },
+                "region": {
+                  "startLine": 1077
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(coap-client.cpp:612)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_coap/libcoap/src/main/cpp/coap-client.cpp"
+                          },
+                          "region": {
+                            "startLine": 1077
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(coap-client.cpp:612) (Session)] -> Repr ρ(coap-client.cpp:1077@NATIVE_NAPI) [form=Enc<hex>, container=ArkString]"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_coap/libcoap/src/main/cpp/coap-client.cpp"
+                          },
+                          "region": {
+                            "startLine": 1077
+                          }
+                        },
+                        "message": {
+                          "text": "ρ(coap-client.cpp:612@NATIVE_NAPI) --[encode]--> ρ(coap-client.cpp:1077@NATIVE_NAPI) (napi_create_string_utf8(env, classBind->tokenStr, &napiToken))"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_coap",
+            "findingId": "KS-002",
+            "cwe": "CWE-316/CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(coap-client.cpp:612)",
+            "secretClass": "Session",
+            "reprId": "ρ(coap-client.cpp:1077@NATIVE_NAPI)",
+            "form": "Enc<hex>",
+            "container": "ArkString",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "E1_M4",
+          "level": "warning",
+          "message": {
+            "text": "[ohos_coap] Native 密钥缓冲区表示 ρ(coap-client.cpp:612@NATIVE_NAPI) 在跨边界拷贝后未对原件执行安全清零（仅清零副本不等于清零原件） (Remediation: 确保所有退出分支（含错误返回分支）及跨语言拷贝的原件与副本均调用 memset_s / explicit_bzero / .fill(0) 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_coap/libcoap/src/main/cpp/coap-client.cpp"
+                },
+                "region": {
+                  "startLine": 612
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(coap-client.cpp:612)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_coap/libcoap/src/main/cpp/coap-client.cpp"
+                          },
+                          "region": {
+                            "startLine": 612
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(coap-client.cpp:612) (Session)] -> Repr ρ(coap-client.cpp:612@NATIVE_NAPI) [form=Raw, container=NativeHeap]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_coap",
+            "findingId": "KS-003",
+            "cwe": "CWE-226",
+            "confidenceGrade": "Medium",
+            "secretId": "κ(coap-client.cpp:612)",
+            "secretClass": "Session",
+            "reprId": "ρ(coap-client.cpp:612@NATIVE_NAPI)",
+            "form": "Raw",
+            "container": "NativeHeap",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "V1",
+          "level": "error",
+          "message": {
+            "text": "[ohos_crypto_js] 逻辑秘密 κ(Index.ets:319) (Session) 的可恢复表示 ρ(Index.ets:319@REALWORLD) [form=Enc] 进入不可按需清零的托管字符串容器 (ArkString / D_mem)，扩大了潜在明文驻留范围 (Remediation: 避免使用 Base64Helper.encodeToString / TextDecoder / napi_create_string_utf8 将密钥材料转换为不可变 ArkTS String；改用 Uint8Array / ArrayBuffer 承载并在使用完毕后调用 .fill(0) 及 memset_s 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                },
+                "region": {
+                  "startLine": 319
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(Index.ets:319)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                          },
+                          "region": {
+                            "startLine": 319
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(Index.ets:319) (Session)] -> Repr ρ(Index.ets:319@REALWORLD) [form=Enc, container=ArkString]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_crypto_js",
+            "findingId": "KS-001",
+            "cwe": "CWE-316/CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(Index.ets:319)",
+            "secretClass": "Session",
+            "reprId": "ρ(Index.ets:319@REALWORLD)",
+            "form": "Enc",
+            "container": "ArkString",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "V3",
+          "level": "error",
+          "message": {
+            "text": "[ohos_crypto_js] 逻辑秘密 κ(Index.ets:319) (Session) 的可恢复表示 ρ(Index.ets:326@REALWORLD) 被输出至日志域 (D_log) (Remediation: 立即移除将密钥材料或其可逆编码传入 hilog / console 的日志语句。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                },
+                "region": {
+                  "startLine": 326
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(Index.ets:319)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                          },
+                          "region": {
+                            "startLine": 326
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(Index.ets:319) (Session)] -> Repr ρ(Index.ets:326@REALWORLD) [form=Enc<hex>, container=Log]"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                          },
+                          "region": {
+                            "startLine": 326
+                          }
+                        },
+                        "message": {
+                          "text": "ρ(Index.ets:319@REALWORLD) --[log]--> ρ(Index.ets:326@REALWORLD) (console.log(EvpKDF derived key))"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_crypto_js",
+            "findingId": "KS-002",
+            "cwe": "CWE-532",
+            "confidenceGrade": "High",
+            "secretId": "κ(Index.ets:319)",
+            "secretClass": "Session",
+            "reprId": "ρ(Index.ets:326@REALWORLD)",
+            "form": "Enc<hex>",
+            "container": "Log",
+            "exposureDomain": "D_log"
+          }
+        },
+        {
+          "ruleId": "V1",
+          "level": "error",
+          "message": {
+            "text": "[ohos_crypto_js] 逻辑秘密 κ(Index.ets:337) (Session) 的可恢复表示 ρ(Index.ets:337@REALWORLD) [form=Enc] 进入不可按需清零的托管字符串容器 (ArkString / D_mem)，扩大了潜在明文驻留范围 (Remediation: 避免使用 Base64Helper.encodeToString / TextDecoder / napi_create_string_utf8 将密钥材料转换为不可变 ArkTS String；改用 Uint8Array / ArrayBuffer 承载并在使用完毕后调用 .fill(0) 及 memset_s 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                },
+                "region": {
+                  "startLine": 337
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(Index.ets:337)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                          },
+                          "region": {
+                            "startLine": 337
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(Index.ets:337) (Session)] -> Repr ρ(Index.ets:337@REALWORLD) [form=Enc, container=ArkString]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_crypto_js",
+            "findingId": "KS-003",
+            "cwe": "CWE-316/CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(Index.ets:337)",
+            "secretClass": "Session",
+            "reprId": "ρ(Index.ets:337@REALWORLD)",
+            "form": "Enc",
+            "container": "ArkString",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "V3",
+          "level": "error",
+          "message": {
+            "text": "[ohos_crypto_js] 逻辑秘密 κ(Index.ets:337) (Session) 的可恢复表示 ρ(Index.ets:341@REALWORLD) 被输出至日志域 (D_log) (Remediation: 立即移除将密钥材料或其可逆编码传入 hilog / console 的日志语句。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                },
+                "region": {
+                  "startLine": 341
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(Index.ets:337)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                          },
+                          "region": {
+                            "startLine": 341
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(Index.ets:337) (Session)] -> Repr ρ(Index.ets:341@REALWORLD) [form=Enc<hex>, container=Log]"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/Index.ets"
+                          },
+                          "region": {
+                            "startLine": 341
+                          }
+                        },
+                        "message": {
+                          "text": "ρ(Index.ets:337@REALWORLD) --[log]--> ρ(Index.ets:341@REALWORLD) (console.log(PBKDF2 derived key))"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_crypto_js",
+            "findingId": "KS-004",
+            "cwe": "CWE-532",
+            "confidenceGrade": "High",
+            "secretId": "κ(Index.ets:337)",
+            "secretClass": "Session",
+            "reprId": "ρ(Index.ets:341@REALWORLD)",
+            "form": "Enc<hex>",
+            "container": "Log",
+            "exposureDomain": "D_log"
+          }
+        },
+        {
+          "ruleId": "V1",
+          "level": "error",
+          "message": {
+            "text": "[ohos_crypto_js] 逻辑秘密 κ(TestDESTime.ets:29) (Session) 的可恢复表示 ρ(TestDESTime.ets:29@REALWORLD) [form=Enc] 进入不可按需清零的托管字符串容器 (ArkString / D_mem)，扩大了潜在明文驻留范围 (Remediation: 避免使用 Base64Helper.encodeToString / TextDecoder / napi_create_string_utf8 将密钥材料转换为不可变 ArkTS String；改用 Uint8Array / ArrayBuffer 承载并在使用完毕后调用 .fill(0) 及 memset_s 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/TestDESTime.ets"
+                },
+                "region": {
+                  "startLine": 29
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(TestDESTime.ets:29)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_crypto_js/entry/src/main/ets/pages/TestDESTime.ets"
+                          },
+                          "region": {
+                            "startLine": 29
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(TestDESTime.ets:29) (Session)] -> Repr ρ(TestDESTime.ets:29@REALWORLD) [form=Enc, container=ArkString]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_crypto_js",
+            "findingId": "KS-005",
+            "cwe": "CWE-316/CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(TestDESTime.ets:29)",
+            "secretClass": "Session",
+            "reprId": "ρ(TestDESTime.ets:29@REALWORLD)",
+            "form": "Enc",
+            "container": "ArkString",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "V1",
+          "level": "warning",
+          "message": {
+            "text": "[ohos_mqtt] 逻辑秘密 κ(connect_context.cpp:236) (LongTerm) 的可恢复表示 ρ(connect_context.cpp:236@NATIVE_NAPI) [form=Enc] 进入不可按需清零的托管字符串容器 (ArkString / D_mem)，扩大了潜在明文驻留范围 (Remediation: 避免使用 Base64Helper.encodeToString / TextDecoder / napi_create_string_utf8 将密钥材料转换为不可变 ArkTS String；改用 Uint8Array / ArrayBuffer 承载并在使用完毕后调用 .fill(0) 及 memset_s 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_mqtt/ohos_Mqtt/src/main/cpp/mqtt_napi/connect_context.cpp"
+                },
+                "region": {
+                  "startLine": 236
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(connect_context.cpp:236)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_mqtt/ohos_Mqtt/src/main/cpp/mqtt_napi/connect_context.cpp"
+                          },
+                          "region": {
+                            "startLine": 236
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(connect_context.cpp:236) (LongTerm)] -> Repr ρ(connect_context.cpp:236@NATIVE_NAPI) [form=Enc, container=ArkString]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_mqtt",
+            "findingId": "KS-001",
+            "cwe": "CWE-316/CWE-226",
+            "confidenceGrade": "Medium",
+            "secretId": "κ(connect_context.cpp:236)",
+            "secretClass": "LongTerm",
+            "reprId": "ρ(connect_context.cpp:236@NATIVE_NAPI)",
+            "form": "Enc",
+            "container": "ArkString",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "E1_M4",
+          "level": "error",
+          "message": {
+            "text": "[ohos_mqtt] 缓冲区表示 ρ(connect_context.cpp:238@NATIVE_NAPI) 在异常或提前返回分支上遗漏了清零操作，违反 Must-Zeroization 要求 (Remediation: 确保所有退出分支（含错误返回分支）及跨语言拷贝的原件与副本均调用 memset_s / explicit_bzero / .fill(0) 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_mqtt/ohos_Mqtt/src/main/cpp/mqtt_napi/connect_context.cpp"
+                },
+                "region": {
+                  "startLine": 238
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(connect_context.cpp:236)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_mqtt/ohos_Mqtt/src/main/cpp/mqtt_napi/connect_context.cpp"
+                          },
+                          "region": {
+                            "startLine": 238
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(connect_context.cpp:236) (LongTerm)] -> Repr ρ(connect_context.cpp:238@NATIVE_NAPI) [form=Raw, container=NativeHeap]"
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_mqtt/ohos_Mqtt/src/main/cpp/mqtt_napi/connect_context.cpp"
+                          },
+                          "region": {
+                            "startLine": 238
+                          }
+                        },
+                        "message": {
+                          "text": "ρ(connect_context.cpp:236@NATIVE_NAPI) --[napi]--> ρ(connect_context.cpp:238@NATIVE_NAPI) (ConnectContext::ParseSslOptions -> new char[] copy of privateKeyPassword)"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_mqtt",
+            "findingId": "KS-002",
+            "cwe": "CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(connect_context.cpp:236)",
+            "secretClass": "LongTerm",
+            "reprId": "ρ(connect_context.cpp:238@NATIVE_NAPI)",
+            "form": "Raw",
+            "container": "NativeHeap",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "E1_M4",
+          "level": "error",
+          "message": {
+            "text": "[ohos_mqtt] 缓冲区表示 ρ(mqtt_impl.cpp:540@NATIVE_NAPI) 在异常或提前返回分支上遗漏了清零操作，违反 Must-Zeroization 要求 (Remediation: 确保所有退出分支（含错误返回分支）及跨语言拷贝的原件与副本均调用 memset_s / explicit_bzero / .fill(0) 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_mqtt/ohos_Mqtt/src/main/cpp/mqtt_napi/mqtt_impl.cpp"
+                },
+                "region": {
+                  "startLine": 540
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(mqtt_impl.cpp:540)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/ohos_mqtt/ohos_Mqtt/src/main/cpp/mqtt_napi/mqtt_impl.cpp"
+                          },
+                          "region": {
+                            "startLine": 540
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(mqtt_impl.cpp:540) (Session)] -> Repr ρ(mqtt_impl.cpp:540@NATIVE_NAPI) [form=Raw, container=NativeHeap]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "ohos_mqtt",
+            "findingId": "KS-003",
+            "cwe": "CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(mqtt_impl.cpp:540)",
+            "secretClass": "Session",
+            "reprId": "ρ(mqtt_impl.cpp:540@NATIVE_NAPI)",
+            "form": "Raw",
+            "container": "NativeHeap",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "E1_M4",
+          "level": "error",
+          "message": {
+            "text": "[openharmony_security_crypto_framework] 缓冲区表示 ρ(napi_key_agreement.cpp:198@NATIVE_NAPI) 在异常或提前返回分支上遗漏了清零操作，违反 Must-Zeroization 要求 (Remediation: 确保所有退出分支（含错误返回分支）及跨语言拷贝的原件与副本均调用 memset_s / explicit_bzero / .fill(0) 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/openharmony_security_crypto_framework/frameworks/js/napi/crypto/src/napi_key_agreement.cpp"
+                },
+                "region": {
+                  "startLine": 198
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(napi_key_agreement.cpp:198)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/openharmony_security_crypto_framework/frameworks/js/napi/crypto/src/napi_key_agreement.cpp"
+                          },
+                          "region": {
+                            "startLine": 198
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(napi_key_agreement.cpp:198) (Session)] -> Repr ρ(napi_key_agreement.cpp:198@NATIVE_NAPI) [form=Raw, container=NativeHeap]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "openharmony_security_crypto_framework",
+            "findingId": "KS-001",
+            "cwe": "CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(napi_key_agreement.cpp:198)",
+            "secretClass": "Session",
+            "reprId": "ρ(napi_key_agreement.cpp:198@NATIVE_NAPI)",
+            "form": "Raw",
+            "container": "NativeHeap",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "E1_M4",
+          "level": "error",
+          "message": {
+            "text": "[openharmony_security_huks] 缓冲区表示 ρ(huks_napi_common.cpp:168@NATIVE_NAPI) 在异常或提前返回分支上遗漏了清零操作，违反 Must-Zeroization 要求 (Remediation: 确保所有退出分支（含错误返回分支）及跨语言拷贝的原件与副本均调用 memset_s / explicit_bzero / .fill(0) 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/openharmony_security_huks/interfaces/kits/napi/src/v8/huks_napi_common.cpp"
+                },
+                "region": {
+                  "startLine": 168
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(huks_napi_common.cpp:168)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/openharmony_security_huks/interfaces/kits/napi/src/v8/huks_napi_common.cpp"
+                          },
+                          "region": {
+                            "startLine": 168
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(huks_napi_common.cpp:168) (Session)] -> Repr ρ(huks_napi_common.cpp:168@NATIVE_NAPI) [form=Raw, container=NativeHeap]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "openharmony_security_huks",
+            "findingId": "KS-001",
+            "cwe": "CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(huks_napi_common.cpp:168)",
+            "secretClass": "Session",
+            "reprId": "ρ(huks_napi_common.cpp:168@NATIVE_NAPI)",
+            "form": "Raw",
+            "container": "NativeHeap",
+            "exposureDomain": "D_mem"
+          }
+        },
+        {
+          "ruleId": "E1_M4",
+          "level": "error",
+          "message": {
+            "text": "[openharmony_security_huks] 缓冲区表示 ρ(huks_napi_common_item.cpp:235@NATIVE_NAPI) 在异常或提前返回分支上遗漏了清零操作，违反 Must-Zeroization 要求 (Remediation: 确保所有退出分支（含错误返回分支）及跨语言拷贝的原件与副本均调用 memset_s / explicit_bzero / .fill(0) 清零。)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/openharmony_security_huks/interfaces/kits/napi/src/v9/huks_napi_common_item.cpp"
+                },
+                "region": {
+                  "startLine": 235
+                }
+              }
+            }
+          ],
+          "codeFlows": [
+            {
+              "message": {
+                "text": "Representation Provenance Chain for κ(huks_napi_common_item.cpp:235)"
+              },
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "D:/第五届“华秦杯”网络安全创新大赛创意作品赛/realworld/repos/openharmony_security_huks/interfaces/kits/napi/src/v9/huks_napi_common_item.cpp"
+                          },
+                          "region": {
+                            "startLine": 235
+                          }
+                        },
+                        "message": {
+                          "text": "[Secret: κ(huks_napi_common_item.cpp:235) (Session)] -> Repr ρ(huks_napi_common_item.cpp:235@NATIVE_NAPI) [form=Raw, container=NativeHeap]"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "project": "openharmony_security_huks",
+            "findingId": "KS-002",
+            "cwe": "CWE-226",
+            "confidenceGrade": "High",
+            "secretId": "κ(huks_napi_common_item.cpp:235)",
+            "secretClass": "Session",
+            "reprId": "ρ(huks_napi_common_item.cpp:235@NATIVE_NAPI)",
+            "form": "Raw",
+            "container": "NativeHeap",
+            "exposureDomain": "D_mem"
+          }
+        }
+      ]
+    }
+  ]
+}

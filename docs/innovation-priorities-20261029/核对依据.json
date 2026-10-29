@@ -1,0 +1,230 @@
+{
+  "assessment_date": "2026-10-29",
+  "timezone": "Asia/Shanghai",
+  "captured_at": "2026-10-29T02:50:39.714893+08:00",
+  "scope": "read-only code and existing results inspection; proposed experiments only",
+  "code_modified_by_this_task": false,
+  "new_experiments_executed": false,
+  "previous_reports_rewritten": false,
+  "experiment_rows": 12,
+  "notes": [
+    "Existing benchmark and realworld numbers are reported files, not independently rerun results.",
+    "Novelty is a candidate claim, not an exhaustive priority search.",
+    "News facts are vendor/source statements; research implications are our inferences.",
+    "HDC attachments require login and are not treated as read PDF contents."
+  ],
+  "local_evidence": [
+    {
+      "path": "baselines/b0_regex_entropy.ts",
+      "bytes": 3955,
+      "sha256": "fdc768b90c7345a1775122af7b6fadd16c4d1ef72a869d8710e53094c101bc46"
+    },
+    {
+      "path": "baselines/b1_binary_taint.ts",
+      "bytes": 2477,
+      "sha256": "d5fe01aec397c3e9293bf8aa078e33ac29214ee7a02d75572d00d3cf712e910b"
+    },
+    {
+      "path": "baselines/b2_jscamd_rules.ts",
+      "bytes": 1473,
+      "sha256": "1185dcae3a17be59c5d198872e589ab676344c5b63ac48307762c7b91d8f204d"
+    },
+    {
+      "path": "bench/benchmark_manifest.json",
+      "bytes": 37514,
+      "sha256": "89e230025fc249ba6e51f2edada9ef544686c199446553d0fe27e0aceeecad05"
+    },
+    {
+      "path": "bench/generate_benchmark.ts",
+      "bytes": 31540,
+      "sha256": "16e18f1534a8c8aad3e91d54aa1d603a3c5bebc381e956966dca332df3c111fd"
+    },
+    {
+      "path": "core-ts/analysis/realworld_inspector.ts",
+      "bytes": 20836,
+      "sha256": "594e3097920c72363781b8e2e72d33f19a85e84f5188efbdef1d03558a17f642"
+    },
+    {
+      "path": "core-ts/analysis/repflow.ts",
+      "bytes": 40511,
+      "sha256": "d931d1b9aea0eb283b285ff4d85cdebef09b3671cd0a693b1e09b24c3229446d"
+    },
+    {
+      "path": "core-ts/bridge/napi_bridge.ts",
+      "bytes": 15738,
+      "sha256": "0286f92d3e98827c01048a38d42e4ebc23b058f9153e5d965d69c1bd6b9d1d08"
+    },
+    {
+      "path": "core-ts/cli.ts",
+      "bytes": 3168,
+      "sha256": "912b11a40d9089b444091ca5d2d8ebecbe084c44ad6837ebf3f6dd5998b48659"
+    },
+    {
+      "path": "core-ts/grade.ts",
+      "bytes": 10275,
+      "sha256": "d499f64c278bf3894e471c4ff10416d0402b43d7adf2b59c910ea9491dc614ac"
+    },
+    {
+      "path": "core-ts/rec.ts",
+      "bytes": 5842,
+      "sha256": "4cc8e7a1cab0809709e668b625b1efcc4b2fd8b6696be141111840687b539d33"
+    },
+    {
+      "path": "core-ts/repr.ts",
+      "bytes": 10154,
+      "sha256": "bc888dd6d0f6e71bcba33451dd8b6668163b4b12117a80cb3dd7683e8303b08d"
+    },
+    {
+      "path": "core-ts/rules/transfer.ts",
+      "bytes": 8987,
+      "sha256": "ce17118c74c81f26e8fab858c37cd39213a6c439bd2bffaa785c85390eb85ce1"
+    },
+    {
+      "path": "docs/research-20261029/examples/cases.json",
+      "bytes": 26709,
+      "sha256": "db8eeb51a1f18052b064cd362dc686b49004adc94e9369c40507986933095c1b"
+    },
+    {
+      "path": "docs/research-20261029/news/download-results.json",
+      "bytes": 207246,
+      "sha256": "d5ab5972403f2edd156ffe298aee797f339e8af8364b9016b9aef0c6d241bde4"
+    },
+    {
+      "path": "dynamic/disasm_experiment/disasm_results.json",
+      "bytes": 14885,
+      "sha256": "deadd1981e22d4b9db39c4bb228b018beb60b59bb46b53b8c27c18cf79f10da1"
+    },
+    {
+      "path": "dynamic/disasm_experiment/run_disasm_experiment.ts",
+      "bytes": 5876,
+      "sha256": "2a6c545f43d0a94d5b56a17a34081793202ad2f1fc9ccdbccae9f7ae385052ea"
+    },
+    {
+      "path": "dynamic/disasm_experiment/zeroize_compare.c",
+      "bytes": 2271,
+      "sha256": "77a962fff2e2bc98cf97b1ff7a1915b985aa715a179201a84e62306cae6f05c5"
+    },
+    {
+      "path": "dynamic/heap_experiment/heap_results.json",
+      "bytes": 4320,
+      "sha256": "1082405b192031e161a9339d14d527fccf91dd60f9fcd8bf41d0aaa665ccbcd5"
+    },
+    {
+      "path": "dynamic/heap_experiment/run_heap_experiment.ts",
+      "bytes": 10078,
+      "sha256": "c79cba8b4af961b9072b6d94fb2d5b7f962605cf9867716b0563a1f3b3445c16"
+    },
+    {
+      "path": "dynamic/run_dynamic_experiments.ts",
+      "bytes": 601,
+      "sha256": "829764cd548b68f3816c97cf8065c17b2e8dda84ed35985d6ecbf0321f997ea6"
+    },
+    {
+      "path": "eval/benchmark_results.json",
+      "bytes": 4205,
+      "sha256": "421450eb927ccd299c6192da2c1c739b54341b15d353f4dbdf60a367e42f03e9"
+    },
+    {
+      "path": "eval/run_all_tests.ts",
+      "bytes": 7800,
+      "sha256": "c43409d109868c7fa64e694de3373250edde58f21e2dc3f58c8cb8b53ed253fd"
+    },
+    {
+      "path": "eval/run_benchmark_eval.ts",
+      "bytes": 7925,
+      "sha256": "0922085fc836399c195e0ba200da789399023a9409d38fa346ef60c26312c418"
+    },
+    {
+      "path": "models/arkts_crypto.json",
+      "bytes": 5502,
+      "sha256": "71937056ad5fd7d8927703516abea55e530b41b43e644244806d07c9e466e069"
+    },
+    {
+      "path": "models/huks.json",
+      "bytes": 1976,
+      "sha256": "67979e960d163d5c1026206c5867bcf93a031823ca554912334ba7ace29ae74a"
+    },
+    {
+      "path": "models/jscamd_constraints.json",
+      "bytes": 3022,
+      "sha256": "d5d94dbd675015b952b8220748594aabfb5a7cfc57419618e6c453f70ec6819c"
+    },
+    {
+      "path": "models/napi.json",
+      "bytes": 4717,
+      "sha256": "81e41f1c2d7659436b9cfe5231054f0e7bbe1672569dad0c22473124627b8b1f"
+    },
+    {
+      "path": "models/storage_ipc_log.json",
+      "bytes": 3107,
+      "sha256": "cac1674b8de9d25d0e6ded83d453cd86d656dabf661089b95dd7b7a8a1f74227"
+    },
+    {
+      "path": "native-py/napi_summarizer.py",
+      "bytes": 13030,
+      "sha256": "dfeb2a01a1d98ef82c13f752ada50d2d2e4e168547fbbcb0241e75a59c3805b3"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 21832,
+      "sha256": "f23a7622ba66ab44bf2359ffe7279bba62cb7e8b2762da6d484cc47fbd4988a1"
+    },
+    {
+      "path": "package.json",
+      "bytes": 914,
+      "sha256": "73508debab7649366f98881227f9fe966af22eacf179e4231914d3cb7a6985cb"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4759,
+      "sha256": "89b7e07eaf6ac2c34ca79eaaec227c1d1615d556dace28006c549484e95aaabb"
+    },
+    {
+      "path": "realworld/realworld_summary.json",
+      "bytes": 33287,
+      "sha256": "93018c6fa6a91ec07fea2304f9f6be02d12b54036fbf16fc31e5634c96aeebb8"
+    },
+    {
+      "path": "realworld/run_realworld_scan.ts",
+      "bytes": 21397,
+      "sha256": "d1a381329b721773a5f492b3d91ee9f9caba3044cd8cca52fac15b8881c396ff"
+    }
+  ],
+  "additional_primary_sources": [
+    {
+      "id": "HarmoBridge",
+      "url": "https://conf.researchr.org/details/ase-2025/ase-2025-industry-showcase/6/HarmoBridge-Bridging-ArkTS-and-C-C-for-Cross-Language-Static-Analysis-on-HarmonyOS",
+      "role": "Existing cross-language analysis; novelty boundary"
+    },
+    {
+      "id": "JScamd",
+      "url": "https://www.usenix.org/conference/usenixsecurity26/presentation/jia-shijie",
+      "role": "Existing cryptographic misuse analysis and LLM rule generation"
+    },
+    {
+      "id": "CryptoGuard",
+      "url": "https://arxiv.org/abs/1806.06881",
+      "role": "Prior precision-oriented cryptographic analysis; author PDF consulted"
+    },
+    {
+      "id": "PKCS11-course",
+      "url": "https://secgroup.dais.unive.it/wp-content/uploads/2010/09/pkcs11-1.pdf",
+      "role": "Primary university material on handle/API security; not evidence of HUKS vulnerabilities"
+    },
+    {
+      "id": "LLM-crypto-2026-revision",
+      "url": "https://arxiv.org/abs/2407.16576",
+      "role": "Existing LLM misuse detection and validation"
+    },
+    {
+      "id": "LLM-crypto-tools",
+      "url": "https://arxiv.org/abs/2411.09772",
+      "role": "Existing static-vs-LLM comparison"
+    },
+    {
+      "id": "JSS-LLM-crypto",
+      "url": "https://doi.org/10.1016/j.jss.2025.112650",
+      "role": "Existing real-world LLM detection and repair; avoid claiming generic novelty"
+    }
+  ]
+}

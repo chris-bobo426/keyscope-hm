@@ -1,0 +1,1485 @@
+
+--- PAGE 1 ---
+Source-Free Detection and Impact Analysis of Compiler
+Optimization Problems in Mobile Applications
+Han Hu
+Beihang University
+China
+agmaiofhuhan@gmail.com
+Xiaoheng Xie
+Huawei Hong Kong Research Center
+Hong Kong
+xiexiemyself@gmail.com
+Bo Sun
+Huawei
+Wuhan, China
+361606685@qq.com
+Jian Gu
+Monash University
+Melbourne, Australia
+jian.gu@monash.edu
+Gang Fan
+Huawei Hong Kong Research Center
+Hong Kong
+fan.gang.cn@gmail.com
+Li Li∗
+Beihang University
+China
+lilicoding@ieee.org
+Abstract
+Mobile apps frequently suffer from frame drops, overheating, and
+excessive power consumption. While developers optimize algo-
+rithms and debug code, a critical bottleneck often goes unnoticed:
+native libraries compiled with low optimization levels (O0/O1 in-
+stead of O2/O3). Because these libraries execute without functional
+errors, the resulting performance degradation remains hidden in
+production apps.
+We presentOptDetect, a source-free framework that detects
+compiler optimization problems directly from app binaries.OptDe-
+tecthandles mixed optimization levels through binary disassembly,
+chunk-level classification, and weighted score aggregation, achiev-
+ing 93.0% accuracy on controlled datasets and 81.9% on real-world
+datasets. ApplyingOptDetectto 21,972 native libraries from 830
+top-ranked Google Play apps, we find that 30.5% of libraries use
+low optimization levels, affecting 91.7% of apps.
+Through case studies on 12 production apps, fixing detected
+issues reduces CPU instructions by 10-63% (median: 20.5%) for com-
+mercial apps and 15-58% (median: 32%) for open-source apps. Perfor-
+mance complaints decrease in 5 of 6 commercial apps, and ratings
+increase in 5 of 6. Further investigation reveals that widely-used
+third-party libraries are themselves distributed at low optimization
+levels, with 49.7% of 1,073 libraries in a major repository exhibit-
+ing this problem. These findings show that compiler optimization
+problems are common, source-free detectable, and practically con-
+sequential in mobile app ecosystems.
+CCS Concepts
+•Software and its engineering → Compilers;Software per-
+formance; Software testing and debugging;•Human-centered
+computing→Mobile computing.
+∗Corresponding author.
+This work is licensed under a Creative Commons Attribution 4.0 International License.
+ASE ’26, Munich, Germany
+©2026 Copyright held by the owner/author(s).
+ACM ISBN 979-8-4007-2882-2/2026/10
+https://doi.org/10.1145/3832783.3834340
+Keywords
+mobile applications, compiler optimization, binary analysis, native
+libraries, performance analysis, empirical software engineering
+ACM Reference Format:
+Han Hu, Xiaoheng Xie, Bo Sun, Jian Gu, Gang Fan, and Li Li. 2026. Source-
+Free Detection and Impact Analysis of Compiler Optimization Problems
+in Mobile Applications. InProceedings of the 41st IEEE/ACM International
+Conference on Automated Software Engineering (ASE ’26), October 12–16,
+2026, Munich, Germany.ACM, New York, NY, USA, 13 pages. https://doi.
+org/10.1145/3832783.3834340
+1 Introduction
+Mobile applications (apps) have become ubiquitous computing
+platforms, with over 7.2 billion devices worldwide [ 49] execut-
+ing performance-critical native code. Performance degradation,
+including frame drops, excessive energy use, and thermal throt-
+tling, directly affects user experience: nearly 90% of users abandon
+apps due to poor performance [ 2], and over 50% uninstall apps
+within 30 days [7]. Our analysis reveals a neglected factor behind
+such issues: inappropriate compiler optimization levels in native
+libraries (.so files).
+We first encountered this issue while debugging a popular mo-
+bile game (Game A, with over one million active users). Game
+A contains 106 native libraries, and users reported that its Har-
+monyOS [25] version lagged behind the Android version. Together
+with the development team, we confirmed that both versions shared
+the same app logic and native code.
+Runtime profiling showed that the HarmonyOS version exe-
+cuted approximately 60% more CPU instructions than its Android
+counterpart in certain functionalities. The primary difference came
+from compiler settings: some HarmonyOS libraries used lower op-
+timization levels (O0/O1), whereas the Android version used higher
+levels (O2/O3). Figure 1 illustrates how such differences can arise
+across app versions and platform builds, then propagate to runtime
+performance.
+This case reflects a broader challenge: native libraries are often
+developed and compiled independently by multiple teams or third-
+party vendors. Fragmented build pipelines, legacy code, misconfigu-
+rations, and poor communication can therefore lead to mismatched
+optimization levels.
+Identifying these problems in deployed apps presents challenges
+that existing performance tools cannot address [50, 54]. Profilers
+arXiv:2606.23512v4  [cs.SE]  1 Oct 2026
+
+--- PAGE 2 ---
+ASE ’26, October 12–16, 2026, Munich, Germany Han Hu, Xiaoheng Xie, Bo Sun, Jian Gu, Gang Fan, and Li Li
+Same Codebase
+Native Libraries (.so files)
+Suboptimally Compiled Library
+Executed on Device
+High App Performance
+Low App Performance
+App V1 (Android) 
+Impact of Compiler Optimization Levels on Mobile App Performance
+App V2 (Android) 
+App V2 (HarmonyOS) 
+High CPU Load
+Low CPU Load
+Executed on Device
+Excuted on Device
+Figure 1: Impact of compiler optimization levels on mobile
+app performance. From the same codebase, App V1 (Android)
+packages high-optimization libraries (O2/O3), resulting in
+low CPU load and high performance. App V2 (Android) and
+App V2 (HarmonyOS) package low-optimization libraries
+(O0/O1), leading to high CPU load and degraded user experi-
+ence.
+expose runtime symptoms, but not the optimization levels of native
+libraries. Prior binary classifiers such as BinEye [53] do not target
+mixed-optimization mobile libraries distributed through app stores.
+Since app stores expose only compiled binaries, detection must
+work directly from machine code and handle .so files that mix code
+compiled under different settings.
+To address these challenges, we presentOptDetect, an auto-
+mated source-free framework that extracts native libraries from
+app packages and derives library-level optimization assessments
+through disassembly, chunk-level classification, and weighted ag-
+gregation.
+We applyOptDetectat scale to answer three research ques-
+tions: (1) How accurate and efficient is the framework? (2) How
+widespread is low compiler optimization in modern mobile apps?
+(3) What are the impacts of fixing detected problems in production
+apps?
+OptDetectachieves 93.0% accuracy on controlled datasets and
+81.9% on real-world datasets. We analyze 21,972 native libraries
+from 830 top-ranked Google Play apps and find that 30.5% of li-
+braries use low optimization levels, affecting 91.7% of apps. Fixing
+detected issues in 12 production apps reduces CPU instructions
+by 10-63% for commercial and 15-58% for open-source apps. Root
+cause analysis identifies precompiled third-party libraries as a major
+source.
+In summary, the main contributions of this paper are:
+• A source-free detection framework,OptDetect, that iden-
+tifies compiler optimization problems directly from app bi-
+naries through a pipeline of chunk-level classification and
+weighted score aggregation, representing the first such frame-
+work designed for large-scale mobile app analysis without
+source code.
+• The first large-scale empirical study of compiler optimization
+levels in mobile apps, covering 21,972 native libraries from
+830 top-ranked Google Play apps.
+• The first multi-dimensional impact analysis of compiler op-
+timization fixes, spanning technical performance (CPU in-
+structions, binary size, power), user-perceived quality (app
+store ratings and feedback), and ecosystem-level root cause
+investigation.
+2 Background
+Mobile apps rely on native libraries (.so files) for performance-
+critical functionality. These libraries are compiled by GCC [14] or
+Clang [45] at optimization levels that control how aggressively
+the compiler transforms source code [37]. O0 disables optimization
+for debugging, O1 applies basic optimizations, O2 enables more
+aggressive transformations such as loop and register optimizations,
+O3 adds techniques such as aggressive inlining and vectorization,
+and Os optimizes for size. We treatO0/O1 as low optimization levels
+andO2/O3as high optimization levels [37].
+Optimization level directly affects app performance: code com-
+piled at O0 can require substantially more CPU instructions than the
+same code at O3 [37]. Yet standard profiling tools (Systrace [16], Per-
+fetto [15], DevEco Profiler [24]) identify CPU hotspots and memory
+leaks, but not whether poor performance stems from inappropriate
+compilation settings. This gap is especially problematic for precom-
+piled third-party libraries, where developers lack source code or
+build configurations.
+3 RQ1: Detection Framework and Validation
+3.1 Framework Design
+Since native libraries typically contain code compiled with mixed
+optimization levels, accurate library-level assessment requires de-
+composing the analysis into (1) fine-grained chunk-level classifica-
+tion and (2) weighted aggregation. We realize this inOptDetect
+through a six-stage pipeline shown in Figure 2.
+Native Library Extraction.We unpack application packages
+and extract embedded native libraries (.so files) for analysis. We
+apply filtering criteria to exclude unsuitable binaries such as stubs,
+encrypted content, and heavily obfuscated binaries.
+Binary Disassembly.We extract executable code segments
+from native libraries for analysis. The disassembly process focuses
+on the .text section, which contains the main executable code. For
+libraries with malformed headers, we employ full binary scanning
+to recover instruction sequences.
+Instruction Chunking and Feature Extraction.To address
+the challenge of mixed optimization levels within libraries, we
+partition the .text section into fixed-size byte windows of 𝑊 bytes
+with a configurable stride 𝑆. Each chunk 𝐶𝑖 is a contiguous byte
+sequence:
+𝐶𝑖 ={𝑏 𝑖·𝑆, 𝑏 𝑖·𝑆+1, . . . , 𝑏 𝑖·𝑆+𝑊−1 }
+where 𝑏 𝑗 is the 𝑗-th byte in the .text section, yielding 𝑚=⌊(𝑁−
+𝑊)/𝑆⌋ + 1chunks for a section of 𝑁 bytes. On fixed-width Instruc-
+tion Set Architectures (ISAs) such as AArch64 (4-byte instructions),
+each 𝑊 -byte window maps directly to𝑊/ 4instructions, preserving
+instruction-level semantics. For each chunk 𝐶𝑖, the classifier learns
+a latent feature representationf 𝑖 ∈R 𝑑 that captures four categories
+of optimization characteristics:
+f𝑖 =[𝑓 opcode, 𝑓register, 𝑓control, 𝑓structure]
+
+--- PAGE 3 ---
+Source-Free Detection and Impact Analysis of Compiler Optimization Problems in Mobile Applications ASE ’26, October 12–16, 2026, Munich, Germany
+ 
+Disassembled Binary
+(.text)
+Instruction 
+Chunks
+Native 
+libraries
+Mobile 
+Application
+O0 O3
+O2 Os
+Classified Chunks Optimization-labeled  
+libraries
+DL Classifier
+ Prediction Aggregation
+(1) (2) (3) (4) (5) (6)
+Figure 2: Overview of theOptDetectdetection framework. The six-stage pipeline consists of native library extraction, binary
+disassembly, instruction chunking and feature extraction, deep learning-based classification, prediction aggregation, and
+optimization level assignment.
+where 𝑓opcode encodes instruction distribution patterns, 𝑓register cap-
+tures register allocation strategies,𝑓control reflects control flow struc-
+tures, and 𝑓structure represents code layout characteristics such as
+alignment and padding. These features are not hand-crafted but
+implicitly learned by the neural network from raw byte sequences.
+The specific values of𝑊and𝑆are reported in Section 3.3.
+Deep Learning Classification.We employ a deep learning
+classifier to predict optimization levels at the chunk level. For each
+chunk 𝐶𝑖 with learned feature representationf 𝑖, the classifier pro-
+duces a probability distribution over five optimization levels:
+𝑃(𝑦 𝑖 |f𝑖 )=softmax(ℎ(f 𝑖 ))
+where 𝑦𝑖 ∈ {𝑂 0, 𝑂1, 𝑂2, 𝑂3, 𝑂𝑠} represents the predicted optimiza-
+tion level for chunk𝐶𝑖, and ℎ(·) is the neural network function that
+maps learned representations to logits.
+Prediction Aggregation.We aggregate chunk-level predictions
+to compute a unified library-level optimization score:
+Scorelib =
+Í4
+𝑗=0 𝑤 𝑗 ·Chunks 𝑗
+Total Chunks
+where 𝑤 𝑗 represents the weight assigned to optimization level 𝑗 (re-
+flecting its relative runtime performance, with higher optimization
+levels receiving higher weights), and Chunks𝑗 denotes the number
+of code chunks classified as level 𝑗. The specific weight values are
+reported in Section 3.3. We also compute a confidence measure
+based on prediction consistency:
+Confidence=1− Entropy(p)
+log2 (5)
+wherepis the normalized distribution of chunk predictions across
+the five optimization levels.
+Optimization Level Assignment.We assign discrete optimiza-
+tion levels to libraries using a hybrid approach. For libraries where
+a single optimization level accounts for more than 𝜏𝑑 of all chunks,
+we directly classify the library as that dominant level (e.g., O0-
+dominant or O3-dominant). For mixed libraries where no single
+level dominates, the continuous scoreScorelib ∈ [ 0, 1] captures their
+position on the optimization spectrum. We partition this range into
+fourtransition zonesusing empirically determined thresholds, re-
+flecting the boundaries between adjacent optimization levels (e.g.,
+O0/O1 mixed, O1/O2 mixed). These labels reflect a library’scurrent
+optimization composition on a continuous scale, not a binary high-
+/low judgment. The specific threshold values and their geometric
+justification are reported in Section 3.3.
+3.2 Validation Setup
+We train and validate our framework using two publicly available
+datasets. The Optimization-Detector dataset [44] contains approxi-
+mately 17,000 .so files compiled with five optimization levels (O0,
+O1, O2, O3, Os) across seven architectures using GCC and Clang.
+The Assemblage dataset [ 32] contains real-world libraries com-
+piled from GitHub repositories with known compiler flags, and
+each binary is distributed with its ground-truth optimization level
+label (O0, O1, O2, O3). Because Assemblage sources code from di-
+verse real projects with varying coding styles, build systems, and
+complexity, it serves as a more challenging validation benchmark
+than synthetically compiled datasets. To prevent data leakage, we
+perform the 80/20 train/test split at the project level: all .so files de-
+rived from the same source project are assigned exclusively to either
+the training or test set, ensuring that the model cannot memorize
+project-specific code patterns.
+The validation data spans 7 architectures (x86_64, AArch64,
+RISC-V, PowerPC, SPARC, MIPS, ARM32). In the Optimization-
+Detector dataset, x86_64 and AArch64 constitute the two largest
+subsets (4,071 and 3,399 samples respectively), consistent with their
+prevalence in mobile platforms. We use 80% for model training and
+internal validation, and 20% (approximately 3,000 samples) for final
+testing. Within the training portion, we reserve a project-disjoint
+validation split for early stopping. The final test split is not used
+for tuning. Separately, we collect an independent calibration set of
+approximately 650 labeled .so libraries from mobile apps outside
+the RQ1 datasets. Labels are established from known build flags,
+developer confirmation, or source/build-script inspection. These
+calibration libraries are excluded from the final RQ2/RQ3 preva-
+lence analyses and used only for aggregation-parameter selection
+and robustness checks.
+3.3 Implementation
+We implementOptDetectusing Python with LIEF [ 46] for binary
+parsing and .text section extraction, Capstone [47] for disassembly,
+and PyTorch [41] for the deep learning classifier. The classifier uses
+a bidirectional LSTM architecture that takes raw byte sequences as
+input and predicts chunk-level optimization levels. For the experi-
+ments reported in this paper, we set 𝑊= 2048bytes and 𝑆= 2048
+bytes (non-overlapping windows). On AArch64, each 2048-byte
+window corresponds to 512 instructions, providing sufficient con-
+text for the model to capture local optimization patterns. Libraries
+with fewer than 5 valid chunks are excluded from analysis.
+We train a single unified model across all seven ISAs and evaluate
+cross-ISA generalization empirically. Our assumption is not that
+
+--- PAGE 4 ---
+ASE ’26, October 12–16, 2026, Munich, Germany Han Hu, Xiaoheng Xie, Bo Sun, Jian Gu, Gang Fan, and Li Li
+instruction encodings are identical across ISAs, but that compiler
+optimizations leave recurring statistical patterns in register use,
+instruction selection, and code layout. In the combined training
+set, AArch64 and ARM32 are the two largest subsets. We train
+using cross-entropy loss with Adam optimizer (learning rate =
+0.001, batch size = 32) for 100 epochs with early stopping. We use
+standard classification metrics: accuracy, precision, recall, F1-score,
+and false positive rate.
+The aggregation weights are 𝑤 O0 = 0.0, 𝑤 O1 = 0.25, 𝑤 O2 = 0.75,
+𝑤 O3 = 1.0, and 𝑤 Os = 0.5. Os is assigned 0.5 because it optimizes
+for binary size rather than speed, and empirical validation shows
+its runtime performance falls between O1 and O2. All weight val-
+ues were determined through iterative empirical analysis on the
+independent calibration set. For optimization level assignment, the
+dominance threshold is 90%, and the transition-zone boundaries are
+0, 0.15, 0.35, 0.65, and 1.0, corresponding toNear-O0 mixed [0, 0.15),
+O0/O1 mixed [0.15, 0.35),O1/O2 mixed [0.35, 0.65), andO2/O3 mixed
+[0.65, 1.0]. These thresholds are calibrated to maximize separation
+between low-optimization (O0/O1) and high-optimization (O2/O3)
+libraries. The prevalence thresholds used in RQ2 and RQ3 are de-
+rived from these transition zones.
+3.4 Validation Results
+We evaluate our framework on both the Optimization-Detector
+dataset (artificially compiled data) and the Assemblage dataset (real-
+world data). Table 1 presents the comparative results.
+Table 1: Performance evaluation of optimization level classi-
+fication. Assemblage (Binary: Low vs High) represents binary
+classification accuracy for distinguishing Low-Optimization
+Libraries (O0/O1) from High-Optimization Libraries (O2/O3)
+on the Assemblage dataset.
+Dataset Level Prec. Rec. Acc. F1
+Opt-Detector
+O0 95.8% 94.2% 95.1% 95.0%
+O1 89.2% 87.6% 88.8% 88.4%
+O2 93.1% 92.8% 92.9% 93.0%
+O3 94.6% 93.8% 94.3% 94.2%
+Os 92.5% 91.7% 92.4% 92.1%
+Assemblage
+O0 85.3% 83.7% 84.9% 84.5%
+O1 76.8% 74.4% 76.1% 75.6%
+O2 82.1% 81.5% 81.7% 81.8%
+O3 83.9% 82.6% 83.5% 83.2%
+Opt-Detector (Macro) 93.0% 92.0% 92.7% 92.5%
+Opt-Detector (Weighted) 93.2% 92.9% 93.0% 93.1%
+Assemblage (Macro) 82.0% 80.6% 81.6% 81.3%
+Assemblage (Weighted) 82.5% 81.1% 81.9% 81.8%
+Assemblage (Binary: Low vs High) 91.0% 90.5% 90.8% 90.7%
+Table 1 shows that our framework achieves 93.0% weighted
+accuracy and 93.1% weighted F1 on the Optimization-Detector test
+set and 81.9% weighted accuracy and 81.8% weighted F1 on the real-
+world Assemblage dataset. At the per-level granularity, O0 achieves
+the highest accuracy on both datasets (95.1% on Opt-Detector, 84.9%
+on Assemblage) due to its distinct unoptimized instruction patterns.
+O3 performs second best (94.3% / 83.5%). O1 shows the lowest
+performance (88.8% / 76.1%) due to overlap with adjacent levels,
+particularly on Assemblage where mixed optimization makes level
+boundaries ambiguous. O2 (92.9% / 81.7%) and Os (92.4%) perform
+consistently across both datasets.
+Generalization analysis.The approximately 11% accuracy
+drop from controlled (93.0%) to real-world (81.9%) reflects the dif-
+ference between libraries with single optimization levels and those
+containing mixed optimization chunks. Intermediate levels (O1, O2)
+remain the most challenging due to similar instruction patterns,
+while extreme levels (O0, O3) are more distinguishable.
+Baseline scope.No existing method directly matches our tar-
+get setting of source-free analysis for mixed-optimization mobile
+libraries. BinEye [ 53] is the closest prior binary-level classifier,
+but its evaluation setting differs from ours and it does not target
+mixed-optimization libraries at app scale. We therefore construct a
+lightweight rule-based baseline as a sanity check for whether sim-
+ple binary signatures are sufficient, and discuss BinEye qualitatively
+in Related Work.
+Comparison with rule-based baseline.The baseline extracts
+five whole-binary signals: instruction density, opcode distribution
+(O2/O3 emits more SIMD (Single Instruction, Multiple Data) and
+pipeline-filling instructions), frame-pointer usage, debug-section
+presence, and text-to-symbol-count ratio. Each signal casts a
+low/high-optimization vote using fixed thresholds selected on the
+calibration set, and the final label is produced by majority vote. This
+baseline represents the family of keyword/rule/statistical checks,
+but it is intentionally whole-binary: it cannot localize differently
+optimized regions inside the same library.
+We evaluate both methods on two regimes using the same test
+splits. On single-optimization-level libraries from the Opt-Detector
+test set (20%), the rule-based baseline achieves 79.8% binary classi-
+fication accuracy, whileOptDetectachieves 93.0% (5-class), con-
+firming that both approaches can detect optimization levels when
+libraries are compiled uniformly. On 100 mixed-optimization li-
+braries randomly sampled from the Assemblage test set, whose
+ground truth was established through developer confirmation, build
+scripts, and source code inspection, the rule-based baseline drops to
+68.7% (a decline of 11.1 percentage points) because global statistics
+average across locally-varying chunks and cannot resolve mixed
+optimization patterns.OptDetectmaintains 86.0% accuracy on
+the same set, slightly above its 81.9% on the full Assemblage test
+set. This comparison validates the core design choice. Chunk-level
+decomposition is essential for the mixed-optimization scenario that
+dominates real-world mobile libraries.
+Binary classification performance.While five-class classifi-
+cation achieves 81.9% on the Assemblage dataset, the binary task
+of distinguishing Low-Optimization Libraries (O0/O1) from High-
+Optimization Libraries (O2/O3) achieves 90.8% accuracy and 91.0%
+precision. This confirms the framework’s applicability for identify-
+ing libraries that need optimization correction in production apps,
+where the practical objective is to detect optimization problems
+rather than pinpoint exact levels.
+The full confusion matrix shows that most errors occur between
+adjacent optimization levels, especially O0/O1 and O1/O2. Full per-
+ISA breakdowns are included in the artifact.
+Computational efficiency.Our classifier processes an average
+of 847 instruction chunks per second on commodity hardware. The
+
+--- PAGE 5 ---
+Source-Free Detection and Impact Analysis of Compiler Optimization Problems in Mobile Applications ASE ’26, October 12–16, 2026, Munich, Germany
+average classification time per library is 0.23 seconds, making the
+framework suitable for large-scale analysis.
+3.5 Hyperparameter Selection and Stability
+We conduct a hyperparameter selection and stability analysis to
+justify the selected defaults and verify that the main empirical
+conclusions do not depend on fragile single-point choices. Follow-
+ing controlled one-factor-at-a-time sensitivity protocols used in
+software analytics and sequence-model ablation studies [ 1, 4, 5],
+we vary one parameter at a time while fixing all other settings to
+their defaults. The analysis uses the independent calibration set
+described above, which is disjoint from the final RQ1 test sets and
+excluded from the final RQ2/RQ3 prevalence analyses. We evaluate
+both detection quality (library-level weighted F1) and downstream
+prevalence stability (low-optimization ratio). For each candidate
+value 𝑐 of a parameter and metric 𝑀, we measure local stability
+under step perturbations:
+Δmean (𝑐)=E 𝑣∈ N (𝑐) |𝑀(𝑣) −𝑀(𝑐)|,
+Δmax (𝑐)=max
+𝑣∈ N (𝑐)
+|𝑀(𝑣) −𝑀(𝑐)|.
+where N (𝑐) is the admissible local neighborhood produced by
+adding and subtracting the parameter-specific step. We select the
+default value that minimizes local variation while preserving near-
+best validation performance.
+Table 2: Hyperparameter selection and local stability. Values
+report mean/max Δ in percentage points for both F1 and 𝑃,
+where lower values indicate greater stability.
+Parameter Selected Other tested candidates
+Window size𝑊 2048
+F1 0.7/1.4, P 0.8/1.7
+1024: F1 2.4/4.8, P 2.6/5.1
+3072: F1 1.3/2.6, P 1.5/3.0
+4096: F1 2.1/4.2, P 2.3/4.6
+Stride𝑆 2048
+F1 0.4/0.9, P 0.6/1.4
+1024: F1 0.9/1.8, P 1.2/2.5
+1536: F1 0.6/1.2, P 0.8/1.7
+Aggregation weights(0, 0.25, 0.75, 1, 0.50)
+F1 0.6/1.3, P 1.1/2.6
+(0, 0.33, 0.67, 1, 0.50): F1 0.9/1.8, P 1.7/3.9
+(0, 0.20, 0.80, 1, 0.50): F1 1.0/2.1, P 1.9/4.2
+Dominance threshold𝜏𝑑
+90%
+F1 0.2/0.5, P 0.3/0.8
+80%: F1 0.6/1.3, P 0.9/2.0
+85%: F1 0.3/0.7, P 0.5/1.2
+95%: F1 0.5/1.1, P 0.8/1.8
+Table 2 shows that each selected default is the most stable can-
+didate among the tested values. Each cell reports the mean/max
+absolute change in library-level weighted F1 and low-optimization
+prevalence (𝑃), so smaller values indicate lower sensitivity rather
+than lower F1 or prevalence. Local neighborhoods use a 512-byte
+step for 𝑊 and 𝑆, a 5-percentage-point step for 𝜏𝑑, and concrete
+alternative weighting schemes for aggregation. The aggregation
+weights are listed in the order O0/O1/O2/O3/Os. For stride, we only
+compare values no larger than the selected window size (𝑆≤𝑊 ),
+because larger strides skip code regions and therefore represent
+undersampling stress tests rather than ordinary local perturbations.
+For window size, 𝑊= 2048gives the most stable local behav-
+ior among the tested values, with lower variation than every al-
+ternative on both weighted F1 (0.7/1.4 vs. 1.3/2.6 or higher) and
+low-optimization prevalence (0.8/1.7 vs. 1.5/3.0 or higher). This
+indicates a stable balance between insufficient context (smaller win-
+dows) and over-smoothed mixed regions (larger windows). The
+same pattern holds for stride, aggregation weights, and dominance
+threshold. Nearby alternatives achieve comparable performance,
+but the selected defaults yield the smallest local fluctuations in both
+weighted F1 and low-optimization prevalence. This analysis does
+not claim a global optimum over all possible parameterizations.
+It documents the validation logic behind the chosen defaults and
+shows that the paper’s main conclusions are insensitive to rea-
+sonable local changes. We therefore keep𝑊= 2048for balanced
+instruction context, 𝑆= 2048to avoid overlapping-window over-
+head, the selected aggregation weights to preserve the expected
+runtime ordering of optimization levels, and 𝜏𝑑 = 90%to separate
+nearly pure single-level libraries from genuinely mixed libraries.
+Answer to RQ1:Our optimization detection framework
+achieves high accuracy (93.0%) on controlled datasets with sin-
+gle optimization levels and maintains reasonable generaliza-
+tion (81.9%) on real-world datasets with mixed optimization
+levels. More importantly, for the core task of distinguishing
+Low-Optimization Libraries from High-Optimization Libraries,
+the framework achieves 90.8% accuracy and 91.0% precision on
+real-world data, validating its practical effectiveness for identi-
+fying optimization problems in production apps.
+4 RQ2: Prevalence of Low Optimization in Real
+World Apps
+To investigate how widespread low compiler optimization practices
+are in modern mobile software, we conduct a large-scale empirical
+study on real-world top-ranked mobile apps. This investigation
+consists of data collection, prevalence analysis, analysis of reused
+libraries, and case study analysis.
+4.1 Data Collection and Methodology
+We collected 830 available top-ranked apps from Google Play Store
+(July 2025) across six categories: grossing apps, free apps, grossing
+games, free games, grossing wearable apps, and free wearable apps.
+We extracted and analyzed 21,972 native libraries from these apps.
+During extraction, we applied filtering criteria to exclude libraries
+unsuitable for optimization analysis: stub libraries (containing only
+symbol redirects with no executable code), encrypted or packed
+binaries (where the .text section is obfuscated), and heavily obfus-
+cated binaries where Capstone failed to disassemble more than 50%
+of the .text section. These exclusion criteria were applied uniformly
+across all app categories.
+4.2 Prevalence Analysis
+Table 3 presents the distribution of optimization levels across our
+dataset. For all prevalence analyses in this paper (RQ2 and RQ3),
+we define two score-based categories derived directly from the tran-
+sition zones established in Section 3.3: a library islow-optimization
+if its score falls below 0.50 (midpoint of the O1/O2 transition zone),
+andhigh-optimizationif its score reaches 0.80 or above (upper
+O2/O3 zone). Our analysis reveals that low compiler optimizations
+are widespread in real-world mobile apps.
+The results demonstrate significant variation across application
+categories. Among regular apps, both grossing apps and free apps
+show similar optimization patterns, with 24.3% and 28.4% of .so
+
+--- PAGE 6 ---
+ASE ’26, October 12–16, 2026, Munich, Germany Han Hu, Xiaoheng Xie, Bo Sun, Jian Gu, Gang Fan, and Li Li
+Table 3: Distribution of Optimization Levels Across Applica-
+tion Categories (Including Wearables)
+Category .so Avg. Opt. Low Opt. Low Opt. High Opt. High Opt.
+Files Score Files Ratio Files Ratio
+Grossing Apps 5,100 0.565 1,238 24.3% 243 4.8%
+Top Free Apps 4,566 0.548 1,299 28.4% 242 5.3%
+Grossing Games 3,084 0.520 1,009 32.7% 125 4.1%
+Top Free Games 3,884 0.510 1,416 36.5% 86 2.2%
+Grossing Wears 2,592 0.525 809 31.2% 96 3.7%
+Top Free Wears 2,746 0.511 938 34.2% 103 3.8%
+Total 21,972 0.534 6,709 30.5% 895 4.1%
+files exhibiting low optimization scores and average optimization
+scores of 0.565 and 0.548, respectively. Notably, high-optimization
+libraries are rare across all categories, with only 4.1% of total li-
+braries classified as high-optimization (score ≥ 0.80). Mobile games
+demonstrate markedly worse optimization practices, with aver-
+age optimization scores of 0.510–0.520 and 32.7%–36.5% of .so files
+classified as low-optimization.
+Wearable applications exhibit intermediate optimization pat-
+terns, with grossing wears and free wears showing 31.2% and
+34.2% low-optimization ratios respectively, and average optimiza-
+tion scores of 0.525 and 0.511. This positions wearable apps between
+regular apps and games in terms of optimization quality, confirming
+a consistent trend across all app types.
+Overall, 30.5% of all analyzed native libraries use low optimiza-
+tion levels, affecting 91.7% of apps, indicating that optimization
+issues are systemic rather than isolated. This app-level figure is
+not driven by isolated single-library cases. Specifically, 85.8% of
+apps have more than 10% low-optimization libraries, 58.9% have
+more than 25%, and 10.6% have more than 50%. The median per-app
+low-optimization ratio is 28.8%.
+Threshold robustness.We further test whether the prevalence
+result is sensitive to the low-optimization cutoff. Using three cutoffs
+around the O1/O2 transition zone, the low-optimization prevalence
+is 21.3% at 0.35, 30.5% at our midpoint cutoff 0.50, and 58.5% at
+0.65. The 0.35 cutoff captures only the most severe cases, while
+0.65 over-flags libraries in the O2 range and changes the category
+ranking. We therefore use 0.50 as the balanced point where low-
+and high-optimization chunk contributions meet. For the high-
+optimization cutoff, the rate drops from 24.5% at 0.70 to 4.1% at
+0.80, and then only to 0.5% at 0.90, making 0.80 the natural knee
+point. The linear weighting scheme could in principle mask heavily
+O0-contaminated mixed libraries, but empirically this boundary
+case is rare: about 70% of low-optimization libraries score below
+0.35 (36.6% in [0, 0.15) and 33.2% in [0.15, 0.35)), and only 30.0%
+fall in [0.35, 0.50). Among libraries with score ≥ 0.50, only 0.08%
+contain more than 50% O0/O1 chunks.
+The disparity between categories is notable. Games typically
+demand high performance yet show the worst optimization prac-
+tices (32.7%–36.5% low-optimization), while wearable apps with
+constrained hardware resources perform better than games but
+worse than regular apps (31.2%–34.2% vs. 24.3%–28.4%).
+Detailed Optimization Level Analysis.To gain deeper in-
+sights into optimization practices, we analyze the distribution of
+optimization levels at the code chunk granularity. Table 4 presents
+the detailed breakdown of optimization level chunks across appli-
+cation categories.
+Table 4: Distribution of Optimization Level Chunks Across
+Application Categories (Including Wearables). Chunks rep-
+resent code segments identified by our classifier.
+Category O0
+Chunks
+O1
+Chunks
+O2
+Chunks
+O3
+Chunks
+Os
+Chunks
+Total
+Chunks
+Grossing Apps 404,919
+(16.1%)
+216,900
+(8.6%)
+726,524
+(29.0%)
+490,291
+(19.5%)
+669,277
+(26.7%) 2,507,911
+Top Free Apps 285,563
+(15.3%)
+175,680
+(9.4%)
+578,810
+(31.0%)
+379,772
+(20.3%)
+448,620
+(24.0%) 1,868,445
+Grossing Games794,023
+(27.1%)
+189,877
+(6.5%)
+825,067
+(28.1%)
+621,328
+(21.2%)
+503,977
+(17.2%) 2,934,272
+Top Free Games671,109
+(29.5%)
+151,955
+(6.7%)
+620,904
+(27.3%)
+433,099
+(19.0%)
+399,799
+(17.6%) 2,276,866
+Grossing Wears165,915
+(18.3%)
+94,710
+(10.5%)
+268,596
+(29.7%)
+153,181
+(16.9%)
+222,409
+(24.6%) 904,811
+Top Free Wears205,666
+(18.1%)
+108,495
+(9.6%)
+348,875
+(30.8%)
+219,941
+(19.4%)
+250,191
+(22.1%) 1,133,168
+Total 2,527,195
+(21.7%)
+937,617
+(8.1%)
+3,368,776
+(29.0%)
+2,297,612
+(19.8%)
+2,494,273
+(21.5%) 11,625,473
+The chunk-level analysis shows consistent patterns across cate-
+gories. Across all 11,625,473 analyzed chunks, O0 accounts for 21.7%
+and O1 for only 8.1%, while high-optimization chunks (O2+O3) total
+48.7% and Os accounts for 21.5%. At the category level, games have
+the worst distribution: grossing games contain 27.1% O0 chunks
+and 49.3% high-optimization (O2+O3) chunks, compared to regu-
+lar apps at 15.3–16.1% O0 and 48.5–51.3% high-optimization. Free
+games show slightly worse values at 29.5% O0 and 46.3% high-
+optimization. Wearable applications fall in between at 18.1–18.3%
+O0 and 46.6–50.2% high-optimization chunks. Os (size-optimized)
+chunk prevalence varies from 17.2% in grossing games to 26.7% in
+grossing apps, with wearables at 22.1–24.6%. Notably, O1 chunks
+are consistently the smallest proportion across all categories (6.5%–
+10.5%). This suggests that libraries tend to be either debug builds
+(O0) inadvertently shipped in release packages, or properly opti-
+mized release builds (O2/O3). O1 is rarely a deliberate choice in
+practice.
+4.3 Analysis of Reused Libraries
+Table 5 presents the most frequently reused native libraries that
+consistently exhibit low optimization scores (average score below
+0.50), each appearing in at least 10 apps.
+Table 5: Most Common Low-Optimization Native Libraries
+Library Occs. Avg. Opt. Low Opt. ExampleName Score Ratio Apps
+libcrashlytics-trampoline.so 146 0.023 96.6% Firebase Crashlytics, Unity Gameslibmain.so 145 0.218 61.4% Various Unity Apps, Native Gameslibil2cpp.so 141 0.317 80.9% Unity Games, C# Mobile AppslibtobEmbedPagEncrypt.so 95 0.427 72.6% Chinese Apps, Security SDKslibdatastore_shared_counter.so 71 0.218 100.0% Google Play Services, Analyticslibbuffer.so 57 0.363 94.7% Media Apps, Buffer Managementlibsentry-android.so 41 0.351 85.4% Error Tracking, Crash Reportinglibsurface_util_jni.so 36 0.258 91.7% Graphics Apps, Surface Renderinglibbugsnag-root-detection.so 28 0.071 92.9% Security Apps, Root Detectionlibsqlite3.so 27 0.496 33.3% Database Apps, Local Storage
+The most concerning case is libcrashlytics-trampoline.so,
+which appears in 146 apps with an average optimization score of
+
+--- PAGE 7 ---
+Source-Free Detection and Impact Analysis of Compiler Optimization Problems in Mobile Applications ASE ’26, October 12–16, 2026, Munich, Germany
+only 0.023. This case exemplifies the widespread impact of third-
+party SDK optimization issues, as crash reporting is critical for
+application stability yet performs poorly due to low-optimization
+compilation.
+Similarly problematic is libil2cpp.so, Unity’s IL2CPP runtime
+library found in 141 applications (primarily games) with an opti-
+mization score of 0.317. Given Unity’s dominance in mobile game
+development, this represents a significant performance bottleneck
+affecting millions of users.
+These findings reveal two primary sources of optimization prob-
+lems: (1) third-party SDKs distributed as precompiled binaries with
+poor optimization settings, and (2) widely-used development frame-
+works (e.g., Unity) that may not prioritize optimization in their
+default build configurations.
+Answer to RQ2:Low compiler optimizations are widespread,
+affecting 30.5% of 21,972 analyzed native libraries across
+830 apps, with 91.7% of apps containing at least one low-
+optimization library and a median per-app low-optimization ra-
+tio of 28.8%. Only 4.1% of libraries achieve high optimization lev-
+els. Games show the worst optimization practices (32.7%–36.5%
+low-optimization), followed by wearable apps (31.2%–34.2%),
+with regular apps performing best (24.3%–28.4%). Frequently
+reused third-party SDKs and development framework libraries
+are a primary source of the problem.
+5 RQ3: Multi-dimensional Impacts of
+Optimization Fixes
+To understand the real-world impacts of addressing compiler op-
+timization problems, we investigateRQ3: What are the multi-
+dimensional impacts of fixing optimization problems in pro-
+duction apps?This research question examines three dimensions:
+(1) technical performance improvements, (2) user-perceived qual-
+ity improvements, and (3) the underlying sources of optimization
+problems. We conduct an in-depth analysis of 12 production apps:
+6 top-ranked commercial apps and 6 open-source apps published
+on Google Play Store.
+5.1 Research Design and Methodology
+Case Selection.We select 12 production apps: 6 top-ranked com-
+mercial apps and 6 open-source apps. Selection criteria include app
+popularity (millions of active users), presence of native libraries
+with identified optimization issues, and feasibility of collabora-
+tion. Commercial apps include Payment App A (payment platform),
+Video App B (video streaming), Social App C (social media), Card
+Game X (strategy game), FPS Game B (first-person shooter), and
+MOBA Game C (multiplayer battle arena), anonymized per confi-
+dentiality agreements. Open-source apps additionally require acces-
+sible source code and complete build systems: VLC, Kodi, Firefox,
+Termux, Signal, and Telegram.
+5.2 RQ3.1: Technical Performance
+Improvements
+Methodology.We measure technical performance improvements
+achieved through optimization correction using the six commercial
+Table 6: Case Study Apps: Commercial and Open-Source
+Commercial Apps (Case Set 1) Open-Source Apps (Case Set 2)
+App Description App Description
+Payment App ALeading mobile payment platform
+with QR code scanning
+VLC Multimedia player with FFmpeg
+codecs (2.5K+ stars, 100M+ down-
+loads)Video App B Video streaming and content cre-
+ation platform
+Kodi Media center with native rendering
+(16K+ stars, 50M+ downloads)Social App C Social media and content sharing
+app
+Firefox Web browser with Gecko engine
+(1.2K+ stars, 500M+ downloads)Card Game XStrategy card game with complex
+rendering
+Termux Terminal emulator with native ex-
+ecution (25K+ stars, 10M+ down-
+loads)FPS Game B First-person shooter with inten-
+sive graphics
+Signal Encrypted messaging with crypto
+libraries (42K+ stars, 100M+ down-
+loads)MOBA Game CMultiplayer battle arena using
+Unity3D
+Telegram Messaging app with native libraries
+(25K+ stars, 1B+ downloads)
+apps (Case Set 1). These apps enable controlled experiments with
+precise deployment dates and production validation. For each app,
+we: (1) identify optimization issues using our detection framework,
+(2) recompile affected libraries with appropriate optimization levels
+(O0/O1 → O2/O3), (3) measure performance improvements using
+controlled experiments, and (4) validate correctness and security
+properties. Correctness validation is performed by partner develop-
+ment teams using their existing test suites (unit, integration, and
+functional tests), with particular attention to floating-point numer-
+ical stability (comparing outputs within tolerance bounds), timing-
+sensitive operations, and cryptographic routines where constant-
+time execution is required. All optimized libraries passed their
+respective test suites before production deployment.
+Performance Metrics.We use CPU instruction count as our
+primary runtime performance indicator, as it directly quantifies
+computational work and strongly correlates with execution time
+and energy consumption [18, 38]. Specifically, we measureretired in-
+structionsvia hardware Performance Monitoring Unit (PMU) coun-
+ters, which count only instructions that complete execution and
+produce committed results, excluding speculative or flushed in-
+structions. While absolute instruction counts are device-specific,
+therelative reductionbetween the original (O0/O1) and optimized
+(O2/O3) builds is always measured on thesame device under
+identical workloads, so hardware variation cancels out and the
+percentage reduction is a device-controlled comparative metric that
+reflects only the optimization-level change. This approach is widely
+used in compiler optimization research [37].
+Measurement Protocol.We establish baselines using origi-
+nal binaries with identified optimization issues. We or our partner
+development teams then recompile affected libraries with high
+optimization levels (O2 for general code, O3 for computationally
+intensive components) while preserving all other build settings. We
+execute identical test scenarios on both versions using automated
+test scripts to ensure reproducibility. We average results over mul-
+tiple measurement iterations (minimum 5 runs per configuration,
+maximum 10 runs when variance is high) to ensure statistical valid-
+ity. Standard deviations across runs were below 1.5% of the mean
+for all reported instruction-count reductions, confirming measure-
+ment stability. We collect PMU-based retired instruction counts on
+a Xiaomi 14 Android device (Snapdragon 8 Gen 3), using Android
+simpleperf/perf_event-based profiling and Perfetto/Android Studio
+for trace inspection.
+
+--- PAGE 8 ---
+ASE ’26, October 12–16, 2026, Munich, Germany Han Hu, Xiaoheng Xie, Bo Sun, Jian Gu, Gang Fan, and Li Li
+Results.Table 7 summarizes results for all six commercial apps.
+CPU instruction reductions range from 10% to 63% (median: 20.5%).
+The variation reflects two factors: the number of libraries success-
+fully optimized and their execution frequency, as libraries on the
+critical path yield the largest gains. Payment App A contained 98
+unoptimized libraries, of which 6 were successfully optimized under
+collaboration constraints, while other apps had more focused inter-
+ventions (1–10 libraries). Payment App A achieves 22% reduction.
+Card Game X achieves 63% reduction with 40% power consumption
+reduction and 15 FPS gain. Video App B achieves 25% reduction
+with 15% streaming latency reduction and 30% frame-drop reduc-
+tion. Social App C achieves 19% reduction across 8 of 17 libraries
+with improvements in feed scrolling and image loading. FPS Game
+B achieves 10% reduction with thermal throttling mitigation. MOBA
+Game C achieves 13% reduction alongside 65% binary size reduction
+(37MB→13MB) and 35% load-time reduction. These cases show that
+the impact of optimization fixes is driven less by the number of
+recompiled libraries than by whether the affected libraries lie on
+latency-critical execution paths.
+Table 7: Performance Improvements for Commercial Apps
+(Case Set 1). All apps deployed to production.
+App Optimized Libraries
+(Fixed/Total)
+Additional Metrics
+(Disclosed) CPU Reduc.
+Payment App Alibqrscanner.so, libimageproc.so
+(6/98)
+Cold start: -200ms
+QR init: -60%, Binary: -22%22%
+Video App Blibbroadcast-client.so, libstream.so
+(2/3)
+Streaming: -15% latency
+Frame drops: -30% 25%
+Social App Clibsocial-log.so, libnetwork.so, ...
+(8/17)
+Feed scrolling: smoother
+Image loading: faster 19%
+Card Game Xlibrender.so, libgame-engine.so
+(2/2)
+Power: -40%
+Frame rate: +15 FPS 63%
+FPS Game B10 O0 libs (graphics, physics, audio)
+(10/10)
+Latency: -8%
+Thermal throttling: reduced10%
+MOBA Game Cil2cpp.so, Unity 3D
+(1/1)
+Binary: -65% (37→13MB)
+Load time: -35% 13%
+Case Study: Payment App A.Payment App A (100M+ QR
+scans/day) had persistent user complaints about slow QR scanning
+despite months of manual code optimization by the development
+team.OptDetectidentified that 6 QR-module libraries (libqrscan-
+ner.so, libimageproc.so, libcamera-util.so, etc.) were compiled at
+O0. Investigation revealed that app development, maintenance,
+and release were handled by separate teams, and during one re-
+lease cycle a release team had accidentally packaged debug-version
+libraries into the production app, a mistake that persisted unde-
+tected across multiple releases. Recompiling at O2/O3 achieved
+22% CPU instruction reduction, 60% camera initialization speedup
+(800ms→320ms), 200ms cold-start improvement, and 22% binary
+size reduction (321MB →249MB). This case illustrates that low-
+optimization binaries can persist even in mature release pipelines
+when development, maintenance, and packaging responsibilities
+are separated.
+5.3 RQ3.2: User-Perceived Quality
+Improvements
+We analyze app store reviews to test whether technical improve-
+ments translate to user-perceived quality changes. We collect 13,156
+reviews from multiple app stores across all of 2025 for the 6 com-
+mercial apps. Reviews are filtered to the five most frequent lan-
+guages (English, Simplified Chinese, Traditional Chinese, Korean,
+Japanese), covering over 92% of all reviews. Performance-related
+keywords cover four categories with equivalent terms in all five
+languages:performance symptoms(e.g., “lag”, “freeze”),resource
+complaints(e.g., “battery drain”, “overheat”),loading issues(e.g.,
+“slow startup”), andrendering issues(e.g., “frame drop”, “jank”).
+We compare monthly keyword frequency and average rating
+for the optimization month vs. the following month. A one-tailed
+Wilcoxon signed-rank test across the six apps yields 𝑝= 0.031
+(𝛼= 0.05), confirming statistically significant keyword reduction.
+Note that keyword reduction is associated with, but not solely
+caused by, the optimization fix, as concurrent app updates may also
+contribute. Potential confounds are discussed in Threats to Validity.
+Results.Figure 3 and Table 8 show the results. Performance-
+related keyword frequency decreases in 5 of 6 apps (21%–76%), with
+a median change of –42% across all six apps. Ratings improve in
+5 of 6 apps (+0.09 to +0.21 stars), with a median change of +0.14
+across all six apps.
+Payment App Aachieves the most dramatic improvement (–
+76% keyword reduction, from 74 to 18), directly corresponding
+to its 22% CPU instruction reduction and 60% QR initialization
+speedup.FPS Game Bshows similarly strong results (–73%, from
+22 to 6) despite the lowest CPU reduction (10%), suggesting that
+even modest improvements on user-interactive features translate to
+substantial user perception gains.Card Game Xshows a delayed
+but sustained decline (6→6→4→0 over three follow-up months),
+ultimately eliminating all performance-related complaints after
+the largest CPU reduction (63%) in the set takes full effect.Video
+App Bshows balanced improvement (–29% keywords, +0.21 stars),
+with the highest rating increase among all apps.MOBA Game C
+achieves a moderate keyword reduction (–21%) despite the largest
+binary size reduction (65%), with the persistently high keyword
+volume reflecting the competitive gaming context where users are
+highly sensitive to any performance variation.
+Social App Cis the only exception, showing keyword reduction
+(–55%) but a rating drop (–0.46 stars). Because aggregate star ratings
+are influenced by many factors beyond performance, we consider
+performance-symptom keyword frequency the more precise signal
+for evaluating optimization impact.
+Table 8: User Perception Changes for Commercial Apps After
+.so Optimization (2025 Data). (Opt →Next) indicates compar-
+ison between the optimization deployment month and the
+following month.
+App Optimization Keywords Keyword Rating Rating
+Date (Opt→Next) Change (Opt→Next) Change
+Payment App A 2025-06 74→18 -76% 1.75→1.84 +0.09
+Video App B 2025-09 70→50 -29% 2.42→2.63 +0.21
+Social App C 2025-08 66→30 -55% 2.63→2.17 -0.46
+Card Game X 2025-09 6→6→4→0 0% 1.00→1.12 +0.12
+FPS Game B 2025-08 22→6 -73% 3.70→3.85 +0.15
+MOBA Game C 2025-07 111→88 -21% 2.16→2.36 +0.20
+Median- --42%-+0.14
+
+--- PAGE 9 ---
+Source-Free Detection and Impact Analysis of Compiler Optimization Problems in Mobile Applications ASE ’26, October 12–16, 2026, Munich, Germany
+Figure 3: Monthly rating (blue, left y-axis) and performance-related keyword frequency (red, right y-axis) trends for six
+commercial apps throughout 2025. Red dashed lines and star markers indicate .so optimization intervention dates. Five apps
+show immediate keyword reductions in the month following optimization, while Card Game X shows delayed but sustained
+decline over three follow-up months (6→6→4→0).
+5.4 Open-Source App Results and Root Cause
+Analysis
+Unlike commercial apps where source code is inaccessible, open-
+source apps allow us to trace each low-optimization library to
+its origin through build script and source dependency analysis.
+For each of the six open-source apps, we examine whether low-
+optimization libraries are compiled from the project’s own source
+code or included as third-party pre-compiled binaries.
+Across 314 native libraries in these six apps, we identify 25 low-
+optimization libraries (8.0%). Table 9 presents the per-app tracing
+results. The findings are clear: 24 out of 25 libraries (96.0%) originate
+from third-party pre-compiled binaries distributed by external ven-
+dors or upstream repositories. The single exception is Telegram’s
+libtmessages.49.so, which is traced to an app-level build configura-
+tion error. Kodi alone accounts for 15 low-optimization libraries,
+all from the PyCryptodome Python crypto extension shipped as
+pre-compiled .so modules. Using the same measurement protocol
+as RQ3.1, CPU instruction reductions after fixing these libraries
+range from 15% to 58% (median: 32%).
+Developer Interviews.From the development and maintenance
+teams of all 12 apps, we recruit 18 developers who meet our criteria
+(≥3 years of mobile development experience with direct knowledge
+of build systems and release pipelines) and agree to participate
+in semi-structured interviews. Based on their responses, we iden-
+tify four systemic challenges that contribute to low-optimization
+libraries persisting in production. (1)SDK vendor practices: vendors
+often ship debug builds to facilitate crash debugging, and requesting
+optimized builds takes a median of 3–6 months when successful. (2)
+Dependency chain complexity: transitive dependencies are largely
+invisible to app developers, making it difficult to audit optimiza-
+tion levels across the full dependency tree. (3)Process issues: debug
+Table 9: Root Cause Tracing for Open-Source Apps (Case Set
+2). Each low-optimization library is traced to its origin via
+build script and source dependency analysis.
+App Low-Opt
+Count Identified Libraries Traced Origin CPU Reduc.
+VLC 1 libvlcjni.so Third-party (FFmpeg bind-
+ing)
+35%
+Firefox 2 libclearkey.so, libsoftokn3.soThird-party (NSS crypto) 23%
+Signal 4 libsqlcipher.so,
+libaesgcm.so, libim-
+age_processing_util_jni.so
+(×2: x86/x86_64)
+Third-party (crypto and
+media processing)
+28%
+Termux 2 libtermux-bootstrap.so,
+libproot-loader.so
+Third-party (system tools)42%
+Kodi 15 PyCryptodome modules (15
+.so files)
+Third-party (Python
+crypto extension)
+58%
+Telegram 1 libtmessages.49.so Build config error 15%
+builds are accidentally released to production due to separated de-
+velopment and release teams. (4)Lack of detection tools: prior to
+this work, no tooling existed to identify optimization problems in
+production app binaries, so the issue went undetected regardless
+of severity. Together, these responses indicate that the issue is not
+merely a local compiler-flag mistake, but a supply-chain visibility
+problem spanning SDK vendors, app developers, and repository
+maintainers.
+5.5 Ecosystem-Level Investigation
+The interview findings above indicate that developers lack both
+the tools and the process visibility to audit optimization levels of
+third-party libraries. In practice, given the complexity of modern
+app build pipelines and the absence of detection tooling, developers
+have no choice but to assume that libraries from official repositories
+are properly optimized. To investigate whether this assumption
+
+--- PAGE 10 ---
+ASE ’26, October 12–16, 2026, Munich, Germany Han Hu, Xiaoheng Xie, Bo Sun, Jian Gu, Gang Fan, and Li Li
+holds, we conduct an ecosystem-level analysis of one such major
+repository.
+We investigate the official third-party library repository of a
+major mobile platform, which is the primary distribution channel
+for native libraries used by apps on that platform. Per our confiden-
+tiality agreement with the repository maintainers, we anonymize
+the repository identity. We analyze all 1,073 native libraries avail-
+able in this repository as of December 2025. Applying the same
+score threshold defined in Section 4 (score < 0.50), our analysis
+reveals that 49.7% of libraries (533 out of 1,073) exhibit low opti-
+mization levels. The majority are classified as O0-dominant (467)
+or O1-dominant (35) by the tool’s dominance criterion (>90% of
+chunks at that level), indicating nearly pure low-optimization com-
+pilation. The remaining 31 have mixed-level scores in the O1/O2
+transition zone (0.35–0.50). The snapshot is included in our artifact
+for reproducibility. Table 10 presents the functional breakdown of
+the 502 O0- and O1-dominant libraries.
+Table 10: Functional Distribution of O0/O1-Dominant Low-
+Optimization Libraries in Repository
+Function Category Count % of Dominant Low-Opt
+System Utilities & FFI 420 83.7%
+Multimedia/Codec 26 5.2%
+Cryptography 22 4.4%
+Networking 16 3.2%
+Location/Map 7 1.4%
+Image Processing 5 1.0%
+Data Compression 5 1.0%
+Speech/Audio 1 0.2%
+Total 502 100%
+System utilities and FFI interfaces constitute the majority (83.7%,
+420 libraries), including general-purpose utilities (libentry.so, libli-
+brary.so), logging frameworks (libaliyunlog.so, 5.2 MB), location ser-
+vices (liblocsdk8b.so), and HTTP servers (libmongoose.so). While
+individual utilities may not be hotspots, the cumulative effect of
+numerous low-optimization libraries is significant as modern apps
+integrate dozens of them.
+Multimedia codecs rank second (26 libraries, 5.2%), including
+large video players (libHJPlayer.so, 23.41 MB) and FFmpeg-based
+decoders (libwlffmpeg.so, 18.57 MB). This is particularly concerning
+because multimedia processing is a performance-critical hotspot
+in mobile applications. Poorly optimized codecs directly impact
+video playback, audio quality, and media loading, making their
+optimization gaps more severe in practice. Affected libraries span
+a wide size range from 3.96 KB to 25.39 MB (average: 712.76 KB,
+median: 4.64 KB), with the largest files representing the most se-
+vere bottlenecks due to high instruction overhead and memory
+footprint. Cryptography libraries (4.4%) and networking libraries
+(3.2%) are also noteworthy, as both are frequently invoked during
+core operations such as authentication, data encryption, and API
+communication. Low optimization in these categories can degrade
+responsiveness in latency-sensitive user workflows.
+Repository Implication.These results suggest that repository-
+level screening should prioritize large and performance-sensitive
+native libraries rather than treating all binaries equally. A light-
+weight batch scan withOptDetectwould have flagged dominant
+O0/O1 libraries and provided maintainers with actionable evidence
+before such artifacts propagated into downstream apps.
+Repository Acknowledgement.We disclosed our findings to
+the repository maintainers. They explained that most libraries are
+submitted as pre-compiled binaries, and the repository previously
+had no batch-level mechanism to verify their optimization quality.
+They also noted that submitted artifacts were typically treated as
+production-ready, making such issues difficult to detect without
+an automated tool. After reviewing our detection evidence, the
+maintainers formally acknowledged the presence of many debug-
+level compilation configurations and are working with affected
+library developers to address the issue.
+Answer to RQ3:Fixing compiler optimization problems in
+production apps yields measurable impacts. CPU instruction
+reductions range from 10%–63% (median: 20.5%) for 6 commer-
+cial apps and 15%–58% (median: 32%) for 6 open-source apps.
+Performance-symptom keyword frequency decreases in 5 of 6
+commercial apps, with a median change of –42% across all six
+apps (𝑝= 0.031), providing a more targeted signal of optimiza-
+tion impact than aggregate star ratings. Root cause tracing in
+open-source apps shows that 96% (24/25) of low-optimization
+libraries originate from third-party pre-compiled binaries. An
+ecosystem-level investigation further confirms the systemic na-
+ture of this problem: 49.7% of 1,073 libraries exhibit low opti-
+mization levels.
+6 Threats to Validity
+Confidence Score Usage.Our framework computes an entropy-
+based confidence score for each library classification and reports
+it as a supplementary diagnostic output rather than using it for
+automated filtering. Confidence-weighted prevalence estimation is
+left to future work.
+Framework Generalizability.Our framework’s accuracy de-
+pends on training data representativeness. Section 3.5 reports lo-
+cal sensitivity ablations for the main empirical parameters, while
+broader architecture searches remain future work. We adopt a uni-
+fied cross-ISA model because recurring optimization patterns can
+generalize across architectures and a unified model benefits from
+a larger combined training set, while per-ISA ablations remain fu-
+ture work. We use BiLSTM due to its strong sequence modeling
+and low training cost, and alternative architectures such as CNNs
+or Transformers remain future work. The aggregation weights
+and prevalence thresholds were empirically tuned on the inde-
+pendent calibration set described in RQ1. Although we use both
+Optimization-Detector and Assemblage, they may not cover all
+compiler versions and build configurations. Our framework may
+also face challenges with heavily obfuscated or packed binaries that
+obscure optimization patterns.
+Dataset Sampling.Our dataset comprises 830 top-ranked apps
+from Google Play Store in July 2025. Top-ranked apps may have
+better optimization practices than average apps, potentially un-
+derestimating the ecosystem-wide problem. However, these apps
+collectively account for the vast majority of user installations and
+
+--- PAGE 11 ---
+Source-Free Detection and Impact Analysis of Compiler Optimization Problems in Mobile Applications ASE ’26, October 12–16, 2026, Munich, Germany
+interactions, making optimization issues in this set highly relevant
+for real-world user impact.
+User Perception Analysis.Our user perception analysis uses
+correlational evidence from app store reviews. Keyword selection
+may not capture all performance-related feedback, and confounding
+factors such as new feature releases, bug fixes, or public events may
+influence rating changes independently of optimization fixes.
+Metric Limitations.We use CPU instruction count as our pri-
+mary performance metric, which provides a reliable and scalable
+proxy but does not capture all performance dimensions such as
+cache behavior and memory bandwidth. Additionally, our RQ2
+prevalence analysis counts all libraries and chunks statically with-
+out weighting by runtime hotness: a low-optimization library that
+is rarely invoked contributes less actual performance overhead than
+one on the critical path. While RQ3 demonstrates real-world im-
+pact through deployment case studies, the static counts in RQ2 may
+overestimate ecosystem-wide performance waste for libraries that
+are infrequently called. Additionally, standard compiler optimiza-
+tion transitions (O0/O1 to O2/O3) may introduce edge-case risks
+in floating-point rounding, timing-sensitive code, or cryptographic
+routines requiring constant-time execution. Our validation across
+12 apps mitigates but does not eliminate these concerns.
+7 Related Work
+Compiler Optimization Detection and Binary Analysis.Re-
+search on compiler optimization detection has primarily focused
+on desktop and server environments. Previous work has explored
+optimization level identification through static analysis of assembly
+code patterns [3], performance counter analysis [6], and compiler
+fingerprinting techniques. Recent advances include binary-level
+optimization detection using deep learning [11, 48] and transparent
+compiler optimization frameworks [36].
+Binary analysis techniques have been extensively developed for
+malware detection [35], vulnerability analysis, and reverse engi-
+neering [31, 42]. Static and dynamic methods analyze instruction
+patterns or runtime behavior [19, 51], and large-scale studies have
+explored code size optimization for native apps [33]. However, these
+techniques typically focus on code behaviors rather than inferring
+compilation settings from binary characteristics.
+BinEye [53] reports high accuracy for single-optimization bina-
+ries, but does not target mixed-optimization libraries or library-level
+aggregation at production mobile app scale. Existing methods also
+rely on source access or controlled settings, which limits third-party
+app analysis. This distinction matters because app stores expose
+only packaged binaries, so practical diagnosis must work source-
+free while handling mixed libraries reused across many production
+apps. Our work provides binary-only detection with weighted ag-
+gregation and ecosystem-scale measurement.
+Mobile App Performance Analysis.Existing mobile app per-
+formance analysis primarily focuses on high-level factors such as
+UI responsiveness, memory leaks, and network latency [ 30, 52].
+Tools like Android Profiler concentrate on runtime profiling of
+Java/Kotlin code and detecting memory bottlenecks [50, 54].
+Recent research has explored energy consumption analysis [13,
+17, 28], energy-aware design patterns [ 8], and power modeling
+tools [12]. Other studies have investigated automated GUI test-
+ing [21], energy issue detection [ 29], and device-specific behav-
+iors [10]. These tools and techniques primarily operate at the ap-
+plication or system level, analyzing runtime metrics and resource
+usage patterns without examining the underlying compilation con-
+figurations that fundamentally determine code efficiency.
+Large-scale mobile app studies have also examined app-packaged
+on-device models [20] and cross-device GUI datasets [23], further
+showing the value of studying deployed mobile apps beyond source-
+level code. Our focus is complementary: we analyze native-library
+compiler optimization levels in packaged apps.
+Unlike existing work that focuses on application-level optimiza-
+tions, our study provides the first large-scale empirical investigation
+of compiler-level inefficiencies in production apps.
+Compiler Optimization Impact Studies.Studies on compiler
+optimization impact have traditionally focused on controlled bench-
+mark environments and synthetic workloads [26, 39]. Research has
+quantified the effects of various optimization techniques on CPU
+performance metrics and explored trade-offs between optimization
+levels and compilation time [34]. These studies typically measure
+performance improvements in isolation, using standard benchmark
+suites or custom test programs compiled with known optimiza-
+tion settings, which limits their applicability to understanding real-
+world production scenarios.
+These studies are typically conducted in controlled settings and
+do not address prevalence in production apps, third-party root
+causes, or end-user perception.
+Remediation Techniques and Complementary Tools.Once
+optimization problems are detected, several techniques can reme-
+diate them. Profile-guided optimization (PGO) [43], post-link opti-
+mization with BOLT [40], and link-time optimization (LTO) [27]
+improve generated or linked binaries, while recent LLM-based
+compiler tools further expand automated remediation [9]. These
+approaches are complementary toOptDetect, which identifies
+low-optimization libraries and serves as a detection front-end for
+downstream remediation pipelines.
+8 Conclusion
+This paper presentsOptDetect, a source-free framework for de-
+tecting compiler optimization problems in mobile applications. Ap-
+plying it at ecosystem scale, we reveal that 30.5% of 21,972 native
+libraries in top-ranked apps are compiled with low optimization
+levels, affecting 91.7% of apps. Our automated detection frame-
+work achieves 93.0% accuracy on controlled datasets and 81.9% on
+real-world binaries.
+Across 12 production apps, fixing detected issues reduces CPU
+instructions by 10-63% (median: 20.5%) for commercial apps and 15-
+58% (median: 32%) for open-source apps. In the 6 commercial apps,
+complaints and ratings improve in 5 cases, with median changes
+of 42% and 0.14 stars. Root cause analysis shows that many issues
+originate from third-party libraries, and 49.7% of 1,073 libraries in
+a major repository exhibit low optimization levels.
+Future work includes extending detection to additional architec-
+tures and validating with end-to-end runtime energy measurements.
+In practice,OptDetectcan serve as a CI/CD build gate and support
+pre-publication vetting in SDK repositories.
+
+--- PAGE 12 ---
+ASE ’26, October 12–16, 2026, Munich, Germany Han Hu, Xiaoheng Xie, Bo Sun, Jian Gu, Gang Fan, and Li Li
+Acknowledgments
+The authors used LLM-based tools for language editing. All techni-
+cal content and conclusions remain the authors’ responsibility.
+Data Availability Statement
+TheOptDetectartifact, including the executable tool, usage in-
+structions, and experimental results, is archived on Zenodo [ 22].
+The source code ofOptDetect/ArkAnalyzer-HapRay is publicly
+available in our GitCode repository.
+References
+[1] Amritanshu Agrawal, Wei Fu, Di Chen, Xipeng Shen, and Tim Menzies. 2019.
+How to “DODGE” Complex Software Analytics.IEEE Transactions on Software
+Engineering(2019). doi:10.1109/TSE.2019.2945020
+[2] AppDynamics and University of London Institute of Management Studies, Gold-
+smiths. 2014. The App Attention Span Study. Nearly 90 percent surveyed stop
+using apps due to poor performance. https://www.apmdigest.com/nearly-90-
+percent-surveyed-stop-using-apps-due-to-poor-performance
+[3] Abhijeet Banerjee, Lee Kee Chong, Sudipta Chattopadhyay, and Abhik Roychoud-
+hury. 2014. Detecting energy bugs and hotspots in mobile apps. InProceedings of
+the 22nd ACM SIGSOFT International Symposium on Foundations of Software En-
+gineering(Hong Kong, China)(FSE 2014). Association for Computing Machinery,
+New York, NY, USA, 588–598. doi:10.1145/2635868.2635871
+[4] Iz Beltagy, Matthew E. Peters, and Arman Cohan. 2020. Longformer: The Long-
+Document Transformer.arXiv preprint arXiv:2004.05150(2020). doi:10.48550/
+arXiv.2004.05150
+[5] André Biedenkapp, Marius Lindauer, Katharina Eggensperger, Frank Hutter, Chris
+Fawcett, and Holger H. Hoos. 2017. Efficient Parameter Importance Analysis
+via Ablation with Surrogates. InProceedings of the AAAI Conference on Artificial
+Intelligence, Vol. 31. doi:10.1609/aaai.v31i1.10657
+[6] Shaiful Alam Chowdhury and Abram Hindle. 2016. GreenOracle: estimating
+software energy consumption with energy measurement corpora. InProceedings
+of the 13th International Conference on Mining Software Repositories(Austin, Texas)
+(MSR ’16). Association for Computing Machinery, New York, NY, USA, 49–60.
+doi:10.1145/2901739.2901763
+[7] CleverTap. 2019. App Uninstalls: Why They Happen and How to Fix Them.
+More than 1 in every 2 apps are uninstalled within 30 days of being downloaded.
+https://clevertap.com/blog/app-uninstalls/
+[8] Luis Cruz and Rui Abreu. 2019. Catalog of energy patterns for mobile applications.
+Empirical Softw. Engg.24, 4 (Aug. 2019), 2209–2235. doi:10.1007/s10664-019-
+09682-0
+[9] Chris Cummins, Volker Seeker, Dejan Grubisic, Mostafa Elhoushi, Youwei Liang,
+Baptiste Roziere, Jonas Gehring, Fabian Gloeckle, Kim Hazelwood, Gabriel Syn-
+naeve, and Hugh Leather. 2023. Large Language Models for Compiler Optimiza-
+tion.arXiv preprint arXiv:2309.07062(2023). doi:10.48550/arXiv.2309.07062
+[10] Zikan Dong, Yanjie Zhao, Tianming Liu, Chao Wang, Guosheng Xu, Guoai Xu,
+and Haoyu Wang. 2024. Same App, Different Behaviors: Uncovering Device-
+specific Behaviors in Android Apps.arXiv preprint arXiv:2406.09807(2024).
+https://arxiv.org/abs/2406.09807
+[11] Yue Duan, Xuezixiang Li, Jinghan Wang, and Heng Yin. 2020. Deep-
+BinDiff: Learning Program-Wide Code Representations for Binary Diff-
+ing. InNetwork and Distributed System Security Symposium (NDSS).
+https://www.ndss-symposium.org/ndss-paper/deepbindiff-learning-program-
+wide-code-representations-for-binary-diffing/
+[12] Guillaume Fieni, Daniel Romero Acero, Pierre Rust, and Romain Rouvoy. 2024.
+PowerAPI: A Python framework for building software-defined power meters.
+Journal of Open Source Software9, 98 (2024), 6670. doi:10.21105/joss.06670
+[13] Daniel Flores-Martin, Sergio Laso, and Juan Luis Herrera. 2024. Enhancing Smart-
+phone Battery Life: A Deep Learning Model Based on User-Specific Application
+and Network Behavior.Electronics13, 24 (2024). doi:10.3390/electronics13244897
+[14] Free Software Foundation. 2024. GNU Compiler Collection. https://gcc.gnu.org/.
+[15] Google. 2024. Perfetto. https://perfetto.dev/.
+[16] Google. 2024. Systrace. https://developer.android.com/topic/performance/tracing.
+[17] Shuai Hao, Ding Li, William G. J. Halfond, and Ramesh Govindan. 2013. Es-
+timating mobile application energy consumption using program analysis. In
+2013 35th International Conference on Software Engineering (ICSE). 92–101.
+doi:10.1109/ICSE.2013.6606555
+[18] Christian Herglotz and André Kaup. 2017. Video decoding energy estimation
+using processor events. In2017 IEEE International Conference on Image Processing
+(ICIP). 2493–2497. doi:10.1109/ICIP.2017.8296731
+[19] Abram Hindle. 2015. Green mining: a methodology of relating software change
+and configuration to power consumption.Empirical Softw. Engg.20, 2 (April
+2015), 374–409. doi:10.1007/s10664-013-9276-6
+[20] Han Hu, Yujin Huang, Qiuyuan Chen, Terry Yue Zhuo, and Chunyang Chen. 2024.
+A First Look at On-device Models in iOS Apps.ACM Transactions on Software
+Engineering and Methodology33, 1 (2024), 26:1–26:30. doi:10.1145/3617177
+[21] Han Hu, Han Wang, Ruiqi Dong, Xiao Chen, and Chunyang Chen. 2024. En-
+hancing GUI Exploration Coverage of Android Apps with Deep Link-Integrated
+Monkey.ACM Transactions on Software Engineering and Methodology33, 6 (2024),
+1–31. doi:10.1145/3664810
+[22] Han Hu, Xiaoheng Xie, Bo Sun, Jian Gu, Gang Fan, and Li Li. 2026. Source-Free
+Detection and Impact Analysis of Compiler Optimization Problems in Mobile
+Applications. Zenodo. doi:10.5281/zenodo.21175865
+[23] Han Hu, Haolan Zhan, Yujin Huang, and Di Liu. 2023. Pairwise GUI Dataset Con-
+struction Between Android Phones and Tablets. InAdvances in Neural Information
+Processing Systems, Vol. 36. 59860–59872. doi:10.52202/075280-2615
+[24] Huawei. 2024. DevEco Studio. https://developer.harmonyos.com/.
+[25] Ltd. Huawei Technologies Co. 2024. HarmonyOS: Next-Generation Distributed
+Operating System. Official documentation and developer resources for Har-
+monyOS distributed operating system. https://developer.harmonyos.com/en/
+[26] Reyhaneh Jabbarvand and Sam Malek. 2017. 𝜇Droid: an energy-aware mutation
+testing framework for Android. InProceedings of the 2017 11th Joint Meeting
+on Foundations of Software Engineering(Paderborn, Germany)(ESEC/FSE 2017).
+Association for Computing Machinery, New York, NY, USA, 208–219. doi:10.
+1145/3106237.3106244
+[27] Chris Lattner and Vikram Adve. 2004. LLVM: A Compilation Framework for
+Lifelong Program Analysis & Transformation. InInternational Symposium on Code
+Generation and Optimization (CGO). IEEE, 75–86. doi:10.1109/CGO.2004.1281665
+[28] Ding Li, Shuai Hao, William G. J. Halfond, and Ramesh Govindan. 2013. Calculat-
+ing source line level energy information for Android applications. InProceedings
+of the 2013 International Symposium on Software Testing and Analysis(Lugano,
+Switzerland)(ISSTA 2013). Association for Computing Machinery, New York, NY,
+USA, 78–89. doi:10.1145/2483760.2483780
+[29] Xueliang Li, Yuming Yang, Yepang Liu, John P. Gallagher, and Kaishun Wu. 2020.
+Detecting and Diagnosing Energy Issues for Mobile Applications. InProceedings of
+the 29th ACM SIGSOFT International Symposium on Software Testing and Analysis
+(ISSTA). 127–140. doi:10.1145/3395363.3397350
+[30] Dianshu Liao, Shidong Pan, Siyuan Yang, Yanjie Zhao, Zhenchang Xing, and
+Xiaoyu Sun. 2024. A Comparative Study of Android Performance Issues in
+Real-world Applications and Literature.arXiv preprint arXiv:2407.05090(2024).
+doi:10.1145/3771932
+[31] Mario Linares-Vásquez, Gabriele Bavota, Carlos Bernal-Cárdenas, Rocco Oliveto,
+Massimiliano Di Penta, and Denys Poshyvanyk. 2014. Mining energy-greedy
+API usage patterns in Android apps: an empirical study. InProceedings of the
+11th Working Conference on Mining Software Repositories(Hyderabad, India)
+(MSR 2014). Association for Computing Machinery, New York, NY, USA, 2–11.
+doi:10.1145/2597073.2597085
+[32] Chang Liu, Rebecca Saul, Yihao Sun, Edward Raff, Maya Fuchs, Townsend
+Southard Pantano, James Holt, and Kristopher Micinski. 2024. Assemblage:
+Automatic binary dataset construction for machine learning.Advances in Neural
+Information Processing Systems37 (2024), 58698–58715. doi:10.52202/079017-1871
+[33] Gai Liu, Umar Farooq, Chengyan Zhao, Xia Liu, and Nian Sun. 2023. Linker
+Code Size Optimization for Native Mobile Applications. InProceedings of the
+32nd ACM SIGPLAN International Conference on Compiler Construction (CC). 1–12.
+doi:10.1145/3578360.3580256
+[34] Irene Manotas, Lori Pollock, and James Clause. 2014. SEEDS: a software engineer’s
+energy-optimization decision support framework. InProceedings of the 36th
+International Conference on Software Engineering(Hyderabad, India)(ICSE 2014).
+Association for Computing Machinery, New York, NY, USA, 503–514. doi:10.
+1145/2568225.2568297
+[35] Andrea Mcintosh, Safwat Hassan, and Abram Hindle. 2019. What can Android
+mobile app developers do about the energy consumption of machine learning?
+Empirical Softw. Engg.24, 2 (April 2019), 562–601. doi:10.1007/s10664-018-9629-2
+[36] Paschalis Mpeis, Pavlos Petoumenos, Kim Hazelwood, and Hugh Leather. 2021.
+Developer and User-Transparent Compiler Optimization for Interactive Ap-
+plications. InProceedings of the 42nd ACM SIGPLAN International Confer-
+ence on Programming Language Design and Implementation (PLDI). 268–281.
+doi:10.1145/3453483.3454043
+[37] Steven S Muchnick. 1997.Advanced Compiler Design and Implementation. Morgan
+Kaufmann. Comprehensive reference on compiler optimization techniques and
+implementation strategies.
+[38] Kris Nikov, Kyriakos Georgiou, Zbigniew Chamski, Kerstin Eder, and Jose Nunez-
+Yanez. 2022. Accurate Energy Modelling on the Cortex-M0 Processor for Profiling
+and Static Analysis. In2022 29th IEEE International Conference on Electronics,
+Circuits and Systems (ICECS). 1–4. doi:10.1109/ICECS202256217.2022.9971086
+[39] Fabio Palomba, Dario Di Nucci, Annibale Panichella, Andy Zaidman, and Andrea
+De Lucia. 2019. On the impact of code smells on the energy consumption of
+mobile applications.Information and Software Technology105 (2019), 43–55.
+doi:10.1016/j.infsof.2018.08.004
+
+--- PAGE 13 ---
+Source-Free Detection and Impact Analysis of Compiler Optimization Problems in Mobile Applications ASE ’26, October 12–16, 2026, Munich, Germany
+[40] Maksim Panchenko, Rafael Auler, Bill Nell, and Guilherme Ottoni. 2019. BOLT:
+A Practical Binary Optimizer for Data Centers and Beyond. InProceedings of the
+IEEE/ACM International Symposium on Code Generation and Optimization (CGO).
+100–116. doi:10.1109/CGO.2019.8661201
+[41] Adam Paszke, Sam Gross, Francisco Massa, Adam Lerer, James Bradbury, Gregory
+Chanan, Trevor Killeen, Zeming Lin, Natalia Gimelshein, Luca Antiga, et al .
+2019. PyTorch: An imperative style, high-performance deep learning library. In
+Advances in neural information processing systems. 8026–8037. doi:10.48550/arXiv.
+1912.01703
+[42] Abhinav Pathak, Abhilash Jindal, Y. Charlie Hu, and Samuel P. Midkiff. 2012.
+What is keeping my phone awake? characterizing and detecting no-sleep energy
+bugs in smartphone apps. InProceedings of the 10th International Conference
+on Mobile Systems, Applications, and Services(Low Wood Bay, Lake District,
+UK)(MobiSys ’12). Association for Computing Machinery, New York, NY, USA,
+267–280. doi:10.1145/2307636.2307661
+[43] Karl Pettis and Robert C Hansen. 1990. Profile guided code positioning. In
+Proceedings of the ACM SIGPLAN Conference on Programming Language Design
+and Implementation (PLDI). ACM, 16–27. doi:10.1145/93542.93550
+[44] Davide Pizzolotto and Katsuro Inoue. 2021. Identifying Compiler and Optimiza-
+tion Level in Binary Code From Multiple Architectures.IEEE Access9 (2021),
+163461–163475. doi:10.1109/ACCESS.2021.3132950
+[45] LLVM Project. 2024. Clang: a C language family frontend for LLVM.
+https://clang.llvm.org/.
+[46] Quarkslab. [n. d.]. LIEF - Library to Instrument Executable Formats. https:
+//lief.quarkslab.com/. Accessed: 2026-01-28.
+[47] Nguyen Anh Quynh. 2014. Capstone: Next-Gen Disassembly Framework. In
+Black Hat USA. https://www.capstone-engine.org/.
+[48] Xiaolei Ren, Michael Ho, Jiang Ming, Yu Lei, and Li Li. 2021. Unleashing the
+Hidden Power of Compiler Optimization on Binary Code Difference: An Empirical
+Study. InProceedings of the 42nd ACM SIGPLAN International Conference on
+Programming Language Design and Implementation (PLDI). ACM, 142–157. doi:10.
+1145/3453483.3454035
+[49] Statista. 2024. Number of smartphone users worldwide from 2016 to
+2025. https://www.statista.com/statistics/330695/number-of-smartphone-users-
+worldwide/. Accessed 2025-07-19.
+[50] Yutian Tang, Haoyu Wang, Xian Zhan, Xiapu Luo, Yajin Zhou, Hao Zhou, Qiben
+Yan, Yulei Sui, and Jacky Keung. 2022. A Systematical Study on Application
+Performance Management Libraries for Apps.IEEE Trans. Softw. Eng.48, 8 (Aug.
+2022), 3044–3065. doi:10.1109/TSE.2021.3077654
+[51] Mian Wan, Yuchen Jin, Ding Li, and William G. J. Halfond. 2015. Detecting Display
+Energy Hotspots in Android Apps. In2015 IEEE 8th International Conference on
+Software Testing, Verification and Validation (ICST). 1–10. doi:10.1109/ICST.2015.
+7102585
+[52] Paweł Weichbroth. 2025. Usability Issues With Mobile Applications: Insights From
+Practitioners and Future Research Directions.arXiv preprint arXiv:2502.05120
+(2025). doi:10.1109/ACCESS.2025.3573503
+[53] Shouguo Yang, Zhiqiang Shi, Guodong Zhang, Mingxuan Li, Yuan Ma, and Limin
+Sun. 2019. Understand Code Style: Efficient CNN-Based Compiler Optimization
+Recognition System. InIEEE International Conference on Communications (ICC).
+IEEE, 1–6. doi:10.1109/ICC.2019.8761073
+[54] Shengqian Yang, Dacong Yan, Haowei Wu, Yan Wang, and Atanas Rountev. 2015.
+Static control-flow analysis of user-driven callbacks in Android applications. In
+Proceedings of the 37th International Conference on Software Engineering - Volume
+1(Florence, Italy)(ICSE ’15). IEEE Press, 89–99. doi:10.1109/ICSE.2015.31
+Received 2026-03-26; accepted 2026-06-18

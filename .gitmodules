@@ -1,0 +1,24 @@
+[submodule "realworld/repos/harmonyos_cipher"]
+	path = realworld/repos/harmonyos_cipher
+	url = https://gitee.com/harmonyos_samples/cipher.git
+[submodule "realworld/repos/harmonyos_crypto_collection"]
+	path = realworld/repos/harmonyos_crypto_collection
+	url = https://gitee.com/harmonyos_samples/crypto-collection.git
+[submodule "realworld/repos/harmonyos_preferences"]
+	path = realworld/repos/harmonyos_preferences
+	url = https://gitee.com/harmonyos_samples/preferences.git
+[submodule "realworld/repos/ohos_coap"]
+	path = realworld/repos/ohos_coap
+	url = https://gitee.com/openharmony-tpc/ohos_coap.git
+[submodule "realworld/repos/ohos_crypto_js"]
+	path = realworld/repos/ohos_crypto_js
+	url = https://gitee.com/openharmony-sig/ohos_crypto_js.git
+[submodule "realworld/repos/ohos_mqtt"]
+	path = realworld/repos/ohos_mqtt
+	url = https://gitee.com/openharmony-sig/ohos_mqtt.git
+[submodule "realworld/repos/openharmony_security_crypto_framework"]
+	path = realworld/repos/openharmony_security_crypto_framework
+	url = https://gitee.com/openharmony/security_crypto_framework.git
+[submodule "realworld/repos/openharmony_security_huks"]
+	path = realworld/repos/openharmony_security_huks
+	url = https://gitee.com/openharmony/security_huks.git

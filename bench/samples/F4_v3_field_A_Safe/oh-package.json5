@@ -1,0 +1,7 @@
+{
+  "name": "f4_v3_field_a_safe",
+  "version": "1.0.0",
+  "description": "HarmonyKeyRepBench sample F4_v3_field_A_Safe",
+  "main": "entry/src/main/ets/CryptoService.ets",
+  "dependencies": {}
+}

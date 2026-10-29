@@ -1,0 +1,17 @@
+{
+  "npm_arkanalyzer_1_0_95_integrity_match": true,
+  "zenodo_jscamd_checksum_match": true,
+  "source_records": 225,
+  "unique_downloaded_files": 221,
+  "unusable_content": [
+    "downloads/docs/deveco-snapshot.html",
+    "downloads/news/CVE-2024-21826.html",
+    "downloads/news/OpenHarmony-security-2026-10.md"
+  ],
+  "failed_missing": [
+    "downloads/docs/huks-export.md",
+    "downloads/news/OpenHarmony-security-github-2026-10.md",
+    "downloads/papers/HapCheck-ICSE2026.pdf",
+    "sources/harmobridge-author-tree.json"
+  ]
+}

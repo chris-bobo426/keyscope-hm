@@ -1,0 +1,105 @@
+华为朱懂东谈“鸿蒙套壳安卓”：套壳拿不到最高安全可靠等级 Ⅱ 级权威认证 - IT之家 (https://m.ithome.com/html/964596.htm)
+citeturn36search0 [wordlim: 200] Published: 4 months ago; Crawled: last month; IT之家 6 月 15 日消息，在本届华为开发者大会 HDC 2026 现场，华为终端平板与 PC 产品线总裁朱懂东谈起了网上流传的“鸿蒙套壳安卓”的言论，他直接予以否认。 ... 据IT之家此前报道，今年 1 月，中国信息安全测评中心公布了 2026 年第 1 批安全可靠测评结果名单。
+
+# 华为朱懂东谈“鸿蒙套壳安卓”：套壳拿不到最高安全可靠等级 Ⅱ 级权威认证
+
+2026-06-15 22:59 IT之家 - 归泷
+
+IT之家 6 月 15 日消息，在本届华为开发者大会 HDC 2026 现场，华为终端平板与 PC 产品线总裁朱懂东谈起了网上流传的“鸿蒙套壳安卓”的言论，他直接予以否认。
+
+朱懂东介绍称，HarmonyOS V1.0 已通过国家安全可靠 Ⅱ 评测认证，成为首个达到该等级的国产桌面 OS。而这也是代表着中国国家官方最高权威机构的安全可靠等级认证。这个认证可以证明鸿蒙套壳安卓的言论是假的，如果是套壳，拿不到这个证书的。
+
+朱懂东直言，这也证明 HarmonyOS 系统从内核到上层全部是华为自己做的。
+
+据IT之家此前报道，今年 1 月，中国信息安全测评中心公布了 2026 年第 1 批安全可靠测评结果名单。公告显示，鸿蒙桌面操作系统获得最高安全可靠等级 Ⅱ 级，也是首个突破 Ⅰ 级的操作系统，目前暂时没有其他桌面操作系统、服务器操作系统获得过 Ⅱ 级认证。--------------------------------------------------------------------------------
+release-management/OpenHarmony生命周期发布公告.md at master · openharmony/release-management · GitHub (https://github.com/openharmony/release-management/blob/master/OpenHarmony%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%8F%91%E5%B8%83%E5%85%AC%E5%91%8A.md)
+citeturn36search1 [wordlim: 200] Crawled: last week; 3， 主动维护期：例行规划维护标签版本，合入缺陷修复、安全漏洞、以及其他必须的修改，并确保分支持续处于稳定可用状态。 ... OpenHarmony 6.1 Release（LTS）  | -  | -  | -  | -  | 2026/3/8已发布Release，预计6月30日更新发布为LTS版本  | -  | -  | -  | 认证截至预计2028/3/30  | -
+--------------------------------------------------------------------------------
+OpenAtom OpenHarmony (https://www.openharmony.cn/)
+citeturn36search2 [wordlim: 200] Crawled: last week; 开放原子开源鸿蒙（OpenAtom OpenHarmony，简称“开源鸿蒙”或“OpenHarmony”）是由开放原子开源基金会（OpenAtomFoundation）孵化及运营的开源项目，目标是面向全场景、全连接、全智能时代， 基于开源的方式，搭建一个智能终端设备操作系统的框架和平台，促进万物互联产业的繁荣发展。 ... 2026-10-16 ... 智能配电网关基于OpenHarmony的分布式软总线技术，与配电房传感器及设备实现自发现、自组网并构建边缘计算能力，通信更快速，系统更安全。
+--------------------------------------------------------------------------------
+华为全新打造AI-OTN和AI-FAN解决方案，支撑运营商全面升级业务范式 - 华为 (https://www.huawei.com/cn/news/2026/6/mwcs-wbba-bdc)
+citeturn36search3 [wordlim: 200] Published: 4 months ago; Crawled: 2 weeks ago; 为支撑专线业务范式升级，运营商建网理念需从以toB、toC、toH传统流量为中心，升级到以AI DC为中心，打造全光目标网，包括400G/800G到骨干网、100G到城域网的超宽能力，城市内1ms、省内5ms、国家20ms的超低时延，99.9999%的高可靠性，以及QKD量子高安全，实现Network for AI。 ... 欲了解更多详情，请阅：https://carrier.huawei.com/minisite/mwcs2026/cn/
+--------------------------------------------------------------------------------
+April 2026 - Security-bulletin - lists.openatom.io (https://lists.openatom.io/hyperkitty/list/security%40openharmony.io/2026/4/)
+citeturn36search4 [wordlim: 200] Published: 6 months ago; Crawled: today; CVE严重程度CVSS 3.1得分受影响的仓库受影响的OpenHarmony版本修复链接 CVE-2026-25646中危6.3third_party_libpngOpenHarmony-v6.0-Release6.0.x CVE-2026-22693中危5.3third_party_harfbuzzOpenHarmony-v6.0-Release6.0.x CVE-2026-1757中危6.2third_party_libxml2OpenHarmony-v5.1.0-Release OpenHarmony-v6.0-Release OpenHarmony-v5.0.3-Release6.0.x 5.1.0.x 5.0.3.x CVE-2026-0992低危2.9third_party_libxml2OpenHarmony-v5.1.0-Release OpenHarmony-v6.0-Release OpenHarmony-v5.0.3-Release6.0.x 5.1.0.x 5.0.3.x CVE-2026-0990中危5.9third_party_libxml2OpenHarmony-v5.1.0-Release OpenHarmony-v6.0-Release OpenHarmony-v5.0.3-Release6.0.x 5.1.0.x 5.0.3.x CVE-2026-0989低危3.7third_party_libxml2OpenHarmony-v5.1.0-Release OpenHarmony-v6.0-Release OpenHarmony-v5.0.3-Release6.0.x 5.1.0.x 5.0.3.x CVE-2025-9230高危7.5third_party_opensslOpenHarmony-v5.1.0-Release OpenHarmony-v6.0-Release OpenHarmony-v5.0.3-Release6.0.x 5.1.0.x 5.0.3.x CVE-2025-8194高危7.5third_party_pythonOpenHarmony-v6.0-Release6.0.x CVE-2025-28164无尚未提供third_party_libpngOpenHarmony-v6.0-Release6.0.x CVE-2025-28162无尚未提供third_party_libpngOpenHarmony-v6.0-Release6.0.x 以下是各维护版本的安全补丁标签，请在合入当月及之前全部对应安全补丁之后，更新安全补丁标签。
+--------------------------------------------------------------------------------
+360携手鸿蒙升级生态安全防护 _ 东方财富网 (https://finance.eastmoney.com/a/202608303859467775.html)
+citeturn36search5 [wordlim: 200] Published: last month; Crawled: last month; 　　〖大河财立方记者陈薇〗作为鸿蒙战略合作伙伴、生态核心安全成员，8月29日，360在鸿蒙生态大会2026上，发布了多项鸿蒙应用安全检测项目成果，升级AI时代鸿蒙生态安全防护能力。 ... 　　360方面表示，未来将继续与鸿蒙等生态伙伴合作，将攻防经验与智能体技术应用于产业一线，完善鸿蒙生态的安全体系。
+--------------------------------------------------------------------------------
+华为电脑在国内无法使用ChatGPT以及其它海外AI软件 | 华为官网 (https://consumer.huawei.com/cn/support/content/zh-cn16108739/)
+citeturn36search6 [wordlim: 200] Crawled: today; 您好，由于海外AI软件不仅面临服务商的主动区域限制、严格的监管合规门槛、网络访问阻断，以及数据主权与出口管制等多重因素影响，更未按中国法律完成算法备案，也未将服务器设于中国境内，因此无法在国内正常使用。
+--------------------------------------------------------------------------------
+开源鸿蒙 OpenHarmony 7.0 Beta1 发布：应用控制更精细、相机专业能力增强，方舟 Web 内核升级至 Chromium 144 - IT之家 (https://www.ithome.com/0/963/214.htm)
+citeturn36search7 [wordlim: 200] Published: 4 months ago; Crawled: last month; 2026/6/11 22:55:50 来源：IT之家 作者：问舟 责编：问舟
+
+IT之家 6 月 11 日消息，开源鸿蒙 OpenHarmony 7.0 首个测试版（Beta1）已经提交到 Gitcode 平台。 ... OpenHarmony 7.0 Beta1 版本进一步增强应用开发功能，支持对应用更精细化的控制，比如可获取 Ability 退出原因、AbilityStage 启动加载信息、通知自定义铃声和锁屏通知控制等；进一步提升界面交互体验，支持动态布局容器、Tabs 嵌套滚动、自定义组件全局复用等；进一步增强窗口管理能力，新增标准悬浮窗、按需销毁窗口页面内容等；进一步增强 ArkWeb 网页控制能力，内核升级至 Chromium 144 版本，支持 URL 白名单控制、网页安全配置等；进一步增强音视频处理能力，支持 HDR 效果、多屏幕录制、Cinepak 编解码等；新增 Content Embed 内容嵌入服务，支持应用间文档互相嵌入与协同编辑；进一步丰富了图像元数据处理能力、音频编解码能力、MIDI 设备支持、相机专业能力、证书管理能力、企业定制能力等。
+--------------------------------------------------------------------------------
+全球首个！通过开源鸿蒙7.0Release 认证的商用设备诞生：小鸿AI开源鸿蒙星闪AIOT RISC-V实验箱-部门动态-龙岗政府在线 (https://www.lg.gov.cn/gab/bmdt/content/post_13006613.html)
+citeturn36search8 [wordlim: 200] Published: 4 weeks ago; Crawled: 3 weeks ago; 　　2026年9月23日，开源鸿蒙生态迎来一个值得铭记的时刻：AtomGit自主研发的小鸿AI开源鸿蒙星闪AIOT RISC-V实验箱，正式通过开源鸿蒙（OpenHarmony）7.0 Release兼容性认证，成为全球首款获此认证的商用设备。 ... 　　行业场景：智慧家庭（语音控家电、回家/离家模式、能耗管理）、智慧安防（人脸识别门禁、烟雾火灾预警）、智慧农业（温湿度/光照监测、智能通风补光）、智慧办公/校园（智能考勤、实验室安全预警）、工业互联网（设备状态监控、危险区域入侵检测）、智慧养老（跌倒检测提醒、语音陪伴）、车家互联（智能座舱语音助手、驾驶员疲劳检测）等八大主流行业场景均可直接落地。
+--------------------------------------------------------------------------------
+HNS 2026｜华为面向北非地区全面升级星河AI广域网解决方案 - 华为企业业务 (https://e.huawei.com/cn/news/2026/solutions/enterprise-network/upgraded-xinghe-intelligent-wan)
+citeturn36search9 [wordlim: 200] Published: 6 months ago; Crawled: 2 months ago; [埃及，开罗，2026年4月28日] 在华为数据通信创新峰会2026（HNS 2026）北非站期间，华为面向北非地区全面升级星河AI广域网解决方案，以内生安全与量子防护双轮驱动，构建安全韧性抗量子广域网络，为北非企业数智化转型筑牢坚实网络安全底座。 ... 依托独有噪声抑制算法，实现量子、协商、通信信道“三纤合一”，无需新增设备与额外铺纤，总体投资降低60%以上，破解QKD规模化应用的成本瓶颈，提供物理级绝对安全保障。
+--------------------------------------------------------------------------------
+华为发布星河AI网络通量一体解决方案，筑牢广域网量子安全底座-华为 (https://e.huawei.com/cn/news/2026/solutions/enterprise-network/xinghe-intelligent-traffic-encryption)
+citeturn36search10 [wordlim: 200] Published: 8 months ago; Crawled: 2 months ago; 〖西班牙，巴塞罗那，2026年3月2日〗MWC 2026 巴塞罗那期间，华为发布星河AI网络通量一体解决方案，以网络智能与量子安全深度融合，应对量子安全威胁与企业建网成本双重挑战，助力全球各行业加速迈入量子安全时代。 ... 突破二：独有高精度降噪算法，实现通信、协商与量子信号的三纤合一。
+--------------------------------------------------------------------------------
+华为云数据安全 - 数据安全展望 -华为云 (https://www.huaweicloud.com/intl/zh-cn/securecenter/compliance/compliance-center/data-security-outlook.html)
+citeturn36search11 [wordlim: 200] Crawled: last month; 但由于地缘政治、经济文化差异、数字化水平不一等原因，数据安全治理规则很难在全球范围内达成共识，并形成“布鲁塞尔效应”。 ... 但数据跨境流动，也引发了国家安全、数据主权、隐私保护等一系列问题。 ... 全面与进步跨太平洋伙伴关系协定》（CPTPP）、《数字经济伙伴关系协定》（DEPA）、《区域全面经济伙伴关系协定》（RCEP）、美国与欧盟于2023 年9月达成了《欧美数据隐私框架协议》、中国于2024年3月发布了《促进和规范数据跨境流动规定》明确提出了整套具有法律约束力的数据跨境流动原则及执行机制。 ... 华为云基于自身实践，探索出一套数据空间的理念框架，设计方法与解决方案，并为用户提供交换数据空间（Exchange Data Space，简称EDS）服务，帮助用户构建主权可控数据交换空间，通过融合企业内外部数据，促进数据价值的量化和分配，形成数据产生、交换、消费的良性循环，充分释放数据价值，实现数据交换“可信、可控、可证”。 ... #### 3.6 后量子密码 ... 近年来，数据已经成为网络攻击的重点对象，数据勒索链条式、产业化犯罪愈演愈烈，其以高度的破坏性和逐利性，给国家、社会、企业和个人带来了重大经济损失和数据安全风险。
+--------------------------------------------------------------------------------
+HUAWEI 华为云数据安全白皮书 1.0　　　　　　　　　　　　　　　　　　　　　　　　　全球公开发布 (https://www.huaweicloud.com/content/dam/cloudbu-site/archive/china/zh-cn/securecenter/security_doc/DataSecurityWhitepaper_cn.pdf)
+citeturn36search12 [wordlim: 200] Published: 7.0 years ago; HUAWEI 华为云数据安全白皮书 1.0　　　　　　　　　　　　　　　　　　　　　　　　　全球公开发布 ... ## 2.1 基于责任共担，明确数据主权 ... 华为云在遵从国家法律法规要求的前提下，会收集客户的账户信息，包括但不限于客户的注册信息、操作日志等，具体信息参见《隐私政策声明》。 ... 第- 6-页，共 27 页
+--------------------------------------------------------------------------------
+鸿蒙操作系统 (https://zh.wikipedia.org/wiki/%E9%B8%BF%E8%92%99%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
+citeturn36search13 [wordlim: 200] Crawled: 2 months ago; 基于OpenHarmony的OpenAtom系统主屏幕 ... 例如，在低功耗的设备上，如手表及物联网等设备，采用LiteOS内核以运行轻量的鸿蒙应用程序；在手机、平板以及PC等大内存设备上，采用Linux内核和OpenHarmony框架以运行鸿蒙应用程序，同时利用AOSP源代码以运行安卓应用。 ... 2020年12月16日，华为发布HarmonyOS 2手机开发者Beta版本，次年6月2日，华为举行线上发布会正式发布鸿蒙操作系统2.0，及公布搭载该系统的多款新产品，包括华为智能手机、平板电脑和智能手表，同时向现有用户分阶段推送系统更新。 ... 2025年12月16日，中国信息安全测评中心发布《安全可靠测评结果公告（2026年第1号）》，公告显示HarmonyOS V1.0通过最高安全可靠等级Ⅱ级评测认证，成为首个达到该等级的国产桌面操作系统。
+--------------------------------------------------------------------------------
+华为2025年年度报告 (https://www-file.huawei.com/admin/asset/v1/pro/view/3022d6c92652427fa0d7f72dcc72daa2.pdf)
+citeturn36search14 [wordlim: 200] Published: 7 months ago; - 在尼日利亚，华为积极贡献数据安全治理经验与方案，并培养本地专业人才，助力数据本地存储与数据主权实现，获得“最佳战略合作奖”。
+
+在印度尼西亚，华为通过合作、创新和行业参与，长期致力于增强印尼网络安全生态系统，在2025年国家网络安全大会上荣获“公私合作伙伴关系奖”。 ... 我们尊重数字主权，尊重个人隐私；我们致力于遵从适用的网络安全和隐私保护法律法规。
+--------------------------------------------------------------------------------
+开源鸿蒙 (https://zh.wikipedia.org/wiki/%E5%BC%80%E6%BA%90%E9%B8%BF%E8%92%99)
+citeturn36search15 [wordlim: 200] Crawled: 2 months ago; 华为于2020年9月及2021年5月分两次将鸿蒙操作系统的L0-L2分支源代码捐献给开放原子开源基金会，该基金会将受捐赠代码开源，根据基金会命名规范将该项目命名为OpenAtom OpenHarmony，并组建开源项目群，遵循Apache许可证。 ...  6.0.0.1发行版本  | 2025年12月23日  | 修复了linux kernel等开源组件的安全漏洞；修复了部分功能和系统稳定性issue，增强系统安全性与稳定性。
+--------------------------------------------------------------------------------
+B2026-01-26A0201 (https://cjrb.cjn.cn/resfile/2026-01-26/2/26r02c.pdf)
+citeturn36search16 [wordlim: 200] Published: 9 months ago; 2026年1月26日 星期一 ... 下半版中部的大型蓝色信息图，标题为“打造全国重要的开源鸿蒙技术创新和产业创新基地”，左侧竖排“到2027年”，上方分为“目标”和“三大场景矩阵”两栏；下方配有鸿蒙生态展厅照片。 ... （上接第一版）实现从城市内涝应对到农村供水安全的全流程数字化监管；30个行业场景覆盖制造、医疗、教育等领域，将推动智慧病房、数智校园、工业终端研发等落地，计划发布3款以上鸿蒙PC、打印机、穿戴新品；30个消费场景则深耕商圈、文旅等领域，武汉路步行街、东湖景区、文化场馆等标志性区域将上线智能导览、无感通行、沉浸式文化体验等新业态。
+--------------------------------------------------------------------------------
+2026
+腾讯云计算（北京）有限责任公司
+中国通信标准化协会大数据技术标准推进委员会（CCSA TC (https://hulianhutongshequ.cn/upload/tank/report/2026/202605/1/230c4bc7129a46cb83014d60f3b97484.pdf)
+citeturn36search17 [wordlim: 200] Published: 5 months ago; 条例》等一系列政策法规，明确提出“强化核心技术自主可控，推进国产化替代，加强数据安全治理，保障数据主权与隐私 ... 从产业层面来看，截至2025年底，我国数字经济规模持续壮大，数字经济核心产业增加值占 GDP 比重已达10.5%以上， ... 据平台从硬件到软件的全栈自主可控，才能牢牢掌握数据主权，保障业务连续性，降低安全风险，为数字化转型筑牢基础。 ... 能因地缘政治、商业利益等因素，限制核心功能的使用、停止版本迭代或安全补丁更新，导致企业大数据平台面临功能受
+--------------------------------------------------------------------------------
+2026年3月31日星期二 (https://epaper.zqrb.cn/images/2026-03/31/D43/zqrb20260331D43.pdf)
+citeturn36search18 [wordlim: 200] Published: 6 months ago; 2025年3月，欧盟发布《网络安全法（修订版）》，强化对进口通信设备的安全审查，要求非欧盟企 ... 导全球基站设备市场，合计份额达76%；Open RAN（开放无线接入网）因软硬件解耦特性，全球市场份 ... ⑴稳定利润分配：落实2025年度利润分配方案，结合2026年全年盈利情况与扩产需求，拟定科学 ... 行业面临的挑战主要包括：5G-A与6G网络建设及研发投入巨大，成本高企；网络安全风险持续 ... 生物多样性风险分析；提升EcoVadis评级至银牌；关注员工心理健康，新增相关关怀举措；设定员工及
+--------------------------------------------------------------------------------
+工业数字化/智能化
+2030HUAWEI | CAICT | Roland
+中国信通院 Berger (https://file.jgvogel.cn/124/upload/resources/file/391821.pdf)
+citeturn36search19 [wordlim: 200] Published: 7 months ago; 首先是在上下游形成协同，将有效拉通产品设计、订单、产能、物流等数据，实现供应链敏捷响应、产品协同设计等，促进业务协同、形成合力；其次是在企业间形成工业知识消费市场，在保障数据主权的前提下，工业企业按需消费他方数据、按使用计价，促进知识有价消费、惠及更多工业企业；最后是在产业内形成知识经济，产业、区域内企业对工艺知识、产能、供应链资源等数据进行拉通和共享，筑造知识经济。 ... A Chinese infographic about data security: left side titled “数据安全目标” with a cloud/lock icon and text “让数据使用更安全” plus hexagon labels like “交易合规”, “商业机密”, “数据主权”, “数据安全共享”, “隐私保护”, “产品可信” and “...”; right side titled “数据安全能力” showing concentric/arc rings labeled “事中预警能力”, “事前预防能力”, “事后追溯能力” around a center “工业企业 数据安全 能力架构” with a gear icon, and a large arrow pointing from right to left.
+--------------------------------------------------------------------------------
+鸿蒙内核 (https://zh.wikipedia.org/wiki/%E9%B8%BF%E8%92%99%E5%86%85%E6%A0%B8)
+citeturn36search20 [wordlim: 200] Crawled: 4 months ago; 鸿蒙内核通过了《信息技术安全评估通用标准》（CC）六级增强版（EAL6+）认证，成为首个获得该认证级别的通用操作系统内核。 ... * 陈海波（来自华为中央软件研究所、上海交通大学）：《微内核走向通用：鸿蒙生产环境微内核的性能与兼容性》，发表于2024年6月21日。
+--------------------------------------------------------------------------------
+英特尔晶圆厂工期延后、互联网基础设施爆发安全事故、游戏交易平台测评出炉 (https://www.reddit.com/r/u_ArticleLogical9458/comments/1xcmrjh/%E8%8B%B1%E7%89%B9%E5%B0%94%E6%99%B6%E5%9C%86%E5%8E%82%E5%B7%A5%E6%9C%9F%E5%BB%B6%E5%90%8E%E4%BA%92%E8%81%94%E7%BD%91%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD%E7%88%86%E5%8F%91%E5%AE%89%E5%85%A8%E4%BA%8B%E6%95%85%E6%B8%B8%E6%88%8F%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E6%B5%8B%E8%AF%84%E5%87%BA%E7%82%89/)
+citeturn36reddit21 [wordlim: 200] Published: 6 days ago; Crawled: 6 days ago; [Thursday October 22 2026] [+1 votes] ... 其余平台评分与问题分别为：代练通6.6分，押金规则争议大，赔付门槛高；5371为6.2分，理赔周期长，打手水平参差不齐；7881为5.8分，验号不够细致；交易猫5.1分，账号找回投诉较多；盼之代售4.2分，验号疏漏，售后推诿；螃蟹3.9分，理赔流程繁琐；代练丸子3.7分，打手审核宽松，毁号、外挂相关投诉多发。 ... 安全人员发现eMudhra使用的中间证书私钥为简单数字，攻击者可以在短时间内逆向破解证书，伪造身份。 ... Node.js同步修复Brotli解码器越界写入漏洞，还解决了证书绕过、DNS解析异常、权限绕过等问题，覆盖22.x、24.x、26.x版本，运维人员需要尽快升级到对应安全版本。
+--------------------------------------------------------------------------------
+HarmonyOS (https://en.wikipedia.org/wiki/HarmonyOS)
+citeturn36search22 [wordlim: 200] Crawled: last week; License | Commercial software, Proprietary software except for open-source components ... Simplified Chinese | 鸿蒙操作系统 ... The latest stable version is HarmonyOS 6; it was released on 25 November 2025.
+--------------------------------------------------------------------------------
+鸿蒙操作系统5 (https://zh.wikipedia.org/wiki/%E9%B8%BF%E8%92%99%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F5)
+citeturn36search23 [wordlim: 200] Crawled: 4 months ago; 2025年6月20日，华为在HDC 2025上宣布鸿蒙NEXT的第二个大版本鸿蒙操作系统6，并启动开发者beta。
+
+2025年10月22日，华为举行鸿蒙操作系统6·特别发布活动，正式发布鸿蒙操作系统6并开启公测。
+--------------------------------------------------------------------------------
+视界邮报｜OpenAI、Hugging Face与智谱AI揭示安全隐患，华为底层赋能Kimi，英伟达定调开源生态 (https://www.reddit.com/r/u_SunAggressive9799/comments/1v482id/%E8%A7%86%E7%95%8C%E9%82%AE%E6%8A%A5openaihugging/)
+citeturn36reddit24 [wordlim: 200] Published: 3 months ago; [Thursday July 23 2026] [+1 votes] ... 2026年7月22日，英伟达CEO黄仁勋在接受权威媒体Axios专访时，就当前全球AI领域的几大核心分歧释放了明确信号。 ... 针对美方担忧的数据安全问题，黄仁勋认为开源模型因支持本地沙箱部署和全球社区共同寻找漏洞，安全性反而更高。
+--------------------------------------------------------------------------------
+华为新车发布会上，一辆尚届Z7在展台中央发生故障开不走了 (https://www.reddit.com/r/China_irl/comments/1ssuoij/%E5%8D%8E%E4%B8%BA%E6%96%B0%E8%BD%A6%E5%8F%91%E5%B8%83%E4%BC%9A%E4%B8%8A%E4%B8%80%E8%BE%86%E5%B0%9A%E5%B1%8Az7%E5%9C%A8%E5%B1%95%E5%8F%B0%E4%B8%AD%E5%A4%AE%E5%8F%91%E7%94%9F%E6%95%85%E9%9A%9C%E5%BC%80%E4%B8%8D%E8%B5%B0%E4%BA%86/)
+citeturn36reddit25 [wordlim: 200] Published: 6 months ago; 4月22日晚，在鸿蒙智行2026年春季新品发布会上，尚界Z7未与其它展车同步驶离舞台，赛力斯总裁讲到问界M6时，该车辆仍在舞台中央。 ... 安全是最大的豪华—不动是最大的安全🥰
+--------------------------------------------------------------------------------
+做了个公益网站：看看你手机自带 WebView / 系统浏览器有多旧 (https://www.reddit.com/r/China_irl/comments/1vowkau/%E5%81%9A%E4%BA%86%E4%B8%AA%E5%85%AC%E7%9B%8A%E7%BD%91%E7%AB%99%E7%9C%8B%E7%9C%8B%E4%BD%A0%E6%89%8B%E6%9C%BA%E8%87%AA%E5%B8%A6_webview_%E7%B3%BB%E7%BB%9F%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%89%E5%A4%9A%E6%97%A7/)
+citeturn36reddit26 [wordlim: 200] Published: 2 months ago; [Saturday August 15 2026] [+1 votes] ... 做这个页的目的很简单：让更多人意识到手机系统自带 WebView 的安全问题，也逼手机厂商把更新当回事。
+--------------------------------------------------------------------------------
+辉讯电报｜白宫签署AI安全协议、任天堂入驻垂直电商、赛力斯合作新车首发、OpenAI发布高性价比大模型 (https://www.reddit.com/r/Stocksnice/comments/1wunzf9/%E8%BE%89%E8%AE%AF%E7%94%B5%E6%8A%A5%E7%99%BD%E5%AE%AB%E7%AD%BE%E7%BD%B2ai%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE%E4%BB%BB%E5%A4%A9%E5%A0%82%E5%85%A5%E9%A9%BB%E5%9E%82%E7%9B%B4%E7%94%B5%E5%95%86%E8%B5%9B%E5%8A%9B%E6%96%AF%E5%90%88%E4%BD%9C%E6%96%B0%E8%BD%A6%E9%A6%96%E5%8F%91openai%E5%8F%91%E5%B8%83%E9%AB%98%E6%80%A7%E4%BB%B7%E6%AF%94%E5%A4%A7%E6%A8%A1%E5%9E%8B/)
+citeturn36reddit27 [wordlim: 200] Published: 3 weeks ago; [Thursday October 01 2026] [+1 votes] ... 9月30日，美国白宫组织人工智能行业闭门会议，特朗普与六家头部科技企业负责人共同签署人工智能安全发展协议，明确前沿AI技术的研发规范与安全管控标准。
+
